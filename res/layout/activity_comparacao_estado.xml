@@ -1,0 +1,72 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="br.unb.deolhonoenade.view.ComparacaoEstado"
+    tools:ignore="MergeRootFrame" >
+
+    <TextView
+        android:id="@+id/stringCurso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:contentDescription="Calcular média entre estados" />
+     
+    <TextView
+        android:id="@+id/EscolhaEstado1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/stringCurso"
+        android:layout_marginTop="18dp"
+        android:text="Escolha o primeiro estado para a comparação"
+        android:textAlignment="center"
+        android:textSize="28dp"
+        android:textStyle="bold" />
+
+ 	  <Spinner
+ 	      android:id="@+id/Estado1"
+ 	      android:layout_width="match_parent"
+ 	      android:layout_height="wrap_content"
+ 	      android:layout_alignParentLeft="true"
+ 	      android:layout_below="@+id/EscolhaEstado1"
+ 	      android:contentDescription="para selecionar o primeiro estado" />
+
+ 	  <TextView
+ 	      android:id="@+id/textEstado1"
+ 	      android:layout_width="match_parent"
+ 	      android:layout_height="wrap_content"
+ 	      android:layout_centerVertical="true"
+ 	      android:text="Escolha o segundo estado"
+ 	      android:textSize="25dp"
+ 	      android:textStyle="bold" />
+
+ 	  <Button
+ 	      android:id="@+id/Comparar"
+ 	      android:layout_width="match_parent"
+ 	      android:layout_height="wrap_content"
+ 	      android:layout_alignParentBottom="true"
+ 	      android:layout_alignParentLeft="true"
+ 	      android:layout_marginBottom="28dp"
+          android:textColor= "#FFFF" 
+          android:background="@layout/layout_botao"
+          android:text="Comparar"
+ 	      android:textSize="25dp"
+ 	      android:contentDescription="Comparar" />
+
+ 	  <Spinner
+ 	      android:id="@+id/Estado2"
+ 	      android:layout_width="match_parent"
+ 	      android:layout_height="wrap_content"
+ 	      android:layout_alignLeft="@+id/textEstado1"
+ 	      android:layout_below="@+id/textEstado1"
+ 	      android:layout_marginTop="14dp"
+ 	      android:contentDescription="para selecionar o segundo estado" />
+
+</RelativeLayout>

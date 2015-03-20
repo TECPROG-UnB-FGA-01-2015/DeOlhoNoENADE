@@ -1,0 +1,74 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="br.unb.deolhonoenade.view.ComparacaoInicial"
+    tools:ignore="MergeRootFrame" >
+
+    <TextView
+        android:id="@+id/TextoComparacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:text="Escolha a comparação desejada"
+		android:textSize="25dp"
+        android:textStyle="bold"
+        android:contentDescription="Buscar" />
+
+    <Button
+        android:id="@+id/BotaoEstado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/TextoComparacao"
+        android:layout_marginTop="25dp"
+        android:text="Média entre estados"
+        android:textSize="27dp"
+       	android:textColor= "#FFFF" 
+        android:background="@layout/layout_botao"
+        android:contentDescription="Calcular média entre estados"/>
+
+    <Button
+        android:id="@+id/BotaoCidades"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/BotaoEstado"
+        android:layout_marginTop="25dp"
+        android:text="Média entre cidades" 
+        android:textSize="27dp"
+        android:textColor= "#FFFF" 
+        android:background="@layout/layout_botao"
+        android:contentDescription="Calcular média entre cidades"/>
+ 
+     <Button
+        android:id="@+id/BotaoIES"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/BotaoCidades"
+        android:layout_marginTop="25dp"
+        android:text="Entre Instituições de Ensino"
+        android:textSize="27dp"
+        android:textColor= "#FFFF" 
+        android:background="@layout/layout_botao"
+        android:contentDescription="Calcular média entre instituições de ensino" />
+     
+        <Button
+        android:id="@+id/BotaoTipo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/BotaoIES"
+        android:layout_marginTop="25dp"
+        android:text="Entre Tipos de Instituições de Ensino"
+        android:textSize="27dp" 
+      	android:textColor= "#FFFF" 
+        android:background="@layout/layout_botao"
+        android:contentDescription="Calcular média entre tipos de instituições"/>
+     
+ 
+</RelativeLayout>

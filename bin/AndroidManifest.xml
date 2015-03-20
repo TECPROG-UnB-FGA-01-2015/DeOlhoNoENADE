@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="br.unb.deolhonoenade"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <instrumentation
+        android:name="android.test.InstrumentationTestRunner"
+        android:label="Tests"
+        android:targetPackage="br.unb.deolhonoenade" />
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="14" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name" >
+        <uses-library android:name="android.test.runner" />
+
+        <activity
+            android:name="br.unb.deolhonoenade.view.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar.Fullscreen" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="br.unb.deolhonoenade.view.MenuInicial"
+            android:label="@string/title_activity_menu_inicial"
+            android:theme="@android:style/Theme.DeviceDefault" >
+        </activity>
+        <activity
+            android:name="br.unb.deolhonoenade.view.RankingInicial"
+            android:label="@string/title_activity_ranking_inicial"
+            android:theme="@android:style/Theme.DeviceDefault" >
+        </activity>
+        <activity
+            android:name="br.unb.deolhonoenade.view.RankingResult"
+            android:label="@string/title_activity_ranking_result"
+            android:theme="@android:style/Theme.DeviceDefault" >
+        </activity>
+        <activity
+            android:name="br.unb.deolhonoenade.view.ComparacaoInicial"
+            android:label="@string/title_activity_comparacao_inicial"
+            android:theme="@android:style/Theme.DeviceDefault" >
+        </activity>
+        <activity
+            android:name="br.unb.deolhonoenade.view.DadosIES"
+            android:label="@string/title_activity_dados_ies"
+            android:theme="@android:style/Theme.DeviceDefault.Dialog" >
+        </activity>
+        <activity
+            android:name="br.unb.deolhonoenade.view.ComparacaoEstado"
+            android:label="@string/title_activity_comparacao_estado"
+            android:theme="@android:style/Theme.DeviceDefault" >
+        </activity>
+        <activity
+
+            android:name="br.unb.deolhonoenade.view.ComparacaoResult"
+            android:label="@string/title_activity_comparacao_result" 
+            android:theme="@android:style/Theme.DeviceDefault">
+
+        </activity>
+        <activity
+            android:name="br.unb.deolhonoenade.view.ComparacaoInstituicao"
+            android:label="@string/title_activity_comparacao_instituicao"
+            android:parentActivityName="br.unb.deolhonoenade.view.ComparacaoInicial"
+            android:theme="@android:style/Theme.DeviceDefault" >
+        </activity>
+        <activity
+            android:name="br.unb.deolhonoenade.view.ComparacaoInstituicaoFinal"
+            android:label="@string/title_activity_comparacao_instituicao_final"
+            android:theme="@android:style/Theme.DeviceDefault" >
+        </activity>
+        <activity
+            android:name="br.unb.deolhonoenade.view.ComparacaoResultIES"
+            android:label="@string/title_activity_comparacao_result_ies"
+            android:theme="@android:style/Theme.DeviceDefault" >
+        </activity>
+        <activity
+            android:name="br.unb.deolhonoenade.view.ComparacaoCidades"
+
+            android:label="@string/title_activity_comparacao_cidades" 
+            android:theme="@android:style/Theme.DeviceDefault">
+        </activity>
+        <activity
+            android:name="br.unb.deolhonoenade.view.ComparacaoResultC"
+            android:label="@string/title_activity_comparacao_result_c" 
+            android:theme="@android:style/Theme.DeviceDefault">
+        </activity>    
+         <activity    
+            android:name="br.unb.deolhonoenade.ComparacaoResultCidade"
+            android:label="@string/title_activity_comparacao_result_cidade" 
+            android:theme="@android:style/Theme.DeviceDefault">
+
+        </activity>
+        <activity
+            android:name="br.unb.deolhonoenade.view.ComparacaoTipo"
+            android:label="@string/title_activity_comparacao_tipo"
+            android:theme="@android:style/Theme.DeviceDefault" >
+        </activity>
+        <activity
+            android:name="br.unb.deolhonoenade.view.ComparacaoTipoFinal"
+
+            android:label="@string/title_activity_comparacao_tipo_final" 
+            android:theme="@android:style/Theme.DeviceDefault">
+
+        </activity>
+        <activity
+            android:name="br.unb.deolhonoenade.view.ComparacaoResultTipo"
+            android:label="@string/title_activity_comparacao_result_tipo"
+            android:theme="@android:style/Theme.DeviceDefault" >
+        </activity>
+        <activity
+            android:name="br.unb.deolhonoenade.view.Mapa"
+            android:label="@string/title_activity_mapa" >
+        </activity>
+        <activity
+            android:name="br.unb.deolhonoenade.Mapa"
+            android:label="@string/title_activity_mapa" >
+        </activity>
+        <activity
+            android:name="br.unb.deolhonoenade.view.ManualUsuario"
+            android:label="@string/title_activity_manual_usuario" >
+        </activity>
+    </application>
+
+</manifest>

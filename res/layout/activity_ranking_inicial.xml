@@ -1,0 +1,91 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:columnCount="2"
+    android:orientation="horizontal"
+    tools:context="br.unb.deolhonoenade.RankingInicial"
+    tools:ignore="MergeRootFrame" >
+
+    <Button
+        android:id="@+id/buscar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:text="@string/button_Buscar"
+     	android:textColor= "#FFFF" 
+        android:background="@layout/layout_botao"
+        android:contentDescription="Buscar" />
+
+    <TextView
+        android:id="@+id/EscolherCidade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/EscolherEstado"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="75dp"
+        android:text="@string/text_Cidade"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:contentDescription="Escolher Curso" />
+
+    <Spinner
+        android:id="@+id/spinnerCidade"
+        android:layout_width="match_parent"
+        android:layout_height="35sp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/EscolherCidade"
+        android:layout_marginTop="20dp" />
+
+    <Spinner
+        android:id="@+id/SpinnerEstados"
+        android:layout_width="match_parent"
+        android:layout_height="35sp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/EscolherEstado"
+        android:layout_marginTop="21dp" />
+
+    <Spinner
+        android:id="@+id/spinnerTipo"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/TipoUniversidade"
+        android:layout_marginTop="25dp" />
+
+    <TextView
+        android:id="@+id/TipoUniversidade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spinnerCidade"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        android:text="@string/text_Tipo"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:contentDescription="Tipo de Universidade" />
+
+    <TextView
+        android:id="@+id/stringCurso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:text="Large Text"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/EscolherEstado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@+id/stringCurso"
+
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="27dp"
+        android:text="@string/text_Estado"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:contentDescription="Escolher estado" />
+    <!--         android:layout_below="@+id/CursoEscolhido" -->
+</RelativeLayout>

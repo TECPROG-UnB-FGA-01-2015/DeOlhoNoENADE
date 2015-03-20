@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">DeOlhoNoENADE</string>
+    <string name="action_settings">Configurações</string>
+    <string name="title_section1">Ranking</string>
+    <string name="title_section2">Comparação</string>
+    <string name="title_section3">Mapa Geral</string>
+    <string name="title_activity_tela_inicial">TelaInicial</string>
+    <string name="title_activity_menu_inicial">De Olho no ENADE</string>
+    <string name="title_activity_ranking_inicial">Selecione As Opcoes</string>
+    <string name="title_activity_comparacao_inicial">Comparacao</string>
+    <string name="title_activity_ranking_result">Ranking - Resultado</string>
+    <string name="button_Buscar">BUSCAR</string>
+    <string name="button_Ranking">Ranking</string>
+    <string name="button_Comparacao">Comparar</string>
+    <string name="text_Instituicao">Instituicao</string>
+    <string name="text_Nota">Nota</string>
+    <string name="text_Cidade">Escolha uma Cidade</string>
+    <string name="text_Tipo">Tipo de Universidade</string>
+    <string name="text_Estado">Escolha um Estado</string>
+    <string name="text_EscolhaCurso">ESCOLHA UM CURSO</string>
+    <string name="text_EscolhaFuncao">ESCOLHA UMA FUNÇÃO</string>
+    <string name="text_Estado1">Escolha o primeiro Estado</string>
+    <string name="text_Estado2">Escolha o segundo Estado</string>
+    <string name="text_cidade1">Escolha a primeira Cidade</string>
+    <string name="text_cidade2">Escolha a segunda Cidade</string>
+    <string name="text_instiruicao1">Instiruicao 1:</string>
+    <string name="text_instiruicao2">Instiruicao 2:</string>
+    <string name="title_activity_dados_ies">DadosIES</string>
+    <string name="title_activity_comparacao_estado">ComparacaoEstado</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_comparacao_result">ComparacaoResult</string>
+    <string name="title_activity_comparacao_instituicao">ComparacaoInstituicao</string>
+    <string name="title_activity_comparacao_instituicao_final">ComparacaoInstituicaoFinal</string>
+    <string name="title_activity_comparacao_result_ies">ComparacaoResultIES</string>
+    <string name="title_activity_comparacao_cidades">ComparacaoCidades</string>
+    <string name="title_activity_comparacao_result_c">ComparacaoResultC</string>
+    <string name="title_activity_comparacao_result_cidade">ComparacaoResultCidade</string>
+    <string name="title_activity_comparacao_tipo">ComparacaoTipo</string>
+    <string name="title_activity_comparacao_tipo_final">ComparacaoTipoFinal</string>
+    <string name="title_activity_comparacao_result_tipo">ComparacaoResultTipo</string>
+    <string name="title_activity_mapa">Mapa</string>
+    <string name="title_activity_manual_usuario">ManualUsuario</string>
+
+
+</resources>

@@ -1,0 +1,65 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="br.unb.deolhonoenade.view.ComparacaoResultIES"
+    tools:ignore="MergeRootFrame" >
+
+  <TextView
+        android:id="@+id/stringCurso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Resultado - Comparacao Instituicoes"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+  <br.unb.br.deolhonoenade.graphs.holographlibrary.BarGraph
+      android:id="@+id/graph"
+      android:layout_width="match_parent"
+      android:layout_height="200dp"
+      android:layout_alignParentLeft="true"
+      android:layout_below="@+id/stringCurso"
+      android:layout_marginTop="14dp" />
+
+  <TextView
+      android:id="@+id/Instiruicao2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentLeft="true"
+      android:layout_below="@+id/nomeIES1"
+      android:layout_marginTop="17dp"
+      android:text="@string/text_instiruicao2"
+      android:textAppearance="?android:attr/textAppearanceMedium" />
+
+  <TextView
+      android:id="@+id/nomeIES2"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignLeft="@+id/nomeIES1"
+      android:layout_alignParentRight="true"
+      android:layout_below="@+id/Instiruicao2"
+      android:layout_marginTop="18dp"
+      android:text="Large Text"
+      android:textAppearance="?android:attr/textAppearanceSmall" />
+
+  <TextView
+      android:id="@+id/Instiruicao1"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentLeft="true"
+      android:layout_below="@+id/graph"
+      android:text="@string/text_instiruicao1"
+      android:textAppearance="?android:attr/textAppearanceMedium" />
+
+  <TextView
+      android:id="@+id/nomeIES1"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/Instiruicao1"
+      android:layout_marginTop="14dp"
+      android:text="Large Text"
+      android:textAppearance="?android:attr/textAppearanceSmall" />
+    
+</RelativeLayout>

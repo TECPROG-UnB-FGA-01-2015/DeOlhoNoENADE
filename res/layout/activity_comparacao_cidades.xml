@@ -1,0 +1,87 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="br.unb.deolhonoenade.view.ComparacaoCidades"
+    tools:ignore="MergeRootFrame" >
+
+    
+    <TextView
+        android:id="@+id/stringCurso1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/cursoSelecionado1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/text_Estado1"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Spinner
+        android:id="@+id/spinnerEstado1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="para selecionar o primeiro estado" />
+
+    <TextView
+        android:id="@+id/cidade1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/text_cidade1"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Spinner
+        android:id="@+id/spinnerCidade1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="para selecionar a primeira cidade" />
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/estado2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_Estado2"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Space
+        android:layout_width="1dp"
+        android:layout_height="20dp" />
+
+    <Spinner
+        android:id="@+id/spinnerEstado2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="para selecionar o segundo estado" />
+
+    <TextView
+        android:id="@+id/cidade2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_cidade2"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Spinner
+        android:id="@+id/spinnerCidade2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="para selecionar a segunda cidade" />
+
+    <Button
+        android:id="@+id/buttonComparacaoCidades"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/button_Comparacao"
+        android:textColor= "#FFFF" 
+        android:background="@layout/layout_botao"
+        android:contentDescription="Comparar entre cidades"/>
+
+        
+</LinearLayout>

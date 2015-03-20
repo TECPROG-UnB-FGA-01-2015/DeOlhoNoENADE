@@ -1,0 +1,83 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="br.unb.deolhonoenade.view.De Olho no ENADE"
+    tools:ignore="MergeRootFrame">
+
+    <Spinner
+        android:id="@+id/spinnerCurso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/EscolherCurso"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="19dp"
+        android:contentDescription="Escolher Curso" />
+      
+    <TextView
+        android:id="@+id/EscolherCurso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:text="@string/text_EscolhaCurso"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:contentDescription="Escolher Curso" />
+
+    <Button
+        android:id="@+id/Mapa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="25dp"
+        android:text="Mapa Geral"
+        android:textSize="25dp"
+        android:textColor= "#FFFF" 
+        android:background="@layout/layout_botao"
+        android:contentDescription="Mapa" /> 
+
+    <TextView
+        android:id="@+id/EscolherFuncao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spinnerCurso"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:text="@string/text_EscolhaFuncao"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:contentDescription="Escolher Função: Ranquin, Comparação, ou Mapa Geral" />
+
+    <Button
+        android:id="@+id/Comparacao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/Ranking"
+        android:layout_marginTop="36dp"
+        android:text="Comparação"
+        android:textSize="25dp"
+        android:textColor= "#FFFF" 
+        android:background="@layout/layout_botao"
+        android:contentDescription="Comparação"/>
+
+    <Button
+        android:id="@+id/Ranking"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/EscolherFuncao"
+        android:layout_marginTop="44dp"
+        android:background="@layout/layout_botao"
+        android:contentDescription="Ranquin"
+        android:text="@string/button_Ranking"
+        android:textColor="#FFFF"
+        android:textSize="25dp" />
+
+</RelativeLayout>
