@@ -11,87 +11,102 @@ import junit.framework.Assert;
 import android.database.sqlite.SQLiteDatabase;
 import android.test.AndroidTestCase;
 
-public class TestControllerCurso extends AndroidTestCase {
+public class TestControllerCurso extends AndroidTestCase
+{
 
 	// ControllerCurso controller = new ControllerCurso(getContext());
 
-	public TestControllerCurso() {
+	public TestControllerCurso()
+	{
 		super();
 	}
 
-	protected void setUp() throws Exception {
+	protected void setUp() throws Exception
+	{
 		super.setUp();
 	}
 
-	protected void tearDown() throws Exception {
+	protected void tearDown() throws Exception
+	{
 		super.tearDown();
 	}
 
-	public void testControllerCurso() {
+	public void testControllerCurso()
+	{
 		ControllerCurso controller = new ControllerCurso(getContext());
 		Assert.assertNotNull(controller);
 	}
 
-	public void testGetDatabase() {
+	public void testGetDatabase()
+	{
 		ControllerCurso controller = new ControllerCurso(getContext());
-		
+
 		Assert.assertNotNull(controller.getDatabase());
 
 	}
-	
-	public void testRemoveIesTrue(){
+
+	public void testRemoveIesTrue()
+	{
 		ControllerCurso controller = new ControllerCurso(getContext());
-		
+
 		int codCurso = controller.buscaCodCurso("Administracao");
-		
+
 		controller.buscaCurso(codCurso, "SP");
-		
+
 		assertTrue(controller.removeIes(1));
-		
+
 	}
 
-	public void testRemoveIesFalse(){
+	public void testRemoveIesFalse()
+	{
 		ControllerCurso controller = new ControllerCurso(getContext());
-		
+
 		int codCurso = controller.buscaCodCurso("Administracao");
-		
+
 		controller.buscaCurso(codCurso, "SP");
-		
+
 		assertFalse(controller.removeIes(999));
-		
+
 	}
-	
-	public void testGetCodIESDoArrayCursos(){
+
+	public void testGetCodIESDoArrayCursos()
+	{
 		ControllerCurso controller = new ControllerCurso(getContext());
-		
+
 		controller.buscaCurso(1, "SP");
 		Assert.assertEquals(322, controller.getCodIESDoArrayCursos(2));
 	}
-	
-	public void testGetCodIESDoArrayCursosIndexOutOfBounds(){
+
+	public void testGetCodIESDoArrayCursosIndexOutOfBounds()
+	{
 		ControllerCurso controller = new ControllerCurso(getContext());
-		
+
 		controller.buscaCurso(1, "AC");
 		Assert.assertEquals(-1, controller.getCodIESDoArrayCursos(200));
 	}
-	
-	public void testGetConceitoDoArrayCursos(){
+
+	public void testGetConceitoDoArrayCursos()
+	{
 		ControllerCurso controller = new ControllerCurso(getContext());
-		
+
 		controller.buscaCurso(1, "SP");
-		
-		Assert.assertEquals((float)4.882, controller.getConceitoDoArrayCursos(2));
+
+		Assert.assertEquals((float) 4.882,
+				controller.getConceitoDoArrayCursos(2));
 	}
-	
-	public void testGetConceitoDoArrayCursosIndexOutOfBounds(){
+
+	public void testGetConceitoDoArrayCursosIndexOutOfBounds()
+	{
 		ControllerCurso controller = new ControllerCurso(getContext());
-		
+
 		controller.buscaCurso(1, "AC");
-		
-		Assert.assertEquals((float)-1, controller.getConceitoDoArrayCursos(200));
+
+		Assert.assertEquals((float) -1,
+				controller.getConceitoDoArrayCursos(200));
 	}
-	
-	public void testBuscaInstituicao() {
+
+	public void testBuscaInstituicao()
+	{
 		Instituicao instituicao;
 		ControllerCurso controller = new ControllerCurso(getContext());
 
@@ -99,8 +114,9 @@ public class TestControllerCurso extends AndroidTestCase {
 		Assert.assertEquals("UNIVERSIDADE FEDERAL DE MATO GROSSO",
 				instituicao.getNome());
 	}
-	
-	public void testDadosIES() {
+
+	public void testDadosIES()
+	{
 
 		ControllerCurso controller = new ControllerCurso(getContext());
 		Instituicao ies = controller.buscaInstituicao(2);
@@ -118,28 +134,32 @@ public class TestControllerCurso extends AndroidTestCase {
 		Assert.assertEquals(dadosIES.get(5),
 				String.format("%d", curso.getNumEstudantes()));
 	}
-	
-	public void testDadosIESIndexOutOfBounds() {
+
+	public void testDadosIESIndexOutOfBounds()
+	{
 
 		ControllerCurso controller = new ControllerCurso(getContext());
 		Instituicao ies = controller.buscaInstituicao(2);
 		controller.buscaCurso(1, "DF");
 		Curso curso = new Curso(1, 2, "UNIVERSIDADE DE BRASILIA", 141, 89,
 				"BRASILIA", (float) 3.735, "DF", ies);
-		
-		List<String> dadosIES=null;
-		
-		try {
+
+		List<String> dadosIES = null;
+
+		try
+		{
 			dadosIES = controller.getDadosIES(9893);
-		} catch (Error e) {
-			e.printStackTrace();				
+		} catch (Error e)
+		{
+			e.printStackTrace();
 		}
-			
+
 		Assert.assertNull(dadosIES);
 
 	}
-	
-	public void testComparaEstado() {
+
+	public void testComparaEstado()
+	{
 		ControllerCurso controller = new ControllerCurso(getContext());
 
 		String estado1 = "DF", estado2 = "AM";
@@ -148,7 +168,8 @@ public class TestControllerCurso extends AndroidTestCase {
 				(float) 1.9448332);
 	}
 
-	public void testBuscaCodCurso() {
+	public void testBuscaCodCurso()
+	{
 		int codCurso;
 		ControllerCurso controller = new ControllerCurso(getContext());
 
@@ -156,7 +177,8 @@ public class TestControllerCurso extends AndroidTestCase {
 		Assert.assertEquals(1, codCurso);
 	}
 
-	public void testBuscaCursoIntString() {
+	public void testBuscaCursoIntString()
+	{
 		ControllerCurso controller = new ControllerCurso(getContext());
 		ArrayList<Curso> cursosT = new ArrayList<Curso>();
 		ArrayList<Curso> cursos = new ArrayList<Curso>();
@@ -208,7 +230,8 @@ public class TestControllerCurso extends AndroidTestCase {
 
 	}
 
-	public void testBuscaCursoIntStringString() {
+	public void testBuscaCursoIntStringString()
+	{
 		ControllerCurso controller = new ControllerCurso(getContext());
 		ArrayList<Curso> cursosT = new ArrayList<Curso>();
 		ArrayList<Curso> cursos = new ArrayList<Curso>();
@@ -234,7 +257,8 @@ public class TestControllerCurso extends AndroidTestCase {
 
 	}
 
-	public void testBuscaCursoIntStringStringString() {
+	public void testBuscaCursoIntStringStringString()
+	{
 		ControllerCurso controller = new ControllerCurso(getContext());
 		ArrayList<Curso> cursosT = new ArrayList<Curso>();
 		ArrayList<Curso> cursos = new ArrayList<Curso>();
@@ -258,7 +282,8 @@ public class TestControllerCurso extends AndroidTestCase {
 				.getNumEstudantes());
 	}
 
-	public void testBuscaCidades() {
+	public void testBuscaCidades()
+	{
 		ControllerCurso controller = new ControllerCurso(getContext());
 		List<String> cidadesT = new ArrayList<String>();
 		List<String> cidades = new ArrayList<String>();
@@ -278,7 +303,8 @@ public class TestControllerCurso extends AndroidTestCase {
 	 * somente privada pois no acre só tem instituição privadapara o curso
 	 * selecionado
 	 */
-	public void testBuscaTiposAC() {
+	public void testBuscaTiposAC()
+	{
 		ControllerCurso controller = new ControllerCurso(getContext());
 		List<String> tiposT = new ArrayList<String>();
 		List<String> tipos = new ArrayList<String>();
@@ -295,7 +321,8 @@ public class TestControllerCurso extends AndroidTestCase {
 	 * Busca tipos quando os tipos é mais de um tipo de instituição Tipos
 	 * devem ser Ambas, PRIVADA e PUBLICA
 	 */
-	public void testBuscaTiposDF() {
+	public void testBuscaTiposDF()
+	{
 		ControllerCurso controller = new ControllerCurso(getContext());
 		List<String> tiposT = new ArrayList<String>();
 		List<String> tipos = new ArrayList<String>();
@@ -316,7 +343,8 @@ public class TestControllerCurso extends AndroidTestCase {
 	 * Busca tipos quando os tipos é mais de um tipo de instituição Tipos
 	 * devem ser Ambas, PRIVADA e PUBLICA
 	 */
-	public void testBuscaTiposEstado() {
+	public void testBuscaTiposEstado()
+	{
 		ControllerCurso controller = new ControllerCurso(getContext());
 		List<String> tiposT = new ArrayList<String>();
 		List<String> tipos = new ArrayList<String>();
@@ -332,7 +360,8 @@ public class TestControllerCurso extends AndroidTestCase {
 	}
 
 	// Busca tipos quando os tipos é só um tipo de instituição
-	public void testBuscaTiposEstadoAC() {
+	public void testBuscaTiposEstadoAC()
+	{
 		ControllerCurso controller = new ControllerCurso(getContext());
 		List<String> tiposT = new ArrayList<String>();
 		List<String> tipos = new ArrayList<String>();
@@ -345,7 +374,8 @@ public class TestControllerCurso extends AndroidTestCase {
 		Assert.assertEquals(tiposT, tipos);
 	}
 
-	public void testBuscaUf() {
+	public void testBuscaUf()
+	{
 		ControllerCurso controller = new ControllerCurso(getContext());
 		List<String> ufsT = new ArrayList<String>();
 		List<String> ufs = new ArrayList<String>();
@@ -402,7 +432,8 @@ public class TestControllerCurso extends AndroidTestCase {
 		Assert.assertEquals(ufsT, ufs);
 	}
 
-	public void testBuscaStringCursoIntString() {
+	public void testBuscaStringCursoIntString()
+	{
 		ControllerCurso controller = new ControllerCurso(getContext());
 		List<String> cursosT = new ArrayList<String>();
 		List<String> cursos = new ArrayList<String>();
@@ -424,13 +455,15 @@ public class TestControllerCurso extends AndroidTestCase {
 
 		cursos = controller.buscaStringCurso(1, "TO");
 
-		for (int i = 0; i < 14; i++) {
+		for (int i = 0; i < 14; i++)
+		{
 			Assert.assertEquals(cursosT.get(i), cursos.get(i));
 		}
 
 	}
 
-	public void testBuscaStringCursoIntStringStringString() {
+	public void testBuscaStringCursoIntStringStringString()
+	{
 		ControllerCurso controller = new ControllerCurso(getContext());
 		List<String> cursosT = new ArrayList<String>();
 		List<String> cursos = new ArrayList<String>();
@@ -440,12 +473,14 @@ public class TestControllerCurso extends AndroidTestCase {
 
 		cursos = controller.buscaStringCurso(1, "TO", "PALMAS", "PUBLICA");
 
-		for (int i = 1; i < 2; i++) {
+		for (int i = 1; i < 2; i++)
+		{
 			Assert.assertEquals(cursosT.get(i), cursos.get(i));
 		}
 	}
 
-	public void testBuscaStringCursoIntStringString() {
+	public void testBuscaStringCursoIntStringString()
+	{
 		ControllerCurso controller = new ControllerCurso(getContext());
 		List<String> cursosT = new ArrayList<String>();
 		List<String> cursos = new ArrayList<String>();
@@ -459,12 +494,14 @@ public class TestControllerCurso extends AndroidTestCase {
 		cursosT.add("FACULDADE ITOP - 1,202000");
 
 		cursos = controller.buscaStringCurso(1, "TO", "PALMAS");
-		for (int i = 1; i < 7; i++) {
+		for (int i = 1; i < 7; i++)
+		{
 			Assert.assertEquals(cursosT.get(i), cursos.get(i));
 		}
 	}
 
-	public void testBuscaStringCursoIntStringInt() {
+	public void testBuscaStringCursoIntStringInt()
+	{
 		ControllerCurso controller = new ControllerCurso(getContext());
 		List<String> cursosT = new ArrayList<String>();
 		List<String> cursos = new ArrayList<String>();
@@ -476,13 +513,15 @@ public class TestControllerCurso extends AndroidTestCase {
 		cursosT.add("UNIVERSIDADE DO TOCANTINS - 1,366000");
 
 		cursos = controller.buscaStringCurso(1, "TO", 2);
-		for (int i = 1; i < 5; i++) {
+		for (int i = 1; i < 5; i++)
+		{
 			Assert.assertEquals(cursosT.get(i), cursos.get(i));
 		}
 
 	}
 
-	public void testCodIESDoArrayCursos() {
+	public void testCodIESDoArrayCursos()
+	{
 
 		ControllerCurso controller = new ControllerCurso(getContext());
 
@@ -491,7 +530,8 @@ public class TestControllerCurso extends AndroidTestCase {
 
 	}
 
-	public void testConceitoDoArrayCursos() {
+	public void testConceitoDoArrayCursos()
+	{
 
 		ControllerCurso controller = new ControllerCurso(getContext());
 
@@ -501,7 +541,8 @@ public class TestControllerCurso extends AndroidTestCase {
 
 	}
 
-	public void testComparacaoCidade() {
+	public void testComparacaoCidade()
+	{
 		ControllerCurso controller = new ControllerCurso(getContext());
 
 		String estado1 = "DF", cidade1 = "BRASILIA";
@@ -513,7 +554,8 @@ public class TestControllerCurso extends AndroidTestCase {
 
 	}
 
-	public void testComparacaoTipo() {
+	public void testComparacaoTipo()
+	{
 		ControllerCurso controller = new ControllerCurso(getContext());
 		List<Float> resultado = controller.comparacaoTipo(1, "AC", "Privada",
 				"AL", "Privada");
@@ -522,12 +564,12 @@ public class TestControllerCurso extends AndroidTestCase {
 		Assert.assertEquals((float) 2.285000, resultado.get(1));
 	}
 
-	public void testMediaEstado(){
+	public void testMediaEstado()
+	{
 		ControllerCurso controller = new ControllerCurso(getContext());
-		
-		Assert.assertEquals((float)2.249236, controller.mediaEstado("SP", 1));
-		
+
+		Assert.assertEquals((float) 2.249236, controller.mediaEstado("SP", 1));
+
 	}
-	
-	
+
 }
