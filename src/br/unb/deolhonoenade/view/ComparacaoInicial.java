@@ -33,7 +33,7 @@ public class ComparacaoInicial extends Activity implements
 	private String curso;
 	
 	@Override
-	// Method to initialize the activity savedInstanceState
+	// Method to initialize the activity activity activity_comparacao_inicial
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
@@ -63,7 +63,6 @@ public class ComparacaoInicial extends Activity implements
 	    		startActivity(intent);
 	    	}	
 		});
-		
 	}
 
 	// Method to recognize the button "BotaoInstituicao"
@@ -72,7 +71,6 @@ public class ComparacaoInicial extends Activity implements
 		Button compareInstituicao = (Button) findViewById(R.id.BotaoIES);
 		compareInstituicao.setOnClickListener(new OnClickListener()
 		{
-			
 			@Override
 			/* Method to confirm the the mouse click and redirect to
 			 * ComparacaoInstituicao view
@@ -85,7 +83,6 @@ public class ComparacaoInicial extends Activity implements
 	    		startActivity(intent);
 	    	}	
 		});
-		
 	}
 	
 	// Method to recognize the button "BotaoEstado"
@@ -93,8 +90,7 @@ public class ComparacaoInicial extends Activity implements
 	{
 		Button compareEstado = (Button) findViewById(R.id.BotaoEstado);
 		compareEstado.setOnClickListener(new OnClickListener()
-		{
-			
+		{	
 			@Override
 			/* Method to confirm the the mouse click and redirect to
 			 * ComparacaoEstado view
@@ -107,7 +103,6 @@ public class ComparacaoInicial extends Activity implements
 	    		startActivity(intent);
 	    	}	
 		});
-		
 	}
 	
 	// Method to recognize the button "BotaoTipo"
@@ -115,8 +110,7 @@ public class ComparacaoInicial extends Activity implements
 	{
 		Button compareTipo = (Button) findViewById(R.id.BotaoTipo);
 		compareTipo.setOnClickListener(new OnClickListener()
-		{
-			
+		{	
 			@Override
 			/* Method to confirm the the mouse click and redirect to
 			 * ComparacaoTipo view
@@ -129,7 +123,6 @@ public class ComparacaoInicial extends Activity implements
 	    		startActivity(intent);
 	    	}	
 		});
-		
 	}
 	@Override
 	// Method to restore an instance state

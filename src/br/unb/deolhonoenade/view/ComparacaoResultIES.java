@@ -22,14 +22,13 @@ import br.unb.deolhonoenade.controller.ControllerCurso;
 
 public class ComparacaoResultIES extends Activity
 {
-
 	private ControllerCurso controller;
 	private List<String> result, aux;
 	private float nota1, nota2;
 	private String ies1, ies2;
 	
-	
 	@Override
+	// Method to initialize the activity activity_comparacao_result_ies
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
@@ -44,7 +43,6 @@ public class ComparacaoResultIES extends Activity
 		nota1 = getIntent().getExtras().getFloat("nota1");
 		ies2 = getIntent().getExtras().getString("ies2");
 		nota2 = getIntent().getExtras().getFloat("nota2");
-		
 		
 		TextView instiruicao1 = (TextView) findViewById(R.id.nomeIES1);
 		instiruicao1.setText(ies1);
@@ -76,6 +74,7 @@ public class ComparacaoResultIES extends Activity
 	}
 
 	@Override
+	// Method to initialize the contents of the Activity's standard options menu
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -84,6 +83,7 @@ public class ComparacaoResultIES extends Activity
 	}
 
 	@Override
+	// Method to recognize when an option on menu is selected
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
 		int id = item.getItemId();
@@ -108,6 +108,9 @@ public class ComparacaoResultIES extends Activity
 		}
 
 		@Override
+		/* Method to create and return the view hierarchy associated with the
+		 * fragment
+		 */
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState)
 		{
