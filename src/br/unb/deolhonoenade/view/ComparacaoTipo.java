@@ -37,6 +37,7 @@ public class ComparacaoTipo extends Activity
 	private List<String> listt2;
 	
 	@Override
+	// Method to initialize the activity activity_comparacao_tipo	
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
@@ -56,6 +57,7 @@ public class ComparacaoTipo extends Activity
 	}
 
 	@Override
+	// Method to initialize the contents of the Activity's standard options menu
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -63,6 +65,7 @@ public class ComparacaoTipo extends Activity
 		return true;
 	}
 	
+	// Method to add item on spinner EstadoT1
 	private void addItensOnSpinnerEstadoT1(int codCurso)
 	{
 		EstadoT1 = (Spinner) findViewById(R.id.SpinnerEstado1);
@@ -97,6 +100,9 @@ public class ComparacaoTipo extends Activity
 		});	
 	}
 
+	/* Method to add items on spinner Type1 to compare University's
+	 * types (Public and Private)
+	 */
 	private void addItensOnSpinnerTipo1(String uf)
 	{
 		this.Tipo1 = (Spinner) findViewById(R.id.SpinnerEstado1Tipo);
@@ -129,7 +135,8 @@ public class ComparacaoTipo extends Activity
 			}
 		});
 	}
-
+	
+	// Method to add item on spinner EstadoT2
 	private void addItensOnSpinnerEstadoT2(int codCurso, boolean retira)
 	{
 		EstadoT2 = (Spinner) findViewById(R.id.SpinnerEstado2);
@@ -156,6 +163,7 @@ public class ComparacaoTipo extends Activity
 		EstadoT2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
 		{
 			@Override
+			
 			public void onItemSelected(AdapterView<?> parent, View v, int posicao,
 					long id)
 			{
@@ -171,7 +179,10 @@ public class ComparacaoTipo extends Activity
 			}
 		});	
 	}
-
+	
+	/* Method to add items on spinner Tipo2 to compare University's
+	 * types (Public and Private)
+	 */
 	private void addItensOnSpinnerTipo2(String uf, boolean retira)
 	{
 		this.Tipo2 = (Spinner) findViewById(R.id.SpinnerEstado2Tipo);
@@ -197,6 +208,7 @@ public class ComparacaoTipo extends Activity
 		this.Tipo2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
 		{
 			@Override
+			// Method to 
 			public void onItemSelected(AdapterView<?> parent, View v, int posicao,
 					long id)
 			{
@@ -229,6 +241,7 @@ public class ComparacaoTipo extends Activity
 			}
 		 
 			@Override
+			// Method to be called when nothing be selected
 			public void onNothingSelected(AdapterView<?> parent)
 			{
 				// Nothing to do
@@ -236,12 +249,16 @@ public class ComparacaoTipo extends Activity
 		});
 	}
 
+	// Method to recognize the button "Buscar"
 	private void addListenerOnButtonBuscar()
 	{
 		Button comparar = (Button) findViewById(R.id.comparaT1);
 		comparar.setOnClickListener (new OnClickListener()
 		{
 			@Override
+			/* Method to confirm the the mouse click and redirect to
+			 * ComparacaoResultTipo view
+			 */
 	    	public void onClick(View v)
 			{
 				Intent result =  new Intent(ComparacaoTipo.this,
@@ -262,6 +279,7 @@ public class ComparacaoTipo extends Activity
 	}
 
 	@Override
+	// Method to recognize when an option on menu is selected
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
 		// Handle action bar item clicks here. The action bar will
@@ -292,6 +310,9 @@ public class ComparacaoTipo extends Activity
 		}
 
 		@Override
+		/* Method to create and return the view hierarchy associated with the
+		 * fragment
+		 */
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState)
 		{
