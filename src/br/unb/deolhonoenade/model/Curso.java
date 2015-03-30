@@ -1,11 +1,11 @@
+
 package br.unb.deolhonoenade.model;
 
+public class Curso
+{
 
-
-public class Curso {
-	
 	private Instituicao IES;
-	
+
 	private int id;
 	private int id_ies;
 	private String nome;
@@ -14,9 +14,17 @@ public class Curso {
 	private String municipio;
 	private float conceitoEnade;
 	private String uf;
-	
-	public Curso(int id, int id_ies, String nome, int numEstudantes, int numEstudantesInscritos,
-			String municipio, float conceitoEnade, String uf, Instituicao IES) {
+
+	public Curso(int id,
+				 int id_ies,
+				 String nome,
+				 int numEstudantes,
+				 int numEstudantesInscritos,
+				 String municipio,
+				 float conceitoEnade,
+				 String uf,
+				 Instituicao IES)
+	{
 		this.id = id;
 		this.nome = nome;
 		this.numEstudantes = numEstudantes;
@@ -24,84 +32,101 @@ public class Curso {
 		this.municipio = municipio;
 		this.conceitoEnade = conceitoEnade;
 		this.uf = uf;
-		this.IES=IES;
+		this.IES = IES;
 	}
-	
-	public String getUf() {
+
+	public String getUf()
+	{
 		return uf;
 	}
 
-
-	public void setUf(String uf) {
+	public void setUf(String uf)
+	{
 		this.uf = uf;
 	}
 
-
-	public int getId_ies() {
+	public int getId_ies()
+	{
 		return id_ies;
 	}
 
-	public int getId() {
+	public int getId()
+	{
 		return id;
 	}
-	
-	public void setId(int id) {
+
+	public void setId(int id)
+	{
 		this.id = id;
 	}
-	
-	public Instituicao getIES() {
+
+	public Instituicao getIES()
+	{
 		return IES;
 	}
 
-	public void setIES(Instituicao iES) {
+	public void setIES(Instituicao iES)
+	{
 		IES = iES;
 	}
-	
-	public String getNome() {
+
+	public String getNome()
+	{
 		return nome;
 	}
 
-	public void setNome(String nome) {
+	public void setNome(String nome)
+	{
 		this.nome = nome;
 	}
 
-	public int getNumEstudantes() {
+	public int getNumEstudantes()
+	{
 		return numEstudantes;
 	}
 
-	public void setNumEstudantes(int numEstudantes) {
+	public void setNumEstudantes(int numEstudantes)
+	{
 		this.numEstudantes = numEstudantes;
 	}
 
-	public int getNumEstudantesInscritos() {
+	public int getNumEstudantesInscritos()
+	{
 		return numEstudantesInscritos;
 	}
 
-	public void setNumEstudantesInscritos(int numEstudantesInscritos) {
-		
-		if(numEstudantesInscritos<this.numEstudantes){
+	public void setNumEstudantesInscritos(int numEstudantesInscritos)
+	{
+
+		if(numEstudantesInscritos < this.numEstudantes)
+		{
 			this.numEstudantesInscritos = numEstudantesInscritos;
-		}else{
+		}
+		else
+		{
 			System.err.println("N Estudantes inscritos maior que N Estudantes");
 		}
-		
+
 	}
 
-	public String getMunicipio() {
+	public String getMunicipio()
+	{
 		return municipio;
 	}
 
-	public void setMunicipio(String municipio) {
+	public void setMunicipio(String municipio)
+	{
 		this.municipio = municipio;
 	}
 
-	public float getConceitoEnade() {
+	public float getConceitoEnade()
+	{
 		return conceitoEnade;
 	}
 
-	public void setConceitoEnade(float conceitoEnade) {
+	public void setConceitoEnade(float conceitoEnade)
+	{
 		this.conceitoEnade = conceitoEnade;
 	}
 
-	
 }
