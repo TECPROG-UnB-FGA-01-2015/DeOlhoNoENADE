@@ -27,6 +27,7 @@ public class ComparacaoResultTipo extends Activity
 	private String estado1, estado2, tipo1, tipo2;
 	
 	@Override
+	// Method to initialize the activity activity_comparacao_result_tipo
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
@@ -77,6 +78,7 @@ public class ComparacaoResultTipo extends Activity
 	}
 
 	@Override
+	// Method to initialize the contents of the Activity's standard options menu
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -85,6 +87,7 @@ public class ComparacaoResultTipo extends Activity
 	}
 
 	@Override
+	// Method to recognize when an option on menu is selected
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
 		// Handle action bar item clicks here. The action bar will
@@ -115,6 +118,9 @@ public class ComparacaoResultTipo extends Activity
 		}
 
 		@Override
+		/* Method to create and return the view hierarchy associated with the
+		 * fragment
+		 */
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState)
 		{
