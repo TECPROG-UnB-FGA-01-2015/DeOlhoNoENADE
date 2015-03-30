@@ -28,12 +28,12 @@ import android.widget.TextView;
 public class ComparacaoInicial extends Activity implements
 		ActionBar.OnNavigationListener
 {
-
 	private static final String STATE_SELECTED_NAVIGATION_ITEM =
 			"selected_navigation_item";
 	private String curso;
 	
 	@Override
+	// Method to initialize the activity savedInstanceState
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
@@ -45,14 +45,17 @@ public class ComparacaoInicial extends Activity implements
 		addListenerOnButtonBotaoTipo();
 	}
 	
+	// Method to recognize the button "BotaoCidade"
 	private void addListenerOnButtonBotaoCidade()
 	{
 		Button compareInstituicao = (Button) findViewById(R.id.BotaoCidades);
 		compareInstituicao.setOnClickListener(new OnClickListener()
 		{
-			
 			@Override
-	    	public void onClick(View v)
+			/* Method to confirm the the mouse click and redirect to
+			 * ComparacaoCidades view
+			 */
+			public void onClick(View v)
 			{
 	    		Intent intent = new Intent(ComparacaoInicial.this,
 	    				ComparacaoCidades.class);
@@ -63,6 +66,7 @@ public class ComparacaoInicial extends Activity implements
 		
 	}
 
+	// Method to recognize the button "BotaoInstituicao"
 	private void addListenerOnButtonBotaoInstituicao()
 	{
 		Button compareInstituicao = (Button) findViewById(R.id.BotaoIES);
@@ -70,6 +74,9 @@ public class ComparacaoInicial extends Activity implements
 		{
 			
 			@Override
+			/* Method to confirm the the mouse click and redirect to
+			 * ComparacaoInstituicao view
+			 */
 	    	public void onClick(View v)
 			{
 	    		Intent intent = new Intent(ComparacaoInicial.this,
@@ -80,7 +87,8 @@ public class ComparacaoInicial extends Activity implements
 		});
 		
 	}
-
+	
+	// Method to recognize the button "BotaoEstado"
 	private void addListenerOnButtonBotaoEstado()
 	{
 		Button compareEstado = (Button) findViewById(R.id.BotaoEstado);
@@ -88,6 +96,9 @@ public class ComparacaoInicial extends Activity implements
 		{
 			
 			@Override
+			/* Method to confirm the the mouse click and redirect to
+			 * ComparacaoEstado view
+			 */
 	    	public void onClick(View v)
 			{
 	    		Intent intent = new Intent(ComparacaoInicial.this,
@@ -99,6 +110,7 @@ public class ComparacaoInicial extends Activity implements
 		
 	}
 	
+	// Method to recognize the button "BotaoTipo"
 	private void addListenerOnButtonBotaoTipo()
 	{
 		Button compareTipo = (Button) findViewById(R.id.BotaoTipo);
@@ -106,6 +118,9 @@ public class ComparacaoInicial extends Activity implements
 		{
 			
 			@Override
+			/* Method to confirm the the mouse click and redirect to
+			 * ComparacaoTipo view
+			 */
 	    	public void onClick(View v)
 			{
 	    		Intent intent = new Intent(ComparacaoInicial.this,
@@ -117,6 +132,7 @@ public class ComparacaoInicial extends Activity implements
 		
 	}
 	@Override
+	// Method to restore an instance state
 	public void onRestoreInstanceState(Bundle savedInstanceState)
 	{
 		// Restore the previously serialized current dropdown position.
@@ -133,6 +149,7 @@ public class ComparacaoInicial extends Activity implements
 	}
 
 	@Override
+	// Method to initialize the contents of the Activity's standard options menu
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
 		getMenuInflater().inflate(R.menu.comparacao_inicial, menu);
@@ -140,6 +157,7 @@ public class ComparacaoInicial extends Activity implements
 	}
 
 	@Override
+	// Method to recognize when an option on menu is selected
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
 		int id = item.getItemId();
@@ -157,6 +175,7 @@ public class ComparacaoInicial extends Activity implements
 	}
 
 	@Override
+	// Method to recognize whenever a navigation item on action bar is selected
 	public boolean onNavigationItemSelected(int position, long id)
 	{
 		getFragmentManager()
@@ -178,12 +197,16 @@ public class ComparacaoInicial extends Activity implements
 			return fragment;
 		}
 
+		// Java default constructor
 		public PlaceholderFragment()
 		{
 			// Nothing to do
 		}
 
 		@Override
+		/* Method to create and return the view hierarchy associated with the
+		 * fragment
+		 */
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState)
 		{

@@ -69,8 +69,11 @@ public class ComparacaoResultTipo extends Activity
 		g.setBars(points);
 		g.setUnit(" ");
 
-		g.setContentDescription("Tipo de Instituição " + tipo1 + " no estado " + estado1 + ".   nota: " + String.format("%.3f", resultado1)
-				+ ". E tipo de instituição " + tipo2 + " no estado " + estado2 + ".   nota: " + String.format("%.3f", resultado2));
+		g.setContentDescription("Tipo de Instituição " + tipo1 + " no estado " +
+				estado1 + ".   nota: " + String.format("%.3f", resultado1)
+						+ ". E tipo de instituição " + tipo2 + " no estado " +
+								estado2 + ".   nota: " + String.format("%.3f",
+										resultado2));
 	}
 
 	@Override
