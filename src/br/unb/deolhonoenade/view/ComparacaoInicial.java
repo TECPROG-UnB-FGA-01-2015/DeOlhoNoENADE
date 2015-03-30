@@ -26,12 +26,16 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 public class ComparacaoInicial extends Activity implements
-		ActionBar.OnNavigationListener {
+		ActionBar.OnNavigationListener
+{
 
-	private static final String STATE_SELECTED_NAVIGATION_ITEM = "selected_navigation_item";
+	private static final String STATE_SELECTED_NAVIGATION_ITEM =
+			"selected_navigation_item";
 	private String curso;
+	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState)
+	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_comparacao_inicial);		
 		curso = getIntent().getExtras().getString("cursoSelecionado");
@@ -39,16 +43,19 @@ public class ComparacaoInicial extends Activity implements
 		addListenerOnButtonBotaoInstituicao();
 		addListenerOnButtonBotaoCidade();
 		addListenerOnButtonBotaoTipo();
-		
 	}
 	
-	private void addListenerOnButtonBotaoCidade() {
+	private void addListenerOnButtonBotaoCidade()
+	{
 		Button compareInstituicao = (Button) findViewById(R.id.BotaoCidades);
-		compareInstituicao.setOnClickListener(new OnClickListener(){
+		compareInstituicao.setOnClickListener(new OnClickListener()
+		{
 			
 			@Override
-	    	public void onClick(View v) {
-	    		Intent intent = new Intent(ComparacaoInicial.this, ComparacaoCidades.class);
+	    	public void onClick(View v)
+			{
+	    		Intent intent = new Intent(ComparacaoInicial.this,
+	    				ComparacaoCidades.class);
 	    		intent.putExtra("cursoSelecionado", curso);
 	    		startActivity(intent);
 	    	}	
@@ -56,13 +63,17 @@ public class ComparacaoInicial extends Activity implements
 		
 	}
 
-	private void addListenerOnButtonBotaoInstituicao() {
+	private void addListenerOnButtonBotaoInstituicao()
+	{
 		Button compareInstituicao = (Button) findViewById(R.id.BotaoIES);
-		compareInstituicao.setOnClickListener(new OnClickListener(){
+		compareInstituicao.setOnClickListener(new OnClickListener()
+		{
 			
 			@Override
-	    	public void onClick(View v) {
-	    		Intent intent = new Intent(ComparacaoInicial.this, ComparacaoInstituicao.class);
+	    	public void onClick(View v)
+			{
+	    		Intent intent = new Intent(ComparacaoInicial.this,
+	    				ComparacaoInstituicao.class);
 	    		intent.putExtra("cursoSelecionado", curso);
 	    		startActivity(intent);
 	    	}	
@@ -70,13 +81,17 @@ public class ComparacaoInicial extends Activity implements
 		
 	}
 
-	private void addListenerOnButtonBotaoEstado(){
+	private void addListenerOnButtonBotaoEstado()
+	{
 		Button compareEstado = (Button) findViewById(R.id.BotaoEstado);
-		compareEstado.setOnClickListener(new OnClickListener(){
+		compareEstado.setOnClickListener(new OnClickListener()
+		{
 			
 			@Override
-	    	public void onClick(View v) {
-	    		Intent intent = new Intent(ComparacaoInicial.this, ComparacaoEstado.class);
+	    	public void onClick(View v)
+			{
+	    		Intent intent = new Intent(ComparacaoInicial.this,
+	    				ComparacaoEstado.class);
 	    		intent.putExtra("cursoSelecionado", curso);
 	    		startActivity(intent);
 	    	}	
@@ -84,13 +99,17 @@ public class ComparacaoInicial extends Activity implements
 		
 	}
 	
-	private void addListenerOnButtonBotaoTipo(){
+	private void addListenerOnButtonBotaoTipo()
+	{
 		Button compareTipo = (Button) findViewById(R.id.BotaoTipo);
-		compareTipo.setOnClickListener(new OnClickListener(){
+		compareTipo.setOnClickListener(new OnClickListener()
+		{
 			
 			@Override
-	    	public void onClick(View v) {
-	    		Intent intent = new Intent(ComparacaoInicial.this, ComparacaoTipo.class);
+	    	public void onClick(View v)
+			{
+	    		Intent intent = new Intent(ComparacaoInicial.this,
+	    				ComparacaoTipo.class);
 	    		intent.putExtra("cursoSelecionado", curso);
 	    		startActivity(intent);
 	    	}	
@@ -98,31 +117,48 @@ public class ComparacaoInicial extends Activity implements
 		
 	}
 	@Override
-	public void onRestoreInstanceState(Bundle savedInstanceState) {
+	public void onRestoreInstanceState(Bundle savedInstanceState)
+	{
 		// Restore the previously serialized current dropdown position.
-		if (savedInstanceState.containsKey(STATE_SELECTED_NAVIGATION_ITEM)) {
+		if (savedInstanceState.containsKey(STATE_SELECTED_NAVIGATION_ITEM))
+		{
 			getActionBar().setSelectedNavigationItem(
 					savedInstanceState.getInt(STATE_SELECTED_NAVIGATION_ITEM));
+		}
+		
+		else
+		{
+			// Nothing to do
 		}
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
+	public boolean onCreateOptionsMenu(Menu menu)
+	{
 		getMenuInflater().inflate(R.menu.comparacao_inicial, menu);
 		return true;
 	}
 
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
+	public boolean onOptionsItemSelected(MenuItem item)
+	{
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		if (id == R.id.action_settings)
+		{
 			return true;
 		}
+		
+		else
+		{
+			// Nothing to do
+		}
+		
 		return super.onOptionsItemSelected(item);
 	}
 
 	@Override
-	public boolean onNavigationItemSelected(int position, long id) {
+	public boolean onNavigationItemSelected(int position, long id)
+	{
 		getFragmentManager()
 				.beginTransaction()
 				.replace(R.id.container,
@@ -130,9 +166,11 @@ public class ComparacaoInicial extends Activity implements
 		return true;
 	}
 
-	public static class PlaceholderFragment extends Fragment {
+	public static class PlaceholderFragment extends Fragment
+	{
 		private static final String ARG_SECTION_NUMBER = "section_number";
-		public static PlaceholderFragment newInstance(int sectionNumber) {
+		public static PlaceholderFragment newInstance(int sectionNumber)
+		{
 			PlaceholderFragment fragment = new PlaceholderFragment();
 			Bundle args = new Bundle();
 			args.putInt(ARG_SECTION_NUMBER, sectionNumber);
@@ -140,12 +178,15 @@ public class ComparacaoInicial extends Activity implements
 			return fragment;
 		}
 
-		public PlaceholderFragment() {
+		public PlaceholderFragment()
+		{
+			// Nothing to do
 		}
 
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState) {
+				Bundle savedInstanceState)
+		{
 			View rootView = inflater.inflate(
 					R.layout.fragment_comparacao_inicial, container, false);
 			TextView textView = (TextView) rootView
