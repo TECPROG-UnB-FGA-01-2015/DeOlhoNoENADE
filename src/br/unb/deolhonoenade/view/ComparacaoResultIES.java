@@ -20,7 +20,8 @@ import br.unb.br.deolhonoenade.graphs.holographlibrary.BarGraph;
 import br.unb.deolhonoenade.R;
 import br.unb.deolhonoenade.controller.ControllerCurso;
 
-public class ComparacaoResultIES extends Activity {
+public class ComparacaoResultIES extends Activity
+{
 
 	private ControllerCurso controller;
 	private List<String> result, aux;
@@ -29,14 +30,13 @@ public class ComparacaoResultIES extends Activity {
 	
 	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState)
+	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_comparacao_result_ies);
 		
 		controller = new ControllerCurso(this);
-		
-		
-		
+			
 		result = getIntent().getExtras().getStringArrayList("dadosIes1");
 		aux = getIntent().getExtras().getStringArrayList("dadosIes2");
 		
@@ -70,42 +70,50 @@ public class ComparacaoResultIES extends Activity {
 		BarGraph g = (BarGraph)findViewById(R.id.graph);
 		g.setBars(points);
 		g.setUnit(" ");
-		g.setContentDescription("Instituição " + ies1 + " nota: " + String.format("%.3f", nota1)
-				+ ". E Instituição " + ies2 + " nota: " + String.format("%.3f", nota2));
-		
+		g.setContentDescription("Instituição " + ies1 + " nota: " +
+				String.format("%.3f", nota1) + ". E Instituição " + ies2 + " nota: "
+					+ String.format("%.3f", nota2));
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-
+	public boolean onCreateOptionsMenu(Menu menu)
+	{
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.comparacao_result_ie, menu);
 		return true;
 	}
 
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
+	public boolean onOptionsItemSelected(MenuItem item)
+	{
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		if (id == R.id.action_settings)
+		{
 			return true;
 		}
+		
+		else
+		{
+			// Nothing to do
+		}
+
 		return super.onOptionsItemSelected(item);
 	}
 
-	public static class PlaceholderFragment extends Fragment {
-
-		public PlaceholderFragment() {
+	public static class PlaceholderFragment extends Fragment
+	{
+		public PlaceholderFragment()
+		{
+			// Nothing to do
 		}
 
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState) {
+				Bundle savedInstanceState)
+		{
 			View rootView = inflater.inflate(
 					R.layout.fragment_comparacao_result_ie, container, false);
 			return rootView;
 		}
 	}
-	
-	
-
 }
