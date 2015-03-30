@@ -1,3 +1,4 @@
+
 package br.unb.deolhonoenade.view;
 
 import java.util.ArrayList;
@@ -25,40 +26,43 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.os.Build;
 
-public class ComparacaoResult extends Activity {
-	
+public class ComparacaoResult extends Activity
+{
+
 	private String curso, estado1, estado2;
 	private ControllerCurso controller;
 	private int codCurso;
-	
+
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState)
+	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_comparacao_result);
-		
+
 		controller = new ControllerCurso(this);
-		
+
 		curso = getIntent().getExtras().getString("cursoSelecionado");
 		estado1 = getIntent().getExtras().getString("Estado1");
 		estado2 = getIntent().getExtras().getString("Estado2");
 		codCurso = controller.buscaCodCurso(curso);
-		
+
 		TextView titulo = (TextView) findViewById(R.id.stringCurso);
-		
-		titulo.setText(String.format("Comparacao do curso de\n\t%s",curso));
-		
-		List<Float> list;		
-		
+
+		titulo.setText(String.format("Comparacao do curso de\n\t%s", curso));
+
+		List<Float> list;
+
 		list = controller.comparaEstado(estado1, estado2, codCurso);
-				
-		if (savedInstanceState == null) {
-			getFragmentManager().beginTransaction()
-					.add(R.id.container, new PlaceholderFragment()).commit();
+
+		if(savedInstanceState == null)
+		{
+			getFragmentManager().beginTransaction().add(R.id.container,
+					new PlaceholderFragment()).commit();
 		}
-		
+
 		String list1String = String.valueOf(list.get(0));
 		String list2String = String.valueOf(list.get(1));
-		
+
 		ArrayList<Bar> points = new ArrayList<Bar>();
 		Bar d = new Bar();
 		d.setColor(Color.parseColor("#99CC00"));
@@ -71,36 +75,43 @@ public class ComparacaoResult extends Activity {
 		points.add(d);
 		points.add(d2);
 
-		BarGraph g = (BarGraph)findViewById(R.id.graph2);
+		BarGraph g = (BarGraph) findViewById(R.id.graph2);
 		g.setBars(points);
 		g.setUnit(" ");
-		g.setContentDescription(estado1 + ".   nota: " + String.format("%.3f", list.get(0))
-				+ ". E " + estado2 + ".   nota: " + String.format("%.3f", list.get(1)));
+		g.setContentDescription(estado1 + ".   nota: "
+				+ String.format("%.3f", list.get(0)) + ". E " + estado2
+				+ ".   nota: " + String.format("%.3f", list.get(1)));
 	}
 
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
+	public boolean onCreateOptionsMenu(Menu menu)
+	{
 		getMenuInflater().inflate(R.menu.comparacao_result, menu);
 		return true;
 	}
 
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
+	public boolean onOptionsItemSelected(MenuItem item)
+	{
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		if(id == R.id.action_settings)
+		{
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
-	public static class PlaceholderFragment extends Fragment {
 
-		public PlaceholderFragment() {
+	public static class PlaceholderFragment extends Fragment
+	{
+
+		public PlaceholderFragment()
+		{
 		}
 
 		@Override
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState) {
+				Bundle savedInstanceState)
+		{
 			View rootView = inflater.inflate(
 					R.layout.fragment_comparacao_result, container, false);
 			return rootView;
