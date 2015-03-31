@@ -37,7 +37,8 @@ public class ComparacaoInstituicao extends Activity
 	private List<String> dados;
 	private float nota1;
 
-	@Override
+    @Override
+    // Method to initialize the activity activity_comparacao_instituicao
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
@@ -51,7 +52,8 @@ public class ComparacaoInstituicao extends Activity
 		addItensOnSpinnerEstado(codCurso);
 		addListenerOnButtonBuscar();
 	}
-
+    
+    // Method to list the State options in a spinner
 	private void addItensOnSpinnerEstado(int codCurso)
 	{
 		spinnerEstados = (Spinner) findViewById(R.id.estados);
@@ -82,7 +84,8 @@ public class ComparacaoInstituicao extends Activity
 			}
 		});
 	}
-
+    
+    // Method to list the Municipio options in a spinner
 	private void addItensOnSpinnerMunicipio(String uf)
 	{
 		this.spinnerCidades = (Spinner) findViewById(R.id.cidades);
@@ -111,7 +114,8 @@ public class ComparacaoInstituicao extends Activity
 		});
 
 	}
-
+    
+    // Method to list the IES options in a spinner
 	private void addItensOnSpinnerIES(String estado, String municipio)
 	{
 		List<String> cursos = controller.buscaIesComUfMun(codCurso, estado, municipio);
@@ -140,7 +144,8 @@ public class ComparacaoInstituicao extends Activity
 		});
 
 	}
-
+    
+    // Method for the confirmation button for the search between the two institutions
 	private void addListenerOnButtonBuscar()
 	{
 		Button comparar = (Button) findViewById(R.id.ies1);
