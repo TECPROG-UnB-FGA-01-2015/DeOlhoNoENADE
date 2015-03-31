@@ -33,7 +33,8 @@ public class ComparacaoResultC extends Activity
 	private int codCurso;
 	private ControllerCurso controller;
 
-	@Override
+    @Override
+    // Method to initialize the activity activity_comparacao_instituicao
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
