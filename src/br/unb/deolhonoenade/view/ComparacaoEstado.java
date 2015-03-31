@@ -33,6 +33,7 @@ public class ComparacaoEstado extends Activity
 	private String estado1, estado2;
 
 	@Override
+	// Method to initialize the activity activity_comparacao_estado
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
@@ -58,6 +59,7 @@ public class ComparacaoEstado extends Activity
 		}
 	}
 
+	// Method to list the State 1 options in a spinner
 	private void addItensOnSpinnerEstado1(int codCurso)
 	{
 
@@ -92,6 +94,7 @@ public class ComparacaoEstado extends Activity
 				});
 	}
 
+	// Method to list the State 2 options in a spinner
 	private void addItensOnSpinnerEstado2()
 	{
 
@@ -126,6 +129,7 @@ public class ComparacaoEstado extends Activity
 				});
 	}
 
+	// Method for the confirmation button for the comparison between the two states
 	private void addListenerOnButtonComparar()
 	{
 
