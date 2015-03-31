@@ -112,6 +112,7 @@ public class ComparacaoResultTipo extends Activity
 	 */
 	public static class PlaceholderFragment extends Fragment
 	{
+		// Java default constructor
 		public PlaceholderFragment()
 		{
 			// Nothing to do

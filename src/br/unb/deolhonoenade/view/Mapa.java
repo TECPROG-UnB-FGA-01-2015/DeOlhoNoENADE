@@ -20,6 +20,7 @@ import android.webkit.WebView;
 public class Mapa extends Activity
 {
 	@Override
+	// Method to initialize the activity activity_mapa	
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
@@ -122,6 +123,7 @@ public class Mapa extends Activity
 	}
 
 	@Override
+	// Method to specify the options menu for the activity activity_mapa
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -130,6 +132,7 @@ public class Mapa extends Activity
 	}
 
 	@Override
+	// Method to recognize when an option on menu is selected	
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
 		// Handle action bar item clicks here. The action bar will
@@ -154,12 +157,16 @@ public class Mapa extends Activity
 	 */
 	public static class PlaceholderFragment extends Fragment
 	{
+		// Java default constructor
 		public PlaceholderFragment()
 		{
 			// Nothing to do
 		}
 
 		@Override
+		/* Method to create and return the view hierarchy associated with the
+		 * fragment
+		 */
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState)
 		{
