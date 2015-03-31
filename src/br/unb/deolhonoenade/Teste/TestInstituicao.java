@@ -10,16 +10,19 @@ import java.util.ArrayList;
 public class TestInstituicao extends AndroidTestCase
 {
 
+	// This method is responsible to signal the Test Startup. It's executed before each Test Method
 	protected void setUp() throws Exception
 	{
 		super.setUp();
 	}
 
+	// This method is responsible to signal the Test Ending. It's executed after each Test Method
 	protected void tearDown() throws Exception
 	{
 		super.tearDown();
 	}
 
+	// Method to test the instantiation of the institution object
 	public void testInstituicao()
 	{
 		Instituicao instituicao = new Instituicao("Universidade de Brasilia",
@@ -27,6 +30,7 @@ public class TestInstituicao extends AndroidTestCase
 		Assert.assertNotSame("Quimica", instituicao.getNome());
 	}
 
+	// Method for testing the addition of a class in an institution
 	public void testAdicionaCurso()
 	{
 		Instituicao ies = new Instituicao("Universidade de Brasilia",
@@ -39,6 +43,7 @@ public class TestInstituicao extends AndroidTestCase
 		Assert.assertTrue(ies.getCursos().contains(curso));
 	}
 
+	// Method for testing the return of attribute Cursos from class Instituicao
 	public void testGetCursos()
 	{
 		ArrayList<Curso> Cursos = new ArrayList<Curso>(50);
@@ -51,6 +56,7 @@ public class TestInstituicao extends AndroidTestCase
 		Assert.assertEquals(new ArrayList<Curso>(10), instituicao.getCursos());
 	}
 
+	// Method to test the assignment of Cursos attribute from Class Instituicao
 	public void testSetCursos()
 	{
 		Curso curso = new Curso(3, 6, "Direito", 25, 15, "Porto Alegre",
@@ -59,6 +65,7 @@ public class TestInstituicao extends AndroidTestCase
 		assertSame("Adiministracao", curso.getNome());
 	}
 
+	// Method for testing the return of attribute nome from class Instituicao
 	public void testGetNome()
 	{
 		Instituicao instituicao = new Instituicao(
@@ -67,6 +74,7 @@ public class TestInstituicao extends AndroidTestCase
 		assertEquals("Universidade Federal do Amazonas", instituicao.getNome());
 	}
 
+	// Method to test the assignment of nome attribute from Class Instituicao
 	public void testSetNome()
 	{
 		Instituicao instituicao = new Instituicao(
@@ -77,6 +85,7 @@ public class TestInstituicao extends AndroidTestCase
 		assertSame("Universidade Federal de Uberlandia", instituicao.getNome());
 	}
 
+	// Method for testing the return of attribute organizacaoAcademica from class Instituicao
 	public void testGetOrganizacaoAcademica()
 	{
 		Instituicao instituicao = new Instituicao(
@@ -86,6 +95,7 @@ public class TestInstituicao extends AndroidTestCase
 
 	}
 
+	// Method to test the assignment of organizacaoAcademica attribute from Class Instituicao
 	public void testSetOrganizacaoAcademica()
 	{
 		Instituicao instituicao = new Instituicao("Universidade Gama Filho",
@@ -94,6 +104,7 @@ public class TestInstituicao extends AndroidTestCase
 		assertSame("Faculdades", instituicao.getOrganizacaoAcademica());
 	}
 
+	// Method for testing the return of attribute tipo from class Instituicao
 	public void testGetTipo()
 	{
 		Instituicao instituicao = new Instituicao(
@@ -102,6 +113,7 @@ public class TestInstituicao extends AndroidTestCase
 		assertEquals("Publica", instituicao.getTipo());
 	}
 
+	// Method to test the assignment of tipo attribute from Class Instituicao
 	public void testSetTipo()
 	{
 		Instituicao instituicao = new Instituicao(
@@ -111,6 +123,7 @@ public class TestInstituicao extends AndroidTestCase
 		assertNotSame("Privada", instituicao.getTipo());
 	}
 
+	// Method for testing the return of attribute codIES from class Instituicao
 	public void testGetCodIES()
 	{
 		Instituicao instituicao = new Instituicao(
@@ -118,6 +131,7 @@ public class TestInstituicao extends AndroidTestCase
 		assertEquals(59, instituicao.getCodIES());
 	}
 
+	// Method to test the assignment of codIES attribute from Class Instituicao
 	public void testSetCodIES()
 	{
 		Instituicao instituicao = new Instituicao(
