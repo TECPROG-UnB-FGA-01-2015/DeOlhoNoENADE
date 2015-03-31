@@ -41,7 +41,8 @@ public class ComparacaoInstituicaoFinal extends Activity
 	private List<String> cursos, municipios, estados;
 	private int posicaoIes;
 
-	@Override
+    @Override
+    // Method to initialize the activity activity_comparacao_instituicao_final
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
@@ -62,7 +63,8 @@ public class ComparacaoInstituicaoFinal extends Activity
 		addListenerOnButtonBuscar();
 
 	}
-
+    
+    // Method to list the State options in a spinner
 	private void addItensOnSpinnerEstado(int codCurso, boolean retira)
 	{
 		spinnerEstados = (Spinner) findViewById(R.id.estados);
@@ -94,7 +96,8 @@ public class ComparacaoInstituicaoFinal extends Activity
 			}
 		});
 	}
-
+    
+    // Method to list the Municipio options in a spinner
 	private void addItensOnSpinnerMunicipio(String uf, boolean retira)
 	{
 		this.spinnerCidades = (Spinner) findViewById(R.id.cidades);
@@ -130,7 +133,8 @@ public class ComparacaoInstituicaoFinal extends Activity
 		});
 
 	}
-
+    
+    // Method to list the IES options in a spinner
 	private void addItensOnSpinnerIES(String uf, String cidade, boolean retira)
 	{
 		cursos = controller.buscaIesComUfMun(codCurso, uf, cidade);
