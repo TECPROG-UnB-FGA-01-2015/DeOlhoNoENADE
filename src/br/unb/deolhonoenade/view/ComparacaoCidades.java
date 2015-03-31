@@ -34,7 +34,8 @@ public class ComparacaoCidades extends Activity
 	private int posicaoC;
 	private static final String STATE_SELECTED_NAVIGATION_ITEM = "selected_navigation_item";
 
-	@Override
+    @Override
+    // Method to initialize the activity activity_comparacao_cidades
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
@@ -51,6 +52,7 @@ public class ComparacaoCidades extends Activity
 		addListenerOnButtonComparar();
 	}
 
+    // Method to list the State 1 options in a spinner
 	private void addItensOnSpinnerEstado1(int codCurso)
 	{
 		spinnerEstado1 = (Spinner) findViewById(R.id.spinnerEstado1);
@@ -79,7 +81,8 @@ public class ComparacaoCidades extends Activity
 			}
 		});
 	}
-
+    
+    // Method to list the State 2 options in a spinner
 	private void addItensOnSpinnerEstado2(int codCurso)
 	{
 
@@ -107,7 +110,8 @@ public class ComparacaoCidades extends Activity
 			}
 		});
 	}
-
+    
+    // Method to list the City 1 options in a spinner
 	private void addItensOnSpinnerCidade1(String uf)
 	{
 		this.spinnerCidade1 = (Spinner) findViewById(R.id.spinnerCidade1);
@@ -136,7 +140,8 @@ public class ComparacaoCidades extends Activity
 			}
 		});
 	}
-
+    
+    // Method to list the City 2 options in a spinner
 	private void addItensOnSpinnerCidade2(String uf, String cidade)
 	{
 		this.spinnerCidade2 = (Spinner) findViewById(R.id.spinnerCidade2);
@@ -163,7 +168,8 @@ public class ComparacaoCidades extends Activity
 			}
 		});
 	}
-
+    
+    // Method for the confirmation button for the comparison between the two states
 	private void addListenerOnButtonComparar()
 	{
 		Button compareInstituicao = (Button) findViewById(R.id.buttonComparacaoCidades);
