@@ -1,3 +1,8 @@
+/**********************************************************
+ * File: Mapa.java
+ * Purpose: Responsible to show a map with all the
+ * 			institutions
+**********************************************************/
 package br.unb.deolhonoenade.view;
 
 import java.util.ArrayList;

@@ -1,3 +1,8 @@
+/**********************************************************
+ * File: ComparacaoResultTipo.java
+ * Purpose: Responsible to show the result of institution
+ * 			type comparison
+**********************************************************/
 package br.unb.deolhonoenade.view;
 
 import java.text.DecimalFormat;
