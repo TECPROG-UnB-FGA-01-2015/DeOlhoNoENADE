@@ -1,8 +1,7 @@
-/**********************************************************
+/***********************************************************
  * File: ComparacaoResultIES.java
- * Purpose: Responsible to show the result of IES
- * 			comparison
-**********************************************************/
+ * Purpose: Responsible to show the result of IES comparison
+***********************************************************/
 package br.unb.deolhonoenade.view;
 
 import java.util.ArrayList;
