@@ -1,3 +1,7 @@
+/***********************************************************
+ * File: TestControllerCurso.java
+ * Purpose: Responsible to make unit tests in all the ControllerCurso's methods
+***********************************************************/
 package br.unb.deolhonoenade.Teste;
 
 import java.util.ArrayList;
