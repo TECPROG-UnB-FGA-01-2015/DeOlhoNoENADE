@@ -1,3 +1,8 @@
+/***********************************************************
+ * File: ControllerCurso.java
+ * Purpose: Responsible to get the Universities' and Courses' info
+ * 			to be listed and compared to each other
+***********************************************************/
 package br.unb.deolhonoenade.controller;
 
 import java.util.ArrayList;
