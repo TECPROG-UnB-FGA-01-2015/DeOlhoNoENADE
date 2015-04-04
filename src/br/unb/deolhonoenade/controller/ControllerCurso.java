@@ -14,7 +14,7 @@ import br.unb.deolhonoenade.model.Instituicao;
 
 public class ControllerCurso
 {
-	private Instituicao IES, instituicao;
+	private Instituicao instituicao;
 	private ArrayList<Curso> cursos = new ArrayList<Curso>();
 
 	private SQLiteDatabase db;
