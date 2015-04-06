@@ -1,3 +1,8 @@
+/**********************************************************
+ * File: Instituicao.java
+ * Purpose: Holds all the attributes and methods of the
+ * 		    superclass Instituicao.
+ *********************************************************/
 
 package br.unb.deolhonoenade.model;
 
