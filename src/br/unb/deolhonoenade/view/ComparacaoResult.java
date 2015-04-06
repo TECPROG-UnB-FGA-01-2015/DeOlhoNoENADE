@@ -1,3 +1,7 @@
+/**********************************************************
+ * File: ComparacaoEstado.java
+ * Purpose: Show the result of the comparison of two states
+ *********************************************************/
 
 package br.unb.deolhonoenade.view;
 
