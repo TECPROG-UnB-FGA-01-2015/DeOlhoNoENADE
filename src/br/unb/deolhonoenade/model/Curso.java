@@ -1,3 +1,8 @@
+/**********************************************************
+ * File: Curso.java
+ * Purpose: Holds all the attributes and methods of the
+ * 		    superclass Curso.
+ *********************************************************/
 
 package br.unb.deolhonoenade.model;
 
