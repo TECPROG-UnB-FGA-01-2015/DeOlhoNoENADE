@@ -1,3 +1,7 @@
+/***********************************************************
+ * File: ComparacaoTipo.java
+ * Purpose: Responsible to get the informations be compared
+***********************************************************/
 package br.unb.deolhonoenade.view;
 
 import java.util.ArrayList;

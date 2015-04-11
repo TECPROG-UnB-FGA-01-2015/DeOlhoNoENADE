@@ -1,3 +1,8 @@
+/***********************************************************
+ * File: TestControllerCurso.java
+ * Purpose: Responsible to make unit tests in all the ControllerCurso's methods.
+ ***********************************************************/
+
 package br.unb.deolhonoenade.Teste;
 
 import java.util.ArrayList;
@@ -20,13 +25,15 @@ public class TestControllerCurso extends AndroidTestCase
 		super();
 	}
 
-	// This method is responsible to signal the Test Startup. It's executed before each Test Method
+	/* This method is responsible to signal the Test Startup.
+	 * It's executed before each Test Method */
 	protected void setUp() throws Exception
 	{
 		super.setUp();
 	}
 
-	// This method is responsible to signal the Test Ending. It's executed after each Test Method
+	/* This method is responsible to signal the Test Ending. 
+	 * It's executed after each Test Method */
 	protected void tearDown() throws Exception
 	{
 		super.tearDown();
@@ -48,9 +55,9 @@ public class TestControllerCurso extends AndroidTestCase
 
 	}
 
-	/* This method is responsible to test if Universities' names removal was successful on the Database
-	 * It ensures that you can't choose the same University twice with the same Brazilian State to compare them
-	 */
+	/* This method is responsible to test if Universities' names removal was
+	 * successful on the Database It ensures that you can't choose the same
+	 * University twice with the same Brazilian State to compare them */
 	public void testRemoveIesTrue()
 	{
 		ControllerCurso controller = new ControllerCurso(getContext());
@@ -63,7 +70,8 @@ public class TestControllerCurso extends AndroidTestCase
 
 	}
 
-	// This method is responsible to test if Universities' names removal wasn't successful on the Database
+	/* This method is responsible to test if Universities' names removal wasn't
+	 * successful on the Database */
 	public void testRemoveIesFalse()
 	{
 		ControllerCurso controller = new ControllerCurso(getContext());
@@ -76,9 +84,9 @@ public class TestControllerCurso extends AndroidTestCase
 
 	}
 
-	/* This method is responsible to test if the University's ID (position) is registered on the correct Brazilian State,   
-	 * based on the Course's ID and the University's Brazilian State, on the Database
-	 */
+	/* This method is responsible to test if the University's ID (position) is
+	 * registered on the correct Brazilian State, based on the Course's ID and
+	 * the University's Brazilian State, on the Database */
 	public void testGetCodIESDoArrayCursos()
 	{
 		ControllerCurso controller = new ControllerCurso(getContext());
@@ -87,9 +95,9 @@ public class TestControllerCurso extends AndroidTestCase
 		Assert.assertEquals(322, controller.getCodIESDoArrayCursos(2));
 	}
 
-	/* This method is responsible to test if the University's ID (position) isn't registered on the incorrect Brazilian State,   
-	 * based on the Course's ID and the University's Brazilian State, on the Database
-	 */
+	/* This method is responsible to test if the University's ID (position)
+	 * isn't registered on the incorrect Brazilian State, based on the Course's
+	 * ID and the University's Brazilian State, on the Database */
 	public void testGetCodIESDoArrayCursosIndexOutOfBounds()
 	{
 		ControllerCurso controller = new ControllerCurso(getContext());
@@ -98,9 +106,9 @@ public class TestControllerCurso extends AndroidTestCase
 		Assert.assertEquals(-1, controller.getCodIESDoArrayCursos(200));
 	}
 
-	/* This method is responsible to test if the University on a specific Brazilian State has the correct ENADE's grade,  
-	 * based on the Course's ID and the University's Brazilian State, on the Database
-	 */
+	/* This method is responsible to test if the University on a specific
+	 * Brazilian State has the correct ENADE's grade, based on the Course's ID
+	 * and the University's Brazilian State, on the Database */
 	public void testGetConceitoDoArrayCursos()
 	{
 		ControllerCurso controller = new ControllerCurso(getContext());
@@ -108,12 +116,12 @@ public class TestControllerCurso extends AndroidTestCase
 		controller.buscaCurso(1, "SP");
 
 		Assert.assertEquals((float) 4.882,
-				controller.getConceitoDoArrayCursos(2));
+		                    controller.getConceitoDoArrayCursos(2));
 	}
 
-	/* This method is responsible to test if the University on a specific Brazilian State hasn't the correct ENADE's grade,  
-	 * based on the Course's ID and the University's Brazilian State, on the Database
-	 */
+	/* This method is responsible to test if the University on a specific
+	 * Brazilian State hasn't the correct ENADE's grade, based on the Course's
+	 * ID and the University's Brazilian State, on the Database */
 	public void testGetConceitoDoArrayCursosIndexOutOfBounds()
 	{
 		ControllerCurso controller = new ControllerCurso(getContext());
@@ -121,10 +129,11 @@ public class TestControllerCurso extends AndroidTestCase
 		controller.buscaCurso(1, "AC");
 
 		Assert.assertEquals((float) -1,
-				controller.getConceitoDoArrayCursos(200));
+		                    controller.getConceitoDoArrayCursos(200));
 	}
 
-	// This method is responsible to test if the University's name is registered correctly on the Database
+	/* This method is responsible to test if the University's name is registered
+	 * correctly on the Database */
 	public void testBuscaInstituicao()
 	{
 		Instituicao instituicao;
@@ -132,20 +141,27 @@ public class TestControllerCurso extends AndroidTestCase
 
 		instituicao = controller.buscaInstituicao(1);
 		Assert.assertEquals("UNIVERSIDADE FEDERAL DE MATO GROSSO",
-				instituicao.getNome());
+		                    instituicao.getNome());
 	}
 
-	/* This method is responsible to test if the University's info has the correct info compared with University's course info, based 
-	 * on Course's ID and University's Brazilian State, on the Database
-	 */
+	/* This method is responsible to test if the University's info has the
+	 * correct info compared with University's course info, based on Course's ID
+	 * and University's Brazilian State, on the Database */
 	public void testDadosIES()
 	{
 
 		ControllerCurso controller = new ControllerCurso(getContext());
 		Instituicao ies = controller.buscaInstituicao(2);
 		controller.buscaCurso(1, "DF");
-		Curso curso = new Curso(1, 2, "UNIVERSIDADE DE BRASILIA", 141, 89,
-				"BRASILIA", (float) 3.735, "DF", ies);
+		Curso curso = new Curso(1,
+		                        2,
+		                        "UNIVERSIDADE DE BRASILIA",
+		                        141,
+		                        89,
+		                        "BRASILIA",
+		                        (float) 3.735,
+		                        "DF",
+		                        ies);
 		List<String> dadosIES = controller.getDadosIES(1);
 
 		Assert.assertEquals(dadosIES.get(0), ies.getNome());
@@ -153,29 +169,40 @@ public class TestControllerCurso extends AndroidTestCase
 		Assert.assertEquals(dadosIES.get(2), ies.getTipo());
 		Assert.assertEquals(dadosIES.get(3), curso.getMunicipio());
 		Assert.assertEquals(dadosIES.get(4),
-				String.format("%d", curso.getNumEstudantesInscritos()));
+		                    String.format("%d",
+		                                  curso.getNumEstudantesInscritos()));
 		Assert.assertEquals(dadosIES.get(5),
-				String.format("%d", curso.getNumEstudantes()));
+		                    String.format("%d", curso.getNumEstudantes()));
 	}
 
-	/* This method is responsible to test if the University's course info (University Name, Academic Organization, University Type - Public/Private Universities, University City, 
-	 * Registered Students - who participated on the ENADE's test - and Course's number of students) has null University's info
-	 */
+	/* This method is responsible to test if the University's course info
+	 * (University Name, Academic Organization, University Type - Public/Private
+	 * Universities, University City, Registered Students - who participated on
+	 * the ENADE's test - and Course's number of students) has null University's
+	 * info */
 	public void testDadosIESIndexOutOfBounds()
 	{
 
 		ControllerCurso controller = new ControllerCurso(getContext());
 		Instituicao ies = controller.buscaInstituicao(2);
 		controller.buscaCurso(1, "DF");
-		Curso curso = new Curso(1, 2, "UNIVERSIDADE DE BRASILIA", 141, 89,
-				"BRASILIA", (float) 3.735, "DF", ies);
+		Curso curso = new Curso(1,
+		                        2,
+		                        "UNIVERSIDADE DE BRASILIA",
+		                        141,
+		                        89,
+		                        "BRASILIA",
+		                        (float) 3.735,
+		                        "DF",
+		                        ies);
 
 		List<String> dadosIES = null;
 
 		try
 		{
 			dadosIES = controller.getDadosIES(9893);
-		} catch (Error e)
+		}
+		catch (Error e)
 		{
 			e.printStackTrace();
 		}
@@ -184,8 +211,9 @@ public class TestControllerCurso extends AndroidTestCase
 
 	}
 
-
-	// This method is responsible to test if the comparison between two different Universities (with two different Brazilian States) was successful
+	/* This method is responsible to test if the comparison between two
+	 * different Universities (with two different Brazilian States) was
+	 * successful */
 	public void testComparaEstado()
 	{
 		ControllerCurso controller = new ControllerCurso(getContext());
@@ -193,10 +221,11 @@ public class TestControllerCurso extends AndroidTestCase
 		String estado1 = "DF", estado2 = "AM";
 
 		assertEquals(controller.comparaEstado(estado1, estado2, 1).get(0),
-				(float) 1.9448332);
+		             (float) 1.9448332);
 	}
 
-	// This method is responsible to test if the Course's ID is registered correctly on the University's name on the Database
+	/* This method is responsible to test if the Course's ID is registered
+	 * correctly on the University's name on the Database */
 	public void testBuscaCodCurso()
 	{
 		int codCurso;
@@ -206,10 +235,12 @@ public class TestControllerCurso extends AndroidTestCase
 		Assert.assertEquals(1, codCurso);
 	}
 
-	/* This method is responsible to test if three different Universities (on the same Brazilian State) with the same course info 
-	 * (Universities' Names, Academic Organizations, Universities Type - Public/Private Universities, Universities' Cities, Registered Students - who participated on the ENADE's test -
-	 * and Courses' number of students) are registered correctly based on Course's ID and University's Brazilian State on the Database
-	 */
+	/* This method is responsible to test if three different Universities (on
+	 * the same Brazilian State) with the same course info (Universities' Names,
+	 * Academic Organizations, Universities Type - Public/Private Universities,
+	 * Universities' Cities, Registered Students - who participated on the
+	 * ENADE's test - and Courses' number of students) are registered correctly
+	 * based on Course's ID and University's Brazilian State on the Database */
 	public void testBuscaCursoIntString()
 	{
 		ControllerCurso controller = new ControllerCurso(getContext());
@@ -217,19 +248,45 @@ public class TestControllerCurso extends AndroidTestCase
 		ArrayList<Curso> cursos = new ArrayList<Curso>();
 
 		Instituicao ies1 = new Instituicao("FACULDADE BARAO DO RIO BRANCO",
-				"FACULDADES", "PRIVADA", 2132);
+		                                   "FACULDADES",
+		                                   "PRIVADA",
+		                                   2132);
 		Instituicao ies2 = new Instituicao("FACULDDE DA AMAZONIA OCIDENTAL",
-				"FACULDADES", "PRIVADA", 2343);
-		Instituicao ies3 = new Instituicao(
-				"FACULDADE DE DESENVOLVIMENTO SUSTENTAVEL DE CRUZEIRO DO SUL",
-				"FACULDADES", "PRIVADA", 2072);
+		                                   "FACULDADES",
+		                                   "PRIVADA",
+		                                   2343);
+		Instituicao ies3 = new Instituicao("FACULDADE DE DESENVOLVIMENTO SUSTENTAVEL DE CRUZEIRO DO SUL",
+		                                   "FACULDADES",
+		                                   "PRIVADA",
+		                                   2072);
 
-		Curso curso1 = new Curso(1, 2072, "ADMINISTRACAO", 29, 26,
-				"CRUZEIRO DO SUL", (float) 0.785, "AC", ies3);
-		Curso curso2 = new Curso(1, 2132, "ADMINISTRACAO", 147, 125,
-				"RIO BRANCO", (float) 1.605, "AC", ies1);
-		Curso curso3 = new Curso(1, 2343, "ADMINISTRACAO", 49, 48,
-				"RIO BRANCO", (float) 1.432, "AC", ies2);
+		Curso curso1 = new Curso(1,
+		                         2072,
+		                         "ADMINISTRACAO",
+		                         29,
+		                         26,
+		                         "CRUZEIRO DO SUL",
+		                         (float) 0.785,
+		                         "AC",
+		                         ies3);
+		Curso curso2 = new Curso(1,
+		                         2132,
+		                         "ADMINISTRACAO",
+		                         147,
+		                         125,
+		                         "RIO BRANCO",
+		                         (float) 1.605,
+		                         "AC",
+		                         ies1);
+		Curso curso3 = new Curso(1,
+		                         2343,
+		                         "ADMINISTRACAO",
+		                         49,
+		                         48,
+		                         "RIO BRANCO",
+		                         (float) 1.432,
+		                         "AC",
+		                         ies2);
 
 		cursosT.add(curso2);
 		cursosT.add(curso3);
@@ -238,66 +295,78 @@ public class TestControllerCurso extends AndroidTestCase
 		cursos = controller.buscaCurso(1, "AC");
 
 		Assert.assertEquals(cursosT.get(0).getConceitoEnade(), cursos.get(0)
-				.getConceitoEnade());
+		        .getConceitoEnade());
 		Assert.assertEquals(cursosT.get(0).getId(), cursos.get(0).getId());
 		Assert.assertEquals(cursosT.get(0).getId_ies(), cursos.get(0)
-				.getId_ies());
+		        .getId_ies());
 		Assert.assertEquals(cursosT.get(0).getNumEstudantes(), cursos.get(0)
-				.getNumEstudantes());
+		        .getNumEstudantes());
 
 		Assert.assertEquals(cursosT.get(1).getConceitoEnade(), cursos.get(1)
-				.getConceitoEnade());
+		        .getConceitoEnade());
 		Assert.assertEquals(cursosT.get(1).getId(), cursos.get(1).getId());
 		Assert.assertEquals(cursosT.get(1).getId_ies(), cursos.get(1)
-				.getId_ies());
+		        .getId_ies());
 		Assert.assertEquals(cursosT.get(1).getNumEstudantes(), cursos.get(1)
-				.getNumEstudantes());
+		        .getNumEstudantes());
 
 		Assert.assertEquals(cursosT.get(2).getConceitoEnade(), cursos.get(2)
-				.getConceitoEnade());
+		        .getConceitoEnade());
 		Assert.assertEquals(cursosT.get(2).getId(), cursos.get(2).getId());
 		Assert.assertEquals(cursosT.get(2).getId_ies(), cursos.get(2)
-				.getId_ies());
+		        .getId_ies());
 		Assert.assertEquals(cursosT.get(2).getNumEstudantes(), cursos.get(2)
-				.getNumEstudantes());
+		        .getNumEstudantes());
 
 	}
 
-	/* This method is responsible to test if one University with one course info 
-	 * (Universities' Names, Academic Organizations, Universities Type - Public/Private Universities, Universities' Cities, Registered Students - who participated on the ENADE's test -
-	 * and Courses' number of students) are registered correctly based on Course's ID, University's Brazilian State and University's name on the Database
-	 */
+	/* This method is responsible to test if one University with one course info
+	 * (Universities' Names, Academic Organizations, Universities Type -
+	 * Public/Private Universities, Universities' Cities, Registered Students -
+	 * who participated on the ENADE's test - and Courses' number of students)
+	 * are registered correctly based on Course's ID, University's Brazilian
+	 * State and University's name on the Database */
 	public void testBuscaCursoIntStringString()
 	{
 		ControllerCurso controller = new ControllerCurso(getContext());
 		ArrayList<Curso> cursosT = new ArrayList<Curso>();
 		ArrayList<Curso> cursos = new ArrayList<Curso>();
 
-		Instituicao ies3 = new Instituicao(
-				"FACULDADE DE DESENVOLVIMENTO SUSTENTAVEL DE CRUZEIRO DO SUL",
-				"FACULDADES", "PRIVADA", 2072);
+		Instituicao ies3 = new Instituicao("FACULDADE DE DESENVOLVIMENTO SUSTENTAVEL DE CRUZEIRO DO SUL",
+		                                   "FACULDADES",
+		                                   "PRIVADA",
+		                                   2072);
 
-		Curso curso1 = new Curso(1, 2072, "ADMINISTRACAO", 29, 26,
-				"CRUZEIRO DO SUL", (float) 0.785, "AC", ies3);
+		Curso curso1 = new Curso(1,
+		                         2072,
+		                         "ADMINISTRACAO",
+		                         29,
+		                         26,
+		                         "CRUZEIRO DO SUL",
+		                         (float) 0.785,
+		                         "AC",
+		                         ies3);
 
 		cursosT.add(curso1);
 
 		cursos = controller.buscaCurso(1, "AC", "CRUZEIRO DO SUL");
 
 		Assert.assertEquals(cursosT.get(0).getConceitoEnade(), cursos.get(0)
-				.getConceitoEnade());
+		        .getConceitoEnade());
 		Assert.assertEquals(cursosT.get(0).getId(), cursos.get(0).getId());
 		Assert.assertEquals(cursosT.get(0).getId_ies(), cursos.get(0)
-				.getId_ies());
+		        .getId_ies());
 		Assert.assertEquals(cursosT.get(0).getNumEstudantes(), cursos.get(0)
-				.getNumEstudantes());
+		        .getNumEstudantes());
 
 	}
 
-	/* This method is responsible to test if one University with one course info 
-	 * (Universities' Names, Academic Organizations, Universities Type - Public/Private Universities, Universities' Cities, Registered Students - who participated on the ENADE's test -
-	 * and Courses' number of students) are registered correctly based on Course's ID, University's Brazilian State, University's City and University's Type on the Database
-	 */
+	/* This method is responsible to test if one University with one course info
+	 * (Universities' Names, Academic Organizations, Universities Type -
+	 * Public/Private Universities, Universities' Cities, Registered Students -
+	 * who participated on the ENADE's test - and Courses' number of students)
+	 * are registered correctly based on Course's ID, University's Brazilian
+	 * State, University's City and University's Type on the Database */
 	public void testBuscaCursoIntStringStringString()
 	{
 		ControllerCurso controller = new ControllerCurso(getContext());
@@ -305,27 +374,36 @@ public class TestControllerCurso extends AndroidTestCase
 		ArrayList<Curso> cursos = new ArrayList<Curso>();
 
 		Instituicao ies = new Instituicao("UNIVERSIDADE DE BRASILIA",
-				"UNIVERSIDADES", "PUBLICA", 2);
+		                                  "UNIVERSIDADES",
+		                                  "PUBLICA",
+		                                  2);
 
-		Curso curso1 = new Curso(1, 2, "ADMINISTRACAO", 141, 89, "BRASILIA",
-				(float) 3.735, "DF", ies);
+		Curso curso1 = new Curso(1,
+		                         2,
+		                         "ADMINISTRACAO",
+		                         141,
+		                         89,
+		                         "BRASILIA",
+		                         (float) 3.735,
+		                         "DF",
+		                         ies);
 
 		cursosT.add(curso1);
 
 		cursos = controller.buscaCurso(1, "DF", "BRASILIA", "PUBLICA");
 
 		Assert.assertEquals(cursosT.get(0).getConceitoEnade(), cursos.get(0)
-				.getConceitoEnade());
+		        .getConceitoEnade());
 		Assert.assertEquals(cursosT.get(0).getId(), cursos.get(0).getId());
 		Assert.assertEquals(cursosT.get(0).getId_ies(), cursos.get(0)
-				.getId_ies());
+		        .getId_ies());
 		Assert.assertEquals(cursosT.get(0).getNumEstudantes(), cursos.get(0)
-				.getNumEstudantes());
+		        .getNumEstudantes());
 	}
 
-	/* This method is responsible to test if two different Brazilian Cities (with the same Brazilian State) 
-	 * are registered correctly based on Course's ID and University's Brazilian State on the Database
-	 */
+	/* This method is responsible to test if two different Brazilian Cities
+	 * (with the same Brazilian State) are registered correctly based on
+	 * Course's ID and University's Brazilian State on the Database */
 	public void testBuscaCidades()
 	{
 		ControllerCurso controller = new ControllerCurso(getContext());
@@ -342,7 +420,8 @@ public class TestControllerCurso extends AndroidTestCase
 		Assert.assertEquals(cidadesT, cidades);
 	}
 
-	// This method is responsible to test if the Acre's University Type is Private, based on the Course's ID and the University's Type
+	/* This method is responsible to test if the Acre's University Type is
+	 * Private, based on the Course's ID and the University's Type */
 	public void testBuscaTiposAC()
 	{
 		ControllerCurso controller = new ControllerCurso(getContext());
@@ -357,7 +436,9 @@ public class TestControllerCurso extends AndroidTestCase
 		Assert.assertEquals(tiposT, tipos);
 	}
 
-	// This method is responsible to test Brasilia's three Universities Types (Public, Private and "Both") based on the Course's ID and the University's Type
+	/* This method is responsible to test Brasilia's three Universities Types
+	 * (Public, Private and "Both") based on the Course's ID and the
+	 * University's Type */
 	public void testBuscaTiposDF()
 	{
 		ControllerCurso controller = new ControllerCurso(getContext());
@@ -376,7 +457,8 @@ public class TestControllerCurso extends AndroidTestCase
 		Assert.assertEquals(tiposT, tipos);
 	}
 
-	// This method is responsible to test two Universities' Types (Public and Private) based on the Course's ID and the University's Brazilian State
+	/* This method is responsible to test two Universities' Types (Public and
+	 * Private) based on the Course's ID and the University's Brazilian State */
 	public void testBuscaTiposEstado()
 	{
 		ControllerCurso controller = new ControllerCurso(getContext());
@@ -393,7 +475,8 @@ public class TestControllerCurso extends AndroidTestCase
 		Assert.assertEquals(tiposT, tipos);
 	}
 
-	// This method is responsible to test if the Acre's University Type is Private, based on the Course's ID and the University's Brazilian State
+	/* This method is responsible to test if the Acre's University Type is
+	 * Private, based on the Course's ID and the University's Brazilian State */
 	public void testBuscaTiposEstadoAC()
 	{
 		ControllerCurso controller = new ControllerCurso(getContext());
@@ -408,7 +491,8 @@ public class TestControllerCurso extends AndroidTestCase
 		Assert.assertEquals(tiposT, tipos);
 	}
 
-	// This method is responsible to test if all the Brazilian States are registered correctly on the Database
+	/* This method is responsible to test if all the Brazilian States are
+	 * registered correctly on the Database */
 	public void testBuscaUf()
 	{
 		ControllerCurso controller = new ControllerCurso(getContext());
@@ -467,9 +551,10 @@ public class TestControllerCurso extends AndroidTestCase
 		Assert.assertEquals(ufsT, ufs);
 	}
 
-	/*  This method is responsible to test if fourteen Universities' names together with their respectives ENADE's grades are registered correctly, 
-	 * based on the Courses' ID and the Universities' Brazilian States, on the Database
-	 */
+	/* This method is responsible to test if fourteen Universities' names
+	 * together with their respectives ENADE's grades are registered correctly,
+	 * based on the Courses' ID and the Universities' Brazilian States, on the
+	 * Database */
 	public void testBuscaStringCursoIntString()
 	{
 		ControllerCurso controller = new ControllerCurso(getContext());
@@ -500,9 +585,10 @@ public class TestControllerCurso extends AndroidTestCase
 
 	}
 
-	/*  This method is responsible to test if two Universities' names together with their respectives ENADE's grades are registered correctly, 
-	 * based on the Courses' ID, Universities' Brazilian States, Universities' Cities and Universities' Types, on the Database
-	 */
+	/* This method is responsible to test if two Universities' names together
+	 * with their respectives ENADE's grades are registered correctly, based on
+	 * the Courses' ID, Universities' Brazilian States, Universities' Cities and
+	 * Universities' Types, on the Database */
 	public void testBuscaStringCursoIntStringStringString()
 	{
 		ControllerCurso controller = new ControllerCurso(getContext());
@@ -520,9 +606,10 @@ public class TestControllerCurso extends AndroidTestCase
 		}
 	}
 
-	/*  This method is responsible to test if seven Universities' names together with their respectives ENADE's grades are registered correctly, 
-	 * based on the Courses' ID, Universities' Brazilian States and Universities' Cities, on the Database
-	 */
+	/* This method is responsible to test if seven Universities' names together
+	 * with their respectives ENADE's grades are registered correctly, based on
+	 * the Courses' ID, Universities' Brazilian States and Universities' Cities,
+	 * on the Database */
 	public void testBuscaStringCursoIntStringString()
 	{
 		ControllerCurso controller = new ControllerCurso(getContext());
@@ -544,9 +631,10 @@ public class TestControllerCurso extends AndroidTestCase
 		}
 	}
 
-	/*  This method is responsible to test if five Universities' names together with their respectives ENADE's grades are registered correctly, 
-	 * based on the Courses' ID, Universities' Brazilian States and Universities' Types, on the Database
-	 */
+	/* This method is responsible to test if five Universities' names together
+	 * with their respectives ENADE's grades are registered correctly, based on
+	 * the Courses' ID, Universities' Brazilian States and Universities' Types,
+	 * on the Database */
 	public void testBuscaStringCursoIntStringInt()
 	{
 		ControllerCurso controller = new ControllerCurso(getContext());
@@ -567,9 +655,9 @@ public class TestControllerCurso extends AndroidTestCase
 
 	}
 
-	/*  This method is responsible to test if Universities' IDs together with their respectives Course's IDs are registered correctly, 
-	 * based on the Courses' ID and Universities' Brazilian States, on the Database
-	 */
+	/* This method is responsible to test if Universities' IDs together with
+	 * their respectives Course's IDs are registered correctly, based on the
+	 * Courses' ID and Universities' Brazilian States, on the Database */
 	public void testCodIESDoArrayCursos()
 	{
 
@@ -580,9 +668,9 @@ public class TestControllerCurso extends AndroidTestCase
 
 	}
 
-	/*  This method is responsible to test if Universities' ENADE grades together with their respectives Courses are registered correctly, 
-	 * based on the Courses' ID and Universities' Brazilian States, on the Database
-	 */
+	/* This method is responsible to test if Universities' ENADE grades together
+	 * with their respectives Courses are registered correctly, based on the
+	 * Courses' ID and Universities' Brazilian States, on the Database */
 	public void testConceitoDoArrayCursos()
 	{
 
@@ -590,13 +678,14 @@ public class TestControllerCurso extends AndroidTestCase
 
 		controller.buscaCurso(2, "DF");
 		Assert.assertEquals((float) 4.482,
-				controller.getConceitoDoArrayCursos(0));
+		                    controller.getConceitoDoArrayCursos(0));
 
 	}
 
-	/*  This method is responsible to test if two Universities's from two Cities (from two Brazilian States)
-	 *  aren't the same. It ensures that they're from different Cities and Brazilian States so that you can make comparisons between them
-	 */  
+	/* This method is responsible to test if two Universities's from two Cities
+	 * (from two Brazilian States) aren't the same. It ensures that they're from
+	 * different Cities and Brazilian States so that you can make comparisons
+	 * between them */
 	public void testComparacaoCidade()
 	{
 		ControllerCurso controller = new ControllerCurso(getContext());
@@ -604,28 +693,35 @@ public class TestControllerCurso extends AndroidTestCase
 		String estado1 = "DF", cidade1 = "BRASILIA";
 		String estado2 = "AM", cidade2 = "MANAUS";
 
-		assertNotSame(
-				controller.comparacaoCidade(1, estado1, cidade1, estado2,
-						cidade2).get(0), "1.900000");
+		assertNotSame(controller.comparacaoCidade(1,
+		                                          estado1,
+		                                          cidade1,
+		                                          estado2,
+		                                          cidade2).get(0),
+		              "1.900000");
 
 	}
 
-	/*  This method is responsible to test the Universities's Types based on Course's ID, First University's Brazilian State,
-	 *  First University's Type, Second University's Brazilian State and Second University's Type have different ENADE's grades average, on the Database
-	 */
+	/* This method is responsible to test the Universities's Types based on
+	 * Course's ID, First University's Brazilian State, First University's Type,
+	 * Second University's Brazilian State and Second University's Type have
+	 * different ENADE's grades average, on the Database */
 	public void testComparacaoTipo()
 	{
 		ControllerCurso controller = new ControllerCurso(getContext());
-		List<Float> resultado = controller.comparacaoTipo(1, "AC", "Privada",
-				"AL", "Privada");
+		List<Float> resultado = controller.comparacaoTipo(1,
+		                                                  "AC",
+		                                                  "Privada",
+		                                                  "AL",
+		                                                  "Privada");
 
 		Assert.assertEquals((float) 1.5185001, resultado.get(0));
 		Assert.assertEquals((float) 2.285000, resultado.get(1));
 	}
 
-	/*  This method is responsible to test the Brazilian State's ENADE grade average, based on Universities's Brazilian State,
-	 *  and Course's ID, on the Database
-	 */
+	/* This method is responsible to test the Brazilian State's ENADE grade
+	 * average, based on Universities's Brazilian State, and Course's ID, on the
+	 * Database */
 	public void testMediaEstado()
 	{
 		ControllerCurso controller = new ControllerCurso(getContext());

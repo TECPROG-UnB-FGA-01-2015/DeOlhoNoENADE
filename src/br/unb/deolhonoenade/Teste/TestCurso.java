@@ -1,3 +1,7 @@
+/***********************************************************
+ * File: TestInstituicao.java
+ * Purpose: Implement all the unit tests in the Curso model's methods 
+***********************************************************/
 
 package br.unb.deolhonoenade.Teste;
 

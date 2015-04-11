@@ -1,3 +1,7 @@
+/***********************************************************
+ * File: ComparacaoInicial.java
+ * Purpose: Responsible to show the initial comparison 
+***********************************************************/
 package br.unb.deolhonoenade.view;
 
 import br.unb.deolhonoenade.R;
