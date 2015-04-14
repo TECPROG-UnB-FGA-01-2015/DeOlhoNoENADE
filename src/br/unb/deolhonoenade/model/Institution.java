@@ -13,17 +13,17 @@ public class Institution
 
 	private ArrayList<Course> Courses = new ArrayList<Course>();
 
-	private String name;
-	private String academicOrganization;
-	private String type;
-	private int codIES;
+	private String name; // Holds the info of the institution's name
+	private String academicOrganization; // Holds the info of the institution's academic organization
+	private String type; // Holds the info of the institution's type
+	private int codIES; // Holds the info of the institution's code
 
 	/* Constructor to receive all the attributes as parameters and initialize the
 	 * object Institution*/
-	public Institution(	String name,
-						String academicOrganization,
-						String type,
-						int codIES)
+	public Institution(String name,
+					   String academicOrganization,
+					   String type,
+					   int codIES)
 	{
 		super();
 		this.name = name;
