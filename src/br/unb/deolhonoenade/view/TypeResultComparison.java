@@ -1,5 +1,5 @@
 /***********************************************************
- * File: ComparacaoResultTipo.java
+ * File: TypeResultComparison.java
  * Purpose: Responsible to show the result of institution
  * 			type comparison
 ***********************************************************/
@@ -24,12 +24,11 @@ import br.unb.br.deolhonoenade.graphs.holographlibrary.BarGraph;
 import br.unb.deolhonoenade.R;
 import br.unb.deolhonoenade.controller.ControllerCurso;
 
-public class ComparacaoResultTipo extends Activity
+public class TypeResultComparison extends Activity
 {
-	private ControllerCurso controller;
-	private List<String> result = new ArrayList<String>();
-	private float resultado1, resultado2;
-	private String estado1, estado2, tipo1, tipo2;
+	private CourseController objectCourseController;
+	private float firstResult, secondResult;
+	private String firstState, secondState, firstType, secondType;
 	
 	@Override
 	// Method to initialize the activity activity_comparacao_result_tipo
@@ -38,17 +37,17 @@ public class ComparacaoResultTipo extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_comparacao_result_tipo);
 		
-		controller = new ControllerCurso(this);
-		resultado1 = getIntent().getExtras().getFloat("resultado1");
-		resultado2 = getIntent().getExtras().getFloat("resultado2");
+		objectCourseController = new CourseController(this);
+		firstResult = getIntent().getExtras().getFloat("firstResult");
+		secondResult = getIntent().getExtras().getFloat("secondResult");
 		
-		estado1 = getIntent().getExtras().getString("Estado1");
-		tipo1 = getIntent().getExtras().getString("Tipo1");
-		estado2 = getIntent().getExtras().getString("Estado2");
-		tipo2 = getIntent().getExtras().getString("Tipo2");
+		firstState = getIntent().getExtras().getString("Estado1");
+		firstType = getIntent().getExtras().getString("Tipo1");
+		secondState = getIntent().getExtras().getString("Estado2");
+		secondType = getIntent().getExtras().getString("Tipo2");
 		
-		String eT1 = (estado1 + " " + tipo1);
-		String eT2 = (estado2 + " " + tipo2);
+		String eT1 = (firstState + " " + firstType);
+		String eT2 = (secondState + " " + secondType);
 		
 		TextView estadoTipo1 = (TextView) findViewById(R.id.estadoTipo1);
 		estadoTipo1.setText(eT1);
@@ -56,8 +55,8 @@ public class ComparacaoResultTipo extends Activity
 		TextView estadoTipo2 = (TextView) findViewById(R.id.estadoTipo2);
 		estadoTipo2.setText(eT2);
 		
-		String resultado1String = String.valueOf(resultado1);
-		String resultado2String = String.valueOf(resultado2);
+		String resultado1String = String.valueOf(firstResult);
+		String resultado2String = String.valueOf(secondResult);
 		
 		ArrayList<Bar> points = new ArrayList<Bar>();
 		Bar d = new Bar();
@@ -75,11 +74,11 @@ public class ComparacaoResultTipo extends Activity
 		g.setBars(points);
 		g.setUnit(" ");
 
-		g.setContentDescription("Tipo de Instituição " + tipo1 + " no estado " +
-				estado1 + ".   nota: " + String.format("%.3f", resultado1)
-						+ ". E tipo de instituição " + tipo2 + " no estado " +
-								estado2 + ".   nota: " + String.format("%.3f",
-										resultado2));
+		g.setContentDescription("Tipo de Instituição " + firstType + " no estado " +
+				firstState + ".   nota: " + String.format("%.3f", firstResult)
+						+ ". E tipo de instituição " + secondType + " no estado " +
+								secondState + ".   nota: " + String.format("%.3f",
+										secondResult));
 	}
 
 	@Override

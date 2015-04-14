@@ -1,5 +1,5 @@
 /***********************************************************
- * File: ComparacaoTipo.java
+ * File: TypeComparison.java
  * Purpose: Responsible to get the informations be compared
 ***********************************************************/
 package br.unb.deolhonoenade.view;
@@ -12,7 +12,7 @@ import br.unb.deolhonoenade.R.id;
 import br.unb.deolhonoenade.R.layout;
 import br.unb.deolhonoenade.R.menu;
 import br.unb.deolhonoenade.controller.ControllerCurso;
-import br.unb.deolhonoenade.model.Curso;
+import br.unb.deolhonoenade.model.Course;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
@@ -31,14 +31,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.os.Build;
 
-public class ComparacaoTipo extends Activity
+public class TypeComparison extends Activity
 {
-	private Spinner EstadoT1, Tipo1, EstadoT2, Tipo2;
-	private ControllerCurso controller;
-	private String estado1, tipo1, estado2, tipo2;
-	private int codCurso;
-	private List<Float> resultados;
-	private List<String> listt2;
+	private Spinner firstStateSpinner, firstTypeSpinner, secondStateSpinner, secondTypeSpinner;
+	private ControllerCurso objectCourseController;
+	private String firstState, firstType, secondState, secondType;
+	private int courseCode;
+	private List<Float> comparisonResults;
+	private List<String> secondTypeList;
 	
 	@Override
 	// Method to initialize the activity activity_comparacao_tipo	
@@ -46,17 +46,17 @@ public class ComparacaoTipo extends Activity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_comparacao_tipo);
-		this.controller = new ControllerCurso(this);
+		this.objectCourseController = new ControllerCurso(this);
 		TextView cursoSelecionado = (TextView) findViewById(
 				R.id.nomeCursoSelecionado);
 		cursoSelecionado.setText(getIntent().getExtras().getString(
 				"cursoSelecionado"));
 		
-		codCurso = controller.buscaCodCurso(
+		courseCode = objectCourseController.buscaCodCurso(
 				getIntent().getExtras().getString("cursoSelecionado"));
 		
-		addItensOnSpinnerEstadoT1(codCurso);
-		//addItensOnSpinnerEstadoT2(codCurso, false);
+		addItensOnSpinnerEstadoT1(courseCode);
+		//addItensOnSpinnerEstadoT2(courseCode, false);
 		addListenerOnButtonBuscar();
 	}
 
@@ -69,13 +69,13 @@ public class ComparacaoTipo extends Activity
 		return true;
 	}
 	
-	// Method to add item on spinner EstadoT1
-	private void addItensOnSpinnerEstadoT1(int codCurso)
+	// Method to add item on spinner firstStateSpinner
+	private void addItensOnSpinnerEstadoT1(int courseCode)
 	{
-		EstadoT1 = (Spinner) findViewById(R.id.SpinnerEstado1);
+		firstStateSpinner = (Spinner) findViewById(R.id.SpinnerEstado1);
 		List<String> list = new ArrayList<String>();
 		
-		list = controller.buscaUf(codCurso);
+		list = objectCourseController.buscaUf(courseCode);
 					
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_spinner_item, list);
@@ -83,17 +83,17 @@ public class ComparacaoTipo extends Activity
 		dataAdapter.setDropDownViewResource(
 				android.R.layout.simple_spinner_dropdown_item);
 		
-		EstadoT1.setAdapter(dataAdapter);
+		firstStateSpinner.setAdapter(dataAdapter);
 		
-		EstadoT1.setOnItemSelectedListener(
+		firstStateSpinner.setOnItemSelectedListener(
 				new AdapterView.OnItemSelectedListener()
 		{
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View v,
 					int posicao, long id)
 			{
-				estado1 = parent.getItemAtPosition(posicao).toString();
-				addItensOnSpinnerTipo1(estado1);						
+				firstState = parent.getItemAtPosition(posicao).toString();
+				addItensOnSpinnerTipo1(firstState);						
 			}
 				
 			@Override
@@ -109,27 +109,27 @@ public class ComparacaoTipo extends Activity
 	 */
 	private void addItensOnSpinnerTipo1(String uf)
 	{
-		this.Tipo1 = (Spinner) findViewById(R.id.SpinnerEstado1Tipo);
+		this.firstTypeSpinner = (Spinner) findViewById(R.id.SpinnerEstado1Tipo);
 		List<String> list;
-		list = controller.buscaTiposEstado(codCurso, uf);
+		list = objectCourseController.buscaTiposEstado(courseCode, uf);
 
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_spinner_item, list);
 		dataAdapter.setDropDownViewResource(
 				android.R.layout.simple_spinner_dropdown_item);
 		
-		this.Tipo1.setAdapter(dataAdapter);
+		this.firstTypeSpinner.setAdapter(dataAdapter);
 		
-		this.Tipo1.setOnItemSelectedListener(
+		this.firstTypeSpinner.setOnItemSelectedListener(
 				new AdapterView.OnItemSelectedListener()
 		{
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View v,
 					int posicao, long id)
 			{
-				tipo1 = parent.getItemAtPosition(posicao).toString();
+				firstType = parent.getItemAtPosition(posicao).toString();
 				
-				addItensOnSpinnerEstadoT2(codCurso, false);
+				addItensOnSpinnerEstadoT2(courseCode, false);
 			}
 			
 			@Override
@@ -140,17 +140,17 @@ public class ComparacaoTipo extends Activity
 		});
 	}
 	
-	// Method to add item on spinner EstadoT2
-	private void addItensOnSpinnerEstadoT2(int codCurso, boolean retira)
+	// Method to add item on spinner secondStateSpinner
+	private void addItensOnSpinnerEstadoT2(int courseCode, boolean retira)
 	{
-		EstadoT2 = (Spinner) findViewById(R.id.SpinnerEstado2);
+		secondStateSpinner = (Spinner) findViewById(R.id.SpinnerEstado2);
 		List<String> list = new ArrayList<String>();
 		
-		list = controller.buscaUf(codCurso);
+		list = objectCourseController.buscaUf(courseCode);
 		
 		if(retira)
 		{
-			list.remove(estado1);
+			list.remove(firstState);
 		}
 		
 		else
@@ -162,18 +162,18 @@ public class ComparacaoTipo extends Activity
 				android.R.layout.simple_spinner_item, list);
 		dataAdapter.setDropDownViewResource(
 				android.R.layout.simple_spinner_dropdown_item);
-		EstadoT2.setAdapter(dataAdapter);
+		secondStateSpinner.setAdapter(dataAdapter);
 		
-		EstadoT2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+		secondStateSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
 		{
 			@Override
 			
 			public void onItemSelected(AdapterView<?> parent, View v, int posicao,
 					long id)
 			{
-				estado2 = parent.getItemAtPosition(posicao).toString();
+				secondState = parent.getItemAtPosition(posicao).toString();
 						
-				addItensOnSpinnerTipo2(estado2, false);
+				addItensOnSpinnerTipo2(secondState, false);
 			}
 				
 			@Override
@@ -184,17 +184,17 @@ public class ComparacaoTipo extends Activity
 		});	
 	}
 	
-	/* Method to add items on spinner Tipo2 to compare University's
+	/* Method to add items on spinner secondTypeSpinner to compare University's
 	 * types (Public and Private)
 	 */
 	private void addItensOnSpinnerTipo2(String uf, boolean retira)
 	{
-		this.Tipo2 = (Spinner) findViewById(R.id.SpinnerEstado2Tipo);
-		listt2 = controller.buscaTiposEstado(codCurso, uf);
+		this.secondTypeSpinner = (Spinner) findViewById(R.id.SpinnerEstado2Tipo);
+		secondTypeList = objectCourseController.buscaTiposEstado(courseCode, uf);
 		
 		if(retira)
 		{
-			listt2.remove(tipo1);
+			secondTypeList.remove(firstType);
 		}
 		
 		else
@@ -203,32 +203,32 @@ public class ComparacaoTipo extends Activity
 		}
 				
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_spinner_item, listt2);
+				android.R.layout.simple_spinner_item, secondTypeList);
 		dataAdapter.setDropDownViewResource(
 				android.R.layout.simple_spinner_dropdown_item);
 				
-		this.Tipo2.setAdapter(dataAdapter);
+		this.secondTypeSpinner.setAdapter(dataAdapter);
 				
-		this.Tipo2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+		this.secondTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
 		{
 			@Override
 			// Method to 
 			public void onItemSelected(AdapterView<?> parent, View v, int posicao,
 					long id)
 			{
-				tipo2 = parent.getItemAtPosition(posicao).toString();
+				secondType = parent.getItemAtPosition(posicao).toString();
 				
-				if(estado1.equalsIgnoreCase(estado2))
+				if(firstState.equalsIgnoreCase(secondState))
 				{
-					if(tipo1.equalsIgnoreCase(tipo2))
+					if(firstType.equalsIgnoreCase(secondType))
 					{
-						if(listt2.size()<=1)
+						if(secondTypeList.size()<=1)
 						{
-							addItensOnSpinnerEstadoT2(codCurso, true);
+							addItensOnSpinnerEstadoT2(courseCode, true);
 						}
 						else
 						{
-							addItensOnSpinnerTipo2(estado2, true);
+							addItensOnSpinnerTipo2(secondState, true);
 						}
 					}
 					
@@ -265,17 +265,17 @@ public class ComparacaoTipo extends Activity
 			 */
 	    	public void onClick(View v)
 			{
-				Intent result =  new Intent(ComparacaoTipo.this,
+				Intent result =  new Intent(TypeComparison.this,
 						ComparacaoResultTipo.class);
-				resultados = controller.comparacaoTipo(codCurso, estado1, tipo1,
-						estado2, tipo2);
-				result.putExtra("CodCurso", codCurso);
-				result.putExtra("resultado1", resultados.get(0));
-				result.putExtra("resultado2", resultados.get(1));
-				result.putExtra("Estado1", estado1);
-				result.putExtra("Tipo1", tipo1);
-				result.putExtra("Estado2", estado2);
-				result.putExtra("Tipo2", tipo2);
+				comparisonResults = objectCourseController.comparacaoTipo(courseCode, firstState, firstType,
+						secondState, secondType);
+				result.putExtra("CodCurso", courseCode);
+				result.putExtra("resultado1", comparisonResults.get(0));
+				result.putExtra("resultado2", comparisonResults.get(1));
+				result.putExtra("Estado1", firstState);
+				result.putExtra("firstTypeSpinner", firstType);
+				result.putExtra("Estado2", secondState);
+				result.putExtra("secondTypeSpinner", secondType);
 	
 	    		startActivity(result);
 	    	}
