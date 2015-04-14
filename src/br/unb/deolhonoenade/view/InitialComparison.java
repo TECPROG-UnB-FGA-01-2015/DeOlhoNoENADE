@@ -1,5 +1,5 @@
 /***********************************************************
- * File: ComparacaoInicial.java
+ * File: InitialComparison.java
  * Purpose: Responsible to show the initial comparison 
 ***********************************************************/
 package br.unb.deolhonoenade.view;
@@ -29,12 +29,12 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-public class ComparacaoInicial extends Activity implements
+public class InitialComparison extends Activity implements
 		ActionBar.OnNavigationListener
 {
 	private static final String STATE_SELECTED_NAVIGATION_ITEM =
 			"selected_navigation_item";
-	private String curso;
+	private String course;
 	
 	@Override
 	// Method to initialize the activity activity activity_comparacao_inicial
@@ -42,7 +42,7 @@ public class ComparacaoInicial extends Activity implements
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_comparacao_inicial);		
-		curso = getIntent().getExtras().getString("cursoSelecionado");
+		course = getIntent().getExtras().getString("cursoSelecionado");
 		addListenerOnButtonBotaoEstado();
 		addListenerOnButtonBotaoInstituicao();
 		addListenerOnButtonBotaoCidade();
@@ -52,8 +52,8 @@ public class ComparacaoInicial extends Activity implements
 	// Method to recognize the button "BotaoCidade"
 	private void addListenerOnButtonBotaoCidade()
 	{
-		Button compareInstituicao = (Button) findViewById(R.id.BotaoCidades);
-		compareInstituicao.setOnClickListener(new OnClickListener()
+		Button compareInstitution = (Button) findViewById(R.id.BotaoCidades);
+		compareInstitution.setOnClickListener(new OnClickListener()
 		{
 			@Override
 			/* Method to confirm the the mouse click and redirect to
@@ -61,9 +61,9 @@ public class ComparacaoInicial extends Activity implements
 			 */
 			public void onClick(View v)
 			{
-	    		Intent intent = new Intent(ComparacaoInicial.this,
+	    		Intent intent = new Intent(InitialComparison.this,
 	    				ComparacaoCidades.class);
-	    		intent.putExtra("cursoSelecionado", curso);
+	    		intent.putExtra("cursoSelecionado", course);
 	    		startActivity(intent);
 	    	}	
 		});
@@ -72,8 +72,8 @@ public class ComparacaoInicial extends Activity implements
 	// Method to recognize the button "BotaoInstituicao"
 	private void addListenerOnButtonBotaoInstituicao()
 	{
-		Button compareInstituicao = (Button) findViewById(R.id.BotaoIES);
-		compareInstituicao.setOnClickListener(new OnClickListener()
+		Button compareInstitution = (Button) findViewById(R.id.BotaoIES);
+		compareInstitution.setOnClickListener(new OnClickListener()
 		{
 			@Override
 			/* Method to confirm the the mouse click and redirect to
@@ -81,9 +81,9 @@ public class ComparacaoInicial extends Activity implements
 			 */
 	    	public void onClick(View v)
 			{
-	    		Intent intent = new Intent(ComparacaoInicial.this,
+	    		Intent intent = new Intent(InitialComparison.this,
 	    				ComparacaoInstituicao.class);
-	    		intent.putExtra("cursoSelecionado", curso);
+	    		intent.putExtra("cursoSelecionado", course);
 	    		startActivity(intent);
 	    	}	
 		});
@@ -92,8 +92,8 @@ public class ComparacaoInicial extends Activity implements
 	// Method to recognize the button "BotaoEstado"
 	private void addListenerOnButtonBotaoEstado()
 	{
-		Button compareEstado = (Button) findViewById(R.id.BotaoEstado);
-		compareEstado.setOnClickListener(new OnClickListener()
+		Button compareState = (Button) findViewById(R.id.BotaoEstado);
+		compareState.setOnClickListener(new OnClickListener()
 		{	
 			@Override
 			/* Method to confirm the the mouse click and redirect to
@@ -101,9 +101,9 @@ public class ComparacaoInicial extends Activity implements
 			 */
 	    	public void onClick(View v)
 			{
-	    		Intent intent = new Intent(ComparacaoInicial.this,
+	    		Intent intent = new Intent(InitialComparison.this,
 	    				ComparacaoEstado.class);
-	    		intent.putExtra("cursoSelecionado", curso);
+	    		intent.putExtra("cursoSelecionado", course);
 	    		startActivity(intent);
 	    	}	
 		});
@@ -112,8 +112,8 @@ public class ComparacaoInicial extends Activity implements
 	// Method to recognize the button "BotaoTipo"
 	private void addListenerOnButtonBotaoTipo()
 	{
-		Button compareTipo = (Button) findViewById(R.id.BotaoTipo);
-		compareTipo.setOnClickListener(new OnClickListener()
+		Button compareType = (Button) findViewById(R.id.BotaoTipo);
+		compareType.setOnClickListener(new OnClickListener()
 		{	
 			@Override
 			/* Method to confirm the the mouse click and redirect to
@@ -121,9 +121,9 @@ public class ComparacaoInicial extends Activity implements
 			 */
 	    	public void onClick(View v)
 			{
-	    		Intent intent = new Intent(ComparacaoInicial.this,
+	    		Intent intent = new Intent(InitialComparison.this,
 	    				ComparacaoTipo.class);
-	    		intent.putExtra("cursoSelecionado", curso);
+	    		intent.putExtra("cursoSelecionado", course);
 	    		startActivity(intent);
 	    	}	
 		});

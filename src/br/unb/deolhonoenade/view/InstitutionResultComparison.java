@@ -1,5 +1,5 @@
 /***********************************************************
- * File: ComparacaoResultIES.java
+ * File: InstitutionResultComparison.java
  * Purpose: Responsible to show the result of IES comparison
 ***********************************************************/
 package br.unb.deolhonoenade.view;
@@ -22,14 +22,14 @@ import android.widget.TextView;
 import br.unb.br.deolhonoenade.graphs.holographlibrary.Bar;
 import br.unb.br.deolhonoenade.graphs.holographlibrary.BarGraph;
 import br.unb.deolhonoenade.R;
-import br.unb.deolhonoenade.controller.ControllerCurso;
+import br.unb.deolhonoenade.controller.CourseController;
 
-public class ComparacaoResultIES extends Activity
+public class InstitutionResultComparison extends Activity
 {
-	private ControllerCurso controller;
-	private List<String> result, aux;
-	private float nota1, nota2;
-	private String ies1, ies2;
+	private CourseController objectCourseController;
+	private List<String> firstInstitutionData, secondInstitutionData;
+	private float firstGrade, secondGrade;
+	private String firstInstitution, secondInstitution;
 	
 	@Override
 	// Method to initialize the activity activity_comparacao_result_ies
@@ -38,24 +38,24 @@ public class ComparacaoResultIES extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_comparacao_result_ies);
 		
-		controller = new ControllerCurso(this);
+		objectCourseController = new CourseController(this);
 			
-		result = getIntent().getExtras().getStringArrayList("dadosIes1");
-		aux = getIntent().getExtras().getStringArrayList("dadosIes2");
+		firstInstitutionData = getIntent().getExtras().getStringArrayList("dadosIes1");
+		secondInstitutionData = getIntent().getExtras().getStringArrayList("dadosIes2");
 		
-		ies1 = getIntent().getExtras().getString("ies1");
-		nota1 = getIntent().getExtras().getFloat("nota1");
-		ies2 = getIntent().getExtras().getString("ies2");
-		nota2 = getIntent().getExtras().getFloat("nota2");
+		firstInstitution = getIntent().getExtras().getString("firstInstitution");
+		firstGrade = getIntent().getExtras().getFloat("firstGrade");
+		secondInstitution = getIntent().getExtras().getString("secondInstitution");
+		secondGrade = getIntent().getExtras().getFloat("secondGrade");
 		
 		TextView instiruicao1 = (TextView) findViewById(R.id.nomeIES1);
-		instiruicao1.setText(ies1);
+		instiruicao1.setText(firstInstitution);
 		
 		TextView instiruicao2 = (TextView) findViewById(R.id.nomeIES2);
-		instiruicao2.setText(ies2);
+		instiruicao2.setText(secondInstitution);
 		
-		String nota1String = String.valueOf(nota1);
-		String nota2String = String.valueOf(nota2);
+		String nota1String = String.valueOf(firstGrade);
+		String nota2String = String.valueOf(secondGrade);
 		
 		ArrayList<Bar> points = new ArrayList<Bar>();
 		Bar d = new Bar();
@@ -72,9 +72,9 @@ public class ComparacaoResultIES extends Activity
 		BarGraph g = (BarGraph)findViewById(R.id.graph);
 		g.setBars(points);
 		g.setUnit(" ");
-		g.setContentDescription("Instituição " + ies1 + " nota: " +
-				String.format("%.3f", nota1) + ". E Instituição " + ies2 + " nota: "
-					+ String.format("%.3f", nota2));
+		g.setContentDescription("Instituição " + firstInstitution + " nota: " +
+				String.format("%.3f", firstGrade) + ". E Instituição " + secondInstitution + " nota: "
+					+ String.format("%.3f", secondGrade));
 	}
 
 	@Override
