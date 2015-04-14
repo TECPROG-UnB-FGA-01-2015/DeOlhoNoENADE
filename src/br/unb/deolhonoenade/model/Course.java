@@ -9,28 +9,28 @@ package br.unb.deolhonoenade.model;
 public class Course
 {
 
-	private Institution IES;
+	private Institution IES; // Object from the Institution Class that keeps institution's info
 
-	private int id;
-	private int id_institution;
-	private String name;
-	private int studentsNumber;
-	private int  enrolledStudentsNumber ;
-	private String city;
-	private float enadeGrade;
-	private String state;
+	private int id; // Holds the info of the course's id
+	private int id_institution; // Holds the info of the institution's id of the course
+	private String name; // Holds the info of the course's name
+	private int studentsNumber; // Holds the info of the number of students in the course
+	private int  enrolledStudentsNumber; // Holds the info of the number of students enrolled in the course
+	private String city; // Holds the info of the course's city
+	private float enadeGrade; // holds the info of the course's score in the Enade
+	private String state; // holds the info of the course's state
 
 	/* Constructor to receive all the attributes as parameters and initialize the
 	 * object Course*/
 	public Course(int id,
-				 int id_institution,
-				 String name,
-				 int studentsNumber,	
-				 int  enrolledStudentsNumber ,
-				 String city,
-				 float enadeGrade,
-				 String state,
-				 Institution IES)
+				  int id_institution,
+				  String name,
+				  int studentsNumber,	
+				  int  enrolledStudentsNumber ,
+				  String city,
+				  float enadeGrade,
+				  String state,
+				  Institution IES)
 	{
 		this.id = id;
 		this.name = name;
