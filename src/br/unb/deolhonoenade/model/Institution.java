@@ -16,20 +16,20 @@ public class Institution
 	private String name; // Holds the info of the institution's name
 	private String academicOrganization; // Holds the info of the institution's academic organization
 	private String type; // Holds the info of the institution's type
-	private int codIES; // Holds the info of the institution's code
+	private int institutionCode; // Holds the info of the institution's code
 
 	/* Constructor to receive all the attributes as parameters and initialize the
 	 * object Institution*/
 	public Institution(String name,
 					   String academicOrganization,
 					   String type,
-					   int codIES)
+					   int institutionCode)
 	{
 		super();
 		this.name = name;
 		this.academicOrganization = academicOrganization;
 		this.type = type;
-		this.codIES = codIES;
+		this.institutionCode = institutionCode;
 	}
 
 	// Method to insert a class to attribute Courses
@@ -86,16 +86,16 @@ public class Institution
 		this.type = type;
 	}
 
-	// Method to return the content of attribute codIES
-	public int getCodIES()
+	// Method to return the content of attribute institutionCode
+	public int getInstitutionCode()
 	{
-		return codIES;
+		return institutionCode;
 	}
 
-	// Method to set a content on variable codIES
-	public void setCodIES(int codIES)
+	// Method to set a content on variable institutionCode
+	public void setInstitutionCode(int institutionCode)
 	{
-		this.codIES = codIES;
+		this.institutionCode = institutionCode;
 	}
 
 }
