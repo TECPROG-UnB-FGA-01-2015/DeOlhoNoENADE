@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.unb.deolhonoenade.R;
-import br.unb.deolhonoenade.controller.ControllerCurso;
+import br.unb.deolhonoenade.controller.CourseController;
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
@@ -33,7 +33,7 @@ public class Map extends Activity
 
 		WebView webview = (WebView) findViewById(R.id.webView1);
         String course = getIntent().getExtras().getString("cursoSelecionado");
-        ControllerCurso objectCourseController = new ControllerCurso(this);
+        CourseController objectCourseController = new CourseController(this);
         
         int courseCode = objectCourseController.buscaCodCurso(course);
         
