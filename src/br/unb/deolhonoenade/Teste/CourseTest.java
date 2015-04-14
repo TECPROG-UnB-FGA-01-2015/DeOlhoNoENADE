@@ -29,6 +29,7 @@ public class CourseTest extends AndroidTestCase
 	// Method to test if class is not null
 	public void courseTest()
 	{
+		// Object from the Curso Class that  is instantiated to be used in testing
 		Course course = new Course(3, 6, "Direito", 25, 15, "portoalegre",
 				(float) 2.45, "DF", null);
 		Assert.assertNotNull(course);
@@ -37,6 +38,7 @@ public class CourseTest extends AndroidTestCase
 	// Method for testing the return of attribute uf from class Course
 	public void testGetState()
 	{
+		// Object from the Curso Class that  is instantiated to be used in testing
 		Course course = new Course(3, 6, "Direito", 25, 15, "portoalegre",
 				(float) 2.45, "DF", null);
 
@@ -46,6 +48,7 @@ public class CourseTest extends AndroidTestCase
 	// Method to test the assignment of uf attribute from Class Course
 	public void testSetState()
 	{
+		// Object from the Curso Class that  is instantiated to be used in testing
 		Course course = new Course(3, 6, "Direito", 25, 15, "portoalegre",
 				(float) 2.45, "DF", null);
 		course.setState("AC");
@@ -55,9 +58,11 @@ public class CourseTest extends AndroidTestCase
 	// Method for testing the return of attribute IES from class Course
 	public void testGetIES()
 	{
+		// Object from the Curso Class that  is instantiated to be used in testing
 		Course course = new Course(3, 6, "Direito", 25, 15, "portoalegre",
 				(float) 2.45, "DF", null);
 
+		// Object from the Instituicao Class that  is instantiated to be used in testing
 		Institution institution = new Institution("UnB", "Universidade", "Publica", 1);
 
 		course.setIES(institution);
@@ -68,9 +73,11 @@ public class CourseTest extends AndroidTestCase
 	// Method to test the assignment of IES attribute from Class Course
 	public void testSetIES()
 	{
+		// Object from the Curso Class that  is instantiated to be used in testing
 		Course course = new Course(3, 6, "Direito", 25, 15, "portoalegre",
 				(float) 2.45, "DF", null);
 
+		// Object from the Curso Class that  is instantiated to be used in testing
 		Institution institution = new Institution("UFBA", "Universidade", "Publica", 10);
 
 		course.setIES(institution);
@@ -81,8 +88,10 @@ public class CourseTest extends AndroidTestCase
 	// Method for testing the return of attribute id_ies from class Course
 	public void testGetId_institution()
 	{
+		// Object from the Curso Class that  is instantiated to be used in testing
 		Institution institution = new Institution("UFBA", "Universidade", "Publica", 10);
 
+		// Object from the Curso Class that  is instantiated to be used in testing
 		Course course = new Course(3, 6, "Direito", 25, 15, "portoalegre",
 				(float) 2.45, "DF", institution);
 
@@ -92,6 +101,7 @@ public class CourseTest extends AndroidTestCase
 	// Method for testing the return of attribute id from class Course
 	public void testGetId()
 	{
+		// Object from the Curso Class that  is instantiated to be used in testing
 		Course course = new Course(3, 6, "Direito", 25, 15, "portoalegre",
 				(float) 2.45, "DF", null);
 		Assert.assertEquals(course.getId(), 3);
@@ -100,6 +110,7 @@ public class CourseTest extends AndroidTestCase
 	// Method to test the assignment of id attribute from Class Course
 	public void testSetId()
 	{
+		// Object from the Curso Class that  is instantiated to be used in testing
 		Course course = new Course(3, 6, "Direito", 25, 15, "portoalegre",
 				(float) 2.45, "DF", null);
 		course.setId(5);
@@ -109,6 +120,7 @@ public class CourseTest extends AndroidTestCase
 	// Method for testing the return of attribute nome from class Course
 	public void testGetName()
 	{
+		// Object from the Curso Class that  is instantiated to be used in testing
 		Course course = new Course(3, 6, "Direito", 25, 15, "portoalegre",
 				(float) 2.45, "DF", null);
 		assertEquals("Direito", course.getName());
@@ -117,6 +129,7 @@ public class CourseTest extends AndroidTestCase
 	// Method to test the assignment of nome attribute from Class Course
 	public void testSetName()
 	{
+		// Object from the Curso Class that  is instantiated to be used in testing
 		Course course = new Course(3, 6, "Direito", 25, 15, "portoalegre",
 				(float) 2.45, "DF", null);
 
@@ -127,6 +140,7 @@ public class CourseTest extends AndroidTestCase
 	// Method for testing the return of attribute numEstudantes from class Course
 	public void testGetStudentsNumber()
 	{
+		// Object from the Curso Class that  is instantiated to be used in testing
 		Course course = new Course(3, 6, "Direito", 100, 15, "portoalegre",
 				(float) 2.45, "DF", null);
 		assertEquals(100, course.getStudentsNumber());
@@ -135,6 +149,7 @@ public class CourseTest extends AndroidTestCase
 	// Method to test the assignment of numEstudantes attribute from Class Course
 	public void testSetStudentsNumber()
 	{
+		// Object from the Curso Class that  is instantiated to be used in testing
 		Course course = new Course(3, 6, "Direito", 25, 15, "portoalegre",
 				(float) 2.45, "DF", null);
 		course.setStudentsNumber(500);
@@ -144,6 +159,7 @@ public class CourseTest extends AndroidTestCase
 	// Method for testing the return of attribute numEstudantesInscritos from class Course
 	public void testGetEnrolledStudentsNumber()
 	{
+		// Object from the Curso Class that  is instantiated to be used in testing
 		Course course = new Course(3, 6, "Direito", 25, 5, "portoalegre",
 				(float) 2.45, "DF", null);
 
@@ -153,6 +169,7 @@ public class CourseTest extends AndroidTestCase
 	// Method to test the assignment of numEstudantesInscritos attribute from Class Course
 	public void testSetEnrolledStudentsNumber()
 	{
+		// Object from the Curso Class that  is instantiated to be used in testing
 		Course course = new Course(3, 6, "Direito", 20, 15, "portoalegre",
 				(float) 2.45, "DF", null);
 
@@ -172,6 +189,7 @@ public class CourseTest extends AndroidTestCase
 	// Method to test the assignment of municipio attribute from Class Course
 	public void testSetCity()
 	{
+		// Object from the Curso Class that  is instantiated to be used in testing
 		Course course = new Course(3, 6, "Direito", 25, 15, "portoalegre",
 				(float) 2.45, "DF", null);
 
@@ -182,6 +200,7 @@ public class CourseTest extends AndroidTestCase
 	// Method for testing the return of attribute conceitoEnade from class Course
 	public void testGetCourseGrade()
 	{
+		// Object from the Curso Class that  is instantiated to be used in testing
 		Course course = new Course(3, 6, "Direito", 25, 15, "portoalegre",
 				(float) 5, "DF", null);
 		assertEquals((float) 5, course.getCourseGrade());
@@ -190,6 +209,7 @@ public class CourseTest extends AndroidTestCase
 	// Method to test the assignment of conceitoEnade attribute from Class Course
 	public void testSetCourseGrade()
 	{
+		// Object from the Curso Class that  is instantiated to be used in testing
 		Course course = new Course(3, 6, "Direito", 25, 15, "portoalegre",
 				(float) 2.45, "DF", null);
 		course.setCourseGrade((float) 4);
