@@ -32,9 +32,11 @@ import android.widget.TextView;
 public class InitialComparison extends Activity implements
 		ActionBar.OnNavigationListener
 {
+	//String that receives the previous selected variable to make actions on the next screens
 	private static final String STATE_SELECTED_NAVIGATION_ITEM =
 			"selected_navigation_item";
-	private String course;
+	
+	private String course; // Stores the curso's name
 	
 	@Override
 	// Method to initialize the activity activity activity_comparacao_inicial
@@ -52,6 +54,7 @@ public class InitialComparison extends Activity implements
 	// Method to recognize the button "BotaoCidade"
 	private void addListenerOnButtonBotaoCidade()
 	{
+		// ID Button called BotaoCidades that compare 2 different ENADE's average grade from 2 Cities
 		Button compareInstitution = (Button) findViewById(R.id.BotaoCidades);
 		compareInstitution.setOnClickListener(new OnClickListener()
 		{
@@ -59,7 +62,7 @@ public class InitialComparison extends Activity implements
 			/* Method to confirm the the mouse click and redirect to
 			 * ComparacaoCidades view
 			 */
-			public void onClick(View v)
+			public void onClick(View v) // View variable that is called when a view has been clicked
 			{
 	    		Intent intent = new Intent(InitialComparison.this,
 	    				ComparacaoCidades.class);
@@ -72,6 +75,7 @@ public class InitialComparison extends Activity implements
 	// Method to recognize the button "BotaoInstituicao"
 	private void addListenerOnButtonBotaoInstituicao()
 	{
+		// ID Button called BotaoIES that compare 2 different ENADE's average grade from 2 Universities
 		Button compareInstitution = (Button) findViewById(R.id.BotaoIES);
 		compareInstitution.setOnClickListener(new OnClickListener()
 		{
@@ -79,10 +83,12 @@ public class InitialComparison extends Activity implements
 			/* Method to confirm the the mouse click and redirect to
 			 * ComparacaoInstituicao view
 			 */
-	    	public void onClick(View v)
+	    	public void onClick(View v) // View variable that is called when a view has been clicked
 			{
+				// Creates a new Intent object that passes from one screen to another screen
 	    		Intent intent = new Intent(InitialComparison.this,
 	    				ComparacaoInstituicao.class);
+	    		
 	    		intent.putExtra("cursoSelecionado", course);
 	    		startActivity(intent);
 	    	}	
@@ -92,6 +98,7 @@ public class InitialComparison extends Activity implements
 	// Method to recognize the button "BotaoEstado"
 	private void addListenerOnButtonBotaoEstado()
 	{
+		// ID Button called BotaoEstado that compare 2 different ENADE's average grade from 2 States
 		Button compareState = (Button) findViewById(R.id.BotaoEstado);
 		compareState.setOnClickListener(new OnClickListener()
 		{	
@@ -99,7 +106,7 @@ public class InitialComparison extends Activity implements
 			/* Method to confirm the the mouse click and redirect to
 			 * ComparacaoEstado view
 			 */
-	    	public void onClick(View v)
+	    	public void onClick(View v) // View variable that is called when a view has been clicked
 			{
 	    		Intent intent = new Intent(InitialComparison.this,
 	    				ComparacaoEstado.class);
@@ -112,6 +119,9 @@ public class InitialComparison extends Activity implements
 	// Method to recognize the button "BotaoTipo"
 	private void addListenerOnButtonBotaoTipo()
 	{
+		/* ID Button called BotaoTipo that compare 2 different ENADE's average grade from
+		 * 2 University' Types
+		 */
 		Button compareType = (Button) findViewById(R.id.BotaoTipo);
 		compareType.setOnClickListener(new OnClickListener()
 		{	
@@ -119,7 +129,7 @@ public class InitialComparison extends Activity implements
 			/* Method to confirm the the mouse click and redirect to
 			 * ComparacaoTipo view
 			 */
-	    	public void onClick(View v)
+	    	public void onClick(View v) // View variable that is called when a view has been clicked
 			{
 	    		Intent intent = new Intent(InitialComparison.this,
 	    				ComparacaoTipo.class);
@@ -188,7 +198,7 @@ public class InitialComparison extends Activity implements
 		public static PlaceholderFragment newInstance(int sectionNumber)
 		{
 			PlaceholderFragment fragment = new PlaceholderFragment();
-			Bundle args = new Bundle();
+			Bundle args = new Bundle(); // Creates a new Bundle Instance State
 			args.putInt(ARG_SECTION_NUMBER, sectionNumber);
 			fragment.setArguments(args);
 			return fragment;
@@ -204,9 +214,11 @@ public class InitialComparison extends Activity implements
 		/* Method to create and return the view hierarchy associated with the
 		 * fragment
 		 */
-		public View onCreateView(LayoutInflater inflater, ViewGroup container,
-				Bundle savedInstanceState)
+		public View onCreateView(LayoutInflater inflater,
+								  ViewGroup container,
+								  Bundle savedInstanceState)
 		{
+			// Hosts all other views on the same place
 			View rootView = inflater.inflate(
 					R.layout.fragment_comparacao_inicial, container, false);
 			TextView textView = (TextView) rootView
