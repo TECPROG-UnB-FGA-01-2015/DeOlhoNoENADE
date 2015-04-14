@@ -26,10 +26,13 @@ import br.unb.deolhonoenade.controller.CourseController;
 
 public class InstitutionResultComparison extends Activity
 {
-	private CourseController objectCourseController;
-	private List<String> firstInstitutionData, secondInstitutionData;
-	private float firstGrade, secondGrade;
-	private String firstInstitution, secondInstitution;
+	private CourseController objectCourseController; // CourseController type object
+	private List<String> firstInstitutionData; // Contains the first institution data
+	private List<String> secondInstitutionData; // Contains the second institution data
+	private float firstGrade; // The grade of the first institution
+	private float secondGrade; // The grade of the second institution
+	private String firstInstitution; // Holds the first institution name
+	private String secondInstitution; // Holds the second institution name
 	
 	@Override
 	// Method to initialize the activity activity_comparacao_result_ies
@@ -48,27 +51,30 @@ public class InstitutionResultComparison extends Activity
 		secondInstitution = getIntent().getExtras().getString("secondInstitution");
 		secondGrade = getIntent().getExtras().getFloat("secondGrade");
 		
+		// Presents the name of first institution on a textView
 		TextView instiruicao1 = (TextView) findViewById(R.id.nomeIES1);
 		instiruicao1.setText(firstInstitution);
 		
+		// Presents the name of second institution on a textView
 		TextView instiruicao2 = (TextView) findViewById(R.id.nomeIES2);
 		instiruicao2.setText(secondInstitution);
 		
-		String nota1String = String.valueOf(firstGrade);
-		String nota2String = String.valueOf(secondGrade);
+		String nota1String = String.valueOf(firstGrade); // The grade of the first institution
+		String nota2String = String.valueOf(secondGrade); // The grade of the second institution
 		
-		ArrayList<Bar> points = new ArrayList<Bar>();
-		Bar d = new Bar();
+		ArrayList<Bar> points = new ArrayList<Bar>(); // Holds the average grade of institution
+		Bar d = new Bar(); // Contains the first institution data
 		d.setColor(Color.parseColor("#99CC00"));
 		d.setName("Instituicao 1");
 		d.setValue(Float.parseFloat(nota1String.substring(0, 5)));
-		Bar d2 = new Bar();
+		Bar d2 = new Bar(); // Contains the second institution data
 		d2.setColor(Color.parseColor("#FFBB33"));
 		d2.setName("Instituicao 2");
 		d2.setValue(Float.parseFloat(nota2String.substring(0, 5)));
 		points.add(d);
 		points.add(d2);
 
+		// Holds the graphical bar with the first institution and second institution names and grades
 		BarGraph g = (BarGraph)findViewById(R.id.graph);
 		g.setBars(points);
 		g.setUnit(" ");
@@ -90,7 +96,7 @@ public class InstitutionResultComparison extends Activity
 	// Method to recognize when an option on menu is selected
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
-		int id = item.getItemId();
+		int id = item.getItemId(); // Holds the id of the container's selected item 
 		if (id == R.id.action_settings)
 		{
 			return true;
@@ -119,6 +125,7 @@ public class InstitutionResultComparison extends Activity
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState)
 		{
+			// Hosts all other views on the same place
 			View rootView = inflater.inflate(
 					R.layout.fragment_comparacao_result_ie, container, false);
 			return rootView;
