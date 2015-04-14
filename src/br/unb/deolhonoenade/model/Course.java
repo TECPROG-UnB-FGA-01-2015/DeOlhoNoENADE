@@ -17,7 +17,7 @@ public class Course
 	private int studentsNumber; // Holds the info of the number of students in the course
 	private int  enrolledStudentsNumber; // Holds the info of the number of students enrolled in the course
 	private String city; // Holds the info of the course's city
-	private float enadeGrade; // holds the info of the course's score in the Enade
+	private float courseGrade; // holds the info of the course's score in the Enade
 	private String state; // holds the info of the course's state
 
 	/* Constructor to receive all the attributes as parameters and initialize the
@@ -28,7 +28,7 @@ public class Course
 				  int studentsNumber,	
 				  int  enrolledStudentsNumber ,
 				  String city,
-				  float enadeGrade,
+				  float courseGrade,
 				  String state,
 				  Institution IES)
 	{
@@ -37,7 +37,7 @@ public class Course
 		this.studentsNumber = studentsNumber;
 		this. enrolledStudentsNumber  =  enrolledStudentsNumber ;
 		this.city = city;
-		this.enadeGrade = enadeGrade;
+		this.courseGrade = courseGrade;
 		this.state = state;
 		this.IES = IES;
 	}
@@ -141,16 +141,16 @@ public class Course
 		this.city = city;
 	}
 
-	// Method to return the content of attribute enadeGrade
-	public float getEnadeGrade()
+	// Method to return the content of attribute courseGrade
+	public float getCourseGrade()
 	{
-		return enadeGrade;
+		return courseGrade;
 	}
 
-	// Method to set a content on variable enadeGrade
-	public void setEnadeGrade(float enadeGrade)
+	// Method to set a content on variable courseGrade
+	public void setCourseGrade(float courseGrade)
 	{
-		this.enadeGrade = enadeGrade;
+		this.courseGrade = courseGrade;
 	}
 
 }
