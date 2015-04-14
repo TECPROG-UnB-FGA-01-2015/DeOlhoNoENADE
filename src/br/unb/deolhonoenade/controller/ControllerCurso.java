@@ -1,3 +1,9 @@
+/***********************************************************
+ * File: ControllerCurso.java
+ * Purpose: Responsible to get the Universities' and Courses' info
+ * 			to be listed and compared to each other.
+ ***********************************************************/
+
 package br.unb.deolhonoenade.controller;
 
 import java.util.ArrayList;
@@ -14,7 +20,7 @@ import br.unb.deolhonoenade.model.Instituicao;
 
 public class ControllerCurso
 {
-	private Instituicao IES, instituicao;
+	private Instituicao instituicao;
 	private ArrayList<Curso> cursos = new ArrayList<Curso>();
 
 	private SQLiteDatabase db;
@@ -37,20 +43,21 @@ public class ControllerCurso
 	{
 		return this.db;
 	}
-	
-	/*  This method is responsible to block the University's choice twice on the Comparison Functionality.  
-	 *  This method removes the University's position on the Drop List when you're going to compare 2 different Universities
-	 */
+
+	/* This method is responsible to block the University's choice twice on the
+	 * Comparison Functionality. This method removes the University's position
+	 * on the Drop List when you're going to compare 2 different Universities */
 	public boolean removeIes(int posicao)
 	{
 		try
 		{
 			cursos.remove(posicao);
 			return true;
-		} catch (IndexOutOfBoundsException e)
+		}
+		catch (IndexOutOfBoundsException e)
 		{
 			Log.e(this.getClass().toString(),
-					"cursos IndexOutOfBounds, returning false");
+			      "cursos IndexOutOfBounds, returning false");
 			return false;
 		}
 	}
@@ -61,28 +68,32 @@ public class ControllerCurso
 		try
 		{
 			return cursos.get(posicao).getIES().getCodIES();
-		} catch (IndexOutOfBoundsException e)
+		}
+		catch (IndexOutOfBoundsException e)
 		{
 			Log.e(this.getClass().toString(),
-					"cursos IndexOutOfBounds, returning -1");
+			      "cursos IndexOutOfBounds, returning -1");
 			return -1;
 		}
 	}
 
-	/*  This method is responsible to get the "ENADE"'s Students grades of one specific Course. 
-	 *  ENADE (Brazilian word which means - National Evaluation of Student Performance) is a Government's test 
-	 *  which calculates (with numbers from 0 - bad - to 5 - great) how good are the Student's grades from one of the choosen Courses
-	 *  It's a very important grade because you can see the differences between the good Universities from the bad Universities
-	 */
+	/* This method is responsible to get the "ENADE"'s Students grades of one
+	 * specific Course. ENADE (Brazilian word which means - National Evaluation
+	 * of Student Performance) is a Government's test which calculates (with
+	 * numbers from 0 - bad - to 5 - great) how good are the Student's grades
+	 * from one of the chosen Courses It's a very important grade because you
+	 * can see the differences between the good Universities from the bad
+	 * Universities	*/
 	public float getConceitoDoArrayCursos(int posicao)
 	{
 		try
 		{
 			return cursos.get(posicao).getConceitoEnade();
-		} catch (IndexOutOfBoundsException e)
+		}
+		catch (IndexOutOfBoundsException e)
 		{
 			Log.e(this.getClass().toString(),
-					"cursos IndexOutOfBounds, returning -1");
+			      "cursos IndexOutOfBounds, returning -1");
 			return -1;
 		}
 	}
@@ -96,10 +107,10 @@ public class ControllerCurso
 		return instituicao;
 	}
 
-	/* This method is responsible to get all the Universities' info 
-	* (University Name, Academic Organization, Type - Public/Private Universities, University City, Registered Students 
-	* - who participated on the ENADE's test - and Course's number of students)
-	*/
+	/* This method is responsible to get all the Universities' info (University
+	 * Name, Academic Organization, Type - Public/Private Universities,
+	 * University City, Registered Students - who participated on the ENADE's
+	 * test - and Course's number of students) */
 	public List<String> getDadosIES(int posicao)
 	{
 		List<String> dados = new ArrayList<String>();
@@ -111,10 +122,11 @@ public class ControllerCurso
 			dados.add(cursos.get(posicao).getIES().getTipo());
 			dados.add(cursos.get(posicao).getMunicipio());
 			dados.add(String.format("%d", cursos.get(posicao)
-					.getNumEstudantesInscritos()));
+			        .getNumEstudantesInscritos()));
 			dados.add(String.format("%d", cursos.get(posicao)
-					.getNumEstudantes()));
-		} catch (IndexOutOfBoundsException e)
+			        .getNumEstudantes()));
+		}
+		catch (IndexOutOfBoundsException e)
 		{
 			Log.e(this.getClass().toString(), "cursos IndexOutOfBounds");
 			throw new Error("IES inexistente nessa posicao");
@@ -123,12 +135,13 @@ public class ControllerCurso
 
 	}
 
-	/*  This method is responsible to compare two different Universities's ENADE grades from two different States with the Course's ID.
-	 *  It gets all the ENADES' grades from one specific course on two different States and calculates the ENADE's average grades on these
-	 *  two different choosen States
-	 */
+	/* This method is responsible to compare two different Universities's ENADE
+	 * grades from two different States with the Course's ID. It gets all the
+	 * ENADES' grades from one specific course on two different States and
+	 * calculates the ENADE's average grades on these two different chosen
+	 * States */
 	public List<Float> comparaEstado(String estado1, String estado2,
-			int codCurso)
+	        int codCurso)
 	{
 		float media = 0;
 		List<Float> Resultado = new ArrayList<Float>();
@@ -149,12 +162,13 @@ public class ControllerCurso
 		return Resultado;
 	}
 
-	/*  This method is responsible to compare two different Universities's ENADE grades from two different Cities (from two different States)
-	 *  with the Course's ID. It gets all the ENADES' grades from one specific course on two different Cities and calculates the ENADE's average grades on these
-	 *  two different choosen Cities
-	 */
+	/* This method is responsible to compare two different Universities's ENADE
+	 * grades from two different Cities (from two different States) with the
+	 * Course's ID. It gets all the ENADES' grades from one specific course on
+	 * two different Cities and calculates the ENADE's average grades on these
+	 * two different chosen Cities */
 	public List<Float> comparacaoCidade(int codCurso, String estado1,
-			String cidade1, String estado2, String cidade2)
+	        String cidade1, String estado2, String cidade2)
 	{
 		float media = 0;
 		List<Float> Resultado = new ArrayList<Float>();
@@ -175,12 +189,13 @@ public class ControllerCurso
 		return Resultado;
 	}
 
-	/*  This method is responsible to compare two different (with different Universities Types - Public and Private) Universities's ENADE grades from 
-	 *  two different States with the Course's ID. It gets all the ENADES' grades from one specific course on two different States and calculates the ENADE's 
-	 *  average grades on these two different choosen States
-	 */
+	/* This method is responsible to compare two different (with different
+	 * Universities Types - Public and Private) Universities's ENADE grades from
+	 * two different States with the Course's ID. It gets all the ENADES' grades
+	 * from one specific course on two different States and calculates the
+	 * ENADE's average grades on these two different chosen States */
 	public List<Float> comparacaoTipo(int codCurso, String estado1,
-			String Tipo1, String estado2, String Tipo2)
+	        String Tipo1, String estado2, String Tipo2)
 	{
 		float media = 0;
 		List<Float> Resultado = new ArrayList<Float>();
@@ -190,7 +205,8 @@ public class ControllerCurso
 		if (Tipo1.equalsIgnoreCase("Privada"))
 		{
 			cursosEstadoTipo1 = this.buscaCurso(codCurso, estado1, 1);
-		} else if (Tipo1.equalsIgnoreCase("Publica"))
+		}
+		else if (Tipo1.equalsIgnoreCase("Publica"))
 		{
 			cursosEstadoTipo1 = this.buscaCurso(codCurso, estado1, 2);
 		}
@@ -198,7 +214,8 @@ public class ControllerCurso
 		if (Tipo2.equalsIgnoreCase("Privada"))
 		{
 			cursosEstadoTipo2 = this.buscaCurso(codCurso, estado2, 1);
-		} else if (Tipo2.equalsIgnoreCase("Publica"))
+		}
+		else if (Tipo2.equalsIgnoreCase("Publica"))
 		{
 			cursosEstadoTipo2 = this.buscaCurso(codCurso, estado2, 2);
 		}
@@ -223,7 +240,8 @@ public class ControllerCurso
 		if (cursos.size() == 1)
 		{
 			media = cursos.get(0).getConceitoEnade();
-		} else
+		}
+		else
 		{
 			for (cont = 0; cont < cursos.size() - 1; cont++)
 			{
@@ -246,7 +264,8 @@ public class ControllerCurso
 		return codCurso;
 	}
 
-	// This method is responsible to search the Courses' names with the Courses' IDs and Universities' States from the Database
+	/* This method is responsible to search the Courses' names with the Courses'
+	 * IDs and Universities' States from the Database */
 	public ArrayList<Curso> buscaCurso(int codCurso, String uf)
 	{
 
@@ -255,7 +274,8 @@ public class ControllerCurso
 		return cursos;
 	}
 
-	// This method is responsible to search the Courses' names with the Courses' IDs, Universities' States and Universities' Types from the Database
+	/* This method is responsible to search the Courses' names with the Courses'
+	 * IDs, Universities' States and Universities' Types from the Database */
 	private List<Curso> buscaCurso(int codCurso, String uf, int tipoInt)
 	{
 		this.cursos = this.opBD.getCursos(codCurso, uf, tipoInt);
@@ -263,7 +283,8 @@ public class ControllerCurso
 		return cursos;
 	}
 
-	// This method is responsible to search the Courses' names with the Courses' IDs, Universities' States and Universities' Cities from the Database
+	/* This method is responsible to search the Courses' names with the Courses'
+	 * IDs, Universities' States and Universities' Cities from the Database */
 	public ArrayList<Curso> buscaCurso(int codCurso, String uf, String municipio)
 	{
 
@@ -272,9 +293,11 @@ public class ControllerCurso
 		return cursos;
 	}
 
-	// This method is responsible to search the Courses' names with the Courses' IDs, Universities' States, Universities' Cities and Universities' Types from the Database
+	/* This method is responsible to search the Courses' names with the Courses'
+	 * IDs, Universities' States, Universities' Cities and Universities' Types
+	 * from the Database */
 	public ArrayList<Curso> buscaCurso(int codCurso, String uf,
-			String municipio, String tipo)
+	        String municipio, String tipo)
 	{
 
 		this.cursos = this.opBD.getCursos(codCurso, uf, municipio, tipo);
@@ -282,7 +305,8 @@ public class ControllerCurso
 		return cursos;
 	}
 
-	// This method is responsible to search the University's Cites with the Courses' IDs and Universities' States from the Database
+	/* This method is responsible to search the University's Cites with the
+	 * Courses' IDs and Universities' States from the Database */
 	public List<String> buscaCidades(int codCurso, String uf)
 	{
 		List<String> cidades = new ArrayList<String>();
@@ -290,7 +314,8 @@ public class ControllerCurso
 		return cidades;
 	}
 
-	// This method is responsible to search the Universities' Types with the Courses' IDs and Universities' Cities from the Database
+	/* This method is responsible to search the Universities' Types with the
+	 * Courses' IDs and Universities' Cities from the Database */
 	public List<String> buscaTipos(int codCurso, String municipio)
 	{
 		List<String> tipos = new ArrayList<String>();
@@ -298,7 +323,8 @@ public class ControllerCurso
 		return tipos;
 	}
 
-	// This method is responsible to search the Universities' Types with the Courses' ID and Universities' States from the Database
+	/* This method is responsible to search the Universities' Types with the
+	 * Courses' ID and Universities' States from the Database */
 	public List<String> buscaTiposEstado(int codCurso, String estado)
 	{
 		List<String> tipos = new ArrayList<String>();
@@ -306,7 +332,8 @@ public class ControllerCurso
 		return tipos;
 	}
 
-	// This method is responsible to search the Universities' States with the Courses' IDs from the Database
+	/* This method is responsible to search the Universities' States with the
+	 * Courses' IDs from the Database */
 	public List<String> buscaUf(int codCurso)
 	{
 		List<String> ufs = new ArrayList<String>();
@@ -314,11 +341,11 @@ public class ControllerCurso
 		return ufs;
 	}
 
-	/* This method is responsible to search the Universities' names with Courses' IDs, Universities' Brazilian States and Universities' Brazilian Cities.
-	 * This method lists all the Universities' names on the screen
-	 */
+	/* This method is responsible to search the Universities' names with
+	 * Courses' IDs, Universities' Brazilian States and Universities' Brazilian
+	 * Cities. This method lists all the Universities' names on the screen */
 	public List<String> buscaIesComUfMun(int codCurso2, String uf2,
-			String municipio2)
+	        String municipio2)
 	{
 
 		List<String> cursos = new ArrayList<String>();
@@ -329,15 +356,16 @@ public class ControllerCurso
 		for (int i = 0; i < listaCursos.size(); i++)
 		{
 			cursos.add(String.format("%s", listaCursos.get(i).getIES()
-					.getNome()));
+			        .getNome()));
 		}
 
 		return cursos;
 	}
 
-	/*  This method is responsible to search the Universities' names with Courses' IDs and Universities' Brazilian States.
-	 *  This method lists all the Universities' names (with different Brazilian States choosen) with their respectives ENADE' grades
-	 */
+	/* This method is responsible to search the Universities' names with
+	 * Courses' IDs and Universities' Brazilian States. This method lists all
+	 * the Universities' names (with different Brazilian States chosen) with
+	 * their respectives ENADE' grades */
 	public List<String> buscaStringCurso(int codCurso2, String uf2)
 	{
 		List<String> cursos = new ArrayList<String>();
@@ -348,17 +376,19 @@ public class ControllerCurso
 		for (int i = 0; i < listaCursos.size(); i++)
 		{
 			cursos.add(String.format("%s - %f", listaCursos.get(i).getIES()
-					.getNome(), listaCursos.get(i).getConceitoEnade()));
+			        .getNome(), listaCursos.get(i).getConceitoEnade()));
 		}
 
 		return cursos;
 	}
 
-	/*	This method is responsible to search the Universities' names with Courses' IDs, Universities' Brazilian States, Universities' Brazilian Cities and Universities' Types.
-	 *  This method lists all the Universities' names (with different Brazilian States, Brazilian Cities and Types choosen) with their respectives ENADE' grades
-	 */
+	/* This method is responsible to search the Universities' names with
+	 * Courses' IDs, Universities' Brazilian States, Universities' Brazilian
+	 * Cities and Universities' Types. This method lists all the Universities'
+	 * names (with different Brazilian States, Brazilian Cities and Types
+	 * chosen) with their respectives ENADE' grades */
 	public List<String> buscaStringCurso(int codCurso2, String uf2,
-			String municipio2, String tipo2)
+	        String municipio2, String tipo2)
 	{
 
 		List<String> cursos = new ArrayList<String>();
@@ -369,17 +399,19 @@ public class ControllerCurso
 		for (int i = 0; i < listaCursos.size(); i++)
 		{
 			cursos.add(String.format("%s - %f", listaCursos.get(i).getIES()
-					.getNome(), listaCursos.get(i).getConceitoEnade()));
+			        .getNome(), listaCursos.get(i).getConceitoEnade()));
 		}
 
 		return cursos;
 	}
 
-	/*	This method is responsible to search the Universities' names with Courses' IDs, Universities' Brazilian States and Universities' Brazilian Cities.
-	 *  This method lists all the Universities' names (with different Brazilian States and Brazilian Cities choosen) with their respectives ENADE' grades
-	 */
+	/* This method is responsible to search the Universities' names with
+	 * Courses' IDs, Universities' Brazilian States and Universities' Brazilian
+	 * Cities. This method lists all the Universities' names (with different
+	 * Brazilian States and Brazilian Cities chosen) with their respectives
+	 * ENADE' grades */
 	public List<String> buscaStringCurso(int codCurso2, String uf2,
-			String municipio2)
+	        String municipio2)
 	{
 
 		List<String> cursos = new ArrayList<String>();
@@ -390,17 +422,18 @@ public class ControllerCurso
 		for (int i = 0; i < listaCursos.size(); i++)
 		{
 			cursos.add(String.format("%s - %f", listaCursos.get(i).getIES()
-					.getNome(), listaCursos.get(i).getConceitoEnade()));
+			        .getNome(), listaCursos.get(i).getConceitoEnade()));
 		}
 
 		return cursos;
 	}
 
-	/*	This method is responsible to search the Universities' names with Universities' Brazilian States, Courses' IDs and Universities' Brazilian Cities.
-	 *  This method lists all the Courses' names (with Brazilian States and Brazilian Cities choosen)
-	 */
+	/* This method is responsible to search the Universities' names with
+	 * Universities' Brazilian States, Courses' IDs and Universities' Brazilian
+	 * Cities. This method lists all the Courses' names (with Brazilian States
+	 * and Brazilian Cities chosen) */
 	public List<String> buscaStringCurso(String uf2, int codCurso2,
-			String municipio2)
+	        String municipio2)
 	{
 
 		List<String> cursos = new ArrayList<String>();
@@ -416,10 +449,11 @@ public class ControllerCurso
 
 		return cursos;
 	}
-	
-	/*	This method is responsible to search the Universities' names with Courses' IDs, Universities' Brazilian States and Universities' Types.
-	 *  This method lists all the Universities' names (with different Brazilian States and Types choosen) with their respectives ENADE' grades
-	 */
+
+	/* This method is responsible to search the Universities' names with
+	 * Courses' IDs, Universities' Brazilian States and Universities' Types.
+	 * This method lists all the Universities' names (with different Brazilian
+	 * States and Types chosen) with their respectives ENADE' grades */
 	public List<String> buscaStringCurso(int codCurso, String uf, int tipoInt)
 	{
 		List<String> cursos = new ArrayList<String>();
@@ -430,13 +464,15 @@ public class ControllerCurso
 		for (int i = 0; i < listaCursos.size(); i++)
 		{
 			cursos.add(String.format("%s - %f", listaCursos.get(i).getIES()
-					.getNome(), listaCursos.get(i).getConceitoEnade()));
+			        .getNome(), listaCursos.get(i).getConceitoEnade()));
 		}
 
 		return cursos;
 	}
 
-	// This method is responsible to calculate the ENADE's grades average on each Brazilian State with the Universities' Brazilian States and Courses' IDs
+	/* This method is responsible to calculate the ENADE's grades average on
+	 * each Brazilian State with the Universities' Brazilian States and Courses'
+	 * IDs */
 	public float mediaEstado(String uf, int codCurso)
 	{
 
