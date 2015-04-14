@@ -29,6 +29,7 @@ public class InstitutionTest extends AndroidTestCase
 	// Method to test the instantiation of the institution object
 	public void institutionTest()
 	{
+		// Object from the Institution Class that is instantiated to be used in testing
 		Institution institution = new Institution("Universidade de Brasilia",
 				"Universidades", "Publica", 2);
 		Assert.assertNotSame("Quimica", institution.getName());
@@ -37,8 +38,11 @@ public class InstitutionTest extends AndroidTestCase
 	// Method for testing the addition of a class in an institution
 	public void testAddCourse()
 	{
+		// Object from the Institution Class that is instantiated to be used in testing
 		Institution institution = new Institution("Universidade de Brasilia",
 				"Universidades", "Publica", 2);
+		
+		// Object from the Course Class that is instantiated to be used in testing
 		Course course = new Course(3, 6, "Direito", 25, 15, "Porto Alegre",
 				(float) 2.45, "DF", null);
 
@@ -51,6 +55,8 @@ public class InstitutionTest extends AndroidTestCase
 	public void testGetCourses()
 	{
 		ArrayList<Course> Courses = new ArrayList<Course>(50);
+		
+		// Object from the Institution Class that is instantiated to be used in testing
 		Institution institution = new Institution(
 				"Universidade Federal de Ouro Preto", "Universidades",
 				"Publica", 6);
@@ -63,6 +69,7 @@ public class InstitutionTest extends AndroidTestCase
 	// Method to test the assignment of Courses attribute from Class Institution
 	public void testSetCourses()
 	{
+		// Object from the Course Class that is instantiated to be used in testing
 		Course course = new Course(3, 6, "Direito", 25, 15, "Porto Alegre",
 				(float) 2.45, "DF", null);
 		course.setName("Adiministracao");
@@ -72,6 +79,7 @@ public class InstitutionTest extends AndroidTestCase
 	// Method for testing the return of attribute nome from class Institution
 	public void testGetName()
 	{
+		// Object from the Institution Class that is instantiated to be used in testing
 		Institution institution = new Institution(
 				"Universidade Federal do Amazonas", "Universidades", "Publica",
 				4);
@@ -81,6 +89,7 @@ public class InstitutionTest extends AndroidTestCase
 	// Method to test the assignment of nome attribute from Class Institution
 	public void testSetName()
 	{
+		// Object from the Institution Class that is instantiated to be used in testing
 		Institution institution = new Institution(
 				"Universidade Catolica de Petropolis", "Universidades",
 				"Privada", 15);
@@ -92,6 +101,7 @@ public class InstitutionTest extends AndroidTestCase
 	// Method for testing the return of attribute organizacaoAcademica from class Institution
 	public void testGetAcademicOrganization()
 	{
+		// Object from the Institution Class that is instantiated to be used in testing
 		Institution institution = new Institution(
 				"Universidade Estadual do Ceara", "Universidades", "Publica",
 				29);
@@ -102,6 +112,7 @@ public class InstitutionTest extends AndroidTestCase
 	// Method to test the assignment of organizacaoAcademica attribute from Class Institution
 	public void testSetAcademicOrganization()
 	{
+		// Object from the Institution Class that is instantiated to be used in testing
 		Institution institution = new Institution("Universidade Gama Filho",
 				"Universidades", "Privada", 16);
 		institution.setAcademicOrganization("Faculdades");
@@ -111,6 +122,7 @@ public class InstitutionTest extends AndroidTestCase
 	// Method for testing the return of attribute tipo from class Institution
 	public void testGetType()
 	{
+		// Object from the Institution Class that is instantiated to be used in testing
 		Institution institution = new Institution(
 				"Universidade do Estado da Bahia", "Universidades", "Publica",
 				40);
@@ -120,6 +132,7 @@ public class InstitutionTest extends AndroidTestCase
 	// Method to test the assignment of tipo attribute from Class Institution
 	public void testSetType()
 	{
+		// Object from the Institution Class that is instantiated to be used in testing
 		Institution institution = new Institution(
 				"Universidade Estadual de Goias", "Universidades", "Publica",
 				47);
@@ -130,6 +143,7 @@ public class InstitutionTest extends AndroidTestCase
 	// Method for testing the return of attribute codIES from class Institution
 	public void testGetInstitutionCode()
 	{
+		// Object from the Institution Class that is instantiated to be used in testing
 		Institution institution = new Institution(
 				"Faculdade de Direito de Franca", "Faculdades", "Publica", 59);
 		assertEquals(59, institution.getInstitutionCode());
@@ -138,6 +152,7 @@ public class InstitutionTest extends AndroidTestCase
 	// Method to test the assignment of codIES attribute from Class Institution
 	public void testSetInstitutionCode()
 	{
+		// Object from the Institution Class that is instantiated to be used in testing
 		Institution institution = new Institution(
 				"Universidade Cruzeiro do Sul", "Universidades", "Privada", 221);
 		institution.setInstitutionCode(221);
