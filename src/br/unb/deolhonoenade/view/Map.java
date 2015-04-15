@@ -1,5 +1,5 @@
 /***********************************************************
- * File: Mapa.java
+ * File: Map.java
  * Purpose: Responsible to show a map with all the
  * 			institutions
 ***********************************************************/
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.unb.deolhonoenade.R;
-import br.unb.deolhonoenade.controller.ControllerCurso;
+import br.unb.deolhonoenade.controller.CourseController;
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
@@ -22,7 +22,7 @@ import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
-public class Mapa extends Activity
+public class Map extends Activity
 {
 	@Override
 	// Method to initialize the activity activity_mapa	
@@ -31,34 +31,43 @@ public class Mapa extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_mapa);
 
+		// Holds the information that will be showed on view
 		WebView webview = (WebView) findViewById(R.id.webView1);
-        String curso = getIntent().getExtras().getString("cursoSelecionado");
-        ControllerCurso controller = new ControllerCurso(this);
         
-        int codCurso = controller.buscaCodCurso(curso);
+		// Stores the curso's name
+		String course = getIntent().getExtras().getString("cursoSelecionado");
+		
+		// ControllerCurso type object
+        CourseController objectCourseController = new CourseController(this);
         
-        ArrayList<String> todasUfs = (ArrayList<String>) controller.buscaUf(1);
+        // Code of the course selected
+        int courseCode = objectCourseController.buscaCodCurso(course);
         
-        List<String> medias = new ArrayList<String>();
+        // Holds all federation units that exists on the application
+        ArrayList<String> allUfs = (ArrayList<String>) objectCourseController.buscaUf(1);
         
+    	// Holds all the average grade of all federal units
+        List<String> stateAverageGradeList = new ArrayList<String>();
         
-        for(int i = 0; i<todasUfs.size(); i++)
+        for(int i = 0; i<allUfs.size(); i++) // For parameter; (0 =< i < todasUfs)
         {	
-        	String mediasE = new String();
+        	// Holds the average grade of each federal unit
+        	String stateAverageGrade = new String();
+        	
         	try
         	{
-				mediasE = String.valueOf( controller.mediaEstado(todasUfs.get(i),
-						codCurso));
+				stateAverageGrade = String.valueOf( objectCourseController.mediaEstado(allUfs.get(i),
+						courseCode));
 			}
         	
         	catch (Exception e)
         	{
-				Log.e(this.getClass().toString(), todasUfs.get(i)+
+				Log.e(this.getClass().toString(), allUfs.get(i)+
 						"Estado nao existe");
-				mediasE="0.0";
+				stateAverageGrade="0.0";
 			}
         	
-        	medias.add(mediasE);
+        	stateAverageGradeList.add(stateAverageGrade);
         }
         
         String content = "<html>"
@@ -71,33 +80,33 @@ public class Mapa extends Activity
                 + "function drawRegionsMap() {"
                 + "var data = google.visualization.arrayToDataTable(["
                 + "['Estado', 'Nota Média'],"
-                + "['Acre', " + medias.get(0) + "],"
-                + "['Alagoas', " + medias.get(1) + "],"
-                + "['Amazonas', " + medias.get(2) + "],"
-                + "['Amapa', " + medias.get(3) + "],"
-                + "['Bahia', " + medias.get(4) + "],"
-                + "['Ceara', " + medias.get(5) + "],"
-                + "['Distrito Federal', " + medias.get(6) + "],"
-                + "['Espirito Santo', " + medias.get(7) + "],"
-                + "['Goias', " + medias.get(8) + "],"
-                + "['Maranhao', " + medias.get(9) + "],"
-                + "['Minas Gerais', " + medias.get(10) + "],"
-                + "['Mato Grosso do Sul', " + medias.get(11) + "],"
-                + "['Mato Grosso', " + medias.get(12) + "],"
-                + "['Para', " + medias.get(13) + "],"
-                + "['Paraiba', " + medias.get(14) + "],"
-                + "['Pernambuco', " + medias.get(15) + "],"
-                +"['Piaui', " + medias.get(16) + "],"
-                + "['Parana', " + medias.get(17) + "],"
-                + "['Rio de Janeiro', " + medias.get(18) + "],"
-                + "['Rio Grande do Norte', " + medias.get(19) + "],"
-                + "['Rio Grande do Sul', " + medias.get(20) + "],"
-                + "['Rondonia', " + medias.get(21) + "],"
-                + "['Roraima', " + medias.get(22) + "],"
-                + "['Santa Catarina', " + medias.get(23) + "],"
-                + "['Sao Paulo', " + medias.get(24) + "],"
-                + "['Sergipe', " + medias.get(25) + "],"
-                + "['Tocantins', " + medias.get(26) + "],"            
+                + "['Acre', " + stateAverageGradeList.get(0) + "],"
+                + "['Alagoas', " + stateAverageGradeList.get(1) + "],"
+                + "['Amazonas', " + stateAverageGradeList.get(2) + "],"
+                + "['Amapa', " + stateAverageGradeList.get(3) + "],"
+                + "['Bahia', " + stateAverageGradeList.get(4) + "],"
+                + "['Ceara', " + stateAverageGradeList.get(5) + "],"
+                + "['Distrito Federal', " + stateAverageGradeList.get(6) + "],"
+                + "['Espirito Santo', " + stateAverageGradeList.get(7) + "],"
+                + "['Goias', " + stateAverageGradeList.get(8) + "],"
+                + "['Maranhao', " + stateAverageGradeList.get(9) + "],"
+                + "['Minas Gerais', " + stateAverageGradeList.get(10) + "],"
+                + "['Mato Grosso do Sul', " + stateAverageGradeList.get(11) + "],"
+                + "['Mato Grosso', " + stateAverageGradeList.get(12) + "],"
+                + "['Para', " + stateAverageGradeList.get(13) + "],"
+                + "['Paraiba', " + stateAverageGradeList.get(14) + "],"
+                + "['Pernambuco', " + stateAverageGradeList.get(15) + "],"
+                +"['Piaui', " + stateAverageGradeList.get(16) + "],"
+                + "['Parana', " + stateAverageGradeList.get(17) + "],"
+                + "['Rio de Janeiro', " + stateAverageGradeList.get(18) + "],"
+                + "['Rio Grande do Norte', " + stateAverageGradeList.get(19) + "],"
+                + "['Rio Grande do Sul', " + stateAverageGradeList.get(20) + "],"
+                + "['Rondonia', " + stateAverageGradeList.get(21) + "],"
+                + "['Roraima', " + stateAverageGradeList.get(22) + "],"
+                + "['Santa Catarina', " + stateAverageGradeList.get(23) + "],"
+                + "['Sao Paulo', " + stateAverageGradeList.get(24) + "],"
+                + "['Sergipe', " + stateAverageGradeList.get(25) + "],"
+                + "['Tocantins', " + stateAverageGradeList.get(26) + "],"            
                 + "]);"
                 + "var chart = new google.visualization.GeoChart("
                 + "document.getElementById('chart_div'));"
@@ -111,19 +120,16 @@ public class Mapa extends Activity
                 + "</body>" 
                 + "</html>";;
         
+        // Android settings of the web
         WebSettings webSettings = webview.getSettings();
+        
         webSettings.setJavaScriptEnabled(true);
         webview.requestFocusFromTouch();
         
-        //Usando o método abaixo (loadDataWithBaseURL) não é necessário o arquivo
-        //.html da pasta assets.
-        //Sendo assim é executado um "html" em tempo real usando a string 'content'
-        //acima.
-        //Só que não consegui fazer este funcionar.
         webview.loadDataWithBaseURL( "file:///android_asset/", content, "text/html",
         		"utf-8", null );
         
-        //webview.loadUrl("file:///android_asset/Mapa.html"); // Can be used in this
+        //webview.loadUrl("file:///android_asset/Map.html"); // Can be used in this
         //way too.
 	}
 
@@ -143,7 +149,7 @@ public class Mapa extends Activity
 		// Handle action bar item clicks here. The action bar will
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
+		int id = item.getItemId(); // Holds the id of the container's selected item 
 		if (id == R.id.action_settings)
 		{
 			return true;
@@ -175,6 +181,7 @@ public class Mapa extends Activity
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState)
 		{
+			// Hosts all other views on the same place
 			View rootView = inflater.inflate(R.layout.fragment_mapa, container,
 					false);
 			return rootView;

@@ -27,15 +27,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.os.Build;
 
-public class ComparacaoInstituicao extends Activity
+public class InstitutionComparison extends Activity
 {
-
-	private Spinner spinnerEstados, spinnerCidades, spinnerIES;
-	private ControllerCurso controller;
-	private String estado, municipio, ies1;
-	private int codCurso, conceitoEnade;
-	private List<String> dados;
-	private float nota1;
+	private Spinner institutionSpinner; // Spinner variable of the Institutions
+	private Spinner statesSpinner; // Spinner variable of the States
+	private Spinner citiesSpinner; // Spinner variable of the Cities
+	private ControllerCurso objectCourseController; // Instantiates an object of the controller
+	private String stateName; // Holds the name of the state
+	private String cityName; // Holds the name of the city
+	private String institutionName; // Holds the name of the institution
+	private int courseCode; // Holds the code of the course being compared
+	private List<String> institutionData; // Holds data of the institution being compared
+	private float selectedGrade; // Holds the grade of the selected item
 
     @Override
     // Method to initialize the activity activity_comparacao_instituicao
@@ -43,39 +46,40 @@ public class ComparacaoInstituicao extends Activity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_comparacao_instituicao);
-		this.controller = new ControllerCurso(this);
+		this.objectCourseController = new ControllerCurso(this);
 		TextView cursoSelecionado = (TextView) findViewById(R.id.cursoSelecionado);
 		cursoSelecionado.setText(getIntent().getExtras().getString("cursoSelecionado"));
 
-		codCurso = controller.buscaCodCurso(getIntent().getExtras().getString("cursoSelecionado"));
+		courseCode = objectCourseController.buscaCodCurso(getIntent().getExtras().getString("cursoSelecionado"));
 
-		addItensOnSpinnerEstado(codCurso);
+		addItensOnSpinnerEstado(courseCode);
 		addListenerOnButtonBuscar();
 	}
     
     // Method to list the State options in a spinner
-	private void addItensOnSpinnerEstado(int codCurso)
+	private void addItensOnSpinnerEstado(int courseCode)
 	{
-		spinnerEstados = (Spinner) findViewById(R.id.estados);
-		List<String> list = new ArrayList<String>();
+		statesSpinner = (Spinner) findViewById(R.id.estados);
+		List<String> ufNameList = new ArrayList<String>();
 
-		list = controller.buscaUf(codCurso);
+		// Store all States of a given course
+		ufNameList = objectCourseController.buscaUf(courseCode);
 
-		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list);
+		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ufNameList);
 
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-		spinnerEstados.setAdapter(dataAdapter);
+		statesSpinner.setAdapter(dataAdapter);
 
-		spinnerEstados.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+		statesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
 		{
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View v, int posicao, long id)
 			{
 
-				estado = parent.getItemAtPosition(posicao).toString();
+				stateName = parent.getItemAtPosition(posicao).toString();
 
-				addItensOnSpinnerMunicipio(estado);
+				addItensOnSpinnerMunicipio(stateName);
 			}
 
 			@Override
@@ -88,23 +92,25 @@ public class ComparacaoInstituicao extends Activity
     // Method to list the Municipio options in a spinner
 	private void addItensOnSpinnerMunicipio(String uf)
 	{
-		this.spinnerCidades = (Spinner) findViewById(R.id.cidades);
-		List<String> list;
-		list = controller.buscaCidades(codCurso, uf);
+		this.citiesSpinner = (Spinner) findViewById(R.id.cidades);
+		
+		// Store all cities of a given course
+		List<String> cityNameList;
+		cityNameList = objectCourseController.buscaCidades(courseCode, uf);
 
-		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list);
+		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, cityNameList);
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-		this.spinnerCidades.setAdapter(dataAdapter);
+		this.citiesSpinner.setAdapter(dataAdapter);
 
-		this.spinnerCidades.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+		this.citiesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
 		{
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View v, int posicao, long id)
 			{
 
-				municipio = parent.getItemAtPosition(posicao).toString();
-				addItensOnSpinnerIES(estado, municipio);
+				cityName = parent.getItemAtPosition(posicao).toString();
+				addItensOnSpinnerIES(stateName, cityName);
 			}
 
 			@Override
@@ -116,25 +122,25 @@ public class ComparacaoInstituicao extends Activity
 	}
     
     // Method to list the IES options in a spinner
-	private void addItensOnSpinnerIES(String estado, String municipio)
+	private void addItensOnSpinnerIES(String stateName, String cityName)
 	{
-		List<String> cursos = controller.buscaIesComUfMun(codCurso, estado, municipio);
-		this.spinnerIES = (Spinner) findViewById(R.id.spinnerIES);
+		List<String> cursos = objectCourseController.buscaIesComUfMun(courseCode, stateName, cityName);
+		this.institutionSpinner = (Spinner) findViewById(R.id.institutionSpinner);
 
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, cursos);
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-		this.spinnerIES.setAdapter(dataAdapter);
+		this.institutionSpinner.setAdapter(dataAdapter);
 
-		this.spinnerIES.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+		this.institutionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
 		{
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View v, int posicao, long id)
 			{
 
-				dados = controller.getDadosIES(posicao);
-				nota1 = controller.getConceitoDoArrayCursos(posicao);
-				ies1 = dados.get(0);
+				institutionData = objectCourseController.getDadosIES(posicao);
+				selectedGrade = objectCourseController.getConceitoDoArrayCursos(posicao);
+				institutionName = institutionData.get(0);
 			}
 
 			@Override
@@ -148,20 +154,20 @@ public class ComparacaoInstituicao extends Activity
     // Method for the confirmation button for the search between the two institutions
 	private void addListenerOnButtonBuscar()
 	{
-		Button comparar = (Button) findViewById(R.id.ies1);
+		Button comparar = (Button) findViewById(R.id.institutionName);
 		comparar.setOnClickListener(new OnClickListener()
 		{
 
 			@Override
 			public void onClick(View v)
 			{
-				Intent result = new Intent(ComparacaoInstituicao.this, ComparacaoInstituicaoFinal.class);
-				result.putStringArrayListExtra("dadosIes", (ArrayList<String>) dados);
-				result.putExtra("codCurso", codCurso);
-				result.putExtra("municipio1", municipio);
-				result.putExtra("estado1", estado);
-				result.putExtra("nota1", nota1);
-				result.putExtra("ies1", ies1);
+				Intent result = new Intent(InstitutionComparison.this, FinalInstitutionComparison.class);
+				result.putStringArrayListExtra("dadosIes", (ArrayList<String>) institutionData);
+				result.putExtra("courseCode", courseCode);
+				result.putExtra("municipio1", cityName);
+				result.putExtra("estado1", stateName);
+				result.putExtra("selectedGrade", selectedGrade);
+				result.putExtra("institutionName", institutionName);
 
 				startActivity(result);
 			}
@@ -183,6 +189,10 @@ public class ComparacaoInstituicao extends Activity
 		if (id == R.id.action_settings)
 		{
 			return true;
+		}
+		else
+		{
+			// Nothing to do
 		}
 		return super.onOptionsItemSelected(item);
 	}
