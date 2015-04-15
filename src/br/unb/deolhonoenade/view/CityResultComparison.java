@@ -56,6 +56,10 @@ public class CityResultComparison extends Activity
 
 		List<Float> gradeList; // Stores the average grade of the course in the two given cities.
 
+		/* Variable receives the average grade of the course in both cities.
+		 * Position [0] has the average grade of the first city
+		 * Position [1] has the average grade of the second city
+		 */
 		gradeList = objectCourseController.comparacaoCidade(courseCode, nameFirstState, nameFirstCity, nameSecondState, nameSecondCity);
 
 		float firstAverage = gradeList.get(0); // Stores the average grade of the course in the first city (example: 5,0)
