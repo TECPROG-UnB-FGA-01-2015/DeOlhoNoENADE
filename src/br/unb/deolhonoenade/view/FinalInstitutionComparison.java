@@ -58,8 +58,10 @@ public class FinalInstitutionComparison extends Activity
 		setContentView(R.layout.activity_comparacao_instituicao_final);
 		this.objectCourseController = new ControllerCurso(this);
 
-		TextView cursoSelecionado = (TextView) findViewById(R.id.cursoSelecionado);
-		cursoSelecionado.setText(getIntent().getExtras().getString("cursoSelecionado"));
+		// Receives the selected course. Type = TextView
+		TextView selectedCourse = (TextView) findViewById(R.id.cursoSelecionado);
+		
+		selectedCourse.setText(getIntent().getExtras().getString("cursoSelecionado"));
 
 		courseCode = getIntent().getExtras().getInt("courseCode");
 		firstInstitutionData = getIntent().getExtras().getStringArrayList("dadosIes");
