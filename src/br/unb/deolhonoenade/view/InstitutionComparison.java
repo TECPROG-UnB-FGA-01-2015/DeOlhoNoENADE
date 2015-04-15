@@ -47,8 +47,11 @@ public class InstitutionComparison extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_comparacao_instituicao);
 		this.objectCourseController = new ControllerCurso(this);
-		TextView cursoSelecionado = (TextView) findViewById(R.id.cursoSelecionado);
-		cursoSelecionado.setText(getIntent().getExtras().getString("cursoSelecionado"));
+		
+		// Receives the selected course. Type = TextView
+		TextView selectedCourse = (TextView) findViewById(R.id.cursoSelecionado);
+		
+		selectedCourse.setText(getIntent().getExtras().getString("cursoSelecionado"));
 
 		courseCode = objectCourseController.buscaCodCurso(getIntent().getExtras().getString("cursoSelecionado"));
 
