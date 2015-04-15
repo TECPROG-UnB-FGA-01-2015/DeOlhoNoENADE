@@ -11,7 +11,7 @@ import br.unb.deolhonoenade.R;
 import br.unb.deolhonoenade.R.id;
 import br.unb.deolhonoenade.R.layout;
 import br.unb.deolhonoenade.R.menu;
-import br.unb.deolhonoenade.controller.ControllerCurso;
+import br.unb.deolhonoenade.controller.CourseController;
 import br.unb.deolhonoenade.model.Course;
 import android.app.Activity;
 import android.app.ActionBar;
@@ -33,11 +33,23 @@ import android.os.Build;
 
 public class TypeComparison extends Activity
 {
-	private Spinner firstStateSpinner, firstTypeSpinner, secondStateSpinner, secondTypeSpinner;
-	private ControllerCurso objectCourseController;
-	private String firstState, firstType, secondState, secondType;
-	private int courseCode;
-	private List<Float> comparisonResults;
+	// Contains a list of states to be chosen to the first institution
+	private Spinner firstStateSpinner;
+	
+	private Spinner firstTypeSpinner; // First institution type (public or private)
+	
+	// Contains a list of states to be chosen to the second institution
+	private Spinner secondStateSpinner;
+	private Spinner secondTypeSpinner; // second institution type (public or private)
+	private ControllerCurso objectCourseController; // ControllerCurso type object
+	private String firstState; // Holds the first institution state (DF, MG, RJ,...)
+	private String firstType; // Holds the state of first institution (AC, AM, SP,...)
+	private String secondState; // Holds the second institution state (public or private)
+	private String secondType; // Holds the second institution type (public or private)
+	private int courseCode; // Code of the course selected
+	private List<Float> comparisonResults; // Holds the average grade of the institution type
+	
+	// Holds a list of institutions by the course code and the federal unit
 	private List<String> secondTypeList;
 	
 	@Override
@@ -47,11 +59,15 @@ public class TypeComparison extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_comparacao_tipo);
 		this.objectCourseController = new ControllerCurso(this);
+		
+		// Recognize which course was selected
 		TextView cursoSelecionado = (TextView) findViewById(
 				R.id.nomeCursoSelecionado);
+		
 		cursoSelecionado.setText(getIntent().getExtras().getString(
 				"cursoSelecionado"));
 		
+		// Takes the code of the course that was selected
 		courseCode = objectCourseController.buscaCodCurso(
 				getIntent().getExtras().getString("cursoSelecionado"));
 		
@@ -73,10 +89,10 @@ public class TypeComparison extends Activity
 	private void addItensOnSpinnerEstadoT1(int courseCode)
 	{
 		firstStateSpinner = (Spinner) findViewById(R.id.SpinnerEstado1);
-		List<String> list = new ArrayList<String>();
+		List<String> list = new ArrayList<String>(); // Holds a list of institutions by the course code
 		
 		list = objectCourseController.buscaUf(courseCode);
-					
+
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_spinner_item, list);
 		
@@ -89,8 +105,10 @@ public class TypeComparison extends Activity
 				new AdapterView.OnItemSelectedListener()
 		{
 			@Override
-			public void onItemSelected(AdapterView<?> parent, View v,
-					int posicao, long id)
+			public void onItemSelected(AdapterView<?> parent,
+										View v, // Holds which view is called
+										int posicao, // Gets the position of the selected line on database
+										long id) // Holds the id of the container's selected item 
 			{
 				firstState = parent.getItemAtPosition(posicao).toString();
 				addItensOnSpinnerTipo1(firstState);						
@@ -124,8 +142,10 @@ public class TypeComparison extends Activity
 				new AdapterView.OnItemSelectedListener()
 		{
 			@Override
-			public void onItemSelected(AdapterView<?> parent, View v,
-					int posicao, long id)
+			public void onItemSelected(AdapterView<?> parent,
+										View v, // Holds which view is called
+										int posicao, // Gets the position of the selected line on database
+										long id) // Holds the id of the container's selected item
 			{
 				firstType = parent.getItemAtPosition(posicao).toString();
 				
@@ -168,8 +188,10 @@ public class TypeComparison extends Activity
 		{
 			@Override
 			
-			public void onItemSelected(AdapterView<?> parent, View v, int posicao,
-					long id)
+			public void onItemSelected(AdapterView<?> parent,
+										View v, // Holds which view is called
+										int posicao, // Gets the position of the selected line on database
+										long id) // Holds the id of the container's selected item
 			{
 				secondState = parent.getItemAtPosition(posicao).toString();
 						
@@ -187,7 +209,8 @@ public class TypeComparison extends Activity
 	/* Method to add items on spinner secondTypeSpinner to compare University's
 	 * types (Public and Private)
 	 */
-	private void addItensOnSpinnerTipo2(String uf, boolean retira)
+	private void addItensOnSpinnerTipo2(String uf, // Which federation unit was selected
+										 boolean retira)
 	{
 		this.secondTypeSpinner = (Spinner) findViewById(R.id.SpinnerEstado2Tipo);
 		secondTypeList = objectCourseController.buscaTiposEstado(courseCode, uf);
@@ -213,8 +236,10 @@ public class TypeComparison extends Activity
 		{
 			@Override
 			// Method to 
-			public void onItemSelected(AdapterView<?> parent, View v, int posicao,
-					long id)
+			public void onItemSelected(AdapterView<?> parent,
+										View v, // Holds which view is called
+										int posicao, // Gets the position of the selected line on database
+										long id) // Holds the id of the container's selected item
 			{
 				secondType = parent.getItemAtPosition(posicao).toString();
 				
@@ -256,6 +281,7 @@ public class TypeComparison extends Activity
 	// Method to recognize the button "Buscar"
 	private void addListenerOnButtonBuscar()
 	{
+		// Button to start the comparison
 		Button comparar = (Button) findViewById(R.id.comparaT1);
 		comparar.setOnClickListener (new OnClickListener()
 		{
@@ -265,8 +291,11 @@ public class TypeComparison extends Activity
 			 */
 	    	public void onClick(View v)
 			{
+				// Holds the result of the comparison about the institution type (public or private)
 				Intent result =  new Intent(TypeComparison.this,
 						ComparacaoResultTipo.class);
+				
+				// Holds the results of the comparison between the two institutions
 				comparisonResults = objectCourseController.comparacaoTipo(courseCode, firstState, firstType,
 						secondState, secondType);
 				result.putExtra("CodCurso", courseCode);
@@ -321,6 +350,7 @@ public class TypeComparison extends Activity
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState)
 		{
+			// Hosts all other views on the same place
 			View rootView = inflater.inflate(R.layout.fragment_comparacao_tipo,
 					container, false);
 			return rootView;
