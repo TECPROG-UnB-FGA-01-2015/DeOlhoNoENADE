@@ -65,7 +65,7 @@ public class CityComparison extends Activity
 	{
 		firstStateSpinner = (Spinner) findViewById(R.id.firstStateSpinner);
 		
-		// Storage all uf's of a given course
+		// Stores all states of a given course
 		List<String> ufNameList = new ArrayList<String>();
 
 		ufNameList = objectCourseController.searchUf(courseCode);
@@ -96,7 +96,7 @@ public class CityComparison extends Activity
 	{
 		secondStateSpinner = (Spinner) findViewById(R.id.secondStateSpinner);
 
-		// Storage all uf's of a given course
+		// Stores all states of a given course
 		List<String> ufNameList = new ArrayList<String>();
 		
 		ufNameList = objectCourseController.searchUf(courseCode);
@@ -127,7 +127,7 @@ public class CityComparison extends Activity
 	{
 		this.firstCitySpinner = (Spinner) findViewById(R.id.firstCitySpinner);
 
-		// Storage all cities of a given course
+		// Stores all cities of a given course
 		List<String> cityNameList = new ArrayList<String>();
 		
 		cityNameList = objectCourseController.buscaCidades(courseCode, uf);
@@ -159,7 +159,7 @@ public class CityComparison extends Activity
 	{
 		this.secondCitySpinner = (Spinner) findViewById(R.id.secondCitySpinner);
 
-		// Storage all cities of a given course
+		// Stores all cities of a given course
 		List<String> cityNameList = new ArrayList<String>();
 		
 		cityNameList = objectCourseController.buscaCidades(courseCode, uf);
