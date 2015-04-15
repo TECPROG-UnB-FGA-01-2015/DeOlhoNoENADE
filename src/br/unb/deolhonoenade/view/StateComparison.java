@@ -1,5 +1,5 @@
 /**********************************************************
- * File: ComparacaoEstado.java
+ * File: StateComparison.java
  * Purpose: Show a list of states to be compared in pairs
  *********************************************************/
 
@@ -25,16 +25,16 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import br.unb.deolhonoenade.R;
-import br.unb.deolhonoenade.controller.ControllerCurso;
+import br.unb.deolhonoenade.controller.CourseController;
 
-public class ComparacaoEstado extends Activity
+public class StateComparison extends Activity
 {
 
-	private String curso;
-	private int codCurso;
-	private ControllerCurso controller;
-	private Spinner spinnerEstado1, spinnerEstado2;
-	private String estado1, estado2;
+	private String course;
+	private int courseCode;
+	private CourseController objectCourseController;
+	private Spinner firstStateSpinner, secondStateSpinner;
+	private String firstState, secondState;
 
 	@Override
 	// Method to initialize the activity activity_comparacao_estado
@@ -43,16 +43,16 @@ public class ComparacaoEstado extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_comparacao_estado);
 
-		controller = new ControllerCurso(this);
+		objectCourseController = new CourseController(this);
 
-		TextView cursoSelecionado = (TextView) findViewById(R.id.stringCurso);
+		TextView selectedCourse = (TextView) findViewById(R.id.stringCurso);
 
-		curso = getIntent().getExtras().getString("cursoSelecionado");
-		cursoSelecionado.setText(getIntent().getExtras().getString(
+		course = getIntent().getExtras().getString("cursoSelecionado");
+		selectedCourse.setText(getIntent().getExtras().getString(
 				"cursoSelecionado"));
 
-		this.codCurso = controller.buscaCodCurso(curso);
-		addItensOnSpinnerEstado1(codCurso);
+		this.courseCode = objectCourseController.buscaCodCurso(course);
+		addItensOnSpinnerEstado1(courseCode);
 
 		addListenerOnButtonComparar();
 
@@ -64,30 +64,30 @@ public class ComparacaoEstado extends Activity
 	}
 
 	// Method to list the State 1 options in a spinner
-	private void addItensOnSpinnerEstado1(int codCurso)
+	private void addItensOnSpinnerEstado1(int courseCode)
 	{
 
-		spinnerEstado1 = (Spinner) findViewById(R.id.Estado1);
-		List<String> list = new ArrayList<String>();
+		firstStateSpinner = (Spinner) findViewById(R.id.Estado1);
+		List<String> stateList = new ArrayList<String>();
 
-		list = controller.buscaUf(codCurso);
+		stateList = objectCourseController.searchState(courseCode);
 
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_spinner_item, list);
+				android.R.layout.simple_spinner_item, stateList);
 		dataAdapter
 				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-		spinnerEstado1.setAdapter(dataAdapter);
+		firstStateSpinner.setAdapter(dataAdapter);
 
-		spinnerEstado1
+		firstStateSpinner
 				.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
 				{
 
 					@Override
-					public void onItemSelected(AdapterView<?> parent, View v,
-							int posicao, long id)
+					public void onItemSelected(AdapterView<?> parent, View view,
+							int position, long id)
 					{
-						estado1 = parent.getItemAtPosition(posicao).toString();
+						firstState = parent.getItemAtPosition(position).toString();
 						addItensOnSpinnerEstado2();
 					}
 
@@ -102,28 +102,28 @@ public class ComparacaoEstado extends Activity
 	private void addItensOnSpinnerEstado2()
 	{
 
-		spinnerEstado2 = (Spinner) findViewById(R.id.Estado2);
-		List<String> list = new ArrayList<String>();
+		secondStateSpinner = (Spinner) findViewById(R.id.Estado2);
+		List<String> stateList = new ArrayList<String>();
 
-		list = controller.buscaUf(codCurso);
+		stateList = objectCourseController.searchState(courseCode);
 
-		list.remove(estado1);
+		stateList.remove(firstState);
 
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_spinner_item, list);
+				android.R.layout.simple_spinner_item, stateList);
 		dataAdapter
 				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		spinnerEstado2.setAdapter(dataAdapter);
+		secondStateSpinner.setAdapter(dataAdapter);
 
-		spinnerEstado2
+		secondStateSpinner
 				.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
 				{
 
 					@Override
-					public void onItemSelected(AdapterView<?> parent, View v,
-							int posicao, long id)
+					public void onItemSelected(AdapterView<?> parent, View view,
+							int position, long id)
 					{
-						estado2 = parent.getItemAtPosition(posicao).toString();
+						secondState = parent.getItemAtPosition(position).toString();
 					}
 
 					@Override
@@ -137,19 +137,19 @@ public class ComparacaoEstado extends Activity
 	private void addListenerOnButtonComparar()
 	{
 
-		Button comparar = (Button) findViewById(R.id.Comparar);
-		comparar.setOnClickListener(new OnClickListener()
+		Button comapare = (Button) findViewById(R.id.Comparar);
+		comapare.setOnClickListener(new OnClickListener()
 		{
 
 			@Override
-			public void onClick(View v)
+			public void onClick(View view)
 			{
-				Intent intent = new Intent(ComparacaoEstado.this,
+				Intent intent = new Intent(StateComparison.this,
 						ComparacaoResult.class);
 
-				intent.putExtra("cursoSelecionado", curso);
-				intent.putExtra("Estado1", estado1);
-				intent.putExtra("Estado2", estado2);
+				intent.putExtra("cursoSelecionado", course);
+				intent.putExtra("Estado1", firstState);
+				intent.putExtra("Estado2", secondState);
 				startActivity(intent);
 			}
 		});
