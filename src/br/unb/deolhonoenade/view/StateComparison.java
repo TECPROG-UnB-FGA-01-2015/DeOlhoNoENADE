@@ -30,11 +30,11 @@ import br.unb.deolhonoenade.controller.CourseController;
 public class StateComparison extends Activity
 {
 
-	private String course;
-	private int courseCode;
-	private CourseController objectCourseController;
-	private Spinner firstStateSpinner, secondStateSpinner;
-	private String firstState, secondState;
+	private String course; // Receives the name of course
+	private int courseCode; // Receives the result of the ControllerCurso's method "SearchCourseCode" 
+	private CourseController objectCourseController; // Object from the CourseController Class
+	private Spinner firstStateSpinner, secondStateSpinner; // A dropdown list of states
+	private String firstState, secondState; // Receives the value of the selected state
 
 	@Override
 	// Method to initialize the activity activity_comparacao_estado
@@ -45,6 +45,7 @@ public class StateComparison extends Activity
 
 		objectCourseController = new CourseController(this);
 
+		// Receives the info of the selected course from the view (search by ID)
 		TextView selectedCourse = (TextView) findViewById(R.id.stringCurso);
 
 		course = getIntent().getExtras().getString("cursoSelecionado");
@@ -68,6 +69,8 @@ public class StateComparison extends Activity
 	{
 
 		firstStateSpinner = (Spinner) findViewById(R.id.Estado1);
+		
+		// Holds a list of states by the course code
 		List<String> stateList = new ArrayList<String>();
 
 		stateList = objectCourseController.searchState(courseCode);
