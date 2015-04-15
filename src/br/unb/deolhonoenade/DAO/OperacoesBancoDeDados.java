@@ -7,8 +7,8 @@ import android.database.Cursor;
 import android.database.CursorIndexOutOfBoundsException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-import br.unb.deolhonoenade.model.Curso;
-import br.unb.deolhonoenade.model.Instituicao;
+import br.unb.deolhonoenade.model.Course;
+import br.unb.deolhonoenade.model.Institution;
 
 public class OperacoesBancoDeDados {
 	
@@ -46,8 +46,8 @@ public class OperacoesBancoDeDados {
 	}
 	
 	// Retorna os dados de Instituicao
-	public Instituicao getIES(int codIES) {
-		String string_codIES = String.format("%d",codIES);
+	public Institution getIES(int institutionCode) {
+		String string_codIES = String.format("%d",institutionCode);
 		
 		/*Cria um cursor que aponta para os resultados
 		 * retonados da tabela de instituicoes
@@ -64,15 +64,15 @@ public class OperacoesBancoDeDados {
 		else
 			return null;
 		
-		Instituicao ies;
+		Institution ies;
 		
 		try{
 			// Cria a instuicao e instancia com os dados retornados pelo cursor
-			ies = new Instituicao(cursor.getString(1), cursor.getString(0), 
-					cursor.getString(2), codIES);
+			ies = new Institution(cursor.getString(1), cursor.getString(0), 
+					cursor.getString(2), institutionCode);
 		}catch(CursorIndexOutOfBoundsException e){
-			Log.e(this.getClass().toString(), "codIES Inexistente");
-			throw new Error("codIES Inexistente");	
+			Log.e(this.getClass().toString(), "institutionCode Inexistente");
+			throw new Error("institutionCode Inexistente");	
 		}
 		
 		return ies;
@@ -83,12 +83,12 @@ public class OperacoesBancoDeDados {
 	 * @param ufIES
 	 * @return
 	 */
-	public ArrayList<Curso> getCursos(int codAreaCurso, String ufIES){
+	public ArrayList<Course> getCourses(int codAreaCurso, String ufIES){
 		
 		// Criacao de Variaveis
-		ArrayList<Curso> cursos = new ArrayList<Curso>();
-		Curso curso;
-		Instituicao ies;
+		ArrayList<Course> courses = new ArrayList<Course>();
+		Course course;
+		Institution ies;
 		
 		// Instanciando codigo do curso como string
 		String codg_Curso = String.valueOf(codAreaCurso);
@@ -115,15 +115,15 @@ public class OperacoesBancoDeDados {
 				// Instancia ies sem relacao com curso
 				ies = this.getIES(Integer.parseInt(cursor.getString(0)));
 				// Instancia curso com ies sem o curso
-				curso = new Curso( Integer.parseInt(cursor.getString(6)) ,Integer.parseInt(cursor.getString(0)), cursor.getString(3),
+				course = new Course( Integer.parseInt(cursor.getString(6)) ,Integer.parseInt(cursor.getString(0)), cursor.getString(3),
 						Integer.parseInt(cursor.getString(1)), Integer.parseInt(cursor.getString(2)),
 						cursor.getString(4), Float.parseFloat(cursor.getString(5)), cursor.getString(7), ies );
 				// Adiciona o curso a ies
-				ies.adicionaCurso(curso);
+				ies.addCourse(course);
 				// Adiciona ies com relacionamento com o curso
-				curso.setIES(ies);
+				course.setIES(ies);
 				// Adiciona o curso ao ArrayList que sera retornado
-				cursos.add( curso );
+				courses.add( course );
 				
 			}catch(CursorIndexOutOfBoundsException e){
 				Log.e(this.getClass().toString(), "ufIES Inexistente");
@@ -132,7 +132,7 @@ public class OperacoesBancoDeDados {
 			
 		}while(cursor.moveToNext()); // Move o cursor para a proxima linha		
 		
-		return cursos;
+		return courses;
 		
 	}
 	
@@ -143,11 +143,11 @@ public class OperacoesBancoDeDados {
 	 * @param municipio
 	 * @return
 	 */
-	public ArrayList<Curso> getCursos(int codAreaCurso, String ufIES, String municipio){
+	public ArrayList<Course> getCursos(int codAreaCurso, String ufIES, String municipio){
 
-		ArrayList<Curso> cursos = new ArrayList<Curso>();
-		Curso curso;
-		Instituicao ies;
+		ArrayList<Course> courses = new ArrayList<Course>();
+		Course course;
+		Institution ies;
 	
 		String codg_Curso = String.valueOf(codAreaCurso);
 		
@@ -165,20 +165,20 @@ public class OperacoesBancoDeDados {
 		do{
 			ies = this.getIES(Integer.parseInt(cursor.getString(0)));
 
-			curso = new Curso( Integer.parseInt(cursor.getString(6)) ,Integer.parseInt(cursor.getString(0)), cursor.getString(3),
+			course = new Course( Integer.parseInt(cursor.getString(6)) ,Integer.parseInt(cursor.getString(0)), cursor.getString(3),
 					Integer.parseInt(cursor.getString(1)), Integer.parseInt(cursor.getString(2)),
 					cursor.getString(4), Float.parseFloat(cursor.getString(5)), ufIES,
 					ies );
 
-			ies.adicionaCurso(curso);
+			ies.addCourse(course);
 
-			curso.setIES(ies);
+			course.setIES(ies);
 
-			cursos.add( curso );
+			courses.add( course );
 			
 		}while(cursor.moveToNext());	
 		
-		return cursos;
+		return courses;
 		
 	}
 	
@@ -191,12 +191,12 @@ public class OperacoesBancoDeDados {
 	 * Categoria 0-Ambos 1-Privada 2-Publica
 	 * @return
 	 */
-	public ArrayList<Curso> getCursos(int codAreaCurso, String ufIES, String municipio, String tipo){
+	public ArrayList<Course> getCursos(int codAreaCurso, String ufIES, String municipio, String tipo){
 		
 
-		ArrayList<Curso> cursos = new ArrayList<Curso>();
-		Curso curso;
-		Instituicao ies = new Instituicao("Inexistente","vazio","vazio",0);
+		ArrayList<Course> courses = new ArrayList<Course>();
+		Course course;
+		Institution ies = new Institution("Inexistente","vazio","vazio",0);
 		
 		tipo = tipo.toUpperCase();
 		
@@ -218,25 +218,25 @@ public class OperacoesBancoDeDados {
 			try{
 				ies = this.getIES(Integer.parseInt(cursor.getString(0)));
 			}catch(CursorIndexOutOfBoundsException e){
-				curso = new Curso(0,0,"Inexistente",0,0,"vazio",0,"vazio",ies);
-				cursos.add(curso);
-				return cursos;
+				course = new Course(0,0,"Inexistente",0,0,"vazio",0,"vazio",ies);
+				courses.add(course);
+				return courses;
 			}
 
-			curso = new Curso( Integer.parseInt(cursor.getString(6)) ,Integer.parseInt(cursor.getString(0)), cursor.getString(3),
+			course = new Course( Integer.parseInt(cursor.getString(6)) ,Integer.parseInt(cursor.getString(0)), cursor.getString(3),
 					Integer.parseInt(cursor.getString(1)), Integer.parseInt(cursor.getString(2)),
 					cursor.getString(4), Float.parseFloat(cursor.getString(5)), ufIES,
 					ies );
 
-			ies.adicionaCurso(curso);
+			ies.addCourse(course);
 
-			curso.setIES(ies);
+			course.setIES(ies);
 
-			cursos.add( curso );
+			courses.add( course );
 			
 		}while(cursor.moveToNext());	
 		
-		return cursos;
+		return courses;
 		
 	}
 	
@@ -248,10 +248,10 @@ public class OperacoesBancoDeDados {
 	 * @param tipoInt
 	 * @return
 	 */
-	public ArrayList<Curso> getCursos(int codAreaCurso, String ufIES, int tipoInt) {
-		ArrayList<Curso> cursos = new ArrayList<Curso>();
-		Curso curso;
-		Instituicao ies;
+	public ArrayList<Course> getCursos(int codAreaCurso, String ufIES, int tipoInt) {
+		ArrayList<Course> cursos = new ArrayList<Course>();
+		Course course;
+		Institution ies;
 		
 		String tipo = new String();
 		
@@ -281,16 +281,16 @@ public class OperacoesBancoDeDados {
 
 			ies = this.getIES(Integer.parseInt(cursor.getString(0)));
 
-			curso = new Curso( Integer.parseInt(cursor.getString(6)) ,Integer.parseInt(cursor.getString(0)), cursor.getString(3),
+			course = new Course( Integer.parseInt(cursor.getString(6)) ,Integer.parseInt(cursor.getString(0)), cursor.getString(3),
 					Integer.parseInt(cursor.getString(1)), Integer.parseInt(cursor.getString(2)),
 					cursor.getString(4), Float.parseFloat(cursor.getString(5)), ufIES,
 					ies );
 
-			ies.adicionaCurso(curso);
+			ies.addCourse(course);
 
-			curso.setIES(ies);
+			course.setIES(ies);
 
-			cursos.add( curso );
+			cursos.add( course );
 			
 		}while(cursor.moveToNext());	
 		

@@ -270,7 +270,7 @@ public class CourseController
 	public ArrayList<Course> searchCourse(int courseCode, String state)
 	{
 
-		this.courses = this.databaseOperations.getCursos(courseCode, state);
+		this.courses = this.databaseOperations.getCourses(courseCode, state);
 
 		return courses;
 	}
