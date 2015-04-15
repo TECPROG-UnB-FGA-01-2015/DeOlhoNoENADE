@@ -22,13 +22,17 @@ import android.widget.TextView;
 import br.unb.br.deolhonoenade.graphs.holographlibrary.Bar;
 import br.unb.br.deolhonoenade.graphs.holographlibrary.BarGraph;
 import br.unb.deolhonoenade.R;
-import br.unb.deolhonoenade.controller.ControllerCurso;
+import br.unb.deolhonoenade.controller.CourseController;
 
 public class TypeResultComparison extends Activity
 {
-	private CourseController objectCourseController;
-	private float firstResult, secondResult;
-	private String firstState, secondState, firstType, secondType;
+	private CourseController objectCourseController; // ControllerCurso type object
+	private float firstResult; // Holds the average grade of the first course type
+	private float secondResult; // Holds the average grade of the second course type
+	private String firstState; // Holds the state of first institution (DF, MG, RJ,...)
+	private String secondState; // Holds the state of second institution (AC, AM, SP,...)
+	private String firstType; // Holds the first institution type (public or private)
+	private String secondType; // Holds the second institution type (public or private)
 	
 	@Override
 	// Method to initialize the activity activity_comparacao_result_tipo
@@ -38,39 +42,46 @@ public class TypeResultComparison extends Activity
 		setContentView(R.layout.activity_comparacao_result_tipo);
 		
 		objectCourseController = new CourseController(this);
-		firstResult = getIntent().getExtras().getFloat("firstResult");
-		secondResult = getIntent().getExtras().getFloat("secondResult");
+		firstResult = getIntent().getExtras().getFloat("Resultado1");
+		secondResult = getIntent().getExtras().getFloat("Resultado2");
 		
 		firstState = getIntent().getExtras().getString("Estado1");
 		firstType = getIntent().getExtras().getString("Tipo1");
 		secondState = getIntent().getExtras().getString("Estado2");
 		secondType = getIntent().getExtras().getString("Tipo2");
 		
+		// Holds the first state name and the type of the first institution
 		String eT1 = (firstState + " " + firstType);
+		
+		// Holds the second state name and the type of the second institution
 		String eT2 = (secondState + " " + secondType);
 		
+		// Presents the first institution state on a textView
 		TextView estadoTipo1 = (TextView) findViewById(R.id.estadoTipo1);
 		estadoTipo1.setText(eT1);
 		
+		// Presents the second institution state on a textView
 		TextView estadoTipo2 = (TextView) findViewById(R.id.estadoTipo2);
 		estadoTipo2.setText(eT2);
 		
-		String resultado1String = String.valueOf(firstResult);
-		String resultado2String = String.valueOf(secondResult);
+		String resultado1String = String.valueOf(firstResult); // Holds the first institution grade
+		String resultado2String = String.valueOf(secondResult); // Holds the second institution grade
 		
-		ArrayList<Bar> points = new ArrayList<Bar>();
-		Bar d = new Bar();
+		ArrayList<Bar> points = new ArrayList<Bar>(); // Holds the average grade of institution
+		Bar d = new Bar(); // Contains the first institution data
 		d.setColor(Color.parseColor("#99CC00"));
 		d.setName("Estado/Tipo 1:");
 		d.setValue(Float.parseFloat(resultado1String.substring(0, 5)));
-		Bar d2 = new Bar();
+		Bar d2 = new Bar(); // Contains the second institution data
 		d2.setColor(Color.parseColor("#FFBB33"));
 		d2.setName("Estado/Tipo 2:");
 		d2.setValue(Float.parseFloat(resultado2String.substring(0, 5)));
 		points.add(d);
 		points.add(d2);
 		
+		//Holds the graphical bar with the first institution and second institution names and grades
 		BarGraph g = (BarGraph)findViewById(R.id.graph3);
+		
 		g.setBars(points);
 		g.setUnit(" ");
 
@@ -94,10 +105,7 @@ public class TypeResultComparison extends Activity
 	// Method to recognize when an option on menu is selected
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
+		int id = item.getItemId(); // Holds the id of the container's selected item 
 		if (id == R.id.action_settings)
 		{
 			return true;
@@ -129,6 +137,7 @@ public class TypeResultComparison extends Activity
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState)
 		{
+			// Hosts all other views on the same place
 			View rootView = inflater.inflate(
 					R.layout.fragment_comparacao_result_tipo, container, false);
 			return rootView;
