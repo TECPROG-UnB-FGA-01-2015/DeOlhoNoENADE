@@ -31,20 +31,29 @@ public class Map extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_mapa);
 
+		// Holds the information that will be showed on view
 		WebView webview = (WebView) findViewById(R.id.webView1);
-        String course = getIntent().getExtras().getString("cursoSelecionado");
+        
+		// Stores the curso's name
+		String course = getIntent().getExtras().getString("cursoSelecionado");
+		
+		// ControllerCurso type object
         CourseController objectCourseController = new CourseController(this);
         
+        // Code of the course selected
         int courseCode = objectCourseController.buscaCodCurso(course);
         
+        // Holds all federation units that exists on the application
         ArrayList<String> allUfs = (ArrayList<String>) objectCourseController.buscaUf(1);
         
+    	// Holds all the average grade of all federal units
         List<String> stateAverageGradeList = new ArrayList<String>();
         
-        
-        for(int i = 0; i<allUfs.size(); i++)
+        for(int i = 0; i<allUfs.size(); i++) // For parameter; (0 =< i < todasUfs)
         {	
+        	// Holds the average grade of each federal unit
         	String stateAverageGrade = new String();
+        	
         	try
         	{
 				stateAverageGrade = String.valueOf( objectCourseController.mediaEstado(allUfs.get(i),
@@ -111,15 +120,12 @@ public class Map extends Activity
                 + "</body>" 
                 + "</html>";;
         
+        // Android settings of the web
         WebSettings webSettings = webview.getSettings();
+        
         webSettings.setJavaScriptEnabled(true);
         webview.requestFocusFromTouch();
         
-        //Usando o método abaixo (loadDataWithBaseURL) não é necessário o arquivo
-        //.html da pasta assets.
-        //Sendo assim é executado um "html" em tempo real usando a string 'content'
-        //acima.
-        //Só que não consegui fazer este funcionar.
         webview.loadDataWithBaseURL( "file:///android_asset/", content, "text/html",
         		"utf-8", null );
         
@@ -143,7 +149,7 @@ public class Map extends Activity
 		// Handle action bar item clicks here. The action bar will
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
+		int id = item.getItemId(); // Holds the id of the container's selected item 
 		if (id == R.id.action_settings)
 		{
 			return true;
@@ -175,6 +181,7 @@ public class Map extends Activity
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState)
 		{
+			// Hosts all other views on the same place
 			View rootView = inflater.inflate(R.layout.fragment_mapa, container,
 					false);
 			return rootView;
