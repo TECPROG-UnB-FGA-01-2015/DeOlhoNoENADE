@@ -7,7 +7,7 @@ import br.unb.deolhonoenade.R;
 import br.unb.deolhonoenade.R.id;
 import br.unb.deolhonoenade.R.layout;
 import br.unb.deolhonoenade.R.menu;
-import br.unb.deolhonoenade.controller.ControllerCurso;
+import br.unb.deolhonoenade.controller.CourseController;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
@@ -32,7 +32,7 @@ public class InstitutionComparison extends Activity
 	private Spinner institutionSpinner; // Spinner variable of the Institutions
 	private Spinner statesSpinner; // Spinner variable of the States
 	private Spinner citiesSpinner; // Spinner variable of the Cities
-	private ControllerCurso objectCourseController; // Instantiates an object of the controller
+	private CourseController objectCourseController; // Instantiates an object of the controller
 	private String stateName; // Holds the name of the state
 	private String cityName; // Holds the name of the city
 	private String institutionName; // Holds the name of the institution
@@ -46,19 +46,19 @@ public class InstitutionComparison extends Activity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_comparacao_instituicao);
-		this.objectCourseController = new ControllerCurso(this);
-		
+		this.objectCourseController = new CourseController(this);
+
 		// Receives the selected course. Type = TextView
 		TextView selectedCourse = (TextView) findViewById(R.id.cursoSelecionado);
-		
+
 		selectedCourse.setText(getIntent().getExtras().getString("cursoSelecionado"));
 
-		courseCode = objectCourseController.buscaCodCurso(getIntent().getExtras().getString("cursoSelecionado"));
+		courseCode = objectCourseController.searchCourseCode(getIntent().getExtras().getString("cursoSelecionado"));
 
 		addItensOnSpinnerEstado(courseCode);
 		addListenerOnButtonBuscar();
 	}
-    
+
     // Method to list the State options in a spinner
 	private void addItensOnSpinnerEstado(int courseCode)
 	{
@@ -66,7 +66,7 @@ public class InstitutionComparison extends Activity
 		List<String> ufNameList = new ArrayList<String>();
 
 		// Store all States of a given course
-		ufNameList = objectCourseController.buscaUf(courseCode);
+		ufNameList = objectCourseController.searchState(courseCode);
 
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ufNameList);
 
@@ -91,15 +91,15 @@ public class InstitutionComparison extends Activity
 			}
 		});
 	}
-    
+
     // Method to list the Municipio options in a spinner
 	private void addItensOnSpinnerMunicipio(String uf)
 	{
 		this.citiesSpinner = (Spinner) findViewById(R.id.cidades);
-		
+
 		// Store all cities of a given course
 		List<String> cityNameList;
-		cityNameList = objectCourseController.buscaCidades(courseCode, uf);
+		cityNameList = objectCourseController.searchCities(courseCode, uf);
 
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, cityNameList);
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -123,12 +123,12 @@ public class InstitutionComparison extends Activity
 		});
 
 	}
-    
+
     // Method to list the IES options in a spinner
 	private void addItensOnSpinnerIES(String stateName, String cityName)
 	{
-		List<String> cursos = objectCourseController.buscaIesComUfMun(courseCode, stateName, cityName);
-		this.institutionSpinner = (Spinner) findViewById(R.id.institutionSpinner);
+		List<String> cursos = objectCourseController.seachStateCity(courseCode, stateName, cityName);
+		this.institutionSpinner = (Spinner) findViewById(R.id.spinnerIES);
 
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, cursos);
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -141,8 +141,8 @@ public class InstitutionComparison extends Activity
 			public void onItemSelected(AdapterView<?> parent, View v, int posicao, long id)
 			{
 
-				institutionData = objectCourseController.getDadosIES(posicao);
-				selectedGrade = objectCourseController.getConceitoDoArrayCursos(posicao);
+				institutionData = objectCourseController.getInstitutionInfo(posicao);
+				selectedGrade = objectCourseController.getCourseGrade(posicao);
 				institutionName = institutionData.get(0);
 			}
 
@@ -153,11 +153,11 @@ public class InstitutionComparison extends Activity
 		});
 
 	}
-    
+
     // Method for the confirmation button for the search between the two institutions
 	private void addListenerOnButtonBuscar()
 	{
-		Button comparar = (Button) findViewById(R.id.institutionName);
+		Button comparar = (Button) findViewById(R.id.nomeIES);
 		comparar.setOnClickListener(new OnClickListener()
 		{
 
