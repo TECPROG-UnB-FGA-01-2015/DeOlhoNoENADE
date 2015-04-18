@@ -7,7 +7,7 @@ import br.unb.deolhonoenade.R;
 import br.unb.deolhonoenade.R.id;
 import br.unb.deolhonoenade.R.layout;
 import br.unb.deolhonoenade.R.menu;
-import br.unb.deolhonoenade.controller.ControllerCurso;
+import br.unb.deolhonoenade.controller.CourseController;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
@@ -32,7 +32,7 @@ public class FinalInstitutionComparison extends Activity
 
 	private Spinner statesSpinner; // Spinner variable of the States
 	private Spinner institutionSpinner; // Spinner variable of the Institutions
-	private ControllerCurso objectCourseController; // Instantiates an object of the controller
+	private CourseController objectCourseController; // Instantiates an object of the controller
 	private String stateName; // Holds the name of the state
 	private String cityName; // Holds the name of the city
 	private String secondInstitutionName; // Holds the name of the second institution to be compared
@@ -56,7 +56,7 @@ public class FinalInstitutionComparison extends Activity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_comparacao_instituicao_final);
-		this.objectCourseController = new ControllerCurso(this);
+		this.objectCourseController = new CourseController(this);
 
 		// Receives the selected course. Type = TextView
 		TextView selectedCourse = (TextView) findViewById(R.id.cursoSelecionado);
@@ -78,10 +78,10 @@ public class FinalInstitutionComparison extends Activity
     // Method to list the State options in a spinner
 	private void addItensOnSpinnerEstado(int courseCode, boolean delete)
 	{
-		statesSpinner = (Spinner) findViewById(R.id.stateList);
+		statesSpinner = (Spinner) findViewById(R.id.estados);
 		stateList = new ArrayList<String>();
 
-		stateList = objectCourseController.buscaUf(courseCode);
+		stateList = objectCourseController.searchState(courseCode);
 
 		if (delete)
 		{
@@ -114,7 +114,7 @@ public class FinalInstitutionComparison extends Activity
 	private void addItensOnSpinnerMunicipio(String uf, boolean delete)
 	{
 		this.citiesSpinner = (Spinner) findViewById(R.id.cidades);
-		cityList = objectCourseController.buscaCidades(courseCode, uf);
+		cityList = objectCourseController.searchCities(courseCode, uf);
 
 		if (delete)
 		{
@@ -160,14 +160,14 @@ public class FinalInstitutionComparison extends Activity
     // Method to list the IES options in a spinner
 	private void addItensOnSpinnerIES(String uf, String cidade, boolean delete)
 	{
-		institutionList = objectCourseController.buscaIesComUfMun(courseCode, uf, cidade);
-		this.institutionSpinner = (Spinner) findViewById(R.id.institutionSpinner);
+		institutionList = objectCourseController.seachStateCity(courseCode, uf, cidade);
+		this.institutionSpinner = (Spinner) findViewById(R.id.spinnerIES);
 
 		if (delete)
 		{
 			if (institutionList.remove(firstInstitutionName))
 			{
-				objectCourseController.removeIes(institutionPosition);
+				objectCourseController.removeInstitution(institutionPosition);
 				Log.e(this.getClass().toString(), "retirou");
 			}
 			else
@@ -191,9 +191,9 @@ public class FinalInstitutionComparison extends Activity
 			public void onItemSelected(AdapterView<?> parent, View v, int posicao, long id)
 			{
 				secondInstitutionData = new ArrayList<String>();
-				secondInstitutionData = objectCourseController.getDadosIES(posicao);
-				secondInstitutionData.add(String.format("%.2f", objectCourseController.getConceitoDoArrayCursos(posicao)));
-				secondInstitutionGrade = objectCourseController.getConceitoDoArrayCursos(posicao);
+				secondInstitutionData = objectCourseController.getInstitutionInfo(posicao);
+				secondInstitutionData.add(String.format("%.2f", objectCourseController.getCourseGrade(posicao)));
+				secondInstitutionGrade = objectCourseController.getCourseGrade(posicao);
 				secondInstitutionName = new String();
 				secondInstitutionName = secondInstitutionData.get(0);
 
@@ -258,7 +258,7 @@ public class FinalInstitutionComparison extends Activity
 			@Override
 			public void onClick(View v)
 			{
-				Intent result = new Intent(FinalInstitutionComparison.this, ComparacaoResultIES.class);
+				Intent result = new Intent(FinalInstitutionComparison.this, InstitutionResultComparison.class);
 				result.putStringArrayListExtra("dadosIes1", (ArrayList<String>) firstInstitutionData);
 				result.putStringArrayListExtra("dadosIes2", (ArrayList<String>) secondInstitutionData);
 				result.putExtra("CodCurso", courseCode);
