@@ -18,7 +18,8 @@ import android.widget.TextView;
 import br.unb.br.deolhonoenade.graphs.holographlibrary.Bar;
 import br.unb.br.deolhonoenade.graphs.holographlibrary.BarGraph;
 import br.unb.deolhonoenade.R;
-import br.unb.deolhonoenade.controller.ControllerCurso;
+import br.unb.deolhonoenade.controller.CourseController;
+import br.unb.deolhonoenade.controller.CourseController;
 
 public class CityResultComparison extends Activity
 {
@@ -30,7 +31,7 @@ public class CityResultComparison extends Activity
 	private int firstAverage; // Stores the average score of the first city
 	private int secondAverage; // Stores the average score of the second city
 	private int courseCode; // Describes the code of the course being compared
-	private ControllerCurso objectCourseController; // Instantiates an object of the controller
+	private CourseController objectCourseController; // Instantiates an object of the controller
 
     @Override
     // Method to initialize the activity activity_comparacao_instituicao
@@ -39,14 +40,14 @@ public class CityResultComparison extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_comparacao_result_c);
 
-		objectCourseController = new ControllerCurso(this);
+		objectCourseController = new CourseController(this);
 
 		nameCourse = getIntent().getExtras().getString("cursoSelecionado");
 		nameFirstState = getIntent().getExtras().getString("nameFirstState");
 		nameSecondState = getIntent().getExtras().getString("nameSecondState");
 		nameFirstCity = getIntent().getExtras().getString("nameFirstCity");
 		nameSecondCity = getIntent().getExtras().getString("nameSecondCity");
-		courseCode = objectCourseController.buscaCodCurso(nameCourse);
+		courseCode = objectCourseController.searchCourseCode(nameCourse);
 
 		// Stores the course searched
 		TextView cursoSelecionado = (TextView) findViewById(R.id.cursoSelecionado1);
@@ -60,9 +61,9 @@ public class CityResultComparison extends Activity
 		 * Position [0] has the average grade of the first city
 		 * Position [1] has the average grade of the second city
 		 */
-		gradeList = objectCourseController.comparacaoCidade(courseCode, nameFirstState, nameFirstCity, nameSecondState, nameSecondCity);
+		gradeList = objectCourseController.compareCity(courseCode, nameFirstState, nameFirstCity, nameSecondState, nameSecondCity);
 
-		float firstAverage = gradeList.get(0); // Stores the average grade of the course in the first city (example: 5,0)
+		float firstAverage = gradeList.get(0); // Stores the average grade of the course in the first city (example: 6,0)
 		float secondAverage = gradeList.get(1); // Stores the average grade of the course in the second city (example: 5,0)
 
 		if (savedInstanceState == null)
