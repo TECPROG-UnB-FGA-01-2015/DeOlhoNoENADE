@@ -54,7 +54,7 @@ public class CityComparison extends Activity
 		selectedCourse.setText(getIntent().getExtras().getString("cursoSelecionado"));
 		courseName = getIntent().getExtras().getString("cursoSelecionado");
 
-		this.courseCode = objectCourseController.buscaCodCurso(courseName);
+		this.courseCode = objectCourseController.searchCourseCode(courseName);
 		addItemsOnFirstStateSpinner(courseCode);
 		addItemsOnSecondStateSpinner(courseCode);
 		addListenerOnButtonComparar();
@@ -63,12 +63,12 @@ public class CityComparison extends Activity
     // Method to list the First State options in a spinner
 	private void addItemsOnFirstStateSpinner(int courseCode)
 	{
-		firstStateSpinner = (Spinner) findViewById(R.id.firstStateSpinner);
+		firstStateSpinner = (Spinner) findViewById(R.id.spinnerEstado1);
 		
 		// Stores all states of a given course
 		List<String> ufNameList = new ArrayList<String>();
 
-		ufNameList = objectCourseController.searchUf(courseCode);
+		ufNameList = objectCourseController.searchState(courseCode);
 
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ufNameList);
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -94,12 +94,12 @@ public class CityComparison extends Activity
     // Method to list the Second State options in a spinner
 	private void addItemsOnSecondStateSpinner(int courseCode)
 	{
-		secondStateSpinner = (Spinner) findViewById(R.id.secondStateSpinner);
+		secondStateSpinner = (Spinner) findViewById(R.id.spinnerEstado2);
 
 		// Stores all states of a given course
 		List<String> ufNameList = new ArrayList<String>();
 		
-		ufNameList = objectCourseController.searchUf(courseCode);
+		ufNameList = objectCourseController.searchState(courseCode);
 
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ufNameList);
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -125,12 +125,12 @@ public class CityComparison extends Activity
     // Method to list the First City options in a spinner
 	private void addItemsOnFirstCitySpinner(String uf)
 	{
-		this.firstCitySpinner = (Spinner) findViewById(R.id.firstCitySpinner);
+		this.firstCitySpinner = (Spinner) findViewById(R.id.spinnerCidade1);
 
 		// Stores all cities of a given course
 		List<String> cityNameList = new ArrayList<String>();
 		
-		cityNameList = objectCourseController.buscaCidades(courseCode, uf);
+		cityNameList = objectCourseController.searchCities(courseCode, uf);
 
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, cityNameList);
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -157,12 +157,12 @@ public class CityComparison extends Activity
     // Method to list the Second City options in a spinner
 	private void addItemsOnSecondCitySpinner(String uf, String cidade)
 	{
-		this.secondCitySpinner = (Spinner) findViewById(R.id.secondCitySpinner);
+		this.secondCitySpinner = (Spinner) findViewById(R.id.spinnerCidade2);
 
 		// Stores all cities of a given course
 		List<String> cityNameList = new ArrayList<String>();
 		
-		cityNameList = objectCourseController.buscaCidades(courseCode, uf);
+		cityNameList = objectCourseController.searchCities(courseCode, uf);
 		cityNameList.remove(cidade);
 
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, cityNameList);
@@ -195,7 +195,7 @@ public class CityComparison extends Activity
 			@Override
 			public void onClick(View v)
 			{
-				Intent intent = new Intent(CityComparison.this, ComparacaoResultC.class);
+				Intent intent = new Intent(CityComparison.this, CityResultComparison.class);
 				intent.putExtra("cursoSelecionado", courseName);
 				intent.putExtra("firstStateName", firstStateName);
 				intent.putExtra("secondStateName", secondStateName);
