@@ -14,14 +14,14 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import br.unb.deolhonoenade.R;
-import br.unb.deolhonoenade.controller.ControllerCurso;
+import br.unb.deolhonoenade.controller.CourseController;
 
 
 public class DadosIES extends Activity implements
 		ActionBar.OnNavigationListener {
 
 	private static final String STATE_SELECTED_NAVIGATION_ITEM = "selected_navigation_item";
-	private ControllerCurso controller;
+	private CourseController controller;
 	private int codIES;
 	private List<String> dados;
 
@@ -30,7 +30,7 @@ public class DadosIES extends Activity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_dados_ies);
 		
-		controller = new ControllerCurso(this);
+		controller = new CourseController(this);
 		codIES = Integer.parseInt(getIntent().getExtras().get("codIES").toString());
 		dados = getIntent().getExtras().getStringArrayList("dadosIes");
 		TextView nomeIES = (TextView) findViewById(R.id.nomeIES);
