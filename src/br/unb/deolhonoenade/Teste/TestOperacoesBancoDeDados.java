@@ -6,16 +6,16 @@ import java.util.List;
 import junit.framework.Assert;
 import br.unb.deolhonoenade.DAO.ImportarBancoDeDados;
 import br.unb.deolhonoenade.DAO.OperacoesBancoDeDados;
-import br.unb.deolhonoenade.controller.ControllerCurso;
-import br.unb.deolhonoenade.model.Curso;
-import br.unb.deolhonoenade.model.Instituicao;
+import br.unb.deolhonoenade.controller.CourseController;
+import br.unb.deolhonoenade.model.Course;
+import br.unb.deolhonoenade.model.Institution;
 import android.database.sqlite.SQLiteDatabase;
 import android.test.AndroidTestCase;
 import android.util.Log;
 
 public class TestOperacoesBancoDeDados extends AndroidTestCase {
 	private OperacoesBancoDeDados opBD;
-	private ControllerCurso controller;
+	private CourseController controller;
 
 	public TestOperacoesBancoDeDados() {
 		super();
@@ -59,10 +59,10 @@ public class TestOperacoesBancoDeDados extends AndroidTestCase {
 	}
 
 	public void testGetIES() {
-		controller = new ControllerCurso(getContext());
+		controller = new CourseController(getContext());
 		opBD = new OperacoesBancoDeDados(controller.getDatabase());
 
-		Instituicao ies = new Instituicao(
+		Institution ies = new Institution(
 				"UNIVERSIDADE FEDERAL DE MATO GROSSO", "UNIVERSIDADES",
 				"PUBLICA", 1);
 		assertEquals(opBD.getIES(1).getNome(), ies.getNome());
@@ -72,10 +72,10 @@ public class TestOperacoesBancoDeDados extends AndroidTestCase {
 	}
 
 	public void testGetIESException() {
-		controller = new ControllerCurso(getContext());
+		controller = new CourseController(getContext());
 		opBD = new OperacoesBancoDeDados(controller.getDatabase());
 
-		Instituicao ies = new Instituicao(
+		Institution ies = new Institution(
 				"UNIVERSIDADE FEDERAL DE MATO GROSSO", "UNIVERSIDADES",
 				"PUBLICA", 1);
 		
@@ -98,22 +98,22 @@ public class TestOperacoesBancoDeDados extends AndroidTestCase {
 
 		opBD = new OperacoesBancoDeDados(database);
 
-		ArrayList<Curso> cursosT = new ArrayList<Curso>();
-		ArrayList<Curso> cursos = new ArrayList<Curso>();
+		ArrayList<Course> cursosT = new ArrayList<Course>();
+		ArrayList<Course> cursos = new ArrayList<Course>();
 
-		Instituicao ies1 = new Instituicao("FACULDADE BARAO DO RIO BRANCO",
+		Institution ies1 = new Institution("FACULDADE BARAO DO RIO BRANCO",
 				"FACULDADES", "PRIVADA", 2132);
-		Instituicao ies2 = new Instituicao("FACULDDE DA AMAZONIA OCIDENTAL",
+		Institution ies2 = new Institution("FACULDDE DA AMAZONIA OCIDENTAL",
 				"FACULDADES", "PRIVADA", 2343);
-		Instituicao ies3 = new Instituicao(
+		Institution ies3 = new Institution(
 				"FACULDADE DE DESENVOLVIMENTO SUSTENTAVEL DE CRUZEIRO DO SUL",
 				"FACULDADES", "PRIVADA", 2072);
 
-		Curso curso1 = new Curso(1, 2072, "ADMINISTRACAO", 29, 26,
+		Course curso1 = new Course(1, 2072, "ADMINISTRACAO", 29, 26,
 				"CRUZEIRO DO SUL", (float) 0.785, "AC", ies3);
-		Curso curso2 = new Curso(1, 2132, "ADMINISTRACAO", 147, 125,
+		Course curso2 = new Course(1, 2132, "ADMINISTRACAO", 147, 125,
 				"RIO BRANCO", (float) 1.605, "AC", ies1);
-		Curso curso3 = new Curso(1, 2343, "ADMINISTRACAO", 49, 48,
+		Course curso3 = new Course(1, 2343, "ADMINISTRACAO", 49, 48,
 				"RIO BRANCO", (float) 1.432, "AC", ies2);
 
 		cursosT.add(curso2);
@@ -146,7 +146,7 @@ public class TestOperacoesBancoDeDados extends AndroidTestCase {
 
 		opBD = new OperacoesBancoDeDados(database);
 
-		ArrayList<Curso> cursos = new ArrayList<Curso>();
+		ArrayList<Course> cursos = new ArrayList<Course>();
 
 		try{
 			cursos = opBD.getCursos(1, "AS");
@@ -164,14 +164,14 @@ public class TestOperacoesBancoDeDados extends AndroidTestCase {
 
 		opBD = new OperacoesBancoDeDados(database);
 
-		ArrayList<Curso> cursosT = new ArrayList<Curso>();
-		ArrayList<Curso> cursos = new ArrayList<Curso>();
+		ArrayList<Course> cursosT = new ArrayList<Course>();
+		ArrayList<Course> cursos = new ArrayList<Course>();
 
-		Instituicao ies3 = new Instituicao(
+		Institution ies3 = new Institution(
 				"FACULDADE DE DESENVOLVIMENTO SUSTENTAVEL DE CRUZEIRO DO SUL",
 				"FACULDADES", "PRIVADA", 2072);
 
-		Curso curso1 = new Curso(1, 2072, "ADMINISTRACAO", 29, 26,
+		Course curso1 = new Course(1, 2072, "ADMINISTRACAO", 29, 26,
 				"CRUZEIRO DO SUL", (float) 0.785, "AC", ies3);
 
 		cursosT.add(curso1);
@@ -194,12 +194,12 @@ public class TestOperacoesBancoDeDados extends AndroidTestCase {
 		SQLiteDatabase database = bdados.openDataBase();
 		opBD = new OperacoesBancoDeDados(database);
 
-		ArrayList<Curso> cursosT = new ArrayList<Curso>();
-		ArrayList<Curso> cursos = new ArrayList<Curso>();
+		ArrayList<Course> cursosT = new ArrayList<Course>();
+		ArrayList<Course> cursos = new ArrayList<Course>();
 
-		Instituicao ies = new Instituicao("UNIVERSIDADE DE BRASILIA",
+		Institution ies = new Institution("UNIVERSIDADE DE BRASILIA",
 				"UNIVERSIDADES", "PUBLICA", 2);
-		Curso curso1 = new Curso(1, 2, "ADMINISTRACAO", 141, 89, "BRASILIA",
+		Course curso1 = new Course(1, 2, "ADMINISTRACAO", 141, 89, "BRASILIA",
 				(float) 3.735, "DF", ies);
 
 		cursosT.add(curso1);
@@ -217,17 +217,17 @@ public class TestOperacoesBancoDeDados extends AndroidTestCase {
 	public void testGetCursosIntStringIntForPrivadas() {
 		ImportarBancoDeDados bdados = new ImportarBancoDeDados(getContext());
 
-		ArrayList<Curso> cursosT = new ArrayList<Curso>();
-		ArrayList<Curso> cursos = new ArrayList<Curso>();
+		ArrayList<Course> cursosT = new ArrayList<Course>();
+		ArrayList<Course> cursos = new ArrayList<Course>();
 
 		SQLiteDatabase database = bdados.openDataBase();
 		opBD = new OperacoesBancoDeDados(database);
 
-		Curso curso1 = new Curso(1, 2132, "ADMINISTRACAO", 147, 125,
+		Course curso1 = new Course(1, 2132, "ADMINISTRACAO", 147, 125,
 				"RIO BRANCO", (float) 1.605, "AC", null);
-		Curso curso2 = new Curso(1, 2343, "ADMINISTRACAO", 49, 48,
+		Course curso2 = new Course(1, 2343, "ADMINISTRACAO", 49, 48,
 				"RIO BRANCO", (float) 1.432, "AC", null);
-		Curso curso3 = new Curso(1, 2072, "ADMINISTRACAO", 29, 26,
+		Course curso3 = new Course(1, 2072, "ADMINISTRACAO", 29, 26,
 				"CRUZEIRO DO SUL", (float) 0.785, "AC", null);
 
 		cursosT.add(curso1);
@@ -267,13 +267,13 @@ public class TestOperacoesBancoDeDados extends AndroidTestCase {
 	public void testGetCursosIntStringIntForPublicas() {
 		ImportarBancoDeDados bdados = new ImportarBancoDeDados(getContext());
 
-		ArrayList<Curso> cursosT = new ArrayList<Curso>();
-		ArrayList<Curso> cursos = new ArrayList<Curso>();
+		ArrayList<Course> cursosT = new ArrayList<Course>();
+		ArrayList<Course> cursos = new ArrayList<Course>();
 
 		SQLiteDatabase database = bdados.openDataBase();
 		opBD = new OperacoesBancoDeDados(database);
 
-		Curso curso1 = new Curso(2, 549, "DIREITO", 64, 47, "RIO BRANCO",
+		Course curso1 = new Course(2, 549, "DIREITO", 64, 47, "RIO BRANCO",
 				(float) 3.398, "AC", null);
 
 		cursosT.add(curso1);
