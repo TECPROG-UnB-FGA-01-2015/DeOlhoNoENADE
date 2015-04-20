@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import br.unb.deolhonoenade.R;
-import br.unb.deolhonoenade.controller.ControllerCurso;
+import br.unb.deolhonoenade.controller.CourseController;
 
 public class DadosInstituicoes extends Fragment {
 
