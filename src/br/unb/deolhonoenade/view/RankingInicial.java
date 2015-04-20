@@ -21,7 +21,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import br.unb.deolhonoenade.R;
-import br.unb.deolhonoenade.controller.ControllerCurso;
+import br.unb.deolhonoenade.controller.CourseController;
 
 public class RankingInicial extends Activity implements
 		ActionBar.OnNavigationListener {
@@ -33,7 +33,7 @@ public class RankingInicial extends Activity implements
 	private ArrayList<String> cursos = new ArrayList<String>();
 	private String curso, tipo, estado, municipio;
 	private int codCurso;
-	private static ControllerCurso controller = null;
+	private static CourseController controller = null;
 	
 	
 	@Override
@@ -42,7 +42,7 @@ public class RankingInicial extends Activity implements
 		setContentView(R.layout.activity_ranking_inicial);
 		
 		if(controller == null)
-			controller = new ControllerCurso(this);
+			controller = new CourseController(this);
 
 		TextView cursoSelecionado = (TextView) findViewById(R.id.stringCurso);
 
@@ -51,7 +51,7 @@ public class RankingInicial extends Activity implements
 		
 		cursoSelecionado.setText(getIntent().getExtras().getString("cursoSelecionado"));
 		
-		this.codCurso = controller.buscaCodCurso(curso);
+		this.codCurso = controller.searchCourseCode(curso);
 		
 		addItensOnSpinnerEstado(codCurso);
 		addListenerOnButtonBuscar();		
@@ -65,7 +65,7 @@ public class RankingInicial extends Activity implements
 		spinnerEstados = (Spinner) findViewById(R.id.SpinnerEstados);
 		List<String> list = new ArrayList<String>();
 		
-		list = controller.buscaUf(codCurso);
+		list = controller.searchState(codCurso);
 					
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_spinner_item, list);
@@ -96,7 +96,7 @@ public class RankingInicial extends Activity implements
 		
 		this.spinnerCidades = (Spinner) findViewById(R.id.spinnerCidade);
 		List<String> list;
-		list = controller.buscaCidades(codCurso, uf);
+		list = controller.searchCities(codCurso, uf);
 		
 		
 			list.add(0, "Todas");
@@ -129,7 +129,7 @@ public class RankingInicial extends Activity implements
 	private void addItensOnSpinnerTipo() {
 		tipos.clear();
 				
-		tipos = controller.buscaTiposEstado(codCurso, estado);
+		tipos = controller.searchTypeState(codCurso, estado);
 		
 		if(tipos.size()>=2)
 			tipos.add(0,"Ambas");
@@ -161,7 +161,7 @@ public class RankingInicial extends Activity implements
 	
 	private void addItensOnSpinnerTipo(String municipio) {
 		tipos.clear();
-		tipos = controller.buscaTipos(codCurso, municipio);
+		tipos = controller.searchTypes(codCurso, municipio);
 	
 		// Identificando o Spinner
 		tipUniv = (Spinner) findViewById(R.id.spinnerTipo);
