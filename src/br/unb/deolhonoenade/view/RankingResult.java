@@ -15,7 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import br.unb.deolhonoenade.R;
-import br.unb.deolhonoenade.controller.ControllerCurso;
+import br.unb.deolhonoenade.controller.CourseController;
 
 public class RankingResult extends Activity implements
 		ActionBar.OnNavigationListener {
@@ -28,7 +28,7 @@ public class RankingResult extends Activity implements
 	private String uf, municipio, tipo, curso, ies;
 	private int codCurso;
 	private int codIES;
-	private ControllerCurso controller;
+	private CourseController controller;
 	private List<String> cursos;
 	private boolean comparacao;
 	
@@ -45,13 +45,13 @@ public class RankingResult extends Activity implements
 		cursos = new ArrayList<String>();
 		
 		if(controller == null)
-			controller = new ControllerCurso(this);
+			controller = new CourseController(this);
 		
 		curso = getIntent().getExtras().getString("CodigoCurso");
 		
 		comparacao = getIntent().getExtras().getBoolean("BoolComp");
 		
-		codCurso = controller.buscaCodCurso(curso);
+		codCurso = controller.searchCourseCode(curso);
 		
 		uf = getIntent().getExtras().getString("Estado");
 		municipio = getIntent().getExtras().getString("Municipio");
@@ -96,8 +96,8 @@ public class RankingResult extends Activity implements
 			@Override
 			public void onItemClick(AdapterView<?> parent, View v, int posicao, long id){
 					Intent chamarDados = new Intent(RankingResult.this, DadosIES.class);
-					codIES = controller.getCodIESDoArrayCursos(posicao);
-					List<String> dados = controller.getDadosIES(posicao);
+					codIES = controller.getInstitutionCode(posicao);
+					List<String> dados = controller.getInstitutionInfo(posicao);
 					chamarDados.putStringArrayListExtra("dadosIes", (ArrayList<String>) dados);
 					chamarDados.putExtra("codIES", codIES);
 					startActivity(chamarDados);
