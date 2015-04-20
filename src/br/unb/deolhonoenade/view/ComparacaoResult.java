@@ -14,7 +14,7 @@ import br.unb.deolhonoenade.R;
 import br.unb.deolhonoenade.R.id;
 import br.unb.deolhonoenade.R.layout;
 import br.unb.deolhonoenade.R.menu;
-import br.unb.deolhonoenade.controller.ControllerCurso;
+import br.unb.deolhonoenade.controller.CourseController;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
@@ -34,7 +34,7 @@ public class ComparacaoResult extends Activity
 {
 
 	private String curso, estado1, estado2;
-	private ControllerCurso controller;
+	private CourseController controller;
 	private int codCurso;
 
 	@Override
@@ -43,12 +43,12 @@ public class ComparacaoResult extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_comparacao_result);
 
-		controller = new ControllerCurso(this);
+		controller = new CourseController(this);
 
 		curso = getIntent().getExtras().getString("cursoSelecionado");
 		estado1 = getIntent().getExtras().getString("Estado1");
 		estado2 = getIntent().getExtras().getString("Estado2");
-		codCurso = controller.buscaCodCurso(curso);
+		codCurso = controller.searchCourseCode(curso);
 
 		TextView titulo = (TextView) findViewById(R.id.stringCurso);
 
@@ -56,7 +56,7 @@ public class ComparacaoResult extends Activity
 
 		List<Float> list;
 
-		list = controller.comparaEstado(estado1, estado2, codCurso);
+		list = controller.compareState(estado1, estado2, codCurso);
 
 		if(savedInstanceState == null)
 		{
