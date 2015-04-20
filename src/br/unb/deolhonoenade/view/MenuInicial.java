@@ -49,7 +49,7 @@ public class MenuInicial extends Activity {
 			
 			@Override
 	    	public void onClick(View v) {
-	    		Intent intent = new Intent(MenuInicial.this, Mapa.class);
+	    		Intent intent = new Intent(MenuInicial.this, Map.class);
 	    		intent.putExtra("cursoSelecionado", String.valueOf(spinner1.getSelectedItem()));
 	    		intent.putExtra("BoolComp", false);
 	    		startActivity(intent);
@@ -115,7 +115,7 @@ public class MenuInicial extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-	    		Intent intent = new Intent(MenuInicial.this, ComparacaoInicial.class);
+	    		Intent intent = new Intent(MenuInicial.this, InitialComparison.class);
 	    // A ideia aqui era mandar o curso selecionado para a tela comparacao estado.     
 				intent.putExtra("cursoSelecionado", String.valueOf(spinner1.getSelectedItem()));
 	    		startActivity(intent);
