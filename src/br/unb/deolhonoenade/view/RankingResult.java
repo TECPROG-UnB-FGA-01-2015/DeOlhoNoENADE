@@ -107,23 +107,23 @@ public class RankingResult extends Activity implements
 	}
 
 	private void getStringCurso(int codCurso2, String uf2, int tipoInt) {
-		cursos = controller.buscaStringCurso(codCurso2, uf2, tipoInt);
+		cursos = controller.searchCoursesNames(codCurso2, uf2, tipoInt);
 		
 	}
 
 	private void getStringCurso(int codCurso2, String uf2) {
-		cursos = controller.buscaStringCurso(codCurso2, uf2);
+		cursos = controller.searchCoursesNames(codCurso2, uf2);
 		
 	}
 
 	private void getStringCurso(int codCurso2, String uf2, String municipio2,
 			String tipo2) {
-		cursos = controller.buscaStringCurso(codCurso2, uf2, municipio2, tipo2);
+		cursos = controller.searchCoursesNames(codCurso2, uf2, municipio2, tipo2);
 		
 	}
 
 	private void getStringCurso(int codCurso2, String uf2, String municipio2) {
-		cursos = controller.buscaStringCurso(codCurso2, uf2, municipio2);
+		cursos = controller.searchCoursesNames(codCurso2, uf2, municipio2);
 		
 	}
 
