@@ -473,7 +473,7 @@ public class CourseControllerTest extends AndroidTestCase
 		secondTypeList.add(secondType);
 		secondTypeList.add(thirdType);
 		
-		firstTypeList = controller.searchTypeState(1, "DF");
+		firstTypeList = controller.searchStateTypes(1, "DF");
 		Assert.assertEquals(secondTypeList, firstTypeList);
 	}
 
@@ -489,7 +489,7 @@ public class CourseControllerTest extends AndroidTestCase
 
 		secondTypeList.add(firstType);
 
-		firstTypeList = controller.searchTypeState(1, "AC");
+		firstTypeList = controller.searchStateTypes(1, "AC");
 		Assert.assertEquals(secondTypeList, firstTypeList);
 	}
 
@@ -578,7 +578,7 @@ public class CourseControllerTest extends AndroidTestCase
 		secondCourseList.add("FACULDADE ITOP - 1,202000");
 		secondCourseList.add("FACULDADE SAO MARCOS - 0,209000");
 
-		firstCourseList = controller.searchState(1, "TO");
+		firstCourseList = controller.searchCoursesNames(1, "TO");
 
 		for (int i = 0; i < 14; i++)
 		{
@@ -600,7 +600,7 @@ public class CourseControllerTest extends AndroidTestCase
 		secondCourseList.add("FUNDACAO UNIVERSIDADE FEDERAL DO TOCANTINS - 2,468000");
 		secondCourseList.add("UNIVERSIDADE DO TOCANTINS - 1,366000");
 
-		firstCourseList = controller.searchStateCityType(1, "TO", "PALMAS", "PUBLICA");
+		firstCourseList = controller.searchCoursesNames(1, "TO", "PALMAS", "PUBLICA");
 
 		for (int i = 1; i < 2; i++)
 		{
@@ -626,7 +626,7 @@ public class CourseControllerTest extends AndroidTestCase
 		secondCourseList.add("UNIVERSIDADE DO TOCANTINS - 1,366000");
 		secondCourseList.add("FACULDADE ITOP - 1,202000");
 
-		firstCourseList = controller.seachStateCity(1, "TO", "PALMAS");
+		firstCourseList = controller.searchCoursesNames(1, "TO", "PALMAS");
 		for (int i = 1; i < 7; i++)
 		{
 			Assert.assertEquals(secondCourseList.get(i), firstCourseList.get(i));
@@ -649,7 +649,7 @@ public class CourseControllerTest extends AndroidTestCase
 		secondCourseList.add("FACULDADE GUARAI - 2,014000");
 		secondCourseList.add("UNIVERSIDADE DO TOCANTINS - 1,366000");
 
-		firstCourseList = controller.searchStateIntegerType(1, "TO", 2);
+		firstCourseList = controller.searchCoursesNames(1, "TO", 2);
 		for (int i = 1; i < 5; i++)
 		{
 			Assert.assertEquals(secondCourseList.get(i), firstCourseList.get(i));
