@@ -65,10 +65,10 @@ public class TestOperacoesBancoDeDados extends AndroidTestCase {
 		Institution ies = new Institution(
 				"UNIVERSIDADE FEDERAL DE MATO GROSSO", "UNIVERSIDADES",
 				"PUBLICA", 1);
-		assertEquals(opBD.getIES(1).getNome(), ies.getNome());
-		assertEquals(opBD.getIES(1).getOrganizacaoAcademica(),
-				ies.getOrganizacaoAcademica());
-		assertEquals(opBD.getIES(1).getTipo(), ies.getTipo());
+		assertEquals(opBD.getIES(1).getName(), ies.getName());
+		assertEquals(opBD.getIES(1).getAcademicOrganization(),
+				ies.getAcademicOrganization());
+		assertEquals(opBD.getIES(1).getType(), ies.getType());
 	}
 
 	public void testGetIESException() {
@@ -82,7 +82,7 @@ public class TestOperacoesBancoDeDados extends AndroidTestCase {
 		String nome;
 		
 		try{
-			nome=opBD.getIES(9859).getNome();
+			nome=opBD.getIES(9859).getName();
 		}catch(Error e){
 			nome="vazio";
 		}
@@ -120,21 +120,21 @@ public class TestOperacoesBancoDeDados extends AndroidTestCase {
 		cursosT.add(curso3);
 		cursosT.add(curso1);
 
-		cursos = opBD.getCursos(1, "AC");
+		cursos = opBD.getCourses(1, "AC");
 		
 		
-		for (int i = 0; i < 3; i++) {
-			
-			Assert.assertEquals(cursosT.get(i).getConceitoEnade(), cursos
-					.get(i).getConceitoEnade());
+		for (int i = 0; i < 3; i++)
+        {
+			Assert.assertEquals(cursosT.get(i).getCourseGrade(), cursos
+					.get(i).getCourseGrade());
 			
 			Assert.assertEquals(cursosT.get(i).getId(), cursos.get(i).getId());
 			
-			Assert.assertEquals(cursosT.get(i).getId_ies(), cursos.get(i)
-					.getId_ies());
+			Assert.assertEquals(cursosT.get(i).getId_institution(), cursos.get(i)
+					.getId_institution());
 			
-			Assert.assertEquals(cursosT.get(i).getNumEstudantes(), cursos
-					.get(i).getNumEstudantes());
+			Assert.assertEquals(cursosT.get(i).getStudentsNumber(), cursos
+					.get(i).getStudentsNumber());
 		}
 		
 	}
@@ -149,7 +149,7 @@ public class TestOperacoesBancoDeDados extends AndroidTestCase {
 		ArrayList<Course> cursos = new ArrayList<Course>();
 
 		try{
-			cursos = opBD.getCursos(1, "AS");
+			cursos = opBD.getCourses(1, "AS");
 		}catch(Error e){
 			e.printStackTrace();
 			cursos=null;
@@ -178,13 +178,13 @@ public class TestOperacoesBancoDeDados extends AndroidTestCase {
 
 		cursos = opBD.getCursos(1, "AC", "CRUZEIRO DO SUL");
 
-		Assert.assertEquals(cursosT.get(0).getConceitoEnade(), cursos.get(0)
-				.getConceitoEnade());
+		Assert.assertEquals(cursosT.get(0).getCourseGrade(), cursos.get(0)
+				.getCourseGrade());
 		Assert.assertEquals(cursosT.get(0).getId(), cursos.get(0).getId());
-		Assert.assertEquals(cursosT.get(0).getId_ies(), cursos.get(0)
-				.getId_ies());
-		Assert.assertEquals(cursosT.get(0).getNumEstudantes(), cursos.get(0)
-				.getNumEstudantes());
+		Assert.assertEquals(cursosT.get(0).getId_institution(), cursos.get(0)
+				.getId_institution());
+		Assert.assertEquals(cursosT.get(0).getStudentsNumber(), cursos.get(0)
+				.getStudentsNumber());
 
 	}
 
@@ -205,13 +205,13 @@ public class TestOperacoesBancoDeDados extends AndroidTestCase {
 		cursosT.add(curso1);
 		cursos = opBD.getCursos(1, "DF", "BRASILIA", "PUBLICA");
 
-		Assert.assertEquals(cursosT.get(0).getConceitoEnade(), cursos.get(0)
-				.getConceitoEnade());
+		Assert.assertEquals(cursosT.get(0).getCourseGrade(), cursos.get(0)
+				.getCourseGrade());
 		Assert.assertEquals(cursosT.get(0).getId(), cursos.get(0).getId());
-		Assert.assertEquals(cursosT.get(0).getId_ies(), cursos.get(0)
-				.getId_ies());
-		Assert.assertEquals(cursosT.get(0).getNumEstudantes(), cursos.get(0)
-				.getNumEstudantes());
+		Assert.assertEquals(cursosT.get(0).getId_institution(), cursos.get(0)
+				.getId_institution());
+		Assert.assertEquals(cursosT.get(0).getStudentsNumber(), cursos.get(0)
+				.getStudentsNumber());
 	}
 
 	public void testGetCursosIntStringIntForPrivadas() {
@@ -237,31 +237,31 @@ public class TestOperacoesBancoDeDados extends AndroidTestCase {
 		cursos = opBD.getCursos(1, "AC", 1);
 
 		// compara curso1
-		Assert.assertEquals(cursosT.get(0).getConceitoEnade(), cursos.get(0)
-				.getConceitoEnade());
+		Assert.assertEquals(cursosT.get(0).getCourseGrade(), cursos.get(0)
+				.getCourseGrade());
 		Assert.assertEquals(cursosT.get(0).getId(), cursos.get(0).getId());
-		Assert.assertEquals(cursosT.get(0).getId_ies(), cursos.get(0)
-				.getId_ies());
-		Assert.assertEquals(cursosT.get(0).getNumEstudantes(), cursos.get(0)
-				.getNumEstudantes());
+		Assert.assertEquals(cursosT.get(0).getId_institution(), cursos.get(0)
+				.getId_institution());
+		Assert.assertEquals(cursosT.get(0).getStudentsNumber(), cursos.get(0)
+				.getStudentsNumber());
 
 		// compara curso2
-		Assert.assertEquals(cursosT.get(1).getConceitoEnade(), cursos.get(1)
-				.getConceitoEnade());
+		Assert.assertEquals(cursosT.get(1).getCourseGrade(), cursos.get(1)
+				.getCourseGrade());
 		Assert.assertEquals(cursosT.get(1).getId(), cursos.get(1).getId());
-		Assert.assertEquals(cursosT.get(1).getId_ies(), cursos.get(1)
-				.getId_ies());
-		Assert.assertEquals(cursosT.get(1).getNumEstudantes(), cursos.get(1)
-				.getNumEstudantes());
+		Assert.assertEquals(cursosT.get(1).getId_institution(), cursos.get(1)
+				.getId_institution());
+		Assert.assertEquals(cursosT.get(1).getStudentsNumber(), cursos.get(1)
+				.getStudentsNumber());
 
 		// compara curso3
-		Assert.assertEquals(cursosT.get(2).getConceitoEnade(), cursos.get(2)
-				.getConceitoEnade());
+		Assert.assertEquals(cursosT.get(2).getCourseGrade(), cursos.get(2)
+				.getCourseGrade());
 		Assert.assertEquals(cursosT.get(2).getId(), cursos.get(2).getId());
-		Assert.assertEquals(cursosT.get(2).getId_ies(), cursos.get(2)
-				.getId_ies());
-		Assert.assertEquals(cursosT.get(2).getNumEstudantes(), cursos.get(2)
-				.getNumEstudantes());
+		Assert.assertEquals(cursosT.get(2).getId_institution(), cursos.get(2)
+				.getId_institution());
+		Assert.assertEquals(cursosT.get(2).getStudentsNumber(), cursos.get(2)
+				.getStudentsNumber());
 	}
 
 	public void testGetCursosIntStringIntForPublicas() {
@@ -280,13 +280,13 @@ public class TestOperacoesBancoDeDados extends AndroidTestCase {
 
 		cursos = opBD.getCursos(2, "AC", 2);
 
-		Assert.assertEquals(cursosT.get(0).getConceitoEnade(), cursos.get(0)
-				.getConceitoEnade());
+		Assert.assertEquals(cursosT.get(0).getCourseGrade(), cursos.get(0)
+				.getCourseGrade());
 		Assert.assertEquals(cursosT.get(0).getId(), cursos.get(0).getId());
-		Assert.assertEquals(cursosT.get(0).getId_ies(), cursos.get(0)
-				.getId_ies());
-		Assert.assertEquals(cursosT.get(0).getNumEstudantes(), cursos.get(0)
-				.getNumEstudantes());
+		Assert.assertEquals(cursosT.get(0).getId_institution(), cursos.get(0)
+				.getId_institution());
+		Assert.assertEquals(cursosT.get(0).getStudentsNumber(), cursos.get(0)
+				.getStudentsNumber());
 	}
 
 	public void testGetCidades() {
