@@ -41,7 +41,7 @@ public class TypeComparison extends Activity
 	// Contains a list of states to be chosen to the second institution
 	private Spinner secondStateSpinner;
 	private Spinner secondTypeSpinner; // second institution type (public or private)
-	private ControllerCurso objectCourseController; // ControllerCurso type object
+	private CourseController objectCourseController; // ControllerCurso type object
 	private String firstState; // Holds the first institution state (DF, MG, RJ,...)
 	private String firstType; // Holds the state of first institution (AC, AM, SP,...)
 	private String secondState; // Holds the second institution state (public or private)
@@ -58,7 +58,7 @@ public class TypeComparison extends Activity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_comparacao_tipo);
-		this.objectCourseController = new ControllerCurso(this);
+		this.objectCourseController = new CourseController(this);
 		
 		// Recognize which course was selected
 		TextView cursoSelecionado = (TextView) findViewById(
@@ -68,7 +68,7 @@ public class TypeComparison extends Activity
 				"cursoSelecionado"));
 		
 		// Takes the code of the course that was selected
-		courseCode = objectCourseController.buscaCodCurso(
+		courseCode = objectCourseController.searchCourseCode(
 				getIntent().getExtras().getString("cursoSelecionado"));
 		
 		addItensOnSpinnerEstadoT1(courseCode);
@@ -91,7 +91,7 @@ public class TypeComparison extends Activity
 		firstStateSpinner = (Spinner) findViewById(R.id.SpinnerEstado1);
 		List<String> list = new ArrayList<String>(); // Holds a list of institutions by the course code
 		
-		list = objectCourseController.buscaUf(courseCode);
+		list = objectCourseController.searchState(courseCode);
 
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_spinner_item, list);
@@ -129,7 +129,7 @@ public class TypeComparison extends Activity
 	{
 		this.firstTypeSpinner = (Spinner) findViewById(R.id.SpinnerEstado1Tipo);
 		List<String> list;
-		list = objectCourseController.buscaTiposEstado(courseCode, uf);
+		list = objectCourseController.searchStateTypes(courseCode, uf);
 
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_spinner_item, list);
@@ -166,7 +166,7 @@ public class TypeComparison extends Activity
 		secondStateSpinner = (Spinner) findViewById(R.id.SpinnerEstado2);
 		List<String> list = new ArrayList<String>();
 		
-		list = objectCourseController.buscaUf(courseCode);
+		list = objectCourseController.searchState(courseCode);
 		
 		if(retira)
 		{
@@ -213,7 +213,7 @@ public class TypeComparison extends Activity
 										 boolean retira)
 	{
 		this.secondTypeSpinner = (Spinner) findViewById(R.id.SpinnerEstado2Tipo);
-		secondTypeList = objectCourseController.buscaTiposEstado(courseCode, uf);
+		secondTypeList = objectCourseController.searchStateTypes(courseCode, uf);
 		
 		if(retira)
 		{
@@ -293,10 +293,10 @@ public class TypeComparison extends Activity
 			{
 				// Holds the result of the comparison about the institution type (public or private)
 				Intent result =  new Intent(TypeComparison.this,
-						ComparacaoResultTipo.class);
+						TypeResultComparison.class);
 				
 				// Holds the results of the comparison between the two institutions
-				comparisonResults = objectCourseController.comparacaoTipo(courseCode, firstState, firstType,
+				comparisonResults = objectCourseController.compareType(courseCode, firstState, firstType,
 						secondState, secondType);
 				result.putExtra("CodCurso", courseCode);
 				result.putExtra("resultado1", comparisonResults.get(0));
