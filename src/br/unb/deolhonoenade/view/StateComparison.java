@@ -52,7 +52,7 @@ public class StateComparison extends Activity
 		selectedCourse.setText(getIntent().getExtras().getString(
 				"cursoSelecionado"));
 
-		this.courseCode = objectCourseController.buscaCodCurso(course);
+		this.courseCode = objectCourseController.searchCourseCode(course);
 		addItensOnSpinnerEstado1(courseCode);
 
 		addListenerOnButtonComparar();
