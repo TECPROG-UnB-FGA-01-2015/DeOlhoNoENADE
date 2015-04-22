@@ -1,3 +1,9 @@
+/*****************************************************************************
+ * File: InstitutionComparison.java
+ * Purpose: Shows a list of institution to be compared. User should
+ * 			select the first institution to compare the ENADE institution grade
+ ****************************************************************************/
+
 package br.unb.deolhonoenade.view;
 
 import java.util.ArrayList;
@@ -127,7 +133,7 @@ public class InstitutionComparison extends Activity
     // Method to list the IES options in a spinner
 	private void addItensOnSpinnerIES(String stateName, String cityName)
 	{
-		List<String> cursos = objectCourseController.seachStateCity(courseCode, stateName, cityName);
+		List<String> cursos = objectCourseController.searchCoursesNames(courseCode, stateName, cityName);
 		this.institutionSpinner = (Spinner) findViewById(R.id.spinnerIES);
 
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, cursos);
