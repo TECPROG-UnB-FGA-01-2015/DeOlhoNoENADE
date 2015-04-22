@@ -326,7 +326,7 @@ public class CourseController
 
 	/* This method is responsible to search the Universities' Types with the
 	 * Courses' ID and Universities' States from the Database */
-	public List<String> searchTypeState(int courseCode, String state)
+	public List<String> searchStateTypes(int courseCode, String state)
 	{
 		List<String> types = new ArrayList<String>();
 		types = this.databaseOperations.getTipoEstado(courseCode, state);
@@ -345,7 +345,7 @@ public class CourseController
 	/* This method is responsible to search the Universities' names with
 	 * Courses' IDs, Universities' Brazilian States and Universities' Brazilian
 	 * Cities. This method lists all the Universities' names on the screen */
-	public List<String> seachStateCity(int secondCourseCode, String secondState,
+	public List<String> searchCityInstitutions(int secondCourseCode, String secondState,
 	        String secondCity)
 	{
 
@@ -367,7 +367,7 @@ public class CourseController
 	 * Courses' IDs and Universities' Brazilian States. This method lists all
 	 * the Universities' names (with different Brazilian States chosen) with
 	 * their respectives ENADE' grades */
-	public List<String> searchState(int secondCourseCode, String secondState)
+	public List<String> searchCoursesNames(int secondCourseCode, String secondState)
 	{
 		List<String> courses = new ArrayList<String>();
 		List<Course> coursesList = new ArrayList<Course>();
@@ -388,7 +388,7 @@ public class CourseController
 	 * Cities and Universities' Types. This method lists all the Universities'
 	 * names (with different Brazilian States, Brazilian Cities and Types
 	 * chosen) with their respectives ENADE' grades */
-	public List<String> searchStateCityType(int secondCourseCode, String secondState,
+	public List<String> searchCoursesNames(int secondCourseCode, String secondState,
 	        String secondCity, String secondType)
 	{
 
@@ -411,10 +411,9 @@ public class CourseController
 	 * Cities. This method lists all the Universities' names (with different
 	 * Brazilian States and Brazilian Cities chosen) with their respectives
 	 * ENADE' grades */
-	public List<String> searchStateCity(int secondCourseCode, String secondState,
+	public List<String> searchCoursesNames(int secondCourseCode, String secondState,
 	        String secondCity)
 	{
-
 		List<String> courses = new ArrayList<String>();
 		List<Course> coursesList = new ArrayList<Course>();
 
@@ -433,7 +432,7 @@ public class CourseController
 	 * Universities' Brazilian States, Courses' IDs and Universities' Brazilian
 	 * Cities. This method lists all the Courses' names (with Brazilian States
 	 * and Brazilian Cities chosen) */
-	public List<String> searchStateCity(String secondState, int secondCourseCode,
+	public List<String> searchCoursesNames(String secondState, int secondCourseCode,
 	        String secondCity)
 	{
 
@@ -455,7 +454,7 @@ public class CourseController
 	 * Courses' IDs, Universities' Brazilian States and Universities' Types.
 	 * This method lists all the Universities' names (with different Brazilian
 	 * States and Types chosen) with their respectives ENADE' grades */
-	public List<String> searchStateIntegerType(int courseCode, String state, int integerType)
+	public List<String> searchCoursesNames(int courseCode, String state, int integerType)
 	{
 		List<String> courses = new ArrayList<String>();
 		List<Course> coursesList = new ArrayList<Course>();
