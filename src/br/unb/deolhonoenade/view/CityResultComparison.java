@@ -1,3 +1,8 @@
+/***********************************************************
+ * File: CityResultComparison.java
+ * Purpose: Shows the result of city comparison
+ ***********************************************************/
+
 package br.unb.deolhonoenade.view;
 
 import java.util.ArrayList;

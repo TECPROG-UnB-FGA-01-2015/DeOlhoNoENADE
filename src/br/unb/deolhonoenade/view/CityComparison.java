@@ -1,3 +1,9 @@
+/************************************************************************
+ * File: CityComparison.java
+ * Purpose: Shows a list of cities to be compared. User should
+ * 			select two cities to compare the city's institutions grades
+ ************************************************************************/
+
 package br.unb.deolhonoenade.view;
 
 import java.util.ArrayList;
