@@ -129,7 +129,7 @@ public class RankingInicial extends Activity implements
 	private void addItensOnSpinnerTipo() {
 		tipos.clear();
 				
-		tipos = controller.searchTypeState(codCurso, estado);
+		tipos = controller.searchStateTypes(codCurso, estado);
 		
 		if(tipos.size()>=2)
 			tipos.add(0,"Ambas");
