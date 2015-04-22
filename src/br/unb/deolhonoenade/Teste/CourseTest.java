@@ -133,7 +133,7 @@ public class CourseTest extends AndroidTestCase
 		Course course = new Course(3, 6, "Direito", 25, 15, "portoalegre",
 				(float) 2.45, "DF", null);
 
-		course.setNome("medicina");
+		course.setName("medicina");
 		assertSame("medicina", course.getName());
 	}
 
@@ -193,7 +193,7 @@ public class CourseTest extends AndroidTestCase
 		Course course = new Course(3, 6, "Direito", 25, 15, "portoalegre",
 				(float) 2.45, "DF", null);
 
-		course.setMunicipio("BeloHorizonte");
+		course.setCity("BeloHorizonte");
 		assertSame("BeloHorizonte", course.getCity());
 	}
 
