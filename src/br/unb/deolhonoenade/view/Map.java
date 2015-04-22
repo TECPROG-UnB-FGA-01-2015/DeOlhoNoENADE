@@ -41,10 +41,10 @@ public class Map extends Activity
         CourseController objectCourseController = new CourseController(this);
         
         // Code of the course selected
-        int courseCode = objectCourseController.buscaCodCurso(course);
+        int courseCode = objectCourseController.searchCourseCode(course);
         
         // Holds all federation units that exists on the application
-        ArrayList<String> allUfs = (ArrayList<String>) objectCourseController.buscaUf(1);
+        ArrayList<String> allUfs = (ArrayList<String>) objectCourseController.searchState(1);
         
     	// Holds all the average grade of all federal units
         List<String> stateAverageGradeList = new ArrayList<String>();
@@ -56,7 +56,7 @@ public class Map extends Activity
         	
         	try
         	{
-				stateAverageGrade = String.valueOf( objectCourseController.mediaEstado(allUfs.get(i),
+				stateAverageGrade = String.valueOf( objectCourseController.calculateStateGrade(allUfs.get(i),
 						courseCode));
 			}
         	
