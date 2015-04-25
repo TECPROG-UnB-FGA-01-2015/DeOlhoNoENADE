@@ -109,18 +109,18 @@ public class Course
 	}
 
 	// Method to return the content of attribute  enrolledStudentsNumber 
-	public int getEnrolledStudentsNumber ()
+	public int getEnrolledStudentsNumber()
 	{
 		return  enrolledStudentsNumber ;
 	}
 
 	// Method to set a content on variable  enrolledStudentsNumber 
-	public void setEnrolledStudentsNumber (int  enrolledStudentsNumber )
+	public void setEnrolledStudentsNumber (int enrolledStudentsNumber)
 	{
 
-		if( enrolledStudentsNumber  < this.studentsNumber)
+		if(enrolledStudentsNumber < this.studentsNumber)
 		{
-			this. enrolledStudentsNumber  =  enrolledStudentsNumber ;
+			this.enrolledStudentsNumber = enrolledStudentsNumber ;
 		}
 		else
 		{
