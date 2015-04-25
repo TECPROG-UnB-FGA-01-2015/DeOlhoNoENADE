@@ -65,13 +65,10 @@ public class InitialComparison extends Activity implements
 			public void onClick(View v) // View variable that is called when a view has been clicked
 			{
 	    		Intent intent = new Intent(InitialComparison.this,
-<<<<<<< HEAD
 	    				ComparacaoCidades.class);
 	    		intent.putExtra("selectedCourse", course);
-=======
 	    				CityComparison.class);
 	    		intent.putExtra("cursoSelecionado", course);
->>>>>>> 29b9df9142d6062bffd655da999eeacda564dc62
 	    		startActivity(intent);
 	    	}	
 		});
@@ -114,13 +111,8 @@ public class InitialComparison extends Activity implements
 	    	public void onClick(View v) // View variable that is called when a view has been clicked
 			{
 	    		Intent intent = new Intent(InitialComparison.this,
-<<<<<<< HEAD
-	    				ComparacaoEstado.class);
+					StateComparison.class);
 	    		intent.putExtra("selectedCourse", course);
-=======
-	    				StateComparison.class);
-	    		intent.putExtra("cursoSelecionado", course);
->>>>>>> 29b9df9142d6062bffd655da999eeacda564dc62
 	    		startActivity(intent);
 	    	}	
 		});
@@ -142,13 +134,8 @@ public class InitialComparison extends Activity implements
 	    	public void onClick(View v) // View variable that is called when a view has been clicked
 			{
 	    		Intent intent = new Intent(InitialComparison.this,
-<<<<<<< HEAD
-	    				ComparacaoTipo.class);
+					TypeComparison.class);
 	    		intent.putExtra("selectedCourse", course);
-=======
-	    				TypeComparison.class);
-	    		intent.putExtra("cursoSelecionado", course);
->>>>>>> 29b9df9142d6062bffd655da999eeacda564dc62
 	    		startActivity(intent);
 	    	}	
 		});
