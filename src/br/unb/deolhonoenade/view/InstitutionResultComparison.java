@@ -27,8 +27,8 @@ import br.unb.deolhonoenade.controller.CourseController;
 public class InstitutionResultComparison extends Activity
 {
 	private CourseController objectCourseController; // CourseController type object
-	private List<String> firstInstitutionData; // Contains the first institution data
-	private List<String> secondInstitutionData; // Contains the second institution data
+	private List<String> firstInstitutionInfo; // Contains the first institution data
+	private List<String> secondInstitutionInfo; // Contains the second institution data
 	private float firstGrade; // The grade of the first institution
 	private float secondGrade; // The grade of the second institution
 	private String firstInstitution; // Holds the first institution name
@@ -43,8 +43,8 @@ public class InstitutionResultComparison extends Activity
 		
 		objectCourseController = new CourseController(this);
 			
-		firstInstitutionData = getIntent().getExtras().getStringArrayList("dadosIes1");
-		secondInstitutionData = getIntent().getExtras().getStringArrayList("dadosIes2");
+		firstInstitutionInfo = getIntent().getExtras().getStringArrayList("firstInstitutionInfo");
+		secondInstitutionInfo = getIntent().getExtras().getStringArrayList("secondInstitutionInfo");
 		
 		firstInstitution = getIntent().getExtras().getString("firstInstitution");
 		firstGrade = getIntent().getExtras().getFloat("firstGrade");
