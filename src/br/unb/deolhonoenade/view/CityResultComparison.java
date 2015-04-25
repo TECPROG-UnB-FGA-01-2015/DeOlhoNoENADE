@@ -47,7 +47,7 @@ public class CityResultComparison extends Activity
 
 		objectCourseController = new CourseController(this);
 
-		nameCourse = getIntent().getExtras().getString("cursoSelecionado");
+		nameCourse = getIntent().getExtras().getString("selectedCourse");
 		nameFirstState = getIntent().getExtras().getString("nameFirstState");
 		nameSecondState = getIntent().getExtras().getString("nameSecondState");
 		nameFirstCity = getIntent().getExtras().getString("nameFirstCity");
@@ -57,7 +57,7 @@ public class CityResultComparison extends Activity
 		// Stores the course searched
 		TextView cursoSelecionado = (TextView) findViewById(R.id.cursoSelecionado1);
 		
-		cursoSelecionado.setText(getIntent().getExtras().getString("cursoSelecionado"));
+		cursoSelecionado.setText(getIntent().getExtras().getString("selectedCourse"));
 		// cursoSelecionado.setText(String.format("%d" , courseCode));
 
 		List<Float> gradeList; // Stores the average grade of the course in the two given cities.
