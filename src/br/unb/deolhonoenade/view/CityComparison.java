@@ -57,8 +57,8 @@ public class CityComparison extends Activity
 		// Receives the selected course of the search by id
 		TextView selectedCourse = (TextView) findViewById(R.id.stringCurso1);
 		
-		selectedCourse.setText(getIntent().getExtras().getString("cursoSelecionado"));
-		courseName = getIntent().getExtras().getString("cursoSelecionado");
+		selectedCourse.setText(getIntent().getExtras().getString("selectedCourse"));
+		courseName = getIntent().getExtras().getString("selectedCourse");
 
 		this.courseCode = objectCourseController.searchCourseCode(courseName);
 		addItemsOnFirstStateSpinner(courseCode);
@@ -202,7 +202,7 @@ public class CityComparison extends Activity
 			public void onClick(View v)
 			{
 				Intent intent = new Intent(CityComparison.this, CityResultComparison.class);
-				intent.putExtra("cursoSelecionado", courseName);
+				intent.putExtra("selectedCourse", courseName);
 				intent.putExtra("firstStateName", firstStateName);
 				intent.putExtra("secondStateName", secondStateName);
 				intent.putExtra("firstCityName", firstCityName);
