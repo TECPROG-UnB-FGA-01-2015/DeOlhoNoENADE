@@ -46,11 +46,11 @@ public class StateComparison extends Activity
 		objectCourseController = new CourseController(this);
 
 		// Receives the info of the selected course from the view (search by ID)
-		TextView selectedCourse = (TextView) findViewById(R.id.stringCurso);
+		TextView cursoSelecionado = (TextView) findViewById(R.id.stringCurso);
 
-		course = getIntent().getExtras().getString("cursoSelecionado");
+		course = getIntent().getExtras().getString("selectedCourse");
 		selectedCourse.setText(getIntent().getExtras().getString(
-				"cursoSelecionado"));
+				"selectedCourse"));
 
 		this.courseCode = objectCourseController.searchCourseCode(course);
 		addItensOnSpinnerEstado1(courseCode);
@@ -82,8 +82,7 @@ public class StateComparison extends Activity
 
 		firstStateSpinner.setAdapter(dataAdapter);
 
-		firstStateSpinner
-				.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+		firstStateSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
 				{
 
 					@Override
@@ -97,6 +96,7 @@ public class StateComparison extends Activity
 					@Override
 					public void onNothingSelected(AdapterView<?> parent)
 					{
+						// Nothing to do
 					}
 				});
 	}
@@ -104,7 +104,6 @@ public class StateComparison extends Activity
 	// Method to list the State 2 options in a spinner
 	private void addItensOnSpinnerEstado2()
 	{
-
 		secondStateSpinner = (Spinner) findViewById(R.id.Estado2);
 		List<String> stateList = new ArrayList<String>();
 
@@ -114,14 +113,11 @@ public class StateComparison extends Activity
 
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_spinner_item, stateList);
-		dataAdapter
-				.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		secondStateSpinner.setAdapter(dataAdapter);
 
-		secondStateSpinner
-				.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+		secondStateSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
 				{
-
 					@Override
 					public void onItemSelected(AdapterView<?> parent, View view,
 							int position, long id)
@@ -132,6 +128,7 @@ public class StateComparison extends Activity
 					@Override
 					public void onNothingSelected(AdapterView<?> parent)
 					{
+						// Nothing to do
 					}
 				});
 	}
@@ -139,20 +136,17 @@ public class StateComparison extends Activity
 	// Method for the confirmation button for the comparison between the two states
 	private void addListenerOnButtonComparar()
 	{
-
 		Button comapare = (Button) findViewById(R.id.Comparar);
 		comapare.setOnClickListener(new OnClickListener()
 		{
-
 			@Override
 			public void onClick(View view)
 			{
-				Intent intent = new Intent(StateComparison.this,
-						ComparacaoResult.class);
+				Intent intent = new Intent(StateComparison.this, ComparacaoResult.class);
 
-				intent.putExtra("cursoSelecionado", course);
-				intent.putExtra("Estado1", firstState);
-				intent.putExtra("Estado2", secondState);
+				intent.putExtra("selectedCourse", course);
+				intent.putExtra("firstState", firstState);
+				intent.putExtra("secondState", secondState);
 				startActivity(intent);
 			}
 		});
@@ -175,14 +169,15 @@ public class StateComparison extends Activity
 		{
 			return true;
 		}
+		
 		return super.onOptionsItemSelected(item);
 	}
 
 	public static class PlaceholderFragment extends Fragment
 	{
-
 		public PlaceholderFragment()
 		{
+			// Nothing to do
 		}
 
 		@Override
@@ -191,6 +186,7 @@ public class StateComparison extends Activity
 		{
 			View rootView = inflater.inflate(
 					R.layout.fragment_comparacao_estado, container, false);
+			
 			return rootView;
 		}
 	}
