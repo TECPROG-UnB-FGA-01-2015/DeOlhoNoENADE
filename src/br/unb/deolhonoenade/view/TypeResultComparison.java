@@ -42,13 +42,13 @@ public class TypeResultComparison extends Activity
 		setContentView(R.layout.activity_comparacao_result_tipo);
 		
 		objectCourseController = new CourseController(this);
-		firstResult = getIntent().getExtras().getFloat("Resultado1");
-		secondResult = getIntent().getExtras().getFloat("Resultado2");
+		firstResult = getIntent().getExtras().getFloat("firstResult");
+		secondResult = getIntent().getExtras().getFloat("secondResult");
 		
-		firstState = getIntent().getExtras().getString("Estado1");
-		firstType = getIntent().getExtras().getString("Tipo1");
-		secondState = getIntent().getExtras().getString("Estado2");
-		secondType = getIntent().getExtras().getString("Tipo2");
+		firstState = getIntent().getExtras().getString("firstState");
+		firstType = getIntent().getExtras().getString("firstType");
+		secondState = getIntent().getExtras().getString("secondState");
+		secondType = getIntent().getExtras().getString("secondType");
 		
 		// Holds the first state name and the type of the first institution
 		String eT1 = (firstState + " " + firstType);
