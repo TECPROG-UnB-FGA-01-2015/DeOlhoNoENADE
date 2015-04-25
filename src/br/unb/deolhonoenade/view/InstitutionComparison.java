@@ -43,7 +43,7 @@ public class InstitutionComparison extends Activity
 	private String cityName; // Holds the name of the city
 	private String institutionName; // Holds the name of the institution
 	private int courseCode; // Holds the code of the course being compared
-	private List<String> institutionData; // Holds data of the institution being compared
+	private List<String> institutionInfo; // Holds data of the institution being compared
 	private float selectedGrade; // Holds the grade of the selected item
 
     @Override
@@ -57,9 +57,9 @@ public class InstitutionComparison extends Activity
 		// Receives the selected course. Type = TextView
 		TextView selectedCourse = (TextView) findViewById(R.id.cursoSelecionado);
 
-		selectedCourse.setText(getIntent().getExtras().getString("cursoSelecionado"));
+		selectedCourse.setText(getIntent().getExtras().getString("selectedCourse"));
 
-		courseCode = objectCourseController.searchCourseCode(getIntent().getExtras().getString("cursoSelecionado"));
+		courseCode = objectCourseController.searchCourseCode(getIntent().getExtras().getString("selectedCourse"));
 
 		addItensOnSpinnerEstado(courseCode);
 		addListenerOnButtonBuscar();
@@ -147,9 +147,9 @@ public class InstitutionComparison extends Activity
 			public void onItemSelected(AdapterView<?> parent, View v, int posicao, long id)
 			{
 
-				institutionData = objectCourseController.getInstitutionInfo(posicao);
+				institutionInfo = objectCourseController.getInstitutionInfo(posicao);
 				selectedGrade = objectCourseController.getCourseGrade(posicao);
-				institutionName = institutionData.get(0);
+				institutionName = institutionInfo.get(0);
 			}
 
 			@Override
@@ -171,10 +171,10 @@ public class InstitutionComparison extends Activity
 			public void onClick(View v)
 			{
 				Intent result = new Intent(InstitutionComparison.this, FinalInstitutionComparison.class);
-				result.putStringArrayListExtra("dadosIes", (ArrayList<String>) institutionData);
+				result.putStringArrayListExtra("institutionInfo", (ArrayList<String>) institutionInfo);
 				result.putExtra("courseCode", courseCode);
-				result.putExtra("municipio1", cityName);
-				result.putExtra("estado1", stateName);
+				result.putExtra("firstCity", cityName);
+				result.putExtra("firstState", stateName);
 				result.putExtra("selectedGrade", selectedGrade);
 				result.putExtra("institutionName", institutionName);
 
