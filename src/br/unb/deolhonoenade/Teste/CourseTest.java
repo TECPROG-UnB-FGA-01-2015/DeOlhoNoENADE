@@ -104,6 +104,7 @@ public class CourseTest extends AndroidTestCase
 		// Object from the Curso Class that  is instantiated to be used in testing
 		Course course = new Course(3, 6, "Direito", 25, 15, "portoalegre",
 				(float) 2.45, "DF", null);
+		
 		Assert.assertEquals(course.getId(), 3);
 	}
 
@@ -113,7 +114,9 @@ public class CourseTest extends AndroidTestCase
 		// Object from the Curso Class that  is instantiated to be used in testing
 		Course course = new Course(3, 6, "Direito", 25, 15, "portoalegre",
 				(float) 2.45, "DF", null);
+		
 		course.setId(5);
+		
 		Assert.assertEquals(course.getId(), 5);
 	}
 
@@ -123,6 +126,7 @@ public class CourseTest extends AndroidTestCase
 		// Object from the Curso Class that  is instantiated to be used in testing
 		Course course = new Course(3, 6, "Direito", 25, 15, "portoalegre",
 				(float) 2.45, "DF", null);
+		
 		assertEquals("Direito", course.getName());
 	}
 
@@ -134,6 +138,7 @@ public class CourseTest extends AndroidTestCase
 				(float) 2.45, "DF", null);
 
 		course.setName("medicina");
+		
 		assertSame("medicina", course.getName());
 	}
 
@@ -143,6 +148,7 @@ public class CourseTest extends AndroidTestCase
 		// Object from the Curso Class that  is instantiated to be used in testing
 		Course course = new Course(3, 6, "Direito", 100, 15, "portoalegre",
 				(float) 2.45, "DF", null);
+		
 		assertEquals(100, course.getStudentsNumber());
 	}
 
@@ -152,7 +158,9 @@ public class CourseTest extends AndroidTestCase
 		// Object from the Curso Class that  is instantiated to be used in testing
 		Course course = new Course(3, 6, "Direito", 25, 15, "portoalegre",
 				(float) 2.45, "DF", null);
+		
 		course.setStudentsNumber(500);
+		
 		assertEquals(500, course.getStudentsNumber());
 	}
 
@@ -194,6 +202,7 @@ public class CourseTest extends AndroidTestCase
 				(float) 2.45, "DF", null);
 
 		course.setCity("BeloHorizonte");
+		
 		assertSame("BeloHorizonte", course.getCity());
 	}
 
@@ -203,6 +212,7 @@ public class CourseTest extends AndroidTestCase
 		// Object from the Curso Class that  is instantiated to be used in testing
 		Course course = new Course(3, 6, "Direito", 25, 15, "portoalegre",
 				(float) 5, "DF", null);
+		
 		assertEquals((float) 5, course.getCourseGrade());
 	}
 
@@ -212,8 +222,9 @@ public class CourseTest extends AndroidTestCase
 		// Object from the Curso Class that  is instantiated to be used in testing
 		Course course = new Course(3, 6, "Direito", 25, 15, "portoalegre",
 				(float) 2.45, "DF", null);
+		
 		course.setCourseGrade((float) 4);
+		
 		assertEquals((float) 4, course.getCourseGrade());
 	}
-
 }
