@@ -46,9 +46,9 @@ public class ResultComparison extends Activity
 
 		objectCourseController = new CourseController(this);
 
-		course = getIntent().getExtras().getString("cursoSelecionado");
-		firstState = getIntent().getExtras().getString("Estado1");
-		secondState = getIntent().getExtras().getString("Estado2");
+		course = getIntent().getExtras().getString("selectedCourse");
+		firstState = getIntent().getExtras().getString("firstState");
+		secondState = getIntent().getExtras().getString("secondState");
 		courseCode = objectCourseController.searchCourseCode(course);
 
 		// Receives the info of the title from the view (search by ID)
