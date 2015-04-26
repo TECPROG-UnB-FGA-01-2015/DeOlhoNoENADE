@@ -115,18 +115,24 @@ public class CourseController
 		try
 		{
             String institutionName = courses.get(position).getIES().getName();
-            String academicOrganization = courses.get(position).getIES().getAcademicOrganization();
-            String institutionType = courses.get(position).getIES().getType();
-            String courseCity = courses.get(position).getCity();
-            int enrolledStudentsNumber = courses.get(position).getEnrolledStudentsNumber();
-            int studentsNumber = courses.get(position).getStudentsNumber();
+            institutionInfo.add(institutionName);
 
-			institutionInfo.add(institutionName);
-			institutionInfo.add(academicOrganization);
-			institutionInfo.add(institutionType);
-			institutionInfo.add(courseCity);
-			institutionInfo.add(String.format("%d", enrolledStudentsNumber));
-			institutionInfo.add(String.format("%d", studentsNumber));
+            String academicOrganization = courses.get(position).getIES().getAcademicOrganization();
+            institutionInfo.add(academicOrganization);
+
+            String institutionType = courses.get(position).getIES().getType();
+            institutionInfo.add(institutionType);
+
+            String courseCity = courses.get(position).getCity();
+            institutionInfo.add(courseCity);
+
+            int enrolledStudentsNumber = courses.get(position).getEnrolledStudentsNumber();
+            String formattedEnrolledStudentsNumber = String.format("%d", enrolledStudentsNumber);
+            institutionInfo.add(formattedEnrolledStudentsNumber);
+
+            int studentsNumber = courses.get(position).getStudentsNumber();
+            String formattedStudentsNumber = String.format("%d", studentsNumber);
+			institutionInfo.add(formattedStudentsNumber);
 		}
 		catch (IndexOutOfBoundsException e)
 		{
@@ -153,11 +159,9 @@ public class CourseController
 		secondCourseState = this.searchCourse(courseCode, secondState);
 
 		stateGrade = this.calculateEnadeGrade(firstCourseState);
-
 		compareStateResult.add(stateGrade);
 
 		stateGrade = this.calculateEnadeGrade(secondCourseState);
-
 		compareStateResult.add(stateGrade);
 
 		return compareStateResult;
@@ -168,8 +172,7 @@ public class CourseController
 	 * Course's ID. It gets all the ENADES' grades from one specific course on
 	 * two different Cities and calculates the ENADE's average grades on these
 	 * two different chosen Cities */
-	public List<Float> compareCity(int courseCode, String firstState, String firstCity,
-                                   String secondState, String secondCity)
+	public List<Float> compareCity(int courseCode, String firstState, String firstCity, String secondState, String secondCity)
 	{
 		float cityGrade = 0;
 		List<Float> compareCityResult = new ArrayList<Float>();
@@ -180,11 +183,9 @@ public class CourseController
 		secondCourseCity = this.searchCourse(courseCode, secondState, secondCity);
 
 		cityGrade = this.calculateEnadeGrade(firstCourseCity);
-
 		compareCityResult.add(cityGrade);
 
 		cityGrade = this.calculateEnadeGrade(secondCourseCity);
-
 		compareCityResult.add(cityGrade);
 
 		return compareCityResult;
@@ -195,8 +196,7 @@ public class CourseController
 	 * two different States with the Course's ID. It gets all the ENADES' grades
 	 * from one specific course on two different States and calculates the
 	 * ENADE's average grades on these two different chosen States */
-	public List<Float> compareType(int courseCode, String firstState,
-	        String firstType, String secondState, String secondType)
+	public List<Float> compareType(int courseCode, String firstState, String firstType, String secondState, String secondType)
 	{
 		float typeGrade = 0;
 		List<Float> compareTypeResult = new ArrayList<Float>();
@@ -205,7 +205,6 @@ public class CourseController
 
         final int TYPE_UNIVERSITY_PRIVATE = 1;
         final int TYPE_UNIVERSITY_PUBLIC = 2;
-
 
 		if (firstType.equalsIgnoreCase("Privada"))
 		{
@@ -350,8 +349,7 @@ public class CourseController
 	/* This method is responsible to search the Universities' names with
 	 * Courses' IDs, Universities' Brazilian States and Universities' Brazilian
 	 * Cities. This method lists all the Universities' names on the screen */
-	public List<String> searchCityInstitutions(int secondCourseCode, String secondState,
-	        String secondCity)
+	public List<String> searchCityInstitutions(int secondCourseCode, String secondState, String secondCity)
 	{
 
 		List<String> courses = new ArrayList<String>();
@@ -362,7 +360,8 @@ public class CourseController
 		for (int i = 0; i < coursesList.size(); i++)
 		{
             String institutionName = coursesList.get(i).getIES().getName();
-			courses.add(String.format("%s", institutionName));
+            String formattedInstitutionName = String.format("%s", institutionName);
+			courses.add(formattedInstitutionName);
 		}
 
 		return courses;
@@ -383,7 +382,8 @@ public class CourseController
 		{
             String institutionName = coursesList.get(i).getIES().getName();
             float courseGrade = coursesList.get(i).getCourseGrade();
-			courses.add(String.format("%s - %f", institutionName, courseGrade));
+            String formattedInstitutionCourse = String.format("%s - %f", institutionName, courseGrade);
+			courses.add(formattedInstitutionCourse);
 		}
 
 		return courses;
@@ -405,7 +405,8 @@ public class CourseController
 		{
             String institutionName = coursesList.get(i).getIES().getName();
             float courseGrade = coursesList.get(i).getCourseGrade();
-            courses.add(String.format("%s - %f", institutionName, courseGrade));
+            String formattedInstitutionCourse = String.format("%s - %f", institutionName, courseGrade);
+            courses.add(formattedInstitutionCourse);
 		}
 
 		return courses;
@@ -427,7 +428,8 @@ public class CourseController
 		{
             String institutionName = coursesList.get(i).getIES().getName();
             float courseGrade = coursesList.get(i).getCourseGrade();
-            courses.add(String.format("%s - %f", institutionName, courseGrade));
+            String formattedInstitutionCourse = String.format("%s - %f", institutionName, courseGrade);
+            courses.add(formattedInstitutionCourse);
 		}
 
 		return courses;
@@ -468,7 +470,8 @@ public class CourseController
 		{
             String institutionName = coursesList.get(i).getIES().getName();
             float courseGrade = coursesList.get(i).getCourseGrade();
-            courses.add(String.format("%s - %f", institutionName, courseGrade));
+            String formattedInstitutionCourse = String.format("%s - %f", institutionName, courseGrade);
+            courses.add(formattedInstitutionCourse);
 		}
 
 		return courses;
