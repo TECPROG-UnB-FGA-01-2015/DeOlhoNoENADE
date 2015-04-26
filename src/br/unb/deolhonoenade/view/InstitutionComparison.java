@@ -74,7 +74,9 @@ public class InstitutionComparison extends Activity
 		// Store all States of a given course
 		ufNameList = objectCourseController.searchState(courseCode);
 
-		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ufNameList);
+		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+																	android.R.layout.simple_spinner_item,
+																	ufNameList);
 
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -94,6 +96,7 @@ public class InstitutionComparison extends Activity
 			@Override
 			public void onNothingSelected(AdapterView<?> parent)
 			{
+				// Nothing to do
 			}
 		});
 	}
@@ -107,7 +110,10 @@ public class InstitutionComparison extends Activity
 		List<String> cityNameList;
 		cityNameList = objectCourseController.searchCities(courseCode, uf);
 
-		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, cityNameList);
+		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+																	android.R.layout.simple_spinner_item,
+																	cityNameList);
+		
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 		this.citiesSpinner.setAdapter(dataAdapter);
@@ -125,6 +131,7 @@ public class InstitutionComparison extends Activity
 			@Override
 			public void onNothingSelected(AdapterView<?> parent)
 			{
+				// Nothing to do
 			}
 		});
 
@@ -136,7 +143,10 @@ public class InstitutionComparison extends Activity
 		List<String> cursos = objectCourseController.searchCoursesNames(courseCode, stateName, cityName);
 		this.institutionSpinner = (Spinner) findViewById(R.id.spinnerIES);
 
-		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, cursos);
+		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+																	android.R.layout.simple_spinner_item,
+																	cursos);
+		
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 		this.institutionSpinner.setAdapter(dataAdapter);
@@ -155,6 +165,7 @@ public class InstitutionComparison extends Activity
 			@Override
 			public void onNothingSelected(AdapterView<?> parent)
 			{
+				// Nothing to do
 			}
 		});
 
@@ -199,10 +210,12 @@ public class InstitutionComparison extends Activity
 		{
 			return true;
 		}
+		
 		else
 		{
 			// Nothing to do
 		}
+		
 		return super.onOptionsItemSelected(item);
 	}
 
