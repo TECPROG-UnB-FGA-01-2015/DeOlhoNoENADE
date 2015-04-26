@@ -43,7 +43,9 @@ public class CityComparison extends Activity
 	private String firstCityName; // Holds the name of the first City
 	private String secondCityName; // Holds the name of the second City
 	private CourseController objectCourseController; // Instantiates the controller
-	private static final String STATE_SELECTED_NAVIGATION_ITEM = "selected_navigation_item"; // Const to input selected navigation item
+	
+	// Const to input selected navigation item
+	private static final String STATE_SELECTED_NAVIGATION_ITEM = "selected_navigation_item";
 
     @Override
     // Method to initialize the activity activity_comparacao_cidades
@@ -76,7 +78,10 @@ public class CityComparison extends Activity
 
 		ufNameList = objectCourseController.searchState(courseCode);
 
-		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ufNameList);
+		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+																	android.R.layout.simple_spinner_item,
+																	ufNameList);
+		
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		firstStateSpinner.setAdapter(dataAdapter);
 
@@ -93,6 +98,7 @@ public class CityComparison extends Activity
 			@Override
 			public void onNothingSelected(AdapterView<?> parent)
 			{
+				// Nothing to do
 			}
 		});
 	}
@@ -107,7 +113,10 @@ public class CityComparison extends Activity
 		
 		ufNameList = objectCourseController.searchState(courseCode);
 
-		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, ufNameList);
+		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+																	android.R.layout.simple_spinner_item,
+																	ufNameList);
+		
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		secondStateSpinner.setAdapter(dataAdapter);
 		secondStateSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
@@ -124,6 +133,7 @@ public class CityComparison extends Activity
 			@Override
 			public void onNothingSelected(AdapterView<?> parent)
 			{
+				// Nothing to do
 			}
 		});
 	}
@@ -138,7 +148,10 @@ public class CityComparison extends Activity
 		
 		cityNameList = objectCourseController.searchCities(courseCode, uf);
 
-		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, cityNameList);
+		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+																	android.R.layout.simple_spinner_item,
+																	cityNameList);
+		
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 		this.firstCitySpinner.setAdapter(dataAdapter);
@@ -156,6 +169,7 @@ public class CityComparison extends Activity
 			@Override
 			public void onNothingSelected(AdapterView<?> parent)
 			{
+				// Nothing to do
 			}
 		});
 	}
@@ -171,7 +185,10 @@ public class CityComparison extends Activity
 		cityNameList = objectCourseController.searchCities(courseCode, uf);
 		cityNameList.remove(cidade);
 
-		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, cityNameList);
+		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+																	android.R.layout.simple_spinner_item,
+																	cityNameList);
+		
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 		this.secondCitySpinner.setAdapter(dataAdapter);
@@ -187,6 +204,7 @@ public class CityComparison extends Activity
 			@Override
 			public void onNothingSelected(AdapterView<?> parent)
 			{
+				// Nothing to do
 			}
 		});
 	}
@@ -219,6 +237,11 @@ public class CityComparison extends Activity
 		{
 			getActionBar().setSelectedNavigationItem(savedInstanceState.getInt(STATE_SELECTED_NAVIGATION_ITEM));
 		}
+		
+		else
+		{
+			// Nothing to do
+		}
 	}
 
 	@Override
@@ -238,10 +261,17 @@ public class CityComparison extends Activity
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
 		int id = item.getItemId();
+		
 		if (id == R.id.action_settings)
 		{
 			return true;
 		}
+		
+		else
+		{
+			// Nothing to do
+		}
+		
 		return super.onOptionsItemSelected(item);
 	}
 
@@ -261,6 +291,7 @@ public class CityComparison extends Activity
 
 		public PlaceholderFragment()
 		{
+			// Nothing to do
 		}
 
 		@Override
