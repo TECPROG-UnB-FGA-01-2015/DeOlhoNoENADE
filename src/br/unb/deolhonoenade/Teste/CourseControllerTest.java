@@ -18,7 +18,6 @@ import android.test.AndroidTestCase;
 
 public class CourseControllerTest extends AndroidTestCase
 {
-
 	private ArrayList<Course> courses;
 
 	// This method is responsible to call the parent constructor with no arguments
@@ -52,9 +51,7 @@ public class CourseControllerTest extends AndroidTestCase
 	public void testGetDatabase()
 	{
 		CourseController controller = new CourseController(getContext());
-
 		Assert.assertNotNull(controller.getDatabase());
-
 	}
 
 	/* This method is responsible to test if Universities' names removal was
@@ -65,11 +62,9 @@ public class CourseControllerTest extends AndroidTestCase
 		CourseController controller = new CourseController(getContext());
 
 		int courseCode = controller.searchCourseCode("Administracao");
-
 		controller.searchCourse(courseCode, "SP");
 
         boolean institutionRemoved = controller.removeInstitution(1);
-
 		assertTrue(institutionRemoved);
 	}
 
@@ -80,11 +75,9 @@ public class CourseControllerTest extends AndroidTestCase
 		CourseController controller = new CourseController(getContext());
 
 		int codCurso = controller.searchCourseCode("Administracao");
-
 		controller.searchCourse(codCurso, "SP");
 
         boolean institutionRemoved = controller.removeInstitution(999);
-
 		assertFalse(institutionRemoved);
 	}
 
@@ -161,26 +154,17 @@ public class CourseControllerTest extends AndroidTestCase
 		Institution firstInstitution = controller.searchInstitution(2);
 		controller.searchCourse(1, "DF");
 
-		Course course = new Course(1,
-		                        2,
-		                        "UNIVERSIDADE DE BRASILIA",
-		                        141,
-		                        89,
-		                        "BRASILIA",
-		                        (float) 3.735,
-		                        "DF",
-		                        firstInstitution);
+		Course course = new Course(1, 2, "UNIVERSIDADE DE BRASILIA", 141, 89, "BRASILIA", (float) 3.735,
+                                   "DF", firstInstitution);
+
 		List<String> institutionInfo = controller.getInstitutionInfo(1);
 
 		Assert.assertEquals(institutionInfo.get(0), firstInstitution.getName());
 		Assert.assertEquals(institutionInfo.get(1), firstInstitution.getAcademicOrganization());
 		Assert.assertEquals(institutionInfo.get(2), firstInstitution.getType());
 		Assert.assertEquals(institutionInfo.get(3), course.getCity());
-		Assert.assertEquals(institutionInfo.get(4),
-		                    String.format("%d",
-		                                  course.getEnrolledStudentsNumber()));
-		Assert.assertEquals(institutionInfo.get(5),
-		                    String.format("%d", course.getStudentsNumber()));
+		Assert.assertEquals(institutionInfo.get(4), String.format("%d", course.getEnrolledStudentsNumber()));
+		Assert.assertEquals(institutionInfo.get(5), String.format("%d", course.getStudentsNumber()));
 	}
 
 	/* This method is responsible to test if the University's course info
@@ -190,19 +174,11 @@ public class CourseControllerTest extends AndroidTestCase
 	 * info */
 	public void testInstitutionInfoIndexOutOfBounds()
 	{
-
 		CourseController controller = new CourseController(getContext());
 		Institution firstInstitution = controller.searchInstitution(2);
 		controller.searchCourse(1, "DF");
-		Course course = new Course(1,
-		                        2,
-		                        "UNIVERSIDADE DE BRASILIA",
-		                        141,
-		                        89,
-		                        "BRASILIA",
-		                        (float) 3.735,
-		                        "DF",
-		                        firstInstitution);
+		Course course = new Course(1, 2, "UNIVERSIDADE DE BRASILIA", 141, 89, "BRASILIA", (float) 3.735,
+                                   "DF", firstInstitution);
 
 		List<String> institutionInfo = null;
 
@@ -216,7 +192,6 @@ public class CourseControllerTest extends AndroidTestCase
 		}
 
 		Assert.assertNull(institutionInfo);
-
 	}
 
 	/* This method is responsible to test if the comparison between two
@@ -228,19 +203,18 @@ public class CourseControllerTest extends AndroidTestCase
 
 		String firstState = "DF", secondState = "AM";
 
-		assertEquals(controller.compareState(firstState, secondState, 1).get(0),
-		             (float) 1.9448332);
+		assertEquals(controller.compareState(firstState, secondState, 1).get(0), (float) 1.9448332);
 	}
 
 	/* This method is responsible to test if the Course's ID is registered
 	 * correctly on the University's name on the Database */
 	public void testSearchCourseCode()
 	{
-		int codCurso;
+		int courseCode;
 		CourseController controller = new CourseController(getContext());
 
-		codCurso = controller.searchCourseCode("Administracao");
-		Assert.assertEquals(1, codCurso);
+        courseCode = controller.searchCourseCode("Administracao");
+		Assert.assertEquals(1, courseCode);
 	}
 
 	/* This method is responsible to test if three different Universities (on
@@ -256,45 +230,22 @@ public class CourseControllerTest extends AndroidTestCase
 		ArrayList<Course> firstCoursesList = new ArrayList<Course>();
 
 		Institution firstInstitution = new Institution("FACULDADE BARAO DO RIO BRANCO",
-		                                   "FACULDADES",
-		                                   "PRIVADA",
-		                                   2132);
-		Institution secondInstitution = new Institution("FACULDDE DA AMAZONIA OCIDENTAL",
-		                                   "FACULDADES",
-		                                   "PRIVADA",
-		                                   2343);
-		Institution thirdInstitution = new Institution("FACULDADE DE DESENVOLVIMENTO SUSTENTAVEL DE CRUZEIRO DO SUL",
-		                                   "FACULDADES",
-		                                   "PRIVADA",
-		                                   2072);
+		                                               "FACULDADES", "PRIVADA", 2132);
 
-		Course firstCourse = new Course(1,
-		                         2072,
-		                         "ADMINISTRACAO",
-		                         29,
-		                         26,
-		                         "CRUZEIRO DO SUL",
-		                         (float) 0.785,
-		                         "AC",
-		                         thirdInstitution);
-		Course secondCourse = new Course(1,
-		                         2132,
-		                         "ADMINISTRACAO",
-		                         147,
-		                         125,
-		                         "RIO BRANCO",
-		                         (float) 1.605,
-		                         "AC",
-		                         firstInstitution);
-		Course thirdCourse = new Course(1,
-		                         2343,
-		                         "ADMINISTRACAO",
-		                         49,
-		                         48,
-		                         "RIO BRANCO",
-		                         (float) 1.432,
-		                         "AC",
-		                         secondInstitution);
+		Institution secondInstitution = new Institution("FACULDDE DA AMAZONIA OCIDENTAL",
+		                                                "FACULDADES", "PRIVADA", 2343);
+
+		Institution thirdInstitution = new Institution("FACULDADE DE DESENVOLVIMENTO SUSTENTAVEL DE CRUZEIRO DO SUL",
+		                                               "FACULDADES", "PRIVADA", 2072);
+
+		Course firstCourse = new Course(1, 2072, "ADMINISTRACAO", 29, 26, "CRUZEIRO DO SUL",
+		                                (float) 0.785, "AC", thirdInstitution);
+
+		Course secondCourse = new Course(1, 2132, "ADMINISTRACAO", 147, 125, "RIO BRANCO",
+		                                 (float) 1.605, "AC", firstInstitution);
+
+		Course thirdCourse = new Course(1, 2343, "ADMINISTRACAO", 49, 48, "RIO BRANCO",
+		                                (float) 1.432, "AC", secondInstitution);
 
 		secondCoursesList.add(secondCourse);
 		secondCoursesList.add(thirdCourse);
@@ -302,29 +253,38 @@ public class CourseControllerTest extends AndroidTestCase
 
 		courses = controller.searchCourse(1, "AC");
 
-		Assert.assertEquals(secondCoursesList.get(0).getCourseGrade(), firstCoursesList.get(0)
-		        .getCourseGrade());
+		Assert.assertEquals(secondCoursesList.get(0).getCourseGrade(),
+                            firstCoursesList.get(0).getCourseGrade());
+
 		Assert.assertEquals(secondCoursesList.get(0).getId(), firstCoursesList.get(0).getId());
-		Assert.assertEquals(secondCoursesList.get(0).getId_institution(), firstCoursesList.get(0)
-		        .getId_institution());
-		Assert.assertEquals(secondCoursesList.get(0).getStudentsNumber(), firstCoursesList.get(0)
-		        .getStudentsNumber());
 
-		Assert.assertEquals(secondCoursesList.get(1).getCourseGrade(), firstCoursesList.get(1)
-		        .getCourseGrade());
+		Assert.assertEquals(secondCoursesList.get(0).getId_institution(),
+                            firstCoursesList.get(0).getId_institution());
+
+		Assert.assertEquals(secondCoursesList.get(0).getStudentsNumber(),
+                            firstCoursesList.get(0).getStudentsNumber());
+
+		Assert.assertEquals(secondCoursesList.get(1).getCourseGrade(),
+                            firstCoursesList.get(1).getCourseGrade());
+
 		Assert.assertEquals(secondCoursesList.get(1).getId(), firstCoursesList.get(1).getId());
-		Assert.assertEquals(secondCoursesList.get(1).getId_institution(), firstCoursesList.get(1)
-		        .getId_institution());
-		Assert.assertEquals(secondCoursesList.get(1).getStudentsNumber(), firstCoursesList.get(1)
-		        .getStudentsNumber());
 
-		Assert.assertEquals(secondCoursesList.get(2).getCourseGrade(), firstCoursesList.get(2)
-		        .getCourseGrade());
+		Assert.assertEquals(secondCoursesList.get(1).getId_institution(),
+                            firstCoursesList.get(1).getId_institution());
+
+		Assert.assertEquals(secondCoursesList.get(1).getStudentsNumber(),
+                            firstCoursesList.get(1).getStudentsNumber());
+
+		Assert.assertEquals(secondCoursesList.get(2).getCourseGrade(),
+                            firstCoursesList.get(2).getCourseGrade());
+
 		Assert.assertEquals(secondCoursesList.get(2).getId(), firstCoursesList.get(2).getId());
-		Assert.assertEquals(secondCoursesList.get(2).getId_institution(), firstCoursesList.get(2)
-		        .getId_institution());
-		Assert.assertEquals(secondCoursesList.get(2).getStudentsNumber(), firstCoursesList.get(2)
-		        .getStudentsNumber());
+
+		Assert.assertEquals(secondCoursesList.get(2).getId_institution(),
+                            firstCoursesList.get(2).getId_institution());
+
+		Assert.assertEquals(secondCoursesList.get(2).getStudentsNumber(),
+                            firstCoursesList.get(2).getStudentsNumber());
 
 	}
 
@@ -341,32 +301,25 @@ public class CourseControllerTest extends AndroidTestCase
 		ArrayList<Course> firstCoursesList = new ArrayList<Course>();
 
 		Institution thirdInstitution = new Institution("FACULDADE DE DESENVOLVIMENTO SUSTENTAVEL DE CRUZEIRO DO SUL",
-		                                   "FACULDADES",
-		                                   "PRIVADA",
-		                                   2072);
+		                                               "FACULDADES", "PRIVADA", 2072);
 
-		Course firstCourse = new Course(1,
-		                         2072,
-		                         "ADMINISTRACAO",
-		                         29,
-		                         26,
-		                         "CRUZEIRO DO SUL",
-		                         (float) 0.785,
-		                         "AC",
-		                         thirdInstitution);
+		Course firstCourse = new Course(1, 2072,"ADMINISTRACAO", 29, 26, "CRUZEIRO DO SUL",
+		                                (float) 0.785, "AC", thirdInstitution);
 
 		secondCoursesList.add(firstCourse);
 
 		courses = controller.searchCourse(1, "AC", "CRUZEIRO DO SUL");
 
-		Assert.assertEquals(secondCoursesList.get(0).getCourseGrade(), firstCoursesList.get(0)
-		        .getCourseGrade());
-		Assert.assertEquals(secondCoursesList.get(0).getId(), firstCoursesList.get(0).getId());
-		Assert.assertEquals(secondCoursesList.get(0).getId_institution(), firstCoursesList.get(0)
-		        .getId_institution());
-		Assert.assertEquals(secondCoursesList.get(0).getStudentsNumber(), firstCoursesList.get(0)
-		        .getStudentsNumber());
+		Assert.assertEquals(secondCoursesList.get(0).getCourseGrade(),
+                            firstCoursesList.get(0).getCourseGrade());
 
+		Assert.assertEquals(secondCoursesList.get(0).getId(), firstCoursesList.get(0).getId());
+
+		Assert.assertEquals(secondCoursesList.get(0).getId_institution(),
+                            firstCoursesList.get(0).getId_institution());
+
+		Assert.assertEquals(secondCoursesList.get(0).getStudentsNumber(),
+                            firstCoursesList.get(0).getStudentsNumber());
 	}
 
 	/* This method is responsible to test if one University with one course info
@@ -381,32 +334,26 @@ public class CourseControllerTest extends AndroidTestCase
 		ArrayList<Course> secondCoursesList = new ArrayList<Course>();
 		ArrayList<Course> firstCoursesList = new ArrayList<Course>();
 
-		Institution firstInstitution = new Institution("UNIVERSIDADE DE BRASILIA",
-		                                  "UNIVERSIDADES",
-		                                  "PUBLICA",
-		                                  2);
+		Institution firstInstitution = new Institution("UNIVERSIDADE DE BRASILIA", "UNIVERSIDADES",
+		                                               "PUBLICA", 2);
 
-		Course firstCourse = new Course(1,
-		                         2,
-		                         "ADMINISTRACAO",
-		                         141,
-		                         89,
-		                         "BRASILIA",
-		                         (float) 3.735,
-		                         "DF",
-		                         firstInstitution);
+		Course firstCourse = new Course(1, 2, "ADMINISTRACAO", 141, 89, "BRASILIA", (float) 3.735,
+		                                "DF", firstInstitution);
 
 		secondCoursesList.add(firstCourse);
 
 		courses = controller.searchCourse(1, "DF", "BRASILIA", "PUBLICA");
 
-		Assert.assertEquals(secondCoursesList.get(0).getCourseGrade(), firstCoursesList.get(0)
-		        .getCourseGrade());
+		Assert.assertEquals(secondCoursesList.get(0).getCourseGrade(),
+                            firstCoursesList.get(0).getCourseGrade());
+
 		Assert.assertEquals(secondCoursesList.get(0).getId(), firstCoursesList.get(0).getId());
-		Assert.assertEquals(secondCoursesList.get(0).getId_institution(), firstCoursesList.get(0)
-		        .getId_institution());
-		Assert.assertEquals(secondCoursesList.get(0).getStudentsNumber(), firstCoursesList.get(0)
-		        .getStudentsNumber());
+
+		Assert.assertEquals(secondCoursesList.get(0).getId_institution(),
+                            firstCoursesList.get(0).getId_institution());
+
+		Assert.assertEquals(secondCoursesList.get(0).getStudentsNumber(),
+                            firstCoursesList.get(0).getStudentsNumber());
 	}
 
 	/* This method is responsible to test if two different Brazilian Cities
@@ -590,7 +537,6 @@ public class CourseControllerTest extends AndroidTestCase
 		{
 			Assert.assertEquals(secondCourseList.get(i), firstCourseList.get(i));
 		}
-
 	}
 
 	/* This method is responsible to test if two Universities' names together
@@ -660,7 +606,6 @@ public class CourseControllerTest extends AndroidTestCase
 		{
 			Assert.assertEquals(secondCourseList.get(i), firstCourseList.get(i));
 		}
-
 	}
 
 	/* This method is responsible to test if Universities' IDs together with
@@ -668,12 +613,10 @@ public class CourseControllerTest extends AndroidTestCase
 	 * Courses' ID and Universities' Brazilian States, on the Database */
 	public void testSearchInstitutionCode()
 	{
-
 		CourseController controller = new CourseController(getContext());
 
 		controller.searchCourse(2, "DF");
 		Assert.assertEquals(2, controller.getInstitutionCode(0));
-
 	}
 
 	/* This method is responsible to test if Universities' ENADE grades together
@@ -681,13 +624,11 @@ public class CourseControllerTest extends AndroidTestCase
 	 * Courses' ID and Universities' Brazilian States, on the Database */
 	public void testCoursesCodes()
 	{
-
 		CourseController controller = new CourseController(getContext());
 
 		controller.searchCourse(2, "DF");
 		Assert.assertEquals((float) 4.482,
 		                    controller.getInstitutionCode(0));
-
 	}
 
 	/* This method is responsible to test if two Universities's from two Cities
@@ -701,13 +642,7 @@ public class CourseControllerTest extends AndroidTestCase
 		String firstState = "DF", firstCity = "BRASILIA";
 		String secondState = "AM", secondCity = "MANAUS";
 
-		assertNotSame(controller.compareCity(1,
-		                                          firstState,
-		                                          firstCity,
-		                                          secondState,
-		                                          secondCity).get(0),
-		              "1.900000");
-
+		assertNotSame(controller.compareCity(1, firstState, firstCity, secondState, secondCity).get(0), "1.900000");
 	}
 
 	/* This method is responsible to test the Universities's Types based on
@@ -717,11 +652,7 @@ public class CourseControllerTest extends AndroidTestCase
 	public void testCompareType()
 	{
 		CourseController controller = new CourseController(getContext());
-		List<Float> typeResult = controller.compareType(1,
-		                                                  "AC",
-		                                                  "Privada",
-		                                                  "AL",
-		                                                  "Privada");
+		List<Float> typeResult = controller.compareType(1, "AC", "Privada", "AL", "Privada");
 
 		Assert.assertEquals((float) 1.5185001, typeResult.get(0));
 		Assert.assertEquals((float) 2.285000, typeResult.get(1));
@@ -735,7 +666,5 @@ public class CourseControllerTest extends AndroidTestCase
 		CourseController controller = new CourseController(getContext());
 
 		Assert.assertEquals((float) 2.249236, controller.calculateStateGrade("SP", 1));
-
 	}
-
 }
