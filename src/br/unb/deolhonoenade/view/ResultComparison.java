@@ -33,9 +33,10 @@ import android.os.Build;
 public class ResultComparison extends Activity
 {
 
-	private String course, firstState, secondState;
-	private CourseController objectCourseController;
-	private int courseCode;
+	private String course; // Receives the name of course
+	private String firstState, secondState; // Receives the value of the selected state
+	private CourseController objectCourseController; // Object from the ControllerCurso Class
+	private int courseCode; // Receives the result of the ControllerCurso's method "searchCourseCode" 
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -50,6 +51,7 @@ public class ResultComparison extends Activity
 		secondState = getIntent().getExtras().getString("Estado2");
 		courseCode = objectCourseController.searchCourseCode(course);
 
+		// Receives the info of the title from the view (search by ID)
 		TextView titulo = (TextView) findViewById(R.id.stringCurso);
 
 		titulo.setText(String.format("Comparacao do curso de\n\t%s", course));
@@ -64,10 +66,15 @@ public class ResultComparison extends Activity
 					new PlaceholderFragment()).commit();
 		}
 
+		// Contains the value of the index 0 of the list
 		String list1String = String.valueOf(list.get(0));
+		
+		// Contains the value of the index 1 of the list
 		String list2String = String.valueOf(list.get(1));
 
+		// Stores the average graphic's information
 		ArrayList<Bar> points = new ArrayList<Bar>();
+		
 		Bar d = new Bar();
 		d.setColor(Color.parseColor("#99CC00"));
 		d.setName(firstState);
