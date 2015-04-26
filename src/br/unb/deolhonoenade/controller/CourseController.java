@@ -56,8 +56,7 @@ public class CourseController
 		}
 		catch (IndexOutOfBoundsException e)
 		{
-			Log.e(this.getClass().toString(),
-			      "courses IndexOutOfBounds, returning false");
+			Log.e(this.getClass().toString(), "courses IndexOutOfBounds, returning false");
 			return false;
 		}
 	}
@@ -72,8 +71,7 @@ public class CourseController
 		}
 		catch (IndexOutOfBoundsException e)
 		{
-			Log.e(this.getClass().toString(),
-			      "courses IndexOutOfBounds, returning -1");
+			Log.e(this.getClass().toString(), "courses IndexOutOfBounds, returning -1");
 			return -1;
 		}
 	}
@@ -94,8 +92,7 @@ public class CourseController
 		}
 		catch (IndexOutOfBoundsException e)
 		{
-			Log.e(this.getClass().toString(),
-			      "courses IndexOutOfBounds, returning -1");
+			Log.e(this.getClass().toString(), "courses IndexOutOfBounds, returning -1");
 			return -1;
 		}
 	}
@@ -140,19 +137,17 @@ public class CourseController
 
 	}
 
-	/* This method is responsible to compare two different Universities's ENADE
+	/** This method is responsible to compare two different Universities's ENADE
 	 * grades from two different States with the Course's ID. It gets all the
 	 * ENADES' grades from one specific course on two different States and
 	 * calculates the ENADE's average grades on these two different chosen
 	 * States */
-	public List<Float> compareState(String firstState, String secondState,
-	        int courseCode)
+	public List<Float> compareState(String firstState, String secondState, int courseCode)
 	{
 		float stateGrade = 0;
 		List<Float> compareStateResult = new ArrayList<Float>();
 		List<Course> firstCourseState = new ArrayList<Course>();
 		List<Course> secondCourseState = new ArrayList<Course>();
-		
 
 		firstCourseState = this.searchCourse(courseCode, firstState);
 		secondCourseState = this.searchCourse(courseCode, secondState);
@@ -173,8 +168,8 @@ public class CourseController
 	 * Course's ID. It gets all the ENADES' grades from one specific course on
 	 * two different Cities and calculates the ENADE's average grades on these
 	 * two different chosen Cities */
-	public List<Float> compareCity(int courseCode, String firstState,
-	        String firstCity, String secondState, String secondCity)
+	public List<Float> compareCity(int courseCode, String firstState, String firstCity,
+                                   String secondState, String secondCity)
 	{
 		float cityGrade = 0;
 		List<Float> compareCityResult = new ArrayList<Float>();
@@ -220,6 +215,10 @@ public class CourseController
 		{
 			firstStateType = this.searchCourse(courseCode, firstState, TYPE_UNIVERSITY_PUBLIC);
 		}
+        else
+        {
+            // Nothing to do
+        }
 
 		if (secondType.equalsIgnoreCase("Privada"))
 		{
@@ -229,13 +228,15 @@ public class CourseController
 		{
 			secondStateType = this.searchCourse(courseCode, secondState, TYPE_UNIVERSITY_PUBLIC);
 		}
+        else
+        {
+            // Nothing to do
+        }
 
 		typeGrade = this.calculateEnadeGrade(firstStateType);
-
 		compareTypeResult.add(typeGrade);
 
 		typeGrade = this.calculateEnadeGrade(secondStateType);
-
 		compareTypeResult.add(typeGrade);
 
 		return compareTypeResult;
@@ -267,9 +268,7 @@ public class CourseController
 	// This method is responsible to search the Courses' IDs with the Courses' names from the Database
 	public int searchCourseCode(String courseName)
 	{
-		int courseCode;
-
-		courseCode = this.databaseOperations.getCodCurso(courseName);
+		int courseCode = this.databaseOperations.getCodCurso(courseName);
 
 		return courseCode;
 	}
@@ -278,7 +277,6 @@ public class CourseController
 	 * IDs and Universities' States from the Database */
 	public ArrayList<Course> searchCourse(int courseCode, String state)
 	{
-
 		this.courses = this.databaseOperations.getCourses(courseCode, state);
 
 		return courses;
@@ -396,10 +394,8 @@ public class CourseController
 	 * Cities and Universities' Types. This method lists all the Universities'
 	 * names (with different Brazilian States, Brazilian Cities and Types
 	 * chosen) with their respectives ENADE' grades */
-	public List<String> searchCoursesNames(int secondCourseCode, String secondState,
-	        String secondCity, String secondType)
+	public List<String> searchCoursesNames(int secondCourseCode, String secondState, String secondCity, String secondType)
 	{
-
 		List<String> courses = new ArrayList<String>();
 		List<Course> coursesList = new ArrayList<Course>();
 
@@ -420,8 +416,7 @@ public class CourseController
 	 * Cities. This method lists all the Universities' names (with different
 	 * Brazilian States and Brazilian Cities chosen) with their respectives
 	 * ENADE' grades */
-	public List<String> searchCoursesNames(int secondCourseCode, String secondState,
-	        String secondCity)
+	public List<String> searchCoursesNames(int secondCourseCode, String secondState, String secondCity)
 	{
 		List<String> courses = new ArrayList<String>();
 		List<Course> coursesList = new ArrayList<Course>();
@@ -442,10 +437,8 @@ public class CourseController
 	 * Universities' Brazilian States, Courses' IDs and Universities' Brazilian
 	 * Cities. This method lists all the Courses' names (with Brazilian States
 	 * and Brazilian Cities chosen) */
-	public List<String> searchCoursesNames(String secondState, int secondCourseCode,
-	        String secondCity)
+	public List<String> searchCoursesNames(String secondState, int secondCourseCode, String secondCity)
 	{
-
 		List<String> courses = new ArrayList<String>();
 		List<Course> coursesList = new ArrayList<Course>();
 
@@ -486,13 +479,9 @@ public class CourseController
 	 * IDs */
 	public float calculateStateGrade(String state, int courseCode)
 	{
-
 		List<Course> courses = new ArrayList<Course>();
-
 		courses = searchCourse(courseCode, state);
 
 		return calculateEnadeGrade(courses);
-
 	}
-
 }
