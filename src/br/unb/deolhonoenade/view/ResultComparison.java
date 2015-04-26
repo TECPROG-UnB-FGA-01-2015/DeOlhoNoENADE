@@ -39,6 +39,8 @@ public class ResultComparison extends Activity
 	private int courseCode; // Receives the result of the ControllerCurso's method "searchCourseCode" 
 
 	@Override
+	
+	// Method to initialize the activity activity_comparacao_result
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
@@ -95,6 +97,8 @@ public class ResultComparison extends Activity
 	}
 
 	@Override
+	
+	// Method to initialize the contents of the Activity's standard options menu
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
 		getMenuInflater().inflate(R.menu.comparacao_result, menu);
@@ -102,6 +106,8 @@ public class ResultComparison extends Activity
 	}
 
 	@Override
+	
+	// Method to recognize when an option on menu is selected
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
 		int id = item.getItemId();
@@ -109,17 +115,31 @@ public class ResultComparison extends Activity
 		{
 			return true;
 		}
+		
+		else
+		{
+			// Nothing to do
+		}
+		
 		return super.onOptionsItemSelected(item);
 	}
 
+	/**
+	 * A placeholder fragment containing a simple view.
+	 */
 	public static class PlaceholderFragment extends Fragment
 	{
 
 		public PlaceholderFragment()
 		{
+			// Nothing to do
 		}
 
 		@Override
+		
+		/* Method to create and return the view hierarchy associated with the
+		 * fragment
+		 */
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState)
 		{
