@@ -35,7 +35,7 @@ public class Map extends Activity
 		WebView webview = (WebView) findViewById(R.id.webView1);
         
 		// Stores the curso's name
-		String course = getIntent().getExtras().getString("cursoSelecionado");
+		String course = getIntent().getExtras().getString("selectedCourse");
 		
 		// ControllerCurso type object
         CourseController objectCourseController = new CourseController(this);
@@ -44,25 +44,25 @@ public class Map extends Activity
         int courseCode = objectCourseController.searchCourseCode(course);
         
         // Holds all federation units that exists on the application
-        ArrayList<String> allUfs = (ArrayList<String>) objectCourseController.searchState(1);
+        ArrayList<String> allStates = (ArrayList<String>) objectCourseController.searchState(1);
         
     	// Holds all the average grade of all federal units
         List<String> stateAverageGradeList = new ArrayList<String>();
         
-        for(int i = 0; i<allUfs.size(); i++) // For parameter; (0 =< i < todasUfs)
+        for(int i = 0; i<allStates.size(); i++) // For parameter; (0 =< i < todasUfs)
         {	
         	// Holds the average grade of each federal unit
         	String stateAverageGrade = new String();
         	
         	try
         	{
-				stateAverageGrade = String.valueOf( objectCourseController.calculateStateGrade(allUfs.get(i),
+				stateAverageGrade = String.valueOf( objectCourseController.calculateStateGrade(allStates.get(i),
 						courseCode));
 			}
         	
         	catch (Exception e)
         	{
-				Log.e(this.getClass().toString(), allUfs.get(i)+
+				Log.e(this.getClass().toString(), allStates.get(i)+
 						"Estado nao existe");
 				stateAverageGrade="0.0";
 			}
@@ -139,6 +139,7 @@ public class Map extends Activity
 	{
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.mapa, menu);
+		
 		return true;
 	}
 
@@ -150,11 +151,11 @@ public class Map extends Activity
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId(); // Holds the id of the container's selected item 
+		
 		if (id == R.id.action_settings)
 		{
 			return true;
 		}
-		
 		else
 		{
 			// Nothing to do
@@ -184,6 +185,7 @@ public class Map extends Activity
 			// Hosts all other views on the same place
 			View rootView = inflater.inflate(R.layout.fragment_mapa, container,
 					false);
+			
 			return rootView;
 		}
 	}

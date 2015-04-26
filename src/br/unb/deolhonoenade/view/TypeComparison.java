@@ -65,11 +65,11 @@ public class TypeComparison extends Activity
 				R.id.nomeCursoSelecionado);
 		
 		cursoSelecionado.setText(getIntent().getExtras().getString(
-				"cursoSelecionado"));
+				"selectedCourse"));
 		
 		// Takes the code of the course that was selected
 		courseCode = objectCourseController.searchCourseCode(
-				getIntent().getExtras().getString("cursoSelecionado"));
+				getIntent().getExtras().getString("selectedCourse"));
 		
 		addItensOnSpinnerEstadoT1(courseCode);
 		//addItensOnSpinnerEstadoT2(courseCode, false);
@@ -298,12 +298,12 @@ public class TypeComparison extends Activity
 				// Holds the results of the comparison between the two institutions
 				comparisonResults = objectCourseController.compareType(courseCode, firstState, firstType,
 						secondState, secondType);
-				result.putExtra("CodCurso", courseCode);
-				result.putExtra("resultado1", comparisonResults.get(0));
-				result.putExtra("resultado2", comparisonResults.get(1));
-				result.putExtra("Estado1", firstState);
+				result.putExtra("courseCode", courseCode);
+				result.putExtra("firstResult", comparisonResults.get(0));
+				result.putExtra("secondResult", comparisonResults.get(1));
+				result.putExtra("firstState", firstState);
 				result.putExtra("firstTypeSpinner", firstType);
-				result.putExtra("Estado2", secondState);
+				result.putExtra("secondState", secondState);
 				result.putExtra("secondTypeSpinner", secondType);
 	
 	    		startActivity(result);

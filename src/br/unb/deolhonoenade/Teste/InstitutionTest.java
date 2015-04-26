@@ -13,7 +13,6 @@ import java.util.ArrayList;
 
 public class InstitutionTest extends AndroidTestCase
 {
-
 	// This method is responsible to signal the Test Startup. It's executed before each Test Method
 	protected void setUp() throws Exception
 	{
@@ -32,6 +31,7 @@ public class InstitutionTest extends AndroidTestCase
 		// Object from the Institution Class that is instantiated to be used in testing
 		Institution institution = new Institution("Universidade de Brasilia",
 				"Universidades", "Publica", 2);
+		
 		Assert.assertNotSame("Quimica", institution.getName());
 	}
 
@@ -72,7 +72,9 @@ public class InstitutionTest extends AndroidTestCase
 		// Object from the Course Class that is instantiated to be used in testing
 		Course course = new Course(3, 6, "Direito", 25, 15, "Porto Alegre",
 				(float) 2.45, "DF", null);
+		
 		course.setName("Adiministracao");
+		
 		assertSame("Adiministracao", course.getName());
 	}
 
@@ -80,9 +82,9 @@ public class InstitutionTest extends AndroidTestCase
 	public void testGetName()
 	{
 		// Object from the Institution Class that is instantiated to be used in testing
-		Institution institution = new Institution(
-				"Universidade Federal do Amazonas", "Universidades", "Publica",
-				4);
+		Institution institution = new Institution("Universidade Federal do Amazonas",
+				"Universidades", "Publica", 4);
+		
 		assertEquals("Universidade Federal do Amazonas", institution.getName());
 	}
 
@@ -95,6 +97,7 @@ public class InstitutionTest extends AndroidTestCase
 				"Privada", 15);
 
 		institution.setName("Universidade Federal de Uberlandia");
+		
 		assertSame("Universidade Federal de Uberlandia", institution.getName());
 	}
 
@@ -105,8 +108,8 @@ public class InstitutionTest extends AndroidTestCase
 		Institution institution = new Institution(
 				"Universidade Estadual do Ceara", "Universidades", "Publica",
 				29);
+		
 		assertEquals("Universidades", institution.getAcademicOrganization());
-
 	}
 
 	// Method to test the assignment of organizacaoAcademica attribute from Class Institution
@@ -115,7 +118,9 @@ public class InstitutionTest extends AndroidTestCase
 		// Object from the Institution Class that is instantiated to be used in testing
 		Institution institution = new Institution("Universidade Gama Filho",
 				"Universidades", "Privada", 16);
+		
 		institution.setAcademicOrganization("Faculdades");
+		
 		assertSame("Faculdades", institution.getAcademicOrganization());
 	}
 
@@ -123,9 +128,9 @@ public class InstitutionTest extends AndroidTestCase
 	public void testGetType()
 	{
 		// Object from the Institution Class that is instantiated to be used in testing
-		Institution institution = new Institution(
-				"Universidade do Estado da Bahia", "Universidades", "Publica",
-				40);
+		Institution institution = new Institution("Universidade do Estado da Bahia",
+				"Universidades", "Publica", 40);
+		
 		assertEquals("Publica", institution.getType());
 	}
 
@@ -133,10 +138,11 @@ public class InstitutionTest extends AndroidTestCase
 	public void testSetType()
 	{
 		// Object from the Institution Class that is instantiated to be used in testing
-		Institution institution = new Institution(
-				"Universidade Estadual de Goias", "Universidades", "Publica",
-				47);
+		Institution institution = new Institution("Universidade Estadual de Goias",
+				"Universidades", "Publica", 47);
+		
 		institution.setType("Publica");
+		
 		assertNotSame("Privada", institution.getType());
 	}
 
@@ -144,8 +150,9 @@ public class InstitutionTest extends AndroidTestCase
 	public void testGetInstitutionCode()
 	{
 		// Object from the Institution Class that is instantiated to be used in testing
-		Institution institution = new Institution(
-				"Faculdade de Direito de Franca", "Faculdades", "Publica", 59);
+		Institution institution = new Institution("Faculdade de Direito de Franca",
+				"Faculdades", "Publica", 59);
+		
 		assertEquals(59, institution.getInstitutionCode());
 	}
 
@@ -153,10 +160,11 @@ public class InstitutionTest extends AndroidTestCase
 	public void testSetInstitutionCode()
 	{
 		// Object from the Institution Class that is instantiated to be used in testing
-		Institution institution = new Institution(
-				"Universidade Cruzeiro do Sul", "Universidades", "Privada", 221);
+		Institution institution = new Institution("Universidade Cruzeiro do Sul",
+				"Universidades", "Privada", 221);
+		
 		institution.setInstitutionCode(221);
+		
 		assertEquals(221, institution.getInstitutionCode());
 	}
-
 }
