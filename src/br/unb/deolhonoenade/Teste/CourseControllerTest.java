@@ -64,12 +64,13 @@ public class CourseControllerTest extends AndroidTestCase
 	{
 		CourseController controller = new CourseController(getContext());
 
-		int codCurso = controller.searchCourseCode("Administracao");
+		int courseCode = controller.searchCourseCode("Administracao");
 
-		controller.searchCourse(codCurso, "SP");
+		controller.searchCourse(courseCode, "SP");
 
-		assertTrue(controller.removeInstitution(1));
+        boolean institutionRemoved = controller.removeInstitution(1);
 
+		assertTrue(institutionRemoved);
 	}
 
 	/* This method is responsible to test if Universities' names removal wasn't
@@ -82,8 +83,9 @@ public class CourseControllerTest extends AndroidTestCase
 
 		controller.searchCourse(codCurso, "SP");
 
-		assertFalse(controller.removeInstitution(999));
+        boolean institutionRemoved = controller.removeInstitution(999);
 
+		assertFalse(institutionRemoved);
 	}
 
 	/* This method is responsible to test if the University's ID (position) is
@@ -94,7 +96,9 @@ public class CourseControllerTest extends AndroidTestCase
 		CourseController controller = new CourseController(getContext());
 
 		controller.searchCourse(1, "SP");
-		Assert.assertEquals(322, controller.getInstitutionCode(2));
+
+        int institutionCode = controller.getInstitutionCode(2);
+		Assert.assertEquals(322, institutionCode);
 	}
 
 	/* This method is responsible to test if the University's ID (position)
@@ -105,7 +109,9 @@ public class CourseControllerTest extends AndroidTestCase
 		CourseController controller = new CourseController(getContext());
 
 		controller.searchCourse(1, "AC");
-		Assert.assertEquals(-1, controller.getInstitutionCode(200));
+
+        int institutionCode = controller.getInstitutionCode(200);
+		Assert.assertEquals(-1, institutionCode);
 	}
 
 	/* This method is responsible to test if the University on a specific
@@ -117,8 +123,8 @@ public class CourseControllerTest extends AndroidTestCase
 
 		controller.searchCourse(1, "SP");
 
-		Assert.assertEquals((float) 4.882,
-		                    controller.getCourseGrade(2));
+        float courseGrade = controller.getCourseGrade(2);
+		Assert.assertEquals((float) 4.882, courseGrade);
 	}
 
 	/* This method is responsible to test if the University on a specific
@@ -130,8 +136,8 @@ public class CourseControllerTest extends AndroidTestCase
 
 		controller.searchCourse(1, "AC");
 
-		Assert.assertEquals((float) -1,
-		                    controller.getCourseGrade(200));
+        float courseGrade = controller.getCourseGrade(200);
+		Assert.assertEquals((float) -1, courseGrade);
 	}
 
 	/* This method is responsible to test if the University's name is registered
@@ -142,8 +148,8 @@ public class CourseControllerTest extends AndroidTestCase
 		CourseController controller = new CourseController(getContext());
 
 		institution = controller.searchInstitution(1);
-		Assert.assertEquals("UNIVERSIDADE FEDERAL DE MATO GROSSO",
-		                    institution.getName());
+        String institutionName = institution.getName();
+		Assert.assertEquals("UNIVERSIDADE FEDERAL DE MATO GROSSO", institutionName);
 	}
 
 	/* This method is responsible to test if the University's info has the
@@ -151,10 +157,10 @@ public class CourseControllerTest extends AndroidTestCase
 	 * and University's Brazilian State, on the Database */
 	public void testInstitutionInfo()
 	{
-
 		CourseController controller = new CourseController(getContext());
 		Institution firstInstitution = controller.searchInstitution(2);
 		controller.searchCourse(1, "DF");
+
 		Course course = new Course(1,
 		                        2,
 		                        "UNIVERSIDADE DE BRASILIA",
