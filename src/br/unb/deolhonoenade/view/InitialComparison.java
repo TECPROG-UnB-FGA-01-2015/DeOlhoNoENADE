@@ -65,10 +65,8 @@ public class InitialComparison extends Activity implements
 			public void onClick(View v) // View variable that is called when a view has been clicked
 			{
 	    		Intent intent = new Intent(InitialComparison.this,
-	    				ComparacaoCidades.class);
-	    		intent.putExtra("selectedCourse", course);
 	    				CityComparison.class);
-	    		intent.putExtra("cursoSelecionado", course);
+	    		intent.putExtra("selectedCourse", course);
 	    		startActivity(intent);
 	    	}	
 		});
