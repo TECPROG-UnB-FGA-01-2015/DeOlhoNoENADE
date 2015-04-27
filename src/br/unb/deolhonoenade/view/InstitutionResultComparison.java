@@ -1,6 +1,6 @@
 /***********************************************************
  * File: InstitutionResultComparison.java
- * Purpose: Responsible to show the result of IES comparison
+ * Purpose: Responsible to show the result of Institution comparison
 ***********************************************************/
 package br.unb.deolhonoenade.view;
 
@@ -52,33 +52,33 @@ public class InstitutionResultComparison extends Activity
 		secondGrade = getIntent().getExtras().getFloat("secondGrade");
 		
 		// Presents the name of first institution on a textView
-		TextView instiruicao1 = (TextView) findViewById(R.id.nomeIES1);
-		instiruicao1.setText(firstInstitution);
+		TextView institutionOne = (TextView) findViewById(R.id.nomeIES1);
+		institutionOne.setText(firstInstitution);
 		
 		// Presents the name of second institution on a textView
-		TextView instiruicao2 = (TextView) findViewById(R.id.nomeIES2);
-		instiruicao2.setText(secondInstitution);
+		TextView institutionTwo = (TextView) findViewById(R.id.nomeIES2);
+		institutionTwo.setText(secondInstitution);
 		
-		String nota1String = String.valueOf(firstGrade); // The grade of the first institution
-		String nota2String = String.valueOf(secondGrade); // The grade of the second institution
+		String firstInstitutionGrade = String.valueOf(firstGrade); // The grade of the first institution
+		String secondInstitutionGrade = String.valueOf(secondGrade); // The grade of the second institution
 		
-		ArrayList<Bar> points = new ArrayList<Bar>(); // Holds the average grade of institution
-		Bar d = new Bar(); // Contains the first institution data
-		d.setColor(Color.parseColor("#99CC00"));
-		d.setName("Instituicao 1");
-		d.setValue(Float.parseFloat(nota1String.substring(0, 5)));
-		Bar d2 = new Bar(); // Contains the second institution data
-		d2.setColor(Color.parseColor("#FFBB33"));
-		d2.setName("Instituicao 2");
-		d2.setValue(Float.parseFloat(nota2String.substring(0, 5)));
-		points.add(d);
-		points.add(d2);
+		ArrayList<Bar> institutionGrades = new ArrayList<Bar>(); // Holds the average grade of institution
+		Bar firstInstitutionGraph = new Bar(); // Contains the first institution data
+		firstInstitutionGraph.setColor(Color.parseColor("#99CC00"));
+		firstInstitutionGraph.setName("Instituicao 1");
+		firstInstitutionGraph.setValue(Float.parseFloat(firstInstitutionGrade.substring(0, 5)));
+		Bar secondInstitutionGraph = new Bar(); // Contains the second institution data
+		secondInstitutionGraph.setColor(Color.parseColor("#FFBB33"));
+		secondInstitutionGraph.setName("Instituicao 2");
+		secondInstitutionGraph.setValue(Float.parseFloat(secondInstitutionGrade.substring(0, 5)));
+		institutionGrades.add(firstInstitutionGraph);
+		institutionGrades.add(secondInstitutionGraph);
 
 		// Holds the graphical bar with the first institution and second institution names and grades
-		BarGraph g = (BarGraph)findViewById(R.id.graph);
-		g.setBars(points);
-		g.setUnit(" ");
-		g.setContentDescription("Instituição " + firstInstitution + " nota: " +
+		BarGraph graph = (BarGraph)findViewById(R.id.graph);
+		graph.setBars(institutionGrades);
+		graph.setUnit(" ");
+		graph.setContentDescription("Instituição " + firstInstitution + " nota: " +
 				String.format("%.3f", firstGrade) + ". E Instituição " + secondInstitution + " nota: "
 					+ String.format("%.3f", secondGrade));
 	}
