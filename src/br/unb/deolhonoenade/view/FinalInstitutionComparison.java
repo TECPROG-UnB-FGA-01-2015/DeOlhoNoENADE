@@ -49,8 +49,8 @@ public class FinalInstitutionComparison extends Activity
 	private int courseCode; // Describes the code of the course being avaliated
 	private float firstInstitutionGrade; // Holds the grade of the first institution
 	private float secondInstitutionGrade; // Holds the grade of the second institution
-	private List<String> firstInstitutionData; // Receives information of the first institution to be compared
-	private List<String> secondInstitutionData; // Receives information of the second institution to be compared
+	private List<String> firstInstitutionInfo; // Receives information of the first institution to be compared
+	private List<String> secondInstitutionInfo; // Receives information of the second institution to be compared
 	private List<String> institutionList; // Receives a list of institutions
 	private List<String> cityList; // Receives a list of cities
 	private List<String> stateList; // Receives a list of states
@@ -67,10 +67,10 @@ public class FinalInstitutionComparison extends Activity
 		// Receives the selected course. Type = TextView
 		TextView selectedCourse = (TextView) findViewById(R.id.cursoSelecionado);
 		
-		selectedCourse.setText(getIntent().getExtras().getString("cursoSelecionado"));
+		selectedCourse.setText(getIntent().getExtras().getString("selectedCourse"));
 
 		courseCode = getIntent().getExtras().getInt("courseCode");
-		firstInstitutionData = getIntent().getExtras().getStringArrayList("dadosIes");
+		firstInstitutionInfo = getIntent().getExtras().getStringArrayList("InstitutionInfo");
 		firstStateName = getIntent().getExtras().getString("firstStateName");
 		firstCityName = getIntent().getExtras().getString("firstCityName");
 		firstInstitutionName = getIntent().getExtras().getString("firstInstitutionName");
@@ -196,12 +196,12 @@ public class FinalInstitutionComparison extends Activity
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View v, int posicao, long id)
 			{
-				secondInstitutionData = new ArrayList<String>();
-				secondInstitutionData = objectCourseController.getInstitutionInfo(posicao);
-				secondInstitutionData.add(String.format("%.2f", objectCourseController.getCourseGrade(posicao)));
+				secondInstitutionInfo = new ArrayList<String>();
+				secondInstitutionInfo = objectCourseController.getInstitutionInfo(posicao);
+				secondInstitutionInfo.add(String.format("%.2f", objectCourseController.getCourseGrade(posicao)));
 				secondInstitutionGrade = objectCourseController.getCourseGrade(posicao);
 				secondInstitutionName = new String();
-				secondInstitutionName = secondInstitutionData.get(0);
+				secondInstitutionName = secondInstitutionInfo.get(0);
 
 				if (secondInstitutionName.equalsIgnoreCase(firstInstitutionName))
 				{
@@ -265,9 +265,9 @@ public class FinalInstitutionComparison extends Activity
 			public void onClick(View v)
 			{
 				Intent result = new Intent(FinalInstitutionComparison.this, InstitutionResultComparison.class);
-				result.putStringArrayListExtra("dadosIes1", (ArrayList<String>) firstInstitutionData);
-				result.putStringArrayListExtra("dadosIes2", (ArrayList<String>) secondInstitutionData);
-				result.putExtra("CodCurso", courseCode);
+				result.putStringArrayListExtra("firstInstitutionInfo", (ArrayList<String>) firstInstitutionInfo);
+				result.putStringArrayListExtra("secondInstitutionInfo", (ArrayList<String>) secondInstitutionInfo);
+				result.putExtra("courseCode", courseCode);
 				result.putExtra("firstInstitutionGrade", firstInstitutionGrade);
 				result.putExtra("firstInstitutionName", firstInstitutionName);
 				result.putExtra("secondInstitutionGrade", secondInstitutionGrade);

@@ -223,6 +223,7 @@ public class InstitutionComparison extends Activity
 	{
 		public PlaceholderFragment()
 		{
+			// Nothing to do
 		}
 
 		@Override
