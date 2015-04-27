@@ -46,7 +46,7 @@ public class StateComparison extends Activity
 		objectCourseController = new CourseController(this);
 
 		// Receives the info of the selected course from the view (search by ID)
-		TextView cursoSelecionado = (TextView) findViewById(R.id.stringCurso);
+		TextView selectedCourse = (TextView) findViewById(R.id.stringCurso);
 
 		course = getIntent().getExtras().getString("selectedCourse");
 		selectedCourse.setText(getIntent().getExtras().getString(
@@ -142,7 +142,7 @@ public class StateComparison extends Activity
 			@Override
 			public void onClick(View view)
 			{
-				Intent intent = new Intent(StateComparison.this, ComparacaoResult.class);
+				Intent intent = new Intent(StateComparison.this, ResultComparison.class);
 
 				intent.putExtra("selectedCourse", course);
 				intent.putExtra("firstState", firstState);
