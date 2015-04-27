@@ -46,7 +46,7 @@ public class FinalInstitutionComparison extends Activity
 	private String firstCityName; // Holds the name of the first city to be compared
 	private String firstInstitutionName; // Holds the name of the first institution to be compared
 	private Spinner citiesSpinner; // Spinner variable of the cities
-	private int courseCode; // Describes the code of the course being avaliated
+	private int courseCode; // Describes the code of the course being valued
 	private float firstInstitutionGrade; // Holds the grade of the first institution
 	private float secondInstitutionGrade; // Holds the grade of the second institution
 	private List<String> firstInstitutionInfo; // Receives information of the first institution to be compared
@@ -94,7 +94,10 @@ public class FinalInstitutionComparison extends Activity
 			stateList.remove(firstStateName);
 		}
 
-		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, stateList);
+		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+																	android.R.layout.simple_spinner_item,
+																	stateList);
+		
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		statesSpinner.setAdapter(dataAdapter);
 
@@ -112,6 +115,7 @@ public class FinalInstitutionComparison extends Activity
 			@Override
 			public void onNothingSelected(AdapterView<?> parent)
 			{
+				// Nothing to do
 			}
 		});
 	}
@@ -128,18 +132,22 @@ public class FinalInstitutionComparison extends Activity
 			{
 				Log.e(this.getClass().toString(), "retirou m");
 			}
+			
 			else
 			{
 				// Nothing to do
 			}
 		}
+		
 		else
 		{
 			// Nothing to do
 		}
 
-		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,
-				cityList);
+		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+																	android.R.layout.simple_spinner_item,
+																	cityList);
+		
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 		this.citiesSpinner.setAdapter(dataAdapter);
@@ -158,6 +166,7 @@ public class FinalInstitutionComparison extends Activity
 			@Override
 			public void onNothingSelected(AdapterView<?> parent)
 			{
+				// Nothing to do
 			}
 		});
 
@@ -176,11 +185,14 @@ public class FinalInstitutionComparison extends Activity
 				objectCourseController.removeInstitution(institutionPosition);
 				Log.e(this.getClass().toString(), "retirou");
 			}
+			
 			else
 			{
 				Log.e(this.getClass().toString(), "nao retirou");
 			}
+			
 		}
+		
 		else
 		{
 			// Nothing to do
@@ -205,7 +217,9 @@ public class FinalInstitutionComparison extends Activity
 
 				if (secondInstitutionName.equalsIgnoreCase(firstInstitutionName))
 				{
-					Log.e(this.getClass().toString(), secondInstitutionName + " / " + firstInstitutionName + " secondInstitutionName=firstInstitutionName");
+					Log.e(this.getClass().toString(),
+						  secondInstitutionName + " / " + firstInstitutionName + " secondInstitutionName=firstInstitutionName");
+					
 					if (institutionList.size() == 1)
 					{
 
@@ -218,28 +232,33 @@ public class FinalInstitutionComparison extends Activity
 
 							addItensOnSpinnerEstado(courseCode, true);
 						}
+						
 						else if (cityList.size() > 1)
 						{
 							Log.e(this.getClass().toString(), "cityList > 1");
 							addItensOnSpinnerMunicipio(stateName, true);
 						}
+						
 						else
 						{
 							// Nothing to do
 						}
 
 					}
+					
 					else if (institutionList.size() > 1)
 					{
 						Log.e(this.getClass().toString(), "institutionList > 1");
 						institutionPosition = posicao;
 						addItensOnSpinnerIES(stateName, cityName, true);
 					}
+					
 					else
 					{
 						// Nothing to do
 					}
 				}
+				
 				else
 				{
 					// Nothing to do
@@ -250,6 +269,7 @@ public class FinalInstitutionComparison extends Activity
 			@Override
 			public void onNothingSelected(AdapterView<?> parent)
 			{
+				// Nothing to do
 			}
 		});
 
@@ -290,14 +310,17 @@ public class FinalInstitutionComparison extends Activity
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
 		int idItem = item.getItemId(); // Receives the id of the selected item
+		
 		if (idItem == R.id.action_settings)
 		{
 			return true;
 		}
+		
 		else
 		{
 			// Nothing to do
 		}
+		
 		return super.onOptionsItemSelected(item);
 	}
 
@@ -305,6 +328,7 @@ public class FinalInstitutionComparison extends Activity
 	{
 		public PlaceholderFragment()
 		{
+			// Nothing to do
 		}
 
 		@Override
