@@ -142,7 +142,7 @@ public class StateComparison extends Activity
 			@Override
 			public void onClick(View view)
 			{
-				Intent intent = new Intent(StateComparison.this, ResultComparison.class);
+				Intent intent = new Intent(StateComparison.this, StateResultComparison.class);
 
 				intent.putExtra("selectedCourse", course);
 				intent.putExtra("firstState", firstState);
