@@ -1,5 +1,5 @@
 /**********************************************************
- * File: ResultComparison.java
+ * File: StateResultComparison.java
  * Purpose: Show the result of the comparison of two states
  *********************************************************/
 
@@ -30,7 +30,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.os.Build;
 
-public class ResultComparison extends Activity
+public class StateResultComparison extends Activity
 {
 
 	private String course; // Receives the name of course
