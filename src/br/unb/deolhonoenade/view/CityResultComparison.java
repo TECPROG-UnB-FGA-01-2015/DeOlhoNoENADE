@@ -66,18 +66,28 @@ public class CityResultComparison extends Activity
 		 * Position [0] has the average grade of the first city
 		 * Position [1] has the average grade of the second city
 		 */
-		gradeList = objectCourseController.compareCity(courseCode, nameFirstState, nameFirstCity, nameSecondState, nameSecondCity);
+		gradeList = objectCourseController.compareCity(courseCode,
+													   nameFirstState, 
+													   nameFirstCity, 
+													   nameSecondState, 
+													   nameSecondCity);
 
-		float firstAverage = gradeList.get(0); // Stores the average grade of the course in the first city (example: 6,0)
-		float secondAverage = gradeList.get(1); // Stores the average grade of the course in the second city (example: 5,0)
+		// Stores the average grade of the course in the first city (example: 6,0)
+		float firstAverage = gradeList.get(0); 
+		
+		// Stores the average grade of the course in the second city (example: 5,0)
+		float secondAverage = gradeList.get(1); 
 
 		if (savedInstanceState == null)
 		{
 			getFragmentManager().beginTransaction().add(R.id.container, new PlaceholderFragment()).commit();
 		}
 
-		String media1String = String.valueOf(firstAverage); // Stores the average grade of the course in the second (example: cinco)
-		String media2String = String.valueOf(secondAverage); // Stores the average grade of the course in the second (example: cinco)
+		// Stores the average grade of the course in the first (example: cinco)
+		String media1String = String.valueOf(firstAverage);
+		
+		// Stores the average grade of the course in the second (example: cinco)
+		String media2String = String.valueOf(secondAverage); 
 
 		ArrayList<Bar> points = new ArrayList<Bar>();
 		Bar d = new Bar();
@@ -95,8 +105,8 @@ public class CityResultComparison extends Activity
 		graph.setBars(points);
 		graph.setUnit(" ");
 
-		graph.setContentDescription("Cidade " + nameFirstCity + " nota: " + String.format("%.3f", firstAverage) + ". E cidade "
-				+ nameSecondCity + " nota: " + String.format("%.3f", secondAverage));
+		graph.setContentDescription("Cidade " + nameFirstCity + " nota: " + String.format("%.3f", firstAverage)
+				+ ". E cidade " + nameSecondCity + " nota: " + String.format("%.3f", secondAverage));
 	}
 
 	@Override
@@ -110,10 +120,17 @@ public class CityResultComparison extends Activity
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
 		int id = item.getItemId();
+		
 		if (id == R.id.action_settings)
 		{
 			return true;
 		}
+		
+		else
+		{
+			// Nothing to do
+		}
+		
 		return super.onOptionsItemSelected(item);
 	}
 
@@ -121,6 +138,7 @@ public class CityResultComparison extends Activity
 	{
 		public PlaceholderFragment()
 		{
+			// Nothing to do
 		}
 
 		@Override
