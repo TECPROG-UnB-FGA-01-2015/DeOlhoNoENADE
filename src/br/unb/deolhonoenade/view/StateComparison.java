@@ -31,7 +31,7 @@ public class StateComparison extends Activity
 {
 
 	private String course; // Receives the name of course
-	private int courseCode; // Receives the result of the ControllerCurso's method "SearchCourseCode" 
+	private int courseCode; // Receives the result of the CourseController's method "SearchCourseCode" 
 	private CourseController objectCourseController; // Object from the CourseController Class
 	private Spinner firstStateSpinner, secondStateSpinner; // A dropdown list of states
 	private String firstState, secondState; // Receives the value of the selected state
