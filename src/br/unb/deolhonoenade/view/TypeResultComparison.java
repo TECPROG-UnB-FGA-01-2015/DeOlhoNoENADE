@@ -26,7 +26,7 @@ import br.unb.deolhonoenade.controller.CourseController;
 
 public class TypeResultComparison extends Activity
 {
-	private CourseController objectCourseController; // ControllerCurso type object
+	private CourseController objectCourseController; // CourseController type object
 	private float firstResult; // Holds the average grade of the first course type
 	private float secondResult; // Holds the average grade of the second course type
 	private String firstState; // Holds the state of first institution (DF, MG, RJ,...)
@@ -51,38 +51,38 @@ public class TypeResultComparison extends Activity
 		secondType = getIntent().getExtras().getString("secondType");
 		
 		// Holds the first state name and the type of the first institution
-		String eT1 = (firstState + " " + firstType);
+		String firstStateType = (firstState + " " + firstType);
 		
 		// Holds the second state name and the type of the second institution
-		String eT2 = (secondState + " " + secondType);
+		String secondStateType = (secondState + " " + secondType);
 		
 		// Presents the first institution state on a textView
-		TextView estadoTipo1 = (TextView) findViewById(R.id.estadoTipo1);
-		estadoTipo1.setText(eT1);
+		TextView stateTypeOne = (TextView) findViewById(R.id.estadoTipo1);
+		stateTypeOne.setText(firstStateType);
 		
 		// Presents the second institution state on a textView
-		TextView estadoTipo2 = (TextView) findViewById(R.id.estadoTipo2);
-		estadoTipo2.setText(eT2);
+		TextView stateTypeTwo = (TextView) findViewById(R.id.estadoTipo2);
+		stateTypeTwo.setText(secondStateType);
 		
-		String resultado1String = String.valueOf(firstResult); // Holds the first institution grade
-		String resultado2String = String.valueOf(secondResult); // Holds the second institution grade
+		String firstTypeGrade = String.valueOf(firstResult); // Holds the first institution grade
+		String secondTypeGrade = String.valueOf(secondResult); // Holds the second institution grade
 		
-		ArrayList<Bar> points = new ArrayList<Bar>(); // Holds the average grade of institution
-		Bar d = new Bar(); // Contains the first institution data
-		d.setColor(Color.parseColor("#99CC00"));
-		d.setName("Estado/Tipo 1:");
-		d.setValue(Float.parseFloat(resultado1String.substring(0, 5)));
-		Bar d2 = new Bar(); // Contains the second institution data
-		d2.setColor(Color.parseColor("#FFBB33"));
-		d2.setName("Estado/Tipo 2:");
-		d2.setValue(Float.parseFloat(resultado2String.substring(0, 5)));
-		points.add(d);
-		points.add(d2);
+		ArrayList<Bar> institutionGrades = new ArrayList<Bar>(); // Holds the average grade of institution
+		Bar firstInstitutionGraph = new Bar(); // Contains the first institution data
+		firstInstitutionGraph.setColor(Color.parseColor("#99CC00"));
+		firstInstitutionGraph.setName("Estado/Tipo 1:");
+		firstInstitutionGraph.setValue(Float.parseFloat(firstTypeGrade.substring(0, 5)));
+		Bar secondInstitutionGraph = new Bar(); // Contains the second institution data
+		secondInstitutionGraph.setColor(Color.parseColor("#FFBB33"));
+		secondInstitutionGraph.setName("Estado/Tipo 2:");
+		secondInstitutionGraph.setValue(Float.parseFloat(secondTypeGrade.substring(0, 5)));
+		institutionGrades.add(firstInstitutionGraph);
+		institutionGrades.add(secondInstitutionGraph);
 		
-		//Holds the graphical bar with the first institution and second institution names and grades
+		// Holds the graphical bar with the first institution and second institution names and grades
 		BarGraph g = (BarGraph)findViewById(R.id.graph3);
 		
-		g.setBars(points);
+		g.setBars(institutionGrades);
 		g.setUnit(" ");
 
 		g.setContentDescription("Tipo de Instituição " + firstType + " no estado " +
