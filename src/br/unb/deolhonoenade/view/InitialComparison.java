@@ -45,22 +45,22 @@ public class InitialComparison extends Activity implements
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_comparacao_inicial);		
 		course = getIntent().getExtras().getString("selectedCourse");
-		addListenerOnButtonBotaoEstado();
-		addListenerOnButtonBotaoInstituicao();
-		addListenerOnButtonBotaoCidade();
-		addListenerOnButtonBotaoTipo();
+		addListenerOnButtonState();
+		addListenerOnButtonInstitution();
+		addListenerOnButtonCity();
+		addListenerOnButtonType();
 	}
 	
-	// Method to recognize the button "BotaoCidade"
-	private void addListenerOnButtonBotaoCidade()
+	// Method to recognize the button "City"
+	private void addListenerOnButtonCity()
 	{
-		// ID Button called BotaoCidades that compare 2 different ENADE's average grade from 2 Cities
+		// ID Button called "City" that compare 2 different ENADE's average grade from 2 Cities
 		Button compareInstitution = (Button) findViewById(R.id.BotaoCidades);
 		compareInstitution.setOnClickListener(new OnClickListener()
 		{
 			@Override
 			/* Method to confirm the the mouse click and redirect to
-			 * ComparacaoCidades view
+			 * CityComparison view
 			 */
 			public void onClick(View v) // View variable that is called when a view has been clicked
 			{
@@ -72,16 +72,16 @@ public class InitialComparison extends Activity implements
 		});
 	}
 
-	// Method to recognize the button "BotaoInstituicao"
-	private void addListenerOnButtonBotaoInstituicao()
+	// Method to recognize the button "Institution"
+	private void addListenerOnButtonInstitution()
 	{
-		// ID Button called BotaoIES that compare 2 different ENADE's average grade from 2 Universities
+		// ID Button called "Institution" that compare 2 different ENADE's average grade from 2 Universities
 		Button compareInstitution = (Button) findViewById(R.id.BotaoIES);
 		compareInstitution.setOnClickListener(new OnClickListener()
 		{
 			@Override
 			/* Method to confirm the the mouse click and redirect to
-			 * ComparacaoInstituicao view
+			 * InstitutionComparison view
 			 */
 	    	public void onClick(View v) // View variable that is called when a view has been clicked
 			{
@@ -95,16 +95,16 @@ public class InitialComparison extends Activity implements
 		});
 	}
 	
-	// Method to recognize the button "BotaoEstado"
-	private void addListenerOnButtonBotaoEstado()
+	// Method to recognize the button "State"
+	private void addListenerOnButtonState()
 	{
-		// ID Button called BotaoEstado that compare 2 different ENADE's average grade from 2 States
+		// ID Button called "State" that compare 2 different ENADE's average grade from 2 States
 		Button compareState = (Button) findViewById(R.id.BotaoEstado);
 		compareState.setOnClickListener(new OnClickListener()
 		{	
 			@Override
 			/* Method to confirm the the mouse click and redirect to
-			 * ComparacaoEstado view
+			 * StateComparison view
 			 */
 	    	public void onClick(View v) // View variable that is called when a view has been clicked
 			{
@@ -116,10 +116,10 @@ public class InitialComparison extends Activity implements
 		});
 	}
 	
-	// Method to recognize the button "BotaoTipo"
-	private void addListenerOnButtonBotaoTipo()
+	// Method to recognize the button "Type"
+	private void addListenerOnButtonType()
 	{
-		/* ID Button called BotaoTipo that compare 2 different ENADE's average grade from
+		/* ID Button called "Type" that compare 2 different ENADE's average grade from
 		 * 2 University' Types
 		 */
 		Button compareType = (Button) findViewById(R.id.BotaoTipo);
@@ -127,7 +127,7 @@ public class InitialComparison extends Activity implements
 		{	
 			@Override
 			/* Method to confirm the the mouse click and redirect to
-			 * ComparacaoTipo view
+			 * TypeComparison view
 			 */
 	    	public void onClick(View v) // View variable that is called when a view has been clicked
 			{
