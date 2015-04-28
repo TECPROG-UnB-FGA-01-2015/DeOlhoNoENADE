@@ -1,7 +1,7 @@
 /***********************************************************
  * File: Map.java
- * Purpose: Responsible to show a map with all the
- * 			institutions
+ * Purpose: Responsible to show a Brazilian map with all the
+ * 			State's institutions grades
 ***********************************************************/
 package br.unb.deolhonoenade.view;
 
@@ -34,10 +34,10 @@ public class Map extends Activity
 		// Holds the information that will be showed on view
 		WebView webview = (WebView) findViewById(R.id.webView1);
         
-		// Stores the curso's name
+		// Stores the course's name
 		String course = getIntent().getExtras().getString("selectedCourse");
 		
-		// ControllerCurso type object
+		// CourseController type object
         CourseController objectCourseController = new CourseController(this);
         
         // Code of the course selected
@@ -49,7 +49,7 @@ public class Map extends Activity
     	// Holds all the average grade of all federal units
         List<String> stateAverageGradeList = new ArrayList<String>();
         
-        for(int i = 0; i<allStates.size(); i++) // For parameter; (0 =< i < todasUfs)
+        for(int i = 0; i < allStates.size(); i++) // For parameter; (0 =< i < allStates)
         {	
         	// Holds the average grade of each federal unit
         	String stateAverageGrade = new String();
@@ -147,9 +147,10 @@ public class Map extends Activity
 	// Method to recognize when an option on menu is selected	
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
+		/* Handle action bar item clicks here. The action bar will
+		 * automatically handle clicks on the Home/Up button, so long
+		 * as you specify a parent activity in AndroidManifest.xml.
+		 */
 		int id = item.getItemId(); // Holds the id of the container's selected item 
 		
 		if (id == R.id.action_settings)
