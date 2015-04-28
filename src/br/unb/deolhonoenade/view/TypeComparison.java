@@ -33,15 +33,12 @@ import android.os.Build;
 
 public class TypeComparison extends Activity
 {
-	// Contains a list of states to be chosen to the first institution
-	private Spinner firstStateSpinner;
 	
+	private Spinner firstStateSpinner; // Contains a list of states to be chosen to the first institution
 	private Spinner firstTypeSpinner; // First institution type (public or private)
-	
-	// Contains a list of states to be chosen to the second institution
-	private Spinner secondStateSpinner;
+	private Spinner secondStateSpinner; // Contains a list of states to be chosen to the second institution
 	private Spinner secondTypeSpinner; // second institution type (public or private)
-	private CourseController objectCourseController; // ControllerCurso type object
+	private CourseController objectCourseController; // CourseController type object
 	private String firstState; // Holds the first institution state (DF, MG, RJ,...)
 	private String firstType; // Holds the state of first institution (AC, AM, SP,...)
 	private String secondState; // Holds the second institution state (public or private)
@@ -61,19 +58,18 @@ public class TypeComparison extends Activity
 		this.objectCourseController = new CourseController(this);
 		
 		// Recognize which course was selected
-		TextView cursoSelecionado = (TextView) findViewById(
+		TextView selectedCourse = (TextView) findViewById(
 				R.id.nomeCursoSelecionado);
 		
-		cursoSelecionado.setText(getIntent().getExtras().getString(
+		selectedCourse.setText(getIntent().getExtras().getString(
 				"selectedCourse"));
 		
 		// Takes the code of the course that was selected
 		courseCode = objectCourseController.searchCourseCode(
 				getIntent().getExtras().getString("selectedCourse"));
 		
-		addItensOnSpinnerEstadoT1(courseCode);
-		//addItensOnSpinnerEstadoT2(courseCode, false);
-		addListenerOnButtonBuscar();
+		addItensOnSpinnerFirstStateType(courseCode);
+		addListenerOnButtonSearch();
 	}
 
 	@Override
@@ -86,7 +82,7 @@ public class TypeComparison extends Activity
 	}
 	
 	// Method to add item on spinner firstStateSpinner
-	private void addItensOnSpinnerEstadoT1(int courseCode)
+	private void addItensOnSpinnerFirstStateType(int courseCode)
 	{
 		firstStateSpinner = (Spinner) findViewById(R.id.SpinnerEstado1);
 		List<String> list = new ArrayList<String>(); // Holds a list of institutions by the course code
@@ -111,7 +107,7 @@ public class TypeComparison extends Activity
 										long id) // Holds the id of the container's selected item 
 			{
 				firstState = parent.getItemAtPosition(posicao).toString();
-				addItensOnSpinnerTipo1(firstState);						
+				addItensOnSpinnerFirstType(firstState);						
 			}
 				
 			@Override
@@ -125,11 +121,11 @@ public class TypeComparison extends Activity
 	/* Method to add items on spinner Type1 to compare University's
 	 * types (Public and Private)
 	 */
-	private void addItensOnSpinnerTipo1(String uf)
+	private void addItensOnSpinnerFirstType(String state)
 	{
 		this.firstTypeSpinner = (Spinner) findViewById(R.id.SpinnerEstado1Tipo);
 		List<String> list;
-		list = objectCourseController.searchStateTypes(courseCode, uf);
+		list = objectCourseController.searchStateTypes(courseCode, state);
 
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_spinner_item, list);
@@ -149,7 +145,7 @@ public class TypeComparison extends Activity
 			{
 				firstType = parent.getItemAtPosition(posicao).toString();
 				
-				addItensOnSpinnerEstadoT2(courseCode, false);
+				addItensOnSpinnerSecondStateType(courseCode, false);
 			}
 			
 			@Override
@@ -161,7 +157,7 @@ public class TypeComparison extends Activity
 	}
 	
 	// Method to add item on spinner secondStateSpinner
-	private void addItensOnSpinnerEstadoT2(int courseCode, boolean retira)
+	private void addItensOnSpinnerSecondStateType(int courseCode, boolean retira)
 	{
 		secondStateSpinner = (Spinner) findViewById(R.id.SpinnerEstado2);
 		List<String> list = new ArrayList<String>();
@@ -195,7 +191,7 @@ public class TypeComparison extends Activity
 			{
 				secondState = parent.getItemAtPosition(posicao).toString();
 						
-				addItensOnSpinnerTipo2(secondState, false);
+				addItensOnSpinnerSecondType(secondState, false);
 			}
 				
 			@Override
@@ -209,13 +205,13 @@ public class TypeComparison extends Activity
 	/* Method to add items on spinner secondTypeSpinner to compare University's
 	 * types (Public and Private)
 	 */
-	private void addItensOnSpinnerTipo2(String uf, // Which federation unit was selected
-										 boolean retira)
+	private void addItensOnSpinnerSecondType(String state, // Which federation unit was selected
+										 boolean removeInstitutionPosition)
 	{
 		this.secondTypeSpinner = (Spinner) findViewById(R.id.SpinnerEstado2Tipo);
-		secondTypeList = objectCourseController.searchStateTypes(courseCode, uf);
+		secondTypeList = objectCourseController.searchStateTypes(courseCode, state);
 		
-		if(retira)
+		if(removeInstitutionPosition)
 		{
 			secondTypeList.remove(firstType);
 		}
@@ -235,7 +231,7 @@ public class TypeComparison extends Activity
 		this.secondTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
 		{
 			@Override
-			// Method to 
+			// Method to select item from the view when newly selected position is different from the previously selected position
 			public void onItemSelected(AdapterView<?> parent,
 										View v, // Holds which view is called
 										int posicao, // Gets the position of the selected line on database
@@ -243,34 +239,26 @@ public class TypeComparison extends Activity
 			{
 				secondType = parent.getItemAtPosition(posicao).toString();
 				
-				if(firstState.equalsIgnoreCase(secondState))
+				boolean firstStateEquals = firstState.equalsIgnoreCase(secondState);
+				boolean firstTypeEquals = firstType.equalsIgnoreCase(secondType);
+				
+				if(firstStateEquals && firstTypeEquals)
 				{
-					if(firstType.equalsIgnoreCase(secondType))
-					{
-						if(secondTypeList.size()<=1)
+				
+						if(secondTypeList.size() <= 1)
 						{
-							addItensOnSpinnerEstadoT2(courseCode, true);
+							addItensOnSpinnerSecondStateType(courseCode, true);
 						}
 						else
 						{
-							addItensOnSpinnerTipo2(secondState, true);
+							addItensOnSpinnerSecondType(secondState, true);
 						}
-					}
-					
-					else
-					{
-						// Nothing to do
-					}
-				}
-				
-				else
-				{
-					// Nothing to do
+										
 				}
 			}
 		 
 			@Override
-			// Method to be called when nothing be selected
+			// Method to be called when nothing is selected
 			public void onNothingSelected(AdapterView<?> parent)
 			{
 				// Nothing to do
@@ -278,16 +266,16 @@ public class TypeComparison extends Activity
 		});
 	}
 
-	// Method to recognize the button "Buscar"
-	private void addListenerOnButtonBuscar()
+	// Method to recognize the button "Search"
+	private void addListenerOnButtonSearch()
 	{
 		// Button to start the comparison
-		Button comparar = (Button) findViewById(R.id.comparaT1);
-		comparar.setOnClickListener (new OnClickListener()
+		Button compare = (Button) findViewById(R.id.comparaT1);
+		compare.setOnClickListener (new OnClickListener()
 		{
 			@Override
 			/* Method to confirm the the mouse click and redirect to
-			 * ComparacaoResultTipo view
+			 * TypeResultComparison view
 			 */
 	    	public void onClick(View v)
 			{
@@ -315,9 +303,10 @@ public class TypeComparison extends Activity
 	// Method to recognize when an option on menu is selected
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
+	    /* Handle action bar item clicks here. The action bar will
+		 * automatically handle clicks on the Home/Up button, so long
+		 * as you specify a parent activity in AndroidManifest.xml
+		 */
 		int id = item.getItemId();
 		if (id == R.id.action_settings)
 		{
