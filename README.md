@@ -7,27 +7,56 @@
 
 Os arquivos que serão utilizados do projeto foram dividos entre os integrantes do Grupo 4 da matéria de Técnicas de Programação 2015/1 da seguinte maneira:
 
-Eduardo Moreira (13/0008371)
+<h2>Eduardo Moreira (13/0008371)</h2>
+<h3>Atividades 1 a 4:</h3>  
 - ComparacaoCidades
 - ComparacaoInstituicao
 - ComparacaoInstituicaoFinal
-- ComparacaoResultC.java
-
-Henrique Augusto (11/0148886)
+- ComparacaoResultC
+<h3>Atividade 5:</h3> 
 - ControllerCurso
 - TestControllerCurso
 
-Matheus Silva (13/0015369)
+<h2>Henrique Augusto (11/0148886)</h2>
+<h3>Atividades 1 a 4:</h3>  
+- ControllerCurso
+- TestControllerCurso
+<h3>Atividade 5:</h3>
+- ComparacaoCidades
+- ComparacaoInstituicao
+- ComparacaoInstituicaoFinal
+- ComparacaoResultC
+- ComparacaoInicial
+- ComparacaoResultIES
+- ComparacaoResultTipo
+- ComparacaoTipo
+- Mapa
+
+<h2>Matheus Silva (13/0015369)</h2>
+<h3>Atividades 1 a 4:</h3> 
 - Curso
 - Instituicao
 - TestCurso
 - TestInstituicao
 - ComparacaoEstado
 - ComparacaoResult
+<h3>Atividade 5:</h3>
+- ComparacaoCidades
+- ComparacaoInstituicao
+- ComparacaoInstituicaoFinal
+- ComparacaoResultC
 
-Omar Júnior (13/0015920)
+<h2>Omar Júnior (13/0015920)</h2>
+<h3>Atividades 1 a 4:</h3> 
 - ComparacaoInicial
 - ComparacaoResultIES
 - ComparacaoResultTipo
 - ComparacaoTipo
 - Mapa
+<h3>Atividade 5:</h3>
+- Curso
+- Instituicao
+- TestCurso
+- TestInstituicao
+- ComparacaoEstado
+- ComparacaoResult
