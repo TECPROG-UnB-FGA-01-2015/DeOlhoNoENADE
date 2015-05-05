@@ -42,14 +42,16 @@ public class InstitutionResultComparison extends Activity
 		setContentView(R.layout.activity_comparacao_result_ies);
 		
 		objectCourseController = new CourseController(this);
-			
-		firstInstitutionInfo = getIntent().getExtras().getStringArrayList("firstInstitutionInfo");
-		secondInstitutionInfo = getIntent().getExtras().getStringArrayList("secondInstitutionInfo");
 		
-		firstInstitution = getIntent().getExtras().getString("firstInstitution");
-		firstGrade = getIntent().getExtras().getFloat("firstGrade");
-		secondInstitution = getIntent().getExtras().getString("secondInstitution");
-		secondGrade = getIntent().getExtras().getFloat("secondGrade");
+		Bundle extras = getIntent().getExtras(); // Retrieves and gets a map of extended data from the intent
+		
+		firstInstitutionInfo = extras.getStringArrayList("firstInstitutionInfo");  
+		secondInstitutionInfo = extras.getStringArrayList("secondInstitutionInfo");
+		
+		firstInstitution = extras.getString("firstInstitution");
+		firstGrade = extras.getFloat("firstGrade");
+		secondInstitution = extras.getString("secondInstitution");
+		secondGrade = extras.getFloat("secondGrade");
 		
 		// Presents the name of first institution on a textView
 		TextView institutionOne = (TextView) findViewById(R.id.nomeIES1);
