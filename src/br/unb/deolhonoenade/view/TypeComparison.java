@@ -61,12 +61,12 @@ public class TypeComparison extends Activity
 		TextView selectedCourse = (TextView) findViewById(
 				R.id.nomeCursoSelecionado);
 		
-		selectedCourse.setText(getIntent().getExtras().getString(
-				"selectedCourse"));
+		Bundle extras = getIntent().getExtras(); // Retrieves and gets a map of extended data from the intent
+		selectedCourse.setText(extras.getString("selectedCourse")); // Gets the Selected Course's Name
 		
 		// Takes the code of the course that was selected
 		courseCode = objectCourseController.searchCourseCode(
-				getIntent().getExtras().getString("selectedCourse"));
+				extras.getString("selectedCourse")); 
 		
 		addItensOnSpinnerFirstStateType(courseCode);
 		addListenerOnButtonSearch();
@@ -157,14 +157,14 @@ public class TypeComparison extends Activity
 	}
 	
 	// Method to add item on spinner secondStateSpinner
-	private void addItensOnSpinnerSecondStateType(int courseCode, boolean retira)
+	private void addItensOnSpinnerSecondStateType(int courseCode, boolean removeRepeatedState)
 	{
 		secondStateSpinner = (Spinner) findViewById(R.id.SpinnerEstado2);
 		List<String> list = new ArrayList<String>();
 		
 		list = objectCourseController.searchState(courseCode);
 		
-		if(retira)
+		if(removeRepeatedState)
 		{
 			list.remove(firstState);
 		}
@@ -241,11 +241,12 @@ public class TypeComparison extends Activity
 				
 				boolean firstStateEquals = firstState.equalsIgnoreCase(secondState);
 				boolean firstTypeEquals = firstType.equalsIgnoreCase(secondType);
+				int secondUniverityType = 1;
 				
 				if(firstStateEquals && firstTypeEquals)
 				{
 				
-						if(secondTypeList.size() <= 1)
+						if(secondTypeList.size() <= secondUniverityType)
 						{
 							addItensOnSpinnerSecondStateType(courseCode, true);
 						}
