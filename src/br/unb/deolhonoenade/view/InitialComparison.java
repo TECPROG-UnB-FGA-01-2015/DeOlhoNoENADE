@@ -37,14 +37,15 @@ public class InitialComparison extends Activity implements
 			"selected_navigation_item";
 	
 	private String course; // Stores the course's name
-	
+
 	@Override
 	// Method to initialize the activity activity activity_comparacao_inicial
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_comparacao_inicial);		
-		course = getIntent().getExtras().getString("selectedCourse");
+		Bundle extras = getIntent().getExtras(); // Retrieves and gets a map of extended data from the intent.
+		course = extras.getString("selectedCourse"); // Gets the Course's value of the passed extra
 		addListenerOnButtonState();
 		addListenerOnButtonInstitution();
 		addListenerOnButtonCity();
@@ -185,10 +186,11 @@ public class InitialComparison extends Activity implements
 	// Method to recognize whenever a navigation item on action bar is selected
 	public boolean onNavigationItemSelected(int position, long id)
 	{
+		int addOnePosition = 1;
 		getFragmentManager()
 				.beginTransaction()
 				.replace(R.id.container,
-						PlaceholderFragment.newInstance(position + 1)).commit();
+						PlaceholderFragment.newInstance(position + addOnePosition)).commit();
 		return true;
 	}
 
