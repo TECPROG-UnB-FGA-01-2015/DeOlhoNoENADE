@@ -30,6 +30,8 @@ import br.unb.deolhonoenade.R.layout;
 import br.unb.deolhonoenade.R.menu;
 import controller.CourseController;
 
+import org.apache.log4j.Logger;
+
 public class CityComparison extends Activity
 {
 	private String courseName; // Holds the name of the course being compared
@@ -43,6 +45,7 @@ public class CityComparison extends Activity
 	private String firstCityName; // Holds the name of the first City
 	private String secondCityName; // Holds the name of the second City
 	private CourseController objectCourseController; // Instantiates the controller
+	static Logger log = Logger.getLogger(CityComparison.class.getName());
 	
 	// Const to input selected navigation item
 	private static final String STATE_SELECTED_NAVIGATION_ITEM = "selected_navigation_item";

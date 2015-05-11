@@ -24,6 +24,8 @@ import graphs.holographlibrary.BarGraph;
 import br.unb.deolhonoenade.R;
 import controller.CourseController;
 
+import org.apache.log4j.Logger;
+
 public class InstitutionResultComparison extends Activity
 {
 	private CourseController objectCourseController; // CourseController type object
@@ -33,6 +35,8 @@ public class InstitutionResultComparison extends Activity
 	private float secondGrade; // The grade of the second institution
 	private String firstInstitution; // Holds the first institution name
 	private String secondInstitution; // Holds the second institution name
+	
+	static Logger log = Logger.getLogger(CityComparison.class.getName());
 	
 	@Override
 	// Method to initialize the activity activity_comparacao_result_ies
