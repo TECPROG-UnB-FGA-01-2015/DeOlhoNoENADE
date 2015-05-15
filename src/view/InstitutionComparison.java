@@ -48,7 +48,7 @@ public class InstitutionComparison extends Activity
 	private List<String> institutionInfo; // Holds data of the institution being compared
 	private float selectedGrade; // Holds the grade of the selected item
 	
-	static Logger log = Logger.getLogger(CityComparison.class.getName());
+	static Logger log = Logger.getLogger(InstitutionComparison.class.getName());
 
     @Override
     // Method to initialize the activity activity_comparacao_instituicao
@@ -67,6 +67,8 @@ public class InstitutionComparison extends Activity
 
 		addItensOnSpinnerEstado(courseCode);
 		addListenerOnButtonBuscar();
+		
+		log.debug("Load InstitutionComparison");
 	}
 
     // Method to list the State options in a spinner
@@ -95,12 +97,14 @@ public class InstitutionComparison extends Activity
 				stateName = parent.getItemAtPosition(posicao).toString();
 
 				addItensOnSpinnerMunicipio(stateName);
+				log.debug("State add on State Spinner.");
 			}
 
 			@Override
 			public void onNothingSelected(AdapterView<?> parent)
 			{
 				// Nothing to do
+				log.info("No Item selected!");
 			}
 		});
 	}
@@ -130,12 +134,14 @@ public class InstitutionComparison extends Activity
 
 				cityName = parent.getItemAtPosition(posicao).toString();
 				addItensOnSpinnerIES(stateName, cityName);
+				log.debug("City add on City Spinner.");
 			}
 
 			@Override
 			public void onNothingSelected(AdapterView<?> parent)
 			{
 				// Nothing to do
+				log.info("No Item selected!");
 			}
 		});
 
@@ -164,12 +170,15 @@ public class InstitutionComparison extends Activity
 				institutionInfo = objectCourseController.getInstitutionInfo(posicao);
 				selectedGrade = objectCourseController.getCourseGrade(posicao);
 				institutionName = institutionInfo.get(0);
+				
+				log.debug("Institution add on IES Spinner.");
 			}
 
 			@Override
 			public void onNothingSelected(AdapterView<?> parent)
 			{
 				// Nothing to do
+				log.info("No Item selected!");
 			}
 		});
 
@@ -194,6 +203,8 @@ public class InstitutionComparison extends Activity
 				result.putExtra("institutionName", institutionName);
 
 				startActivity(result);
+				
+				log.debug("The button Comparar was clicked.");
 			}
 		});
 
@@ -234,6 +245,7 @@ public class InstitutionComparison extends Activity
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
 			View rootView = inflater.inflate(R.layout.fragment_comparacao_instituicao, container, false);
+			log.debug("The view was loaded.");
 			return rootView;
 		}
 	}
