@@ -21,7 +21,7 @@
         <uses-library android:name="android.test.runner" />
 
         <activity
-            android:name="br.unb.deolhonoenade.view.MainActivity"
+            android:name="view.MainActivity"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar.Fullscreen" >
             <intent-filter>
@@ -31,102 +31,89 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="br.unb.deolhonoenade.view.MenuInicial"
+            android:name="view.MenuInicial"
             android:label="@string/title_activity_menu_inicial"
             android:theme="@android:style/Theme.DeviceDefault" >
         </activity>
         <activity
-            android:name="br.unb.deolhonoenade.view.RankingInicial"
+            android:name="view.RankingInicial"
             android:label="@string/title_activity_ranking_inicial"
             android:theme="@android:style/Theme.DeviceDefault" >
         </activity>
         <activity
-            android:name="br.unb.deolhonoenade.view.RankingResult"
+            android:name="view.RankingResult"
             android:label="@string/title_activity_ranking_result"
             android:theme="@android:style/Theme.DeviceDefault" >
         </activity>
         <activity
-            android:name="br.unb.deolhonoenade.view.InitialComparison"
+            android:name="view.InitialComparison"
             android:label="@string/title_activity_comparacao_inicial"
             android:theme="@android:style/Theme.DeviceDefault" >
         </activity>
         <activity
-            android:name="br.unb.deolhonoenade.view.DadosIES"
+            android:name="view.DadosIES"
             android:label="@string/title_activity_dados_ies"
             android:theme="@android:style/Theme.DeviceDefault.Dialog" >
         </activity>
         <activity
-            android:name="br.unb.deolhonoenade.view.StateComparison"
+            android:name="view.StateComparison"
             android:label="@string/title_activity_comparacao_estado"
             android:theme="@android:style/Theme.DeviceDefault" >
         </activity>
         <activity
 
-            android:name="br.unb.deolhonoenade.view.StateResultComparison"
+            android:name="view.StateResultComparison"
             android:label="@string/title_activity_comparacao_result" 
             android:theme="@android:style/Theme.DeviceDefault">
 
         </activity>
         <activity
-            android:name="br.unb.deolhonoenade.view.InstitutionComparison"
+            android:name="view.InstitutionComparison"
             android:label="@string/title_activity_comparacao_instituicao"
             android:parentActivityName="br.unb.deolhonoenade.view.InitialComparison"
             android:theme="@android:style/Theme.DeviceDefault" >
         </activity>
         <activity
-            android:name="br.unb.deolhonoenade.view.FinalInstitutionComparison"
+            android:name="view.FinalInstitutionComparison"
             android:label="@string/title_activity_comparacao_instituicao_final"
             android:theme="@android:style/Theme.DeviceDefault" >
         </activity>
         <activity
-            android:name="br.unb.deolhonoenade.view.InstitutionResultComparison"
+            android:name="view.InstitutionResultComparison"
             android:label="@string/title_activity_comparacao_result_ies"
             android:theme="@android:style/Theme.DeviceDefault" >
         </activity>
         <activity
-            android:name="br.unb.deolhonoenade.view.CityComparison"
-
+            android:name="view.CityComparison"
             android:label="@string/title_activity_comparacao_cidades" 
             android:theme="@android:style/Theme.DeviceDefault">
         </activity>
         <activity
-            android:name="br.unb.deolhonoenade.view.CityResultComparison"
+            android:name="view.CityResultComparison"
             android:label="@string/title_activity_comparacao_result_c" 
             android:theme="@android:style/Theme.DeviceDefault">
         </activity>    
-         <activity    
-            android:name="br.unb.deolhonoenade.view.ComparacaoResultCidade"
-            android:label="@string/title_activity_comparacao_result_cidade" 
-            android:theme="@android:style/Theme.DeviceDefault">
-
-        </activity>
         <activity
-            android:name="br.unb.deolhonoenade.view.TypeComparison"
+            android:name="view.TypeComparison"
             android:label="@string/title_activity_comparacao_tipo"
             android:theme="@android:style/Theme.DeviceDefault" >
         </activity>
         <activity
-            android:name="br.unb.deolhonoenade.view.ComparacaoTipoFinal"
-
+            android:name="view.ComparacaoTipoFinal"
             android:label="@string/title_activity_comparacao_tipo_final" 
             android:theme="@android:style/Theme.DeviceDefault">
-
         </activity>
         <activity
-            android:name="br.unb.deolhonoenade.view.TypeResultComparison"
+            android:name="view.TypeResultComparison"
             android:label="@string/title_activity_comparacao_result_tipo"
             android:theme="@android:style/Theme.DeviceDefault" >
         </activity>
         <activity
-            android:name="br.unb.deolhonoenade.view.Map"
+            android:name="view.Map"
             android:label="@string/title_activity_mapa" >
         </activity>
         <activity
-            android:name="br.unb.deolhonoenade.Mapa"
-            android:label="@string/title_activity_mapa" >
-        </activity>
-        <activity
-            android:name="br.unb.deolhonoenade.view.ManualUsuario"
+            android:name="view.ManualUsuario"
             android:label="@string/title_activity_manual_usuario" >
         </activity>
     </application>

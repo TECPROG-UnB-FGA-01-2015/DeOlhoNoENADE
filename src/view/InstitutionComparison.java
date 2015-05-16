@@ -4,7 +4,7 @@
  * 			select the first institution to compare the ENADE institution grade
  ****************************************************************************/
 
-package br.unb.deolhonoenade.view;
+package view;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,7 @@ import br.unb.deolhonoenade.R;
 import br.unb.deolhonoenade.R.id;
 import br.unb.deolhonoenade.R.layout;
 import br.unb.deolhonoenade.R.menu;
-import br.unb.deolhonoenade.controller.CourseController;
+import controller.CourseController;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;

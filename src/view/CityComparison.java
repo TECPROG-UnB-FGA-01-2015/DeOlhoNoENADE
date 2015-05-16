@@ -4,7 +4,7 @@
  * 			select two cities to compare the city's institutions grades
  ************************************************************************/
 
-package br.unb.deolhonoenade.view;
+package view;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +28,7 @@ import br.unb.deolhonoenade.R;
 import br.unb.deolhonoenade.R.id;
 import br.unb.deolhonoenade.R.layout;
 import br.unb.deolhonoenade.R.menu;
-import br.unb.deolhonoenade.controller.CourseController;
+import controller.CourseController;
 
 public class CityComparison extends Activity
 {

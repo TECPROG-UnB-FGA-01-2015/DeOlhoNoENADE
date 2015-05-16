@@ -1,4 +1,4 @@
-package br.unb.deolhonoenade.view;
+package view;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import br.unb.deolhonoenade.R;
-import br.unb.deolhonoenade.controller.CourseController;
+import controller.CourseController;
 
 public class RankingResult extends Activity implements
 		ActionBar.OnNavigationListener {

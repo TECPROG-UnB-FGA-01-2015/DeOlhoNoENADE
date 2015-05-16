@@ -1,4 +1,4 @@
-package br.unb.deolhonoenade.DAO;
+package DAO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +7,8 @@ import android.database.Cursor;
 import android.database.CursorIndexOutOfBoundsException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-import br.unb.deolhonoenade.model.Course;
-import br.unb.deolhonoenade.model.Institution;
+import model.Course;
+import model.Institution;
 
 public class OperacoesBancoDeDados {
 	

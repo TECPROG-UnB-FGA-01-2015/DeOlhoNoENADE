@@ -3,7 +3,7 @@
  * Purpose: Shows the result of city comparison
  ***********************************************************/
 
-package br.unb.deolhonoenade.view;
+package view;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,11 +20,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import br.unb.br.deolhonoenade.graphs.holographlibrary.Bar;
-import br.unb.br.deolhonoenade.graphs.holographlibrary.BarGraph;
+import graphs.holographlibrary.Bar;
+import graphs.holographlibrary.BarGraph;
 import br.unb.deolhonoenade.R;
-import br.unb.deolhonoenade.controller.CourseController;
-import br.unb.deolhonoenade.controller.CourseController;
+import controller.CourseController;
+import controller.CourseController;
 
 public class CityResultComparison extends Activity
 {

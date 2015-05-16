@@ -3,13 +3,13 @@
  * Purpose: Responsible to show a Brazilian map with all the
  * 			State's institutions grades
 ***********************************************************/
-package br.unb.deolhonoenade.view;
+package view;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import br.unb.deolhonoenade.R;
-import br.unb.deolhonoenade.controller.CourseController;
+import controller.CourseController;
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;

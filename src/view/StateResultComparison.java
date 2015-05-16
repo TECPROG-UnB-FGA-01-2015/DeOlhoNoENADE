@@ -3,18 +3,18 @@
  * Purpose: Show the result of the comparison of two states
  *********************************************************/
 
-package br.unb.deolhonoenade.view;
+package view;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import br.unb.br.deolhonoenade.graphs.holographlibrary.Bar;
-import br.unb.br.deolhonoenade.graphs.holographlibrary.BarGraph;
+import graphs.holographlibrary.Bar;
+import graphs.holographlibrary.BarGraph;
 import br.unb.deolhonoenade.R;
 import br.unb.deolhonoenade.R.id;
 import br.unb.deolhonoenade.R.layout;
 import br.unb.deolhonoenade.R.menu;
-import br.unb.deolhonoenade.controller.CourseController;
+import controller.CourseController;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;

@@ -3,15 +3,15 @@
  * Purpose: Responsible to make unit tests in all the CourseController's methods.
  ***********************************************************/
 
-package br.unb.deolhonoenade.Teste;
+package Teste;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import br.unb.deolhonoenade.DAO.OperacoesBancoDeDados;
-import br.unb.deolhonoenade.controller.CourseController;
-import br.unb.deolhonoenade.model.Course;
-import br.unb.deolhonoenade.model.Institution;
+import DAO.OperacoesBancoDeDados;
+import controller.CourseController;
+import model.Course;
+import model.Institution;
 import junit.framework.Assert;
 import android.database.sqlite.SQLiteDatabase;
 import android.test.AndroidTestCase;

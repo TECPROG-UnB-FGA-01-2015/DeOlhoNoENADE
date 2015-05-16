@@ -2,7 +2,7 @@
  * File: TypeComparison.java
  * Purpose: Responsible to get the informations be compared
 ***********************************************************/
-package br.unb.deolhonoenade.view;
+package view;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +11,8 @@ import br.unb.deolhonoenade.R;
 import br.unb.deolhonoenade.R.id;
 import br.unb.deolhonoenade.R.layout;
 import br.unb.deolhonoenade.R.menu;
-import br.unb.deolhonoenade.controller.CourseController;
-import br.unb.deolhonoenade.model.Course;
+import controller.CourseController;
+import model.Course;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;

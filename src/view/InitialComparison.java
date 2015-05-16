@@ -2,14 +2,14 @@
  * File: InitialComparison.java
  * Purpose: Responsible to show the initial comparison 
 ***********************************************************/
-package br.unb.deolhonoenade.view;
+package view;
 
 import br.unb.deolhonoenade.R;
 import br.unb.deolhonoenade.R.id;
 import br.unb.deolhonoenade.R.layout;
 import br.unb.deolhonoenade.R.menu;
 import br.unb.deolhonoenade.R.string;
-import br.unb.deolhonoenade.view.RankingInicial;
+import view.RankingInicial;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;

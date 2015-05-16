@@ -1,14 +1,14 @@
-package br.unb.deolhonoenade.Teste;
+package Teste;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import junit.framework.Assert;
-import br.unb.deolhonoenade.DAO.ImportarBancoDeDados;
-import br.unb.deolhonoenade.DAO.OperacoesBancoDeDados;
-import br.unb.deolhonoenade.controller.CourseController;
-import br.unb.deolhonoenade.model.Course;
-import br.unb.deolhonoenade.model.Institution;
+import DAO.ImportarBancoDeDados;
+import DAO.OperacoesBancoDeDados;
+import controller.CourseController;
+import model.Course;
+import model.Institution;
 import android.database.sqlite.SQLiteDatabase;
 import android.test.AndroidTestCase;
 import android.util.Log;

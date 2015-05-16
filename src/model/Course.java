@@ -4,7 +4,7 @@
  * 		    superclass Course.
  *********************************************************/
 
-package br.unb.deolhonoenade.model;
+package model;
 
 public class Course
 {

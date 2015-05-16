@@ -1,4 +1,4 @@
-package br.unb.deolhonoenade.view;
+package view;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import br.unb.deolhonoenade.R;
-import br.unb.deolhonoenade.controller.CourseController;
+import controller.CourseController;
 
 public class DadosInstituicoes extends Fragment {
 

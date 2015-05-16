@@ -3,7 +3,7 @@
  * Purpose: Show a list of states to be compared in pairs
  *********************************************************/
 
-package br.unb.deolhonoenade.view;
+package view;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import br.unb.deolhonoenade.R;
-import br.unb.deolhonoenade.controller.CourseController;
+import controller.CourseController;
 
 public class StateComparison extends Activity
 {

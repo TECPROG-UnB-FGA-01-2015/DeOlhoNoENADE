@@ -4,7 +4,7 @@
  * 			to be listed and compared to each other.
  ***********************************************************/
 
-package br.unb.deolhonoenade.controller;
+package controller;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,10 +13,10 @@ import java.util.List;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
-import br.unb.deolhonoenade.DAO.ImportarBancoDeDados;
-import br.unb.deolhonoenade.DAO.OperacoesBancoDeDados;
-import br.unb.deolhonoenade.model.Course;
-import br.unb.deolhonoenade.model.Institution;
+import DAO.ImportarBancoDeDados;
+import DAO.OperacoesBancoDeDados;
+import model.Course;
+import model.Institution;
 
 public class CourseController
 {

@@ -1,4 +1,4 @@
-package br.unb.deolhonoenade.view;
+package view;
 
 import java.util.List;
 import android.app.ActionBar;
@@ -14,7 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import br.unb.deolhonoenade.R;
-import br.unb.deolhonoenade.controller.CourseController;
+import controller.CourseController;
 
 
 public class DadosIES extends Activity implements

@@ -1,4 +1,4 @@
-package br.unb.deolhonoenade.DAO;
+package DAO;
 
 import java.io.FileOutputStream;
 import java.io.IOException;

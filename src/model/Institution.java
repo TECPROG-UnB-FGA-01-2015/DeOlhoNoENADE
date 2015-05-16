@@ -4,7 +4,7 @@
  * 		    superclass Institution.
  *********************************************************/
 
-package br.unb.deolhonoenade.model;
+package model;
 
 import java.util.ArrayList;
 
