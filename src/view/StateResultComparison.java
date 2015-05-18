@@ -30,6 +30,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.os.Build;
 
+import org.apache.log4j.Logger;
+
 public class StateResultComparison extends Activity
 {
 
@@ -37,6 +39,8 @@ public class StateResultComparison extends Activity
 	private String firstState, secondState; // Receives the value of the selected state
 	private CourseController objectCourseController; // Object from the ControllerCurso Class
 	private int courseCode; // Receives the result of the ControllerCurso's method "searchCourseCode" 
+
+	static Logger log = Logger.getLogger(StateResultComparison.class.getName());
 
 	@Override
 	
