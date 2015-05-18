@@ -188,6 +188,10 @@ public class StateComparison extends Activity
 		{
 			return true;
 		}
+		else
+		{
+			// Nothing to do
+		}
 		
 		return super.onOptionsItemSelected(item);
 	}
