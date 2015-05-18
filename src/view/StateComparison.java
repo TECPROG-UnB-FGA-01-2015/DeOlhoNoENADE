@@ -27,6 +27,8 @@ import android.widget.Toast;
 import br.unb.deolhonoenade.R;
 import br.unb.deolhonoenade.controller.CourseController;
 
+import org.apache.log4j.Logger;
+
 public class StateComparison extends Activity
 {
 
@@ -36,6 +38,8 @@ public class StateComparison extends Activity
 	private Spinner firstStateSpinner, secondStateSpinner; // A dropdown list of states
 	private String firstState, secondState; // Receives the value of the selected state
 
+	static Logger log = Logger.getLogger(StateComparison.class.getName());
+	
 	@Override
 	// Method to initialize the activity activity_comparacao_estado
 	protected void onCreate(Bundle savedInstanceState)
@@ -62,6 +66,8 @@ public class StateComparison extends Activity
 			getFragmentManager().beginTransaction().add(R.id.container,
 					new PlaceholderFragment()).commit();
 		}
+		
+		log.debug("activity_comparacao_estado called!");
 	}
 
 	// Method to list the State 1 options in a spinner
