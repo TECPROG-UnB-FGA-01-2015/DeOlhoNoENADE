@@ -97,12 +97,14 @@ public class StateComparison extends Activity
 					{
 						firstState = parent.getItemAtPosition(position).toString();
 						addItensOnSpinnerEstado2();
+						
+						log.info("Item " + firstState + " added successfully!");
 					}
 
 					@Override
 					public void onNothingSelected(AdapterView<?> parent)
 					{
-						// Nothing to do
+						log.info("No Item selected!");						
 					}
 				});
 	}
@@ -146,17 +148,28 @@ public class StateComparison extends Activity
 		comapare.setOnClickListener(new OnClickListener()
 		{
 			@Override
-			public void onClick(View view)
+			public void onClick(View view) throws Exception
 			{
-				Intent intent = new Intent(StateComparison.this, StateResultComparison.class);
-
-				intent.putExtra("selectedCourse", course);
-				intent.putExtra("firstState", firstState);
-				intent.putExtra("secondState", secondState);
-				startActivity(intent);
+				try
+				{
+					Intent intent = new Intent(StateComparison.this, StateResultComparison.class);
+	
+					intent.putExtra("selectedCourse", course);
+					intent.putExtra("firstState", firstState);
+					intent.putExtra("secondState", secondState);
+					startActivity(intent);
+					
+					log.info("StateResultComparison called successfully!");
+				}
+				catch (Exception e)
+				{
+					log.error("Error when calling StateResultComparison view. Exception: ", e);
+					throw e;
+				}
 			}
 		});
-
+		
+		log.info("Comparison accomplished successfully!");
 	}
 
 	@Override
