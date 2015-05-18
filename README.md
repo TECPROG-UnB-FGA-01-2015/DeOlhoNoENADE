@@ -13,7 +13,7 @@ Os arquivos que serão utilizados do projeto foram dividos entre os integrantes 
 - ComparacaoInstituicao
 - ComparacaoInstituicaoFinal
 - ComparacaoResultC
-<h3>Atividade 5:</h3> 
+<h3>Atividades 5 e 6:</h3> 
 - ControllerCurso
 - TestControllerCurso
 
@@ -21,7 +21,7 @@ Os arquivos que serão utilizados do projeto foram dividos entre os integrantes 
 <h3>Atividades 1 a 4:</h3>  
 - ControllerCurso
 - TestControllerCurso
-<h3>Atividade 5:</h3>
+<h3>Atividades 5 e 6:</h3>
 - ComparacaoCidades
 - ComparacaoInstituicao
 - ComparacaoInstituicaoFinal
@@ -40,7 +40,7 @@ Os arquivos que serão utilizados do projeto foram dividos entre os integrantes 
 - TestInstituicao
 - ComparacaoEstado
 - ComparacaoResult
-<h3>Atividade 5:</h3>
+<h3>Atividades 5 e 6:</h3>
 - ComparacaoCidades
 - ComparacaoInstituicao
 - ComparacaoInstituicaoFinal
@@ -53,7 +53,7 @@ Os arquivos que serão utilizados do projeto foram dividos entre os integrantes 
 - ComparacaoResultTipo
 - ComparacaoTipo
 - Mapa
-<h3>Atividade 5:</h3>
+<h3>Atividade 5 e 6:</h3>
 - Curso
 - Instituicao
 - TestCurso
