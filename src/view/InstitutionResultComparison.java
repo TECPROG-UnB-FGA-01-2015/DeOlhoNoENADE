@@ -36,7 +36,7 @@ public class InstitutionResultComparison extends Activity
 	private String firstInstitution; // Holds the first institution name
 	private String secondInstitution; // Holds the second institution name
 	
-	static Logger log = Logger.getLogger(CityComparison.class.getName());
+	static Logger log = Logger.getLogger(InstitutionResultComparison.class.getName());
 	
 	@Override
 	// Method to initialize the activity activity_comparacao_result_ies
@@ -44,6 +44,8 @@ public class InstitutionResultComparison extends Activity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_comparacao_result_ies);
+		
+		log.debug("activity_comparacao_result_ies called!");
 		
 		objectCourseController = new CourseController(this);
 		
@@ -78,7 +80,12 @@ public class InstitutionResultComparison extends Activity
 		secondInstitutionGraph.setName("Instituicao 2");
 		secondInstitutionGraph.setValue(Float.parseFloat(secondInstitutionGrade.substring(0, 5)));
 		institutionGrades.add(firstInstitutionGraph);
+		
+		log.info("First Institution Grade Graph created!");
+		
 		institutionGrades.add(secondInstitutionGraph);
+		
+		log.info("Second Institution Grade Graph created!");
 
 		// Holds the graphical bar with the first institution and second institution names and grades
 		BarGraph graph = (BarGraph)findViewById(R.id.graph);
@@ -87,6 +94,9 @@ public class InstitutionResultComparison extends Activity
 		graph.setContentDescription("Instituição " + firstInstitution + " nota: " +
 				String.format("%.3f", firstGrade) + ". E Instituição " + secondInstitution + " nota: "
 					+ String.format("%.3f", secondGrade));
+		
+		log.info("Institution's Comparison info: First Institution " + firstInstitution + ", First Institution Grade: " 
+		         + firstGrade + ", Second Institution: " + secondInstitution + ", Second Institution Grade: " + secondGrade);
 	}
 
 	@Override
