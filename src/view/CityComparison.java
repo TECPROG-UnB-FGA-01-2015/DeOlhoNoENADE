@@ -30,6 +30,8 @@ import br.unb.deolhonoenade.R.layout;
 import br.unb.deolhonoenade.R.menu;
 import controller.CourseController;
 
+import org.apache.log4j.Logger;
+
 public class CityComparison extends Activity
 {
 	private String courseName; // Holds the name of the course being compared
@@ -43,6 +45,7 @@ public class CityComparison extends Activity
 	private String firstCityName; // Holds the name of the first City
 	private String secondCityName; // Holds the name of the second City
 	private CourseController objectCourseController; // Instantiates the controller
+	static Logger log = Logger.getLogger(CityComparison.class.getName());
 	
 	// Const to input selected navigation item
 	private static final String STATE_SELECTED_NAVIGATION_ITEM = "selected_navigation_item";
@@ -53,6 +56,8 @@ public class CityComparison extends Activity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_comparacao_cidades);
+		
+		log.debug("activity_comparacao_cidades called!");
 
 		objectCourseController = new CourseController(this);
 		
@@ -66,6 +71,8 @@ public class CityComparison extends Activity
 		addItemsOnFirstStateSpinner(courseCode);
 		addItemsOnSecondStateSpinner(courseCode);
 		addListenerOnButtonComparar();
+		
+		log.debug("Load CityComparison");
 	}
 
     // Method to list the First State options in a spinner
@@ -75,7 +82,7 @@ public class CityComparison extends Activity
 		
 		// Stores all states of a given course
 		List<String> ufNameList = new ArrayList<String>();
-
+		
 		ufNameList = objectCourseController.searchState(courseCode);
 
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
@@ -93,12 +100,14 @@ public class CityComparison extends Activity
 				// Gets the name by the position
 				firstStateName = parent.getItemAtPosition(posicao).toString();
 				addItemsOnFirstCitySpinner(firstStateName);
+				log.debug("State add on First State Spinner.");
 			}
 
 			@Override
 			public void onNothingSelected(AdapterView<?> parent)
 			{
 				// Nothing to do
+				log.info("No Item selected!");
 			}
 		});
 	}
@@ -128,12 +137,14 @@ public class CityComparison extends Activity
 				// Gets the name by the position
 				secondStateName = parent.getItemAtPosition(posicao).toString();
 				addItemsOnSecondCitySpinner(secondStateName, firstCityName);
+				log.debug("State add on Second State Spinner.");
 			}
 
 			@Override
 			public void onNothingSelected(AdapterView<?> parent)
 			{
 				// Nothing to do
+				log.info("No Item selected!");
 			}
 		});
 	}
@@ -164,12 +175,14 @@ public class CityComparison extends Activity
 				firstCityName = parent.getItemAtPosition(posicao).toString();
 
 				addItemsOnSecondCitySpinner(secondStateName, firstCityName);
+				log.debug("State add on Second City Spinner.");
 			}
 
 			@Override
 			public void onNothingSelected(AdapterView<?> parent)
 			{
 				// Nothing to do
+				log.info("No Item selected!");
 			}
 		});
 	}
@@ -205,6 +218,7 @@ public class CityComparison extends Activity
 			public void onNothingSelected(AdapterView<?> parent)
 			{
 				// Nothing to do
+				log.info("No Item selected!");
 			}
 		});
 	}
@@ -226,6 +240,8 @@ public class CityComparison extends Activity
 				intent.putExtra("firstCityName", firstCityName);
 				intent.putExtra("secondCityName", secondCityName);
 				startActivity(intent);
+				
+				log.debug("The button CompareInstituicao was clicked.");
 			}
 		});
 	}
@@ -300,7 +316,9 @@ public class CityComparison extends Activity
 			View rootView = inflater.inflate(R.layout.fragment_comparacao_cidades, container, false);
 			TextView textView = (TextView) rootView.findViewById(R.id.section_label);
 			textView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
+			log.debug("The view was loaded.");
 			return rootView;
+			
 		}
 	}
 }

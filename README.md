@@ -9,54 +9,50 @@ Os arquivos que serão utilizados do projeto foram dividos entre os integrantes 
 
 <h2>Eduardo Moreira (13/0008371)</h2>
 <h3>Atividades 1 a 4:</h3>  
-- ComparacaoCidades
-- ComparacaoInstituicao
-- ComparacaoInstituicaoFinal
-- ComparacaoResultC
-<h3>Atividade 5:</h3> 
-- ControllerCurso
-- TestControllerCurso
+- ComparacaoCidades (CityComparison)
+- ComparacaoInstituicao (InstitutionComparison)
+- ComparacaoInstituicaoFinal (FinalInstitutionComparison)
+- ComparacaoResultC (CityResultComparison)
+<h3>Atividades 5 e 6:</h3> 
+- ControllerCurso (CourseController)
+- TestControllerCurso (CourseControllerTest)
 
 <h2>Henrique Augusto (11/0148886)</h2>
 <h3>Atividades 1 a 4:</h3>  
-- ControllerCurso
-- TestControllerCurso
-<h3>Atividade 5:</h3>
-- ComparacaoCidades
-- ComparacaoInstituicao
-- ComparacaoInstituicaoFinal
-- ComparacaoResultC
-- ComparacaoInicial
-- ComparacaoResultIES
-- ComparacaoResultTipo
-- ComparacaoTipo
-- Mapa
+- ControllerCurso (CourseController)
+- TestControllerCurso (CourseControllerTest)
+<h3>Atividades 5 e 6:</h3>
+- ComparacaoInicial (InitialComparison)
+- ComparacaoResultIES (InstitutionResultComparison)
+- ComparacaoResultTipo (TypeResultComparison)
+- ComparacaoTipo (TypeComparison)
+- Mapa (Map)
 
 <h2>Matheus Silva (13/0015369)</h2>
 <h3>Atividades 1 a 4:</h3> 
-- Curso
-- Instituicao
-- TestCurso
-- TestInstituicao
-- ComparacaoEstado
-- ComparacaoResult
-<h3>Atividade 5:</h3>
-- ComparacaoCidades
-- ComparacaoInstituicao
-- ComparacaoInstituicaoFinal
-- ComparacaoResultC
+- Curso (Course)
+- Instituicao (Institution)
+- TestCurso (CourseTest)
+- TestInstituicao (InstitutionTest)
+- ComparacaoEstado (StateComparison)
+- ComparacaoResult (StateResultComparison)
+<h3>Atividades 5 e 6:</h3>
+- ComparacaoCidades (CityComparison)
+- ComparacaoInstituicao (InstitutionComparison)
+- ComparacaoInstituicaoFinal (FinalInstitutionComparison)
+- ComparacaoResultC (CityResultComparison)
 
 <h2>Omar Júnior (13/0015920)</h2>
 <h3>Atividades 1 a 4:</h3> 
-- ComparacaoInicial
-- ComparacaoResultIES
-- ComparacaoResultTipo
-- ComparacaoTipo
-- Mapa
-<h3>Atividade 5:</h3>
-- Curso
-- Instituicao
-- TestCurso
-- TestInstituicao
-- ComparacaoEstado
-- ComparacaoResult
+- ComparacaoInicial (InitialComparison)
+- ComparacaoResultIES (InstitutionResultComparison)
+- ComparacaoResultTipo (TypeResultComparison)
+- ComparacaoTipo (TypeComparison)
+- Mapa (Map)
+<h3>Atividade 5 e 6:</h3>
+- Curso (Course)
+- Instituicao (Institution)
+- TestCurso (CourseTest)
+- TestInstituicao (InstitutionTest)
+- ComparacaoEstado (StateComparison)
+- ComparacaoResult (StateResultComparison)

@@ -24,6 +24,9 @@ import graphs.holographlibrary.BarGraph;
 import br.unb.deolhonoenade.R;
 import controller.CourseController;
 
+import org.apache.log4j.Logger;
+
+
 public class TypeResultComparison extends Activity
 {
 	private CourseController objectCourseController; // CourseController type object
@@ -34,12 +37,17 @@ public class TypeResultComparison extends Activity
 	private String firstType; // Holds the first institution type (public or private)
 	private String secondType; // Holds the second institution type (public or private)
 	
+	static Logger log = Logger.getLogger(TypeResultComparison.class.getName());
+
+	
 	@Override
 	// Method to initialize the activity activity_comparacao_result_tipo
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_comparacao_result_tipo);
+		
+		log.debug("activity_comparacao_result_tipo called!");
 		
 		objectCourseController = new CourseController(this);
 		
@@ -80,7 +88,12 @@ public class TypeResultComparison extends Activity
 		secondInstitutionGraph.setName("Estado/Tipo 2:");
 		secondInstitutionGraph.setValue(Float.parseFloat(secondTypeGrade.substring(0, 5)));
 		institutionGrades.add(firstInstitutionGraph);
+		
+		log.info("First Type Institution Graph created!");
+		
 		institutionGrades.add(secondInstitutionGraph);
+		
+		log.info("Second Type Institution Graph created!");
 		
 		// Holds the graphical bar with the first institution and second institution names and grades
 		BarGraph g = (BarGraph)findViewById(R.id.graph3);
@@ -93,6 +106,10 @@ public class TypeResultComparison extends Activity
 						+ ". E tipo de instituição " + secondType + " no estado " +
 								secondState + ".   nota: " + String.format("%.3f",
 										secondResult));
+		
+		log.info("Institution's TypesComparison info: First Type Institution " + firstType + ", First Type Institution State: " 
+		         + firstState + ", First Type Institution Grade: " + firstResult + ", Second Type Institution: " + secondType + 
+		         ", Second Type Institution State: " + secondState + ", Second Type Institution Grade: " + secondResult );
 	}
 
 	@Override
