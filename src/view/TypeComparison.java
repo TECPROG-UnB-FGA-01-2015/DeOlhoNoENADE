@@ -31,6 +31,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.os.Build;
 
+import org.apache.log4j.Logger;
+
 public class TypeComparison extends Activity
 {
 	
@@ -48,6 +50,8 @@ public class TypeComparison extends Activity
 	
 	// Holds a list of institutions by the course code and the federal unit
 	private List<String> secondTypeList;
+	
+	static Logger log = Logger.getLogger(TypeComparison.class.getName());
 	
 	@Override
 	// Method to initialize the activity activity_comparacao_tipo	
@@ -70,6 +74,8 @@ public class TypeComparison extends Activity
 		
 		addItensOnSpinnerFirstStateType(courseCode);
 		addListenerOnButtonSearch();
+		log.debug("activity_comparacao_tipo called!");
+		log.debug("1 Type Comparison Button and its respective method created.");
 	}
 
 	@Override
@@ -114,6 +120,7 @@ public class TypeComparison extends Activity
 			public void onNothingSelected(AdapterView<?> parent)
 			{
 				// Nothing to do
+				log.info("No Item selected!");	
 			}
 		});	
 	}
@@ -152,6 +159,7 @@ public class TypeComparison extends Activity
 			public void onNothingSelected(AdapterView<?> parent)
 			{
 				// Nothing to do
+				log.info("No Item selected!");	
 			}
 		});
 	}
@@ -198,6 +206,7 @@ public class TypeComparison extends Activity
 			public void onNothingSelected(AdapterView<?> parent)
 			{
 				// Nothing to do
+				log.info("No Item selected!");	
 			}
 		});	
 	}
@@ -256,6 +265,10 @@ public class TypeComparison extends Activity
 						}
 										
 				}
+				else
+				{
+					// Nothing to do
+				}
 			}
 		 
 			@Override
@@ -280,24 +293,35 @@ public class TypeComparison extends Activity
 			 */
 	    	public void onClick(View v)
 			{
-				// Holds the result of the comparison about the institution type (public or private)
-				Intent result =  new Intent(TypeComparison.this,
-						TypeResultComparison.class);
-				
-				// Holds the results of the comparison between the two institutions
-				comparisonResults = objectCourseController.compareType(courseCode, firstState, firstType,
-						secondState, secondType);
-				result.putExtra("courseCode", courseCode);
-				result.putExtra("firstResult", comparisonResults.get(0));
-				result.putExtra("secondResult", comparisonResults.get(1));
-				result.putExtra("firstState", firstState);
-				result.putExtra("firstTypeSpinner", firstType);
-				result.putExtra("secondState", secondState);
-				result.putExtra("secondTypeSpinner", secondType);
-	
-	    		startActivity(result);
+				try
+				{
+					// Holds the result of the comparison about the institution type (public or private)
+					Intent result =  new Intent(TypeComparison.this,
+							TypeResultComparison.class);
+					
+					// Holds the results of the comparison between the two institutions
+					comparisonResults = objectCourseController.compareType(courseCode, firstState, firstType,
+							secondState, secondType);
+					result.putExtra("courseCode", courseCode);
+					result.putExtra("firstResult", comparisonResults.get(0));
+					result.putExtra("secondResult", comparisonResults.get(1));
+					result.putExtra("firstState", firstState);
+					result.putExtra("firstTypeSpinner", firstType);
+					result.putExtra("secondState", secondState);
+					result.putExtra("secondTypeSpinner", secondType);
+		
+		    		startActivity(result);
+		    		
+		    		log.info("TypeResultComparison called successfully!");
+				}
+				catch (Exception e)
+				{
+					log.error("Error when calling TypeResultComparison view. Exception: ");
+				}
 	    	}
 		});
+		
+		log.info("TypeComparison accomplished successfully!");
 	}
 
 	@Override
