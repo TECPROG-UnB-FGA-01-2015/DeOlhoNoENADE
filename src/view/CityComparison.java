@@ -72,7 +72,7 @@ public class CityComparison extends Activity
 		addItemsOnSecondStateSpinner(courseCode);
 		addListenerOnButtonComparar();
 		
-		log.debug("Load ContactView");
+		log.debug("Load CityComparison");
 	}
 
     // Method to list the First State options in a spinner
