@@ -39,7 +39,7 @@ public class CityResultComparison extends Activity
 	private int courseCode; // Describes the code of the course being compared
 	private CourseController objectCourseController; // Instantiates an object of the controller
 	
-	static Logger log = Logger.getLogger(CityComparison.class.getName());
+	static Logger log = Logger.getLogger(CityResultComparison.class.getName());
 
     @Override
     // Method to initialize the activity activity_comparacao_instituicao
@@ -47,6 +47,8 @@ public class CityResultComparison extends Activity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_comparacao_result_c);
+		
+		log.debug("activity_comparacao_result_c called!");
 
 		objectCourseController = new CourseController(this);
 
@@ -102,7 +104,9 @@ public class CityResultComparison extends Activity
 		d2.setName(nameSecondCity);
 		d2.setValue(Float.parseFloat(media2String.substring(0, 5)));
 		points.add(d);
+		log.info("Bar " + d + " added successfully!");
 		points.add(d2);
+		log.info("Bar " + d2 + " added successfully!");
 
 		BarGraph graph = (BarGraph) findViewById(R.id.graph1);
 		graph.setBars(points);
@@ -110,6 +114,8 @@ public class CityResultComparison extends Activity
 
 		graph.setContentDescription("Cidade " + nameFirstCity + " nota: " + String.format("%.3f", firstAverage)
 				+ ". E cidade " + nameSecondCity + " nota: " + String.format("%.3f", secondAverage));
+		
+		log.debug("Graph setted successfully!");
 	}
 
 	@Override
@@ -148,6 +154,7 @@ public class CityResultComparison extends Activity
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
 			View rootView = inflater.inflate(R.layout.fragment_comparacao_result_c, container, false);
+			log.debug("The view was loaded.");
 			return rootView;
 		}
 	}
