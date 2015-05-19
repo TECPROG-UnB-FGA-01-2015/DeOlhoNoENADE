@@ -27,6 +27,8 @@ import android.widget.Toast;
 import br.unb.deolhonoenade.R;
 import controller.CourseController;
 
+import org.apache.log4j.Logger;
+
 public class StateComparison extends Activity
 {
 
@@ -36,6 +38,8 @@ public class StateComparison extends Activity
 	private Spinner firstStateSpinner, secondStateSpinner; // A dropdown list of states
 	private String firstState, secondState; // Receives the value of the selected state
 
+	static Logger log = Logger.getLogger(StateComparison.class.getName());
+	
 	@Override
 	// Method to initialize the activity activity_comparacao_estado
 	protected void onCreate(Bundle savedInstanceState)
@@ -62,6 +66,8 @@ public class StateComparison extends Activity
 			getFragmentManager().beginTransaction().add(R.id.container,
 					new PlaceholderFragment()).commit();
 		}
+		
+		log.debug("activity_comparacao_estado called!");
 	}
 
 	// Method to list the State 1 options in a spinner
@@ -91,12 +97,14 @@ public class StateComparison extends Activity
 					{
 						firstState = parent.getItemAtPosition(position).toString();
 						addItensOnSpinnerEstado2();
+						
+						log.info("Item " + firstState + " added successfully!");
 					}
 
 					@Override
 					public void onNothingSelected(AdapterView<?> parent)
 					{
-						// Nothing to do
+						log.info("No Item selected!");						
 					}
 				});
 	}
@@ -140,17 +148,28 @@ public class StateComparison extends Activity
 		comapare.setOnClickListener(new OnClickListener()
 		{
 			@Override
-			public void onClick(View view)
+			public void onClick(View view) throws Exception
 			{
-				Intent intent = new Intent(StateComparison.this, StateResultComparison.class);
-
-				intent.putExtra("selectedCourse", course);
-				intent.putExtra("firstState", firstState);
-				intent.putExtra("secondState", secondState);
-				startActivity(intent);
+				try
+				{
+					Intent intent = new Intent(StateComparison.this, StateResultComparison.class);
+	
+					intent.putExtra("selectedCourse", course);
+					intent.putExtra("firstState", firstState);
+					intent.putExtra("secondState", secondState);
+					startActivity(intent);
+					
+					log.info("StateResultComparison called successfully!");
+				}
+				catch (Exception e)
+				{
+					log.error("Error when calling StateResultComparison view. Exception: ", e);
+					throw e;
+				}
 			}
 		});
-
+		
+		log.info("Comparison accomplished successfully!");
 	}
 
 	@Override
@@ -168,6 +187,10 @@ public class StateComparison extends Activity
 		if(id == R.id.action_settings)
 		{
 			return true;
+		}
+		else
+		{
+			// Nothing to do
 		}
 		
 		return super.onOptionsItemSelected(item);
