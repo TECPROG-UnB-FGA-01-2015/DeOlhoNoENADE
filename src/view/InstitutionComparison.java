@@ -33,6 +33,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.os.Build;
 
+import org.apache.log4j.Logger;
+
 public class InstitutionComparison extends Activity
 {
 	private Spinner institutionSpinner; // Spinner variable of the Institutions
@@ -45,6 +47,8 @@ public class InstitutionComparison extends Activity
 	private int courseCode; // Holds the code of the course being compared
 	private List<String> institutionInfo; // Holds data of the institution being compared
 	private float selectedGrade; // Holds the grade of the selected item
+	
+	static Logger log = Logger.getLogger(CityComparison.class.getName());
 
     @Override
     // Method to initialize the activity activity_comparacao_instituicao
