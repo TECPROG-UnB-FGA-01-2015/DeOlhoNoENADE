@@ -29,6 +29,8 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import org.apache.log4j.Logger;
+
 public class InitialComparison extends Activity implements
 		ActionBar.OnNavigationListener
 {
@@ -37,6 +39,8 @@ public class InitialComparison extends Activity implements
 			"selected_navigation_item";
 	
 	private String course; // Stores the course's name
+	
+	static Logger log = Logger.getLogger(InitialComparison.class.getName());
 
 	@Override
 	// Method to initialize the activity activity activity_comparacao_inicial
@@ -50,6 +54,9 @@ public class InitialComparison extends Activity implements
 		addListenerOnButtonInstitution();
 		addListenerOnButtonCity();
 		addListenerOnButtonType();
+		log.debug("activity_comparacao_inicial called!");
+		log.debug("4 Comparison Buttons and its respective methods created.");
+
 	}
 	
 	// Method to recognize the button "City"
@@ -63,12 +70,21 @@ public class InitialComparison extends Activity implements
 			/* Method to confirm the the mouse click and redirect to
 			 * CityComparison view
 			 */
-			public void onClick(View v) // View variable that is called when a view has been clicked
+			public void onClick(View v)  // View variable that is called when a view has been clicked
 			{
-	    		Intent intent = new Intent(InitialComparison.this,
-	    				CityComparison.class);
-	    		intent.putExtra("selectedCourse", course);
-	    		startActivity(intent);
+				try
+				{
+		    		Intent intent = new Intent(InitialComparison.this,
+		    				CityComparison.class);
+		    		intent.putExtra("selectedCourse", course);
+		    		startActivity(intent);
+		    		
+		    		log.info("CityComparison called successfully!");
+				}
+				catch (Exception e)
+				{
+					log.error("Error when calling CityComparison view. Exception: ");
+				}
 	    	}	
 		});
 	}
@@ -86,12 +102,21 @@ public class InitialComparison extends Activity implements
 			 */
 	    	public void onClick(View v) // View variable that is called when a view has been clicked
 			{
-				// Creates a new Intent object that passes from one screen to another screen
-	    		Intent intent = new Intent(InitialComparison.this,
-	    				InstitutionComparison.class);
-	    		
-	    		intent.putExtra("selectedCourse", course);
-	    		startActivity(intent);
+				try
+				{
+					// Creates a new Intent object that passes from one screen to another screen
+		    		Intent intent = new Intent(InitialComparison.this,
+		    				InstitutionComparison.class);
+		    		
+		    		intent.putExtra("selectedCourse", course);
+		    		startActivity(intent);
+		    		
+		    		log.info("InstitutionComparison called successfully!");
+				}
+				catch (Exception e)
+				{
+					log.error("Error when calling InstitutionComparison view. Exception: ");
+				}
 	    	}	
 		});
 	}
@@ -109,10 +134,19 @@ public class InitialComparison extends Activity implements
 			 */
 	    	public void onClick(View v) // View variable that is called when a view has been clicked
 			{
-	    		Intent intent = new Intent(InitialComparison.this,
-					StateComparison.class);
-	    		intent.putExtra("selectedCourse", course);
-	    		startActivity(intent);
+				try
+				{
+		    		Intent intent = new Intent(InitialComparison.this,
+						StateComparison.class);
+		    		intent.putExtra("selectedCourse", course);
+		    		startActivity(intent);
+		    		
+		    		log.info("StateComparison called successfully!");
+				}
+				catch (Exception e)
+				{
+					log.error("Error when calling StateComparison view. Exception: ");
+				}
 	    	}	
 		});
 	}
@@ -132,10 +166,20 @@ public class InitialComparison extends Activity implements
 			 */
 	    	public void onClick(View v) // View variable that is called when a view has been clicked
 			{
-	    		Intent intent = new Intent(InitialComparison.this,
-					TypeComparison.class);
-	    		intent.putExtra("selectedCourse", course);
-	    		startActivity(intent);
+				try
+				{
+		    		Intent intent = new Intent(InitialComparison.this,
+						TypeComparison.class);
+		    		intent.putExtra("selectedCourse", course);
+		    		startActivity(intent);
+		    		
+		    		log.info("TypeComparison called successfully!");
+	    		
+				}
+				catch (Exception e)
+				{
+					log.error("Error when calling TypeComparison view. Exception: ");
+				}
 	    	}	
 		});
 	}
