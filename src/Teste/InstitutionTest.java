@@ -3,11 +3,11 @@
  * Purpose: Implement all the unit tests in the Institution model's methods 
 ***********************************************************/
 
-package br.unb.deolhonoenade.Teste;
+package Teste;
 
 import android.test.AndroidTestCase;
-import br.unb.deolhonoenade.model.Course;
-import br.unb.deolhonoenade.model.Institution;
+import model.Course;
+import model.Institution;
 import junit.framework.Assert;
 import java.util.ArrayList;
 

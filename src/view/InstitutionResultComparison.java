@@ -2,7 +2,7 @@
  * File: InstitutionResultComparison.java
  * Purpose: Responsible to show the result of Institution comparison
 ***********************************************************/
-package br.unb.deolhonoenade.view;
+package view;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,10 +19,12 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import br.unb.br.deolhonoenade.graphs.holographlibrary.Bar;
-import br.unb.br.deolhonoenade.graphs.holographlibrary.BarGraph;
+import graphs.holographlibrary.Bar;
+import graphs.holographlibrary.BarGraph;
 import br.unb.deolhonoenade.R;
-import br.unb.deolhonoenade.controller.CourseController;
+import controller.CourseController;
+
+import org.apache.log4j.Logger;
 
 public class InstitutionResultComparison extends Activity
 {
@@ -33,6 +35,8 @@ public class InstitutionResultComparison extends Activity
 	private float secondGrade; // The grade of the second institution
 	private String firstInstitution; // Holds the first institution name
 	private String secondInstitution; // Holds the second institution name
+	
+	static Logger log = Logger.getLogger(CityComparison.class.getName());
 	
 	@Override
 	// Method to initialize the activity activity_comparacao_result_ies

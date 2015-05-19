@@ -21,7 +21,7 @@
        under the License.
  */
 
-package br.unb.br.deolhonoenade.graphs.holographlibrary;
+package graphs.holographlibrary;
 
 import android.graphics.Color;
 import android.graphics.Path;

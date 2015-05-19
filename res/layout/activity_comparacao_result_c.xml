@@ -3,7 +3,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="br.unb.deolhonoenade.view.ComparacaoResultC"
+    tools:context="view.CityResultComparison"
     tools:ignore="MergeRootFrame" >
 
     <!--
@@ -23,7 +23,7 @@
 	    android:text="Curso"
 	    android:textAppearance="?android:attr/textAppearanceLarge" />
 
-	<br.unb.br.deolhonoenade.graphs.holographlibrary.BarGraph
+	<graphs.holographlibrary.BarGraph
 	    android:id="@+id/graph1"
 	    android:layout_width="match_parent"
 	    android:layout_height="200dp"

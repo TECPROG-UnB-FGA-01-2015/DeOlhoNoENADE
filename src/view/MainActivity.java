@@ -1,4 +1,4 @@
-package br.unb.deolhonoenade.view;
+package view;
 
 import android.app.ActionBar;
 import android.app.Activity;

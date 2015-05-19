@@ -1,7 +1,7 @@
-package br.unb.deolhonoenade.Teste;
+package Teste;
 
 import android.test.AndroidTestCase;
-import br.unb.deolhonoenade.DAO.ImportarBancoDeDados;
+import DAO.ImportarBancoDeDados;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;

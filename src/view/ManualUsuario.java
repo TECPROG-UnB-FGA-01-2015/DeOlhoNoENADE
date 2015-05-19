@@ -1,4 +1,4 @@
-package br.unb.deolhonoenade.view;
+package view;
 
 import br.unb.deolhonoenade.R;
 import br.unb.deolhonoenade.R.id;
