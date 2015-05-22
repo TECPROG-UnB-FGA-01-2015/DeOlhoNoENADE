@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 public class Institution
 {
-
 	private ArrayList<Course> Courses = new ArrayList<Course>();
 
 	private String name; // Holds the info of the institution's name
@@ -97,5 +96,4 @@ public class Institution
 	{
 		this.institutionCode = institutionCode;
 	}
-
 }
