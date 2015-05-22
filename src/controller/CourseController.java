@@ -125,6 +125,7 @@ public class CourseController
 	public List<String> getInstitutionInfo(int position) throws Exception
 	{
 		List<String> institutionInfo = new ArrayList<String>();
+		
 		try
 		{
             String institutionName = courses.get(position).getIES().getName();
@@ -156,8 +157,8 @@ public class CourseController
 		{
 			log.error("Error on getting institution information. Exception: ", e);
 		}
+		
 		return institutionInfo;
-
 	}
 
 	/** This method is responsible to compare two different Universities's ENADE
@@ -270,6 +271,7 @@ public class CourseController
 		try
 		{
 			float courseGrade = 0;
+			
 			if (courses.size() == 1)
 			{
 				courseGrade = courses.get(0).getCourseGrade();
@@ -277,6 +279,7 @@ public class CourseController
 			else
 			{
 	            int i;
+	            
 				for (i = 0; i < courses.size() - 1; i++)
 				{
 					courseGrade += courses.get(i).getCourseGrade();
@@ -354,6 +357,7 @@ public class CourseController
 	{
 		List<String> cities = new ArrayList<String>();
 		cities = this.databaseOperations.getCidades(courseCode, state);
+		
 		return cities;
 	}
 
@@ -363,6 +367,7 @@ public class CourseController
 	{
 		List<String> types = new ArrayList<String>();
 		types = this.databaseOperations.getTipoMunicipio(courseCode, city);
+		
 		return types;
 	}
 
@@ -372,6 +377,7 @@ public class CourseController
 	{
 		List<String> types = new ArrayList<String>();
 		types = this.databaseOperations.getTipoEstado(courseCode, state);
+		
 		return types;
 	}
 
@@ -381,6 +387,7 @@ public class CourseController
 	{
 		List<String> states = new ArrayList<String>();
 		states = this.databaseOperations.getUfs(courseCode);
+		
 		return states;
 	}
 
