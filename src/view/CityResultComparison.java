@@ -87,6 +87,10 @@ public class CityResultComparison extends Activity
 		{
 			getFragmentManager().beginTransaction().add(R.id.container, new PlaceholderFragment()).commit();
 		}
+		else
+		{
+			// Nothing to do
+		}
 
 		// Stores the average grade of the course in the first (example: cinco)
 		String media1String = String.valueOf(firstAverage);
@@ -99,12 +103,15 @@ public class CityResultComparison extends Activity
 		d.setColor(Color.parseColor("#99CC00"));
 		d.setName(nameFirstCity);
 		d.setValue(Float.parseFloat(media1String.substring(0, 5)));
+		
 		Bar d2 = new Bar();
 		d2.setColor(Color.parseColor("#FFBB33"));
 		d2.setName(nameSecondCity);
 		d2.setValue(Float.parseFloat(media2String.substring(0, 5)));
+		
 		points.add(d);
 		log.info("Bar " + d + " added successfully!");
+		
 		points.add(d2);
 		log.info("Bar " + d2 + " added successfully!");
 
@@ -134,7 +141,6 @@ public class CityResultComparison extends Activity
 		{
 			return true;
 		}
-		
 		else
 		{
 			// Nothing to do
@@ -155,6 +161,7 @@ public class CityResultComparison extends Activity
 		{
 			View rootView = inflater.inflate(R.layout.fragment_comparacao_result_c, container, false);
 			log.debug("The view was loaded.");
+			
 			return rootView;
 		}
 	}
