@@ -93,17 +93,16 @@ public class InstitutionComparison extends Activity
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View v, int posicao, long id)
 			{
-
 				stateName = parent.getItemAtPosition(posicao).toString();
 
 				addItensOnSpinnerMunicipio(stateName);
+				
 				log.debug("State add on State Spinner.");
 			}
 
 			@Override
 			public void onNothingSelected(AdapterView<?> parent)
 			{
-				// Nothing to do
 				log.info("No Item selected!");
 			}
 		});
@@ -116,6 +115,7 @@ public class InstitutionComparison extends Activity
 
 		// Store all cities of a given course
 		List<String> cityNameList;
+		
 		cityNameList = objectCourseController.searchCities(courseCode, uf);
 
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
@@ -140,7 +140,6 @@ public class InstitutionComparison extends Activity
 			@Override
 			public void onNothingSelected(AdapterView<?> parent)
 			{
-				// Nothing to do
 				log.info("No Item selected!");
 			}
 		});
@@ -177,11 +176,9 @@ public class InstitutionComparison extends Activity
 			@Override
 			public void onNothingSelected(AdapterView<?> parent)
 			{
-				// Nothing to do
 				log.info("No Item selected!");
 			}
 		});
-
 	}
 
     // Method for the confirmation button for the search between the two institutions
@@ -190,7 +187,6 @@ public class InstitutionComparison extends Activity
 		Button comparar = (Button) findViewById(R.id.nomeIES);
 		comparar.setOnClickListener(new OnClickListener()
 		{
-
 			@Override
 			public void onClick(View v)
 			{
@@ -207,13 +203,13 @@ public class InstitutionComparison extends Activity
 				log.debug("The button Comparar was clicked.");
 			}
 		});
-
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
 		getMenuInflater().inflate(R.menu.comparacao_instituicao, menu);
+		
 		return true;
 	}
 
@@ -221,11 +217,11 @@ public class InstitutionComparison extends Activity
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
 		int id = item.getItemId();
+		
 		if (id == R.id.action_settings)
 		{
 			return true;
 		}
-		
 		else
 		{
 			// Nothing to do
@@ -246,6 +242,7 @@ public class InstitutionComparison extends Activity
 		{
 			View rootView = inflater.inflate(R.layout.fragment_comparacao_instituicao, container, false);
 			log.debug("The view was loaded.");
+			
 			return rootView;
 		}
 	}

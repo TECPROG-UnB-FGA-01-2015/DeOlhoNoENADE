@@ -229,7 +229,6 @@ public class CityComparison extends Activity
 		Button compareInstituicao = (Button) findViewById(R.id.buttonComparacaoCidades);
 		compareInstituicao.setOnClickListener(new OnClickListener()
 		{
-
 			@Override
 			public void onClick(View v)
 			{
@@ -253,7 +252,6 @@ public class CityComparison extends Activity
 		{
 			getActionBar().setSelectedNavigationItem(savedInstanceState.getInt(STATE_SELECTED_NAVIGATION_ITEM));
 		}
-		
 		else
 		{
 			// Nothing to do
@@ -282,7 +280,6 @@ public class CityComparison extends Activity
 		{
 			return true;
 		}
-		
 		else
 		{
 			// Nothing to do
@@ -293,7 +290,6 @@ public class CityComparison extends Activity
 
 	public static class PlaceholderFragment extends Fragment
 	{
-
 		private static final String ARG_SECTION_NUMBER = "section_number";
 
 		public static PlaceholderFragment newInstance(int sectionNumber)
@@ -317,8 +313,8 @@ public class CityComparison extends Activity
 			TextView textView = (TextView) rootView.findViewById(R.id.section_label);
 			textView.setText(Integer.toString(getArguments().getInt(ARG_SECTION_NUMBER)));
 			log.debug("The view was loaded.");
-			return rootView;
 			
+			return rootView;
 		}
 	}
 }

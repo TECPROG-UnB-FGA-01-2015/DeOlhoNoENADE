@@ -50,10 +50,12 @@ public class InitialComparison extends Activity implements
 		setContentView(R.layout.activity_comparacao_inicial);		
 		Bundle extras = getIntent().getExtras(); // Retrieves and gets a map of extended data from the intent.
 		course = extras.getString("selectedCourse"); // Gets the Course's value of the passed extra
+		
 		addListenerOnButtonState();
 		addListenerOnButtonInstitution();
 		addListenerOnButtonCity();
 		addListenerOnButtonType();
+		
 		log.debug("activity_comparacao_inicial called!");
 		log.debug("4 Comparison Buttons and its respective methods created.");
 
@@ -193,7 +195,6 @@ public class InitialComparison extends Activity implements
 			getActionBar().setSelectedNavigationItem(
 					savedInstanceState.getInt(STATE_SELECTED_NAVIGATION_ITEM));
 		}
-		
 		else
 		{
 			// Nothing to do
@@ -205,6 +206,7 @@ public class InitialComparison extends Activity implements
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
 		getMenuInflater().inflate(R.menu.comparacao_inicial, menu);
+		
 		return true;
 	}
 
@@ -213,11 +215,11 @@ public class InitialComparison extends Activity implements
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
 		int id = item.getItemId();
+		
 		if (id == R.id.action_settings)
 		{
 			return true;
 		}
-		
 		else
 		{
 			// Nothing to do
@@ -231,16 +233,19 @@ public class InitialComparison extends Activity implements
 	public boolean onNavigationItemSelected(int position, long id)
 	{
 		int addOnePosition = 1;
+		
 		getFragmentManager()
 				.beginTransaction()
 				.replace(R.id.container,
 						PlaceholderFragment.newInstance(position + addOnePosition)).commit();
+		
 		return true;
 	}
 
 	public static class PlaceholderFragment extends Fragment
 	{
 		private static final String ARG_SECTION_NUMBER = "section_number";
+		
 		public static PlaceholderFragment newInstance(int sectionNumber)
 		{
 			PlaceholderFragment fragment = new PlaceholderFragment();
@@ -271,6 +276,7 @@ public class InitialComparison extends Activity implements
 					.findViewById(R.id.section_label);
 			textView.setText(Integer.toString(getArguments().getInt(
 					ARG_SECTION_NUMBER)));
+			
 			return rootView;
 		}
 	}

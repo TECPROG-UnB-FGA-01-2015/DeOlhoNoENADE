@@ -35,7 +35,6 @@ import android.os.Build;
 
 public class FinalInstitutionComparison extends Activity
 {
-
 	private Spinner statesSpinner; // Spinner variable of the States
 	private Spinner institutionSpinner; // Spinner variable of the Institutions
 	private CourseController objectCourseController; // Instantiates an object of the controller
@@ -78,7 +77,6 @@ public class FinalInstitutionComparison extends Activity
 
 		addItensOnSpinnerEstado(courseCode, false);
 		addListenerOnButtonBuscar();
-
 	}
     
     // Method to list the State options in a spinner
@@ -93,6 +91,10 @@ public class FinalInstitutionComparison extends Activity
 		{
 			stateList.remove(firstStateName);
 		}
+		else
+		{
+			// Nothing to do
+		}
 
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
 																	android.R.layout.simple_spinner_item,
@@ -106,7 +108,6 @@ public class FinalInstitutionComparison extends Activity
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View v, int posicao, long id)
 			{
-
 				stateName = parent.getItemAtPosition(posicao).toString();
 
 				addItensOnSpinnerMunicipio(stateName, false);
@@ -132,13 +133,11 @@ public class FinalInstitutionComparison extends Activity
 			{
 				Log.e(this.getClass().toString(), "retirou m");
 			}
-			
 			else
 			{
 				// Nothing to do
 			}
 		}
-		
 		else
 		{
 			// Nothing to do
@@ -157,10 +156,8 @@ public class FinalInstitutionComparison extends Activity
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View v, int posicao, long id)
 			{
-
 				cityName = parent.getItemAtPosition(posicao).toString();
 				addItensOnSpinnerIES(stateName, cityName, false);
-
 			}
 
 			@Override
@@ -169,7 +166,6 @@ public class FinalInstitutionComparison extends Activity
 				// Nothing to do
 			}
 		});
-
 	}
     
     // Method to list the IES options in a spinner
@@ -185,14 +181,11 @@ public class FinalInstitutionComparison extends Activity
 				objectCourseController.removeInstitution(institutionPosition);
 				Log.e(this.getClass().toString(), "retirou");
 			}
-			
 			else
 			{
 				Log.e(this.getClass().toString(), "nao retirou");
-			}
-			
+			}	
 		}
-		
 		else
 		{
 			// Nothing to do
@@ -227,43 +220,35 @@ public class FinalInstitutionComparison extends Activity
 
 						if (cityList.size() == 1)
 						{
-
 							Log.e(this.getClass().toString(), "cityList 1");
 
 							addItensOnSpinnerEstado(courseCode, true);
 						}
-						
 						else if (cityList.size() > 1)
 						{
 							Log.e(this.getClass().toString(), "cityList > 1");
 							addItensOnSpinnerMunicipio(stateName, true);
 						}
-						
 						else
 						{
 							// Nothing to do
 						}
-
 					}
-					
 					else if (institutionList.size() > 1)
 					{
 						Log.e(this.getClass().toString(), "institutionList > 1");
 						institutionPosition = posicao;
 						addItensOnSpinnerIES(stateName, cityName, true);
 					}
-					
 					else
 					{
 						// Nothing to do
 					}
 				}
-				
 				else
 				{
 					// Nothing to do
 				}
-
 			}
 
 			@Override
@@ -272,7 +257,6 @@ public class FinalInstitutionComparison extends Activity
 				// Nothing to do
 			}
 		});
-
 	}
 
 	private void addListenerOnButtonBuscar()
@@ -280,7 +264,6 @@ public class FinalInstitutionComparison extends Activity
 		Button comparar = (Button) findViewById(R.id.Comparar);
 		comparar.setOnClickListener(new OnClickListener()
 		{
-
 			@Override
 			public void onClick(View v)
 			{
@@ -296,13 +279,13 @@ public class FinalInstitutionComparison extends Activity
 				startActivity(result);
 			}
 		});
-
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
 		getMenuInflater().inflate(R.menu.comparacao_instituicao_final, menu);
+		
 		return true;
 	}
 
@@ -315,7 +298,6 @@ public class FinalInstitutionComparison extends Activity
 		{
 			return true;
 		}
-		
 		else
 		{
 			// Nothing to do
