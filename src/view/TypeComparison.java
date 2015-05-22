@@ -34,8 +34,7 @@ import android.os.Build;
 import org.apache.log4j.Logger;
 
 public class TypeComparison extends Activity
-{
-	
+{	
 	private Spinner firstStateSpinner; // Contains a list of states to be chosen to the first institution
 	private Spinner firstTypeSpinner; // First institution type (public or private)
 	private Spinner secondStateSpinner; // Contains a list of states to be chosen to the second institution
@@ -74,6 +73,7 @@ public class TypeComparison extends Activity
 		
 		addItensOnSpinnerFirstStateType(courseCode);
 		addListenerOnButtonSearch();
+		
 		log.debug("activity_comparacao_tipo called!");
 		log.debug("1 Type Comparison Button and its respective method created.");
 	}
@@ -84,6 +84,7 @@ public class TypeComparison extends Activity
 	{
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.comparacao_tipo, menu);
+		
 		return true;
 	}
 	
@@ -119,7 +120,6 @@ public class TypeComparison extends Activity
 			@Override
 			public void onNothingSelected(AdapterView<?> parent)
 			{
-				// Nothing to do
 				log.info("No Item selected!");	
 			}
 		});	
@@ -158,7 +158,6 @@ public class TypeComparison extends Activity
 			@Override
 			public void onNothingSelected(AdapterView<?> parent)
 			{
-				// Nothing to do
 				log.info("No Item selected!");	
 			}
 		});
@@ -176,7 +175,6 @@ public class TypeComparison extends Activity
 		{
 			list.remove(firstState);
 		}
-		
 		else
 		{
 			// Nothing to do
@@ -205,7 +203,6 @@ public class TypeComparison extends Activity
 			@Override
 			public void onNothingSelected(AdapterView<?> parent)
 			{
-				// Nothing to do
 				log.info("No Item selected!");	
 			}
 		});	
@@ -224,7 +221,6 @@ public class TypeComparison extends Activity
 		{
 			secondTypeList.remove(firstType);
 		}
-		
 		else
 		{
 			// Nothing to do
@@ -254,16 +250,14 @@ public class TypeComparison extends Activity
 				
 				if(firstStateEquals && firstTypeEquals)
 				{
-				
-						if(secondTypeList.size() <= secondUniverityType)
-						{
-							addItensOnSpinnerSecondStateType(courseCode, true);
-						}
-						else
-						{
-							addItensOnSpinnerSecondType(secondState, true);
-						}
-										
+					if(secondTypeList.size() <= secondUniverityType)
+					{
+						addItensOnSpinnerSecondStateType(courseCode, true);
+					}
+					else
+					{
+						addItensOnSpinnerSecondType(secondState, true);
+					}
 				}
 				else
 				{
@@ -333,11 +327,11 @@ public class TypeComparison extends Activity
 		 * as you specify a parent activity in AndroidManifest.xml
 		 */
 		int id = item.getItemId();
+		
 		if (id == R.id.action_settings)
 		{
 			return true;
 		}
-		
 		else
 		{
 			// Nothing to do
@@ -367,6 +361,7 @@ public class TypeComparison extends Activity
 			// Hosts all other views on the same place
 			View rootView = inflater.inflate(R.layout.fragment_comparacao_tipo,
 					container, false);
+			
 			return rootView;
 		}
 	}

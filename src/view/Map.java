@@ -63,7 +63,6 @@ public class Map extends Activity
 				stateAverageGrade = String.valueOf( objectCourseController.calculateStateGrade(allStates.get(i),
 						courseCode));
 			}
-        	
         	catch (Exception e)
         	{
 				Log.e(this.getClass().toString(), allStates.get(i)+
@@ -137,7 +136,7 @@ public class Map extends Activity
         //way too.
         
         log.info("Showing all State's grades");
-        
+
         log.debug("activity_mapa called!");
 		log.debug("1 Map Button and its respective method created.");
 	}

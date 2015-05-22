@@ -105,6 +105,7 @@ public class InstitutionResultComparison extends Activity
 	{
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.comparacao_result_ie, menu);
+		
 		return true;
 	}
 
@@ -113,11 +114,11 @@ public class InstitutionResultComparison extends Activity
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
 		int id = item.getItemId(); // Holds the id of the container's selected item 
+		
 		if (id == R.id.action_settings)
 		{
 			return true;
 		}
-		
 		else
 		{
 			// Nothing to do
@@ -144,6 +145,7 @@ public class InstitutionResultComparison extends Activity
 			// Hosts all other views on the same place
 			View rootView = inflater.inflate(
 					R.layout.fragment_comparacao_result_ie, container, false);
+			
 			return rootView;
 		}
 	}

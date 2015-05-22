@@ -38,7 +38,6 @@ public class TypeResultComparison extends Activity
 	private String secondType; // Holds the second institution type (public or private)
 	
 	static Logger log = Logger.getLogger(TypeResultComparison.class.getName());
-
 	
 	@Override
 	// Method to initialize the activity activity_comparacao_result_tipo
@@ -79,14 +78,17 @@ public class TypeResultComparison extends Activity
 		String secondTypeGrade = String.valueOf(secondResult); // Holds the second institution grade
 		
 		ArrayList<Bar> institutionGrades = new ArrayList<Bar>(); // Holds the average grade of institution
+		
 		Bar firstInstitutionGraph = new Bar(); // Contains the first institution data
 		firstInstitutionGraph.setColor(Color.parseColor("#99CC00"));
 		firstInstitutionGraph.setName("Estado/Tipo 1:");
 		firstInstitutionGraph.setValue(Float.parseFloat(firstTypeGrade.substring(0, 5)));
+		
 		Bar secondInstitutionGraph = new Bar(); // Contains the second institution data
 		secondInstitutionGraph.setColor(Color.parseColor("#FFBB33"));
 		secondInstitutionGraph.setName("Estado/Tipo 2:");
 		secondInstitutionGraph.setValue(Float.parseFloat(secondTypeGrade.substring(0, 5)));
+		
 		institutionGrades.add(firstInstitutionGraph);
 		
 		log.info("First Type Institution Graph created!");
@@ -118,6 +120,7 @@ public class TypeResultComparison extends Activity
 	{
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.comparacao_result_tipo, menu);
+		
 		return true;
 	}
 
@@ -126,11 +129,11 @@ public class TypeResultComparison extends Activity
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
 		int id = item.getItemId(); // Holds the id of the container's selected item 
+		
 		if (id == R.id.action_settings)
 		{
 			return true;
 		}
-		
 		else
 		{
 			// Nothing to do
@@ -160,6 +163,7 @@ public class TypeResultComparison extends Activity
 			// Hosts all other views on the same place
 			View rootView = inflater.inflate(
 					R.layout.fragment_comparacao_result_tipo, container, false);
+			
 			return rootView;
 		}
 	}
