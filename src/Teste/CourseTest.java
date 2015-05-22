@@ -12,7 +12,6 @@ import junit.framework.Assert;
 
 public class CourseTest extends AndroidTestCase
 {
-
 	// This method is responsible to signal the Test Startup. It's executed before each Test Method
 	protected void setUp() throws Exception
 	{
