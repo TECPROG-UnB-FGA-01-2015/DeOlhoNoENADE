@@ -34,7 +34,6 @@ import org.apache.log4j.Logger;
 
 public class StateResultComparison extends Activity
 {
-
 	private String course; // Receives the name of course
 	private String firstState, secondState; // Receives the value of the selected state
 	private CourseController objectCourseController; // Object from the ControllerCurso Class
@@ -72,6 +71,10 @@ public class StateResultComparison extends Activity
 		{
 			getFragmentManager().beginTransaction().add(R.id.container,
 					new PlaceholderFragment()).commit();
+		}
+		else
+		{
+			// Nothing to do
 		}
 
 		// Contains the value of the index 0 of the list
@@ -115,6 +118,7 @@ public class StateResultComparison extends Activity
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
 		getMenuInflater().inflate(R.menu.comparacao_result, menu);
+		
 		return true;
 	}
 
@@ -124,6 +128,7 @@ public class StateResultComparison extends Activity
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
 		int id = item.getItemId();
+		
 		if(id == R.id.action_settings)
 		{
 			return true;
@@ -156,6 +161,7 @@ public class StateResultComparison extends Activity
 		{
 			View rootView = inflater.inflate(
 					R.layout.fragment_comparacao_result, container, false);
+			
 			return rootView;
 		}
 	}
