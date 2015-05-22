@@ -13,7 +13,7 @@ Os arquivos que serão utilizados do projeto foram dividos entre os integrantes 
 - ComparacaoInstituicao (InstitutionComparison)
 - ComparacaoInstituicaoFinal (FinalInstitutionComparison)
 - ComparacaoResultC (CityResultComparison)
-<h3>Atividades 5 e 6:</h3> 
+<h3>Atividades 5, 6 e 7:</h3> 
 - ControllerCurso (CourseController)
 - TestControllerCurso (CourseControllerTest)
 
@@ -21,7 +21,7 @@ Os arquivos que serão utilizados do projeto foram dividos entre os integrantes 
 <h3>Atividades 1 a 4:</h3>  
 - ControllerCurso (CourseController)
 - TestControllerCurso (CourseControllerTest)
-<h3>Atividades 5 e 6:</h3>
+<h3>Atividades 5, 6 e 7:</h3>
 - ComparacaoInicial (InitialComparison)
 - ComparacaoResultIES (InstitutionResultComparison)
 - ComparacaoResultTipo (TypeResultComparison)
@@ -36,7 +36,7 @@ Os arquivos que serão utilizados do projeto foram dividos entre os integrantes 
 - TestInstituicao (InstitutionTest)
 - ComparacaoEstado (StateComparison)
 - ComparacaoResult (StateResultComparison)
-<h3>Atividades 5 e 6:</h3>
+<h3>Atividades 5, 6 e 7:</h3>
 - ComparacaoCidades (CityComparison)
 - ComparacaoInstituicao (InstitutionComparison)
 - ComparacaoInstituicaoFinal (FinalInstitutionComparison)
@@ -49,7 +49,7 @@ Os arquivos que serão utilizados do projeto foram dividos entre os integrantes 
 - ComparacaoResultTipo (TypeResultComparison)
 - ComparacaoTipo (TypeComparison)
 - Mapa (Map)
-<h3>Atividade 5 e 6:</h3>
+<h3>Atividades 5, 6 e 7:</h3>
 - Curso (Course)
 - Instituicao (Institution)
 - TestCurso (CourseTest)
