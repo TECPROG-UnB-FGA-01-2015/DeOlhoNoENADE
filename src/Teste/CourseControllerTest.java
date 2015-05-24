@@ -145,8 +145,8 @@ public class CourseControllerTest extends AndroidTestCase
 		Assert.assertEquals("UNIVERSIDADE FEDERAL DE MATO GROSSO", institutionName);
 	}
 
-	/* This method is responsible to test if the University's info has the
-	 * correct info compared with University's course info, based on Course's ID
+	/* Test if the University's info has the correct info
+	 * compared with University's course info, based on Course's ID
 	 * and University's Brazilian State, on the Database */
 	public void testInstitutionInfo() throws Exception
 	{
@@ -180,11 +180,7 @@ public class CourseControllerTest extends AndroidTestCase
         Assert.assertEquals(institutionInfo.get(5), formattedStudentsNumber);
 	}
 
-	/* This method is responsible to test if the University's course info
-	 * (University Name, Academic Organization, University Type - Public/Private
-	 * Universities, University City, Registered Students - who participated on
-	 * the ENADE's test - and Course's number of students) has null University's
-	 * info */
+	// Test if the Course info has null University's info
 	public void testInstitutionInfoIndexOutOfBounds() throws Exception
     {
 		CourseController controller = new CourseController(getContext());
@@ -207,9 +203,8 @@ public class CourseControllerTest extends AndroidTestCase
 		Assert.assertNull(institutionInfo);
 	}
 
-	/* This method is responsible to test if the comparison between two
-	 * different Universities (with two different Brazilian States) was
-	 * successful */
+	/* Test if the comparison between two different Universities
+	 * (with two different Brazilian States) was successful */
 	public void testCompareState() throws Exception
     {
 		CourseController controller = new CourseController(getContext());
@@ -223,8 +218,7 @@ public class CourseControllerTest extends AndroidTestCase
 		assertEquals(firstStateGrade, (float) 1.9448332);
 	}
 
-	/* This method is responsible to test if the Course's ID is registered
-	 * correctly on the University's name on the Database */
+	/* Test if the Course's ID is registered correctly on the University's name on the Database */
 	public void testSearchCourseCode()
 	{
 		int courseCode;
@@ -234,11 +228,8 @@ public class CourseControllerTest extends AndroidTestCase
 		Assert.assertEquals(1, courseCode);
 	}
 
-	/* This method is responsible to test if three different Universities (on
-	 * the same Brazilian State) with the same course info (Universities' Names,
-	 * Academic Organizations, Universities Type - Public/Private Universities,
-	 * Universities' Cities, Registered Students - who participated on the
-	 * ENADE's test - and Courses' number of students) are registered correctly
+	/* Test if three different Universities (on the same Brazilian State)
+	 * with the same course info are registered correctly
 	 * based on Course's ID and University's Brazilian State on the Database */
 	public void testSearchCourseUniversityID()
 	{
@@ -321,11 +312,8 @@ public class CourseControllerTest extends AndroidTestCase
         Assert.assertEquals(secondCourseStudentsNumber, firstCourseStudentsNumber);
 	}
 
-	/* This method is responsible to test if one University with one course info
-	 * (Universities' Names, Academic Organizations, Universities Type -
-	 * Public/Private Universities, Universities' Cities, Registered Students -
-	 * who participated on the ENADE's test - and Courses' number of students)
-	 * are registered correctly based on Course's ID, University's Brazilian
+	/* Test if one University with one course info
+	 * is registered correctly based on Course's ID, University's Brazilian
 	 * State and University's name on the Database */
 	public void testSearchCourseID() {
         CourseController controller = new CourseController(getContext());
@@ -359,11 +347,8 @@ public class CourseControllerTest extends AndroidTestCase
         Assert.assertEquals(secondCourseStudentsNumber, firstCourseStudentsNumber);
     }
 
-	/* This method is responsible to test if one University with one course info
-	 * (Universities' Names, Academic Organizations, Universities Type -
-	 * Public/Private Universities, Universities' Cities, Registered Students -
-	 * who participated on the ENADE's test - and Courses' number of students)
-	 * are registered correctly based on Course's ID, University's Brazilian
+	/* Test if one University with one course info
+	 * is registered correctly based on Course's ID, University's Brazilian
 	 * State, University's City and University's Type on the Database */
 	public void testSearchCourseInfo()
 	{
@@ -398,14 +383,13 @@ public class CourseControllerTest extends AndroidTestCase
         Assert.assertEquals(secondCourseStudentsNumber, firstCourseStudentsNumber);
 	}
 
-	/* This method is responsible to test if two different Brazilian Cities
-	 * (with the same Brazilian State) are registered correctly based on
-	 * Course's ID and University's Brazilian State on the Database */
+	/* Test if two different Brazilian Cities (in the same State)
+	 * is registered correctly based on Course's ID and State on the Database */
 	public void testSearchCities()
 	{
 		CourseController controller = new CourseController(getContext());
 		List<String> secondCitiesList = new ArrayList<String>();
-		List<String> firstCitiesList = new ArrayList<String>();
+		List<String> firstCitiesList;
 
 		String firstCity = new String("CRUZEIRO DO SUL");
 		String secondCity = new String("RIO BRANCO");
@@ -417,13 +401,12 @@ public class CourseControllerTest extends AndroidTestCase
 		Assert.assertEquals(secondCitiesList, firstCitiesList);
 	}
 
-	/* This method is responsible to test if the Acre's University Type is
-	 * Private, based on the Course's ID and the University's Type */
+	/* Test if the Acre's University Type is Private, based on the Course's ID and the University's Type */
 	public void testSearchTypeAC()
 	{
 		CourseController controller = new CourseController(getContext());
 		List<String> secondTypeList = new ArrayList<String>();
-		List<String> firstTypeList = new ArrayList<String>();
+		List<String> firstTypeList;
 
 		String firstType = new String("PRIVADA");
 
@@ -433,14 +416,13 @@ public class CourseControllerTest extends AndroidTestCase
 		Assert.assertEquals(secondTypeList, firstTypeList);
 	}
 
-	/* This method is responsible to test Brasilia's three Universities Types
-	 * (Public, Private and "Both") based on the Course's ID and the
-	 * University's Type */
+	/* Test Brasilia's three Universities Types (Public, Private and "Both")
+	 * based on the Course's ID and the University's Type */
 	public void testSearchTypeDF()
 	{
 		CourseController controller = new CourseController(getContext());
 		List<String> secondTypeList = new ArrayList<String>();
-		List<String> firstTypeList = new ArrayList<String>();
+		List<String> firstTypeList;
 
 		String firstType = new String("Ambas");
 		String secondType = new String("PRIVADA");
