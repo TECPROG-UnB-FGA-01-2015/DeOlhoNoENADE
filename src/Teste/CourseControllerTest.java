@@ -1,20 +1,20 @@
 /***********************************************************
- * File: TestControllerCurso.java
+ * File: CourseControllerTest.java
  * Purpose: Responsible to make unit tests in all the CourseController's methods.
  ***********************************************************/
 
 package Teste;
 
+import android.test.AndroidTestCase;
+
+import junit.framework.Assert;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import DAO.OperacoesBancoDeDados;
 import controller.CourseController;
 import model.Course;
 import model.Institution;
-import junit.framework.Assert;
-import android.database.sqlite.SQLiteDatabase;
-import android.test.AndroidTestCase;
 
 public class CourseControllerTest extends AndroidTestCase
 {
@@ -33,7 +33,7 @@ public class CourseControllerTest extends AndroidTestCase
 		super.setUp();
 	}
 
-	/* This method is responsible to signal the Test Ending. 
+	/* This method is responsible to signal the Test Ending.
 	 * It's executed after each Test Method */
 	protected void tearDown() throws Exception
 	{
@@ -148,7 +148,7 @@ public class CourseControllerTest extends AndroidTestCase
 	/* This method is responsible to test if the University's info has the
 	 * correct info compared with University's course info, based on Course's ID
 	 * and University's Brazilian State, on the Database */
-	public void testInstitutionInfo()
+	public void testInstitutionInfo() throws Exception
 	{
 		CourseController controller = new CourseController(getContext());
 		Institution firstInstitution = controller.searchInstitution(2);
@@ -185,8 +185,8 @@ public class CourseControllerTest extends AndroidTestCase
 	 * Universities, University City, Registered Students - who participated on
 	 * the ENADE's test - and Course's number of students) has null University's
 	 * info */
-	public void testInstitutionInfoIndexOutOfBounds()
-	{
+	public void testInstitutionInfoIndexOutOfBounds() throws Exception
+    {
 		CourseController controller = new CourseController(getContext());
 		Institution firstInstitution = controller.searchInstitution(2);
 		controller.searchCourse(1, "DF");
@@ -210,8 +210,8 @@ public class CourseControllerTest extends AndroidTestCase
 	/* This method is responsible to test if the comparison between two
 	 * different Universities (with two different Brazilian States) was
 	 * successful */
-	public void testCompareState()
-	{
+	public void testCompareState() throws Exception
+    {
 		CourseController controller = new CourseController(getContext());
 
 		String firstState = "DF";
@@ -467,7 +467,7 @@ public class CourseControllerTest extends AndroidTestCase
 
 		secondTypeList.add(secondType);
 		secondTypeList.add(thirdType);
-		
+
 		firstTypeList = controller.searchStateTypes(1, "DF");
 		Assert.assertEquals(secondTypeList, firstTypeList);
 	}
@@ -552,8 +552,8 @@ public class CourseControllerTest extends AndroidTestCase
 	 * together with their respectives ENADE's grades are registered correctly,
 	 * based on the Courses' ID and the Universities' Brazilian States, on the
 	 * Database */
-	public void testSearchCourseCodeState()
-	{
+	public void testSearchCourseCodeState() throws Exception
+    {
 		CourseController controller = new CourseController(getContext());
 		List<String> secondCourseList = new ArrayList<String>();
 		List<String> firstCourseList = new ArrayList<String>();
@@ -588,8 +588,8 @@ public class CourseControllerTest extends AndroidTestCase
 	 * with their respectives ENADE's grades are registered correctly, based on
 	 * the Courses' ID, Universities' Brazilian States, Universities' Cities and
 	 * Universities' Types, on the Database */
-	public void testSearchStateCityType()
-	{
+	public void testSearchStateCityType() throws Exception
+    {
 		CourseController controller = new CourseController(getContext());
 		List<String> secondCourseList = new ArrayList<String>();
 		List<String> firstCourseList = new ArrayList<String>();
@@ -612,8 +612,8 @@ public class CourseControllerTest extends AndroidTestCase
 	 * with their respectives ENADE's grades are registered correctly, based on
 	 * the Courses' ID, Universities' Brazilian States and Universities' Cities,
 	 * on the Database */
-	public void testSearchStateCity()
-	{
+	public void testSearchStateCity() throws Exception
+    {
 		CourseController controller = new CourseController(getContext());
 		List<String> secondCourseList = new ArrayList<String>();
 		List<String> firstCourseList = new ArrayList<String>();
@@ -640,8 +640,8 @@ public class CourseControllerTest extends AndroidTestCase
 	 * with their respectives ENADE's grades are registered correctly, based on
 	 * the Courses' ID, Universities' Brazilian States and Universities' Types,
 	 * on the Database */
-	public void testSearchStateIntegerType()
-	{
+	public void testSearchStateIntegerType() throws Exception
+    {
 		CourseController controller = new CourseController(getContext());
 		List<String> secondCourseList = new ArrayList<String>();
 		List<String> firstCourseList = new ArrayList<String>();
@@ -692,8 +692,8 @@ public class CourseControllerTest extends AndroidTestCase
 	 * (from two Brazilian States) aren't the same. It ensures that they're from
 	 * different Cities and Brazilian States so that you can make comparisons
 	 * between them */
-	public void testCompareCity()
-	{
+	public void testCompareCity() throws Exception
+    {
 		CourseController controller = new CourseController(getContext());
 
 		String firstState = "DF", firstCity = "BRASILIA";
@@ -708,8 +708,8 @@ public class CourseControllerTest extends AndroidTestCase
 	 * Course's ID, First University's Brazilian State, First University's Type,
 	 * Second University's Brazilian State and Second University's Type have
 	 * different ENADE's grades average, on the Database */
-	public void testCompareType()
-	{
+	public void testCompareType() throws Exception
+    {
 		CourseController controller = new CourseController(getContext());
 		List<Float> typeResult = controller.compareType(1, "AC", "Privada", "AL", "Privada");
 
@@ -723,8 +723,8 @@ public class CourseControllerTest extends AndroidTestCase
 	/* This method is responsible to test the Brazilian State's ENADE grade
 	 * average, based on Universities's Brazilian State, and Course's ID, on the
 	 * Database */
-	public void testStateAverageGrade()
-	{
+	public void testStateAverageGrade() throws Exception
+    {
 		CourseController controller = new CourseController(getContext());
 
         float stateGrade = controller.calculateStateGrade("SP", 1);
