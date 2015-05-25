@@ -33,7 +33,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.os.Build;
 
-import org.apache.log4j.Logger;
+import android.util.Log;
+import java.util.logging.Logger;
+
+
 
 public class InstitutionComparison extends Activity
 {
@@ -48,7 +51,7 @@ public class InstitutionComparison extends Activity
 	private List<String> institutionInfo; // Holds data of the institution being compared
 	private float selectedGrade; // Holds the grade of the selected item
 	
-	static Logger log = Logger.getLogger(InstitutionComparison.class.getName());
+
 
     @Override
     // Method to initialize the activity activity_comparacao_instituicao
@@ -68,7 +71,7 @@ public class InstitutionComparison extends Activity
 		addItensOnSpinnerEstado(courseCode);
 		addListenerOnButtonBuscar();
 		
-		log.debug("Load InstitutionComparison");
+		Log.d(this.getClass().toString(), "Load InstitutionComparison");
 	}
 
     // Method to list the State options in a spinner
@@ -93,17 +96,18 @@ public class InstitutionComparison extends Activity
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View v, int posicao, long id)
 			{
+
 				stateName = parent.getItemAtPosition(posicao).toString();
 
 				addItensOnSpinnerMunicipio(stateName);
-				
-				log.debug("State add on State Spinner.");
+				Log.d(this.getClass().toString(), "State add on State Spinner.");
 			}
 
 			@Override
 			public void onNothingSelected(AdapterView<?> parent)
 			{
-				log.info("No Item selected!");
+				// Nothing to do
+				Log.i(this.getClass().toString(), "No Item selected!");
 			}
 		});
 	}
@@ -115,7 +119,6 @@ public class InstitutionComparison extends Activity
 
 		// Store all cities of a given course
 		List<String> cityNameList;
-		
 		cityNameList = objectCourseController.searchCities(courseCode, uf);
 
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
@@ -134,13 +137,14 @@ public class InstitutionComparison extends Activity
 
 				cityName = parent.getItemAtPosition(posicao).toString();
 				addItensOnSpinnerIES(stateName, cityName);
-				log.debug("City add on City Spinner.");
+				Log.d(this.getClass().toString(), "City add on City Spinner.");
 			}
 
 			@Override
 			public void onNothingSelected(AdapterView<?> parent)
 			{
-				log.info("No Item selected!");
+				// Nothing to do
+				Log.i(this.getClass().toString(), "No Item selected!");
 			}
 		});
 
@@ -149,7 +153,17 @@ public class InstitutionComparison extends Activity
     // Method to list the IES options in a spinner
 	private void addItensOnSpinnerIES(String stateName, String cityName)
 	{
-		List<String> cursos = objectCourseController.searchCoursesNames(courseCode, stateName, cityName);
+		List<String> cursos = null;
+
+		try
+		{
+			cursos = objectCourseController.searchCoursesNames(courseCode, stateName, cityName);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			Log.e(this.getClass().toString(), "Error on searching courses names. Exception: ", e);
+		}
 		this.institutionSpinner = (Spinner) findViewById(R.id.spinnerIES);
 
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
@@ -166,19 +180,30 @@ public class InstitutionComparison extends Activity
 			public void onItemSelected(AdapterView<?> parent, View v, int posicao, long id)
 			{
 
-				institutionInfo = objectCourseController.getInstitutionInfo(posicao);
+				try
+				{
+					institutionInfo = objectCourseController.getInstitutionInfo(posicao);
+				}
+				catch (Exception e)
+				{
+					e.printStackTrace();
+					Log.e(this.getClass().toString(), "Error on get institution info. Exception: ", e);
+				}
+
 				selectedGrade = objectCourseController.getCourseGrade(posicao);
 				institutionName = institutionInfo.get(0);
 				
-				log.debug("Institution add on IES Spinner.");
+				Log.d(this.getClass().toString(), "Institution add on IES Spinner.");
 			}
 
 			@Override
 			public void onNothingSelected(AdapterView<?> parent)
 			{
-				log.info("No Item selected!");
+				// Nothing to do
+				Log.i(this.getClass().toString(), "No Item selected!");
 			}
 		});
+
 	}
 
     // Method for the confirmation button for the search between the two institutions
@@ -187,6 +212,7 @@ public class InstitutionComparison extends Activity
 		Button comparar = (Button) findViewById(R.id.nomeIES);
 		comparar.setOnClickListener(new OnClickListener()
 		{
+
 			@Override
 			public void onClick(View v)
 			{
@@ -200,16 +226,16 @@ public class InstitutionComparison extends Activity
 
 				startActivity(result);
 				
-				log.debug("The button Comparar was clicked.");
+				Log.d(this.getClass().toString(), "The button Comparar was clicked.");
 			}
 		});
+
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
 		getMenuInflater().inflate(R.menu.comparacao_instituicao, menu);
-		
 		return true;
 	}
 
@@ -217,11 +243,11 @@ public class InstitutionComparison extends Activity
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
 		int id = item.getItemId();
-		
 		if (id == R.id.action_settings)
 		{
 			return true;
 		}
+		
 		else
 		{
 			// Nothing to do
@@ -241,8 +267,7 @@ public class InstitutionComparison extends Activity
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
 			View rootView = inflater.inflate(R.layout.fragment_comparacao_instituicao, container, false);
-			log.debug("The view was loaded.");
-			
+			Log.d(this.getClass().toString(), "The view was loaded.");
 			return rootView;
 		}
 	}
