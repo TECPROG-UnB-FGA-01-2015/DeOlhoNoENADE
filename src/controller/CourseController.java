@@ -9,8 +9,9 @@ package controller;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.logging.Logger;
 
-import view.Logger;
+import android.util.Log;
 import view.StateResultComparison;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -22,14 +23,10 @@ import model.Institution;
 
 public class CourseController
 {
-	private Institution institution;
-	private ArrayList<Course> courses = new ArrayList<Course>();
+    private ArrayList<Course> courses = new ArrayList<Course>();
 
 	private SQLiteDatabase database;
-	private OperacoesBancoDeDados databaseOperations;
-	
-	// Variable to log debug, informations, warnings, errors and fatal errors
-	static Logger log = Logger.getLogger(CourseController.class.getName());
+	private final OperacoesBancoDeDados databaseOperations;
 
 	// This method is responsible to import two DAO's classes to make Database's operations
 	public CourseController(Context context)
@@ -57,8 +54,8 @@ public class CourseController
 		try
 		{
 			courses.remove(position);
+            Log.i("Course removed!", CourseController.class.getName());
 			return true;
-			log.info("Course successfully removed!");
 		}
 		catch (IndexOutOfBoundsException e)
 		{
@@ -104,17 +101,17 @@ public class CourseController
 	}
 
 	// This method is responsible to search the Universities' IDs from the Database
-	public Institution searchInstitution(int institutionCode) throws Exception
+	public Institution searchInstitution(int institutionCode)
 	{
 		try
 		{
-			this.institution = this.databaseOperations.getIES(institutionCode);
+            Institution institution = this.databaseOperations.getIES(institutionCode);
 
 			return institution;
 		}
 		catch(Exception e)
 		{
-			log.error("Error on searching institution. Exception: ", e);
+			Log.e(this.getClass().toString(), "Error on searching institution. Exception: ", e);
 		}
 	}
 
@@ -125,7 +122,6 @@ public class CourseController
 	public List<String> getInstitutionInfo(int position) throws Exception
 	{
 		List<String> institutionInfo = new ArrayList<String>();
-		
 		try
 		{
             String institutionName = courses.get(position).getIES().getName();
@@ -155,10 +151,10 @@ public class CourseController
 		}
 		catch(Exception e)
 		{
-			log.error("Error on getting institution information. Exception: ", e);
+			Log.e(this.getClass().toString(),"Error on getting institution information. Exception: ", e);
 		}
-		
 		return institutionInfo;
+
 	}
 
 	/** This method is responsible to compare two different Universities's ENADE
@@ -182,7 +178,7 @@ public class CourseController
 		stateGrade = this.calculateEnadeGrade(secondCourseState);
 		compareStateResult.add(stateGrade);
 		
-		log.info("Comparison between states '" + firstState + "' and '" +  secondState + "' was sucessfully made");
+		Log.i(this.getClass().toString(), "Comparison between states '" + firstState + "' and '" +  secondState + "' was sucessfully made");
 
 		return compareStateResult;
 	}
@@ -208,7 +204,7 @@ public class CourseController
 		cityGrade = this.calculateEnadeGrade(secondCourseCity);
 		compareCityResult.add(cityGrade);
 		
-		log.info("Comparison between cities '" + firstCity + "' and '" +  secondCity + "' was sucessfully made");
+		Log.i(this.getClass().toString(), "Comparison between cities '" + firstCity + "' and '" +  secondCity + "' was sucessfully made");
 
 		return compareCityResult;
 	}
@@ -218,8 +214,7 @@ public class CourseController
 	 * two different States with the Course's ID. It gets all the ENADES' grades
 	 * from one specific course on two different States and calculates the
 	 * ENADE's average grades on these two different chosen States */
-	public List<Float> compareType(int courseCode, String firstState, String firstType, String secondState, String secondType)
-	{
+	public List<Float> compareType(int courseCode, String firstState, String firstType, String secondState, String secondType) throws Exception {
 		float typeGrade = 0;
 		List<Float> compareTypeResult = new ArrayList<Float>();
 		List<Course> firstStateType = new ArrayList<Course>();
@@ -260,7 +255,7 @@ public class CourseController
 		typeGrade = this.calculateEnadeGrade(secondStateType);
 		compareTypeResult.add(typeGrade);
 		
-		log.info("Comparison between types '" + firstType + "' and '" +  secondType + "' was sucessfully made");
+		Log.i(this.getClass().toString(), "Comparison between types '" + firstType + "' and '" +  secondType + "' was sucessfully made");
 
 		return compareTypeResult;
 	}
@@ -271,7 +266,6 @@ public class CourseController
 		try
 		{
 			float courseGrade = 0;
-			
 			if (courses.size() == 1)
 			{
 				courseGrade = courses.get(0).getCourseGrade();
@@ -279,7 +273,6 @@ public class CourseController
 			else
 			{
 	            int i;
-	            
 				for (i = 0; i < courses.size() - 1; i++)
 				{
 					courseGrade += courses.get(i).getCourseGrade();
@@ -290,7 +283,7 @@ public class CourseController
 		}
 		catch(Exception e)
 		{
-			log.error("Error when calculating average grade of courses");
+			Log.e(this.getClass().toString(), "Error when calculating average grade of courses");
 		}
 
 		return courseGrade;
@@ -303,11 +296,11 @@ public class CourseController
 		
 		if (courseCode > 0)
 		{
-			log.debug("Course code of course '" + courseName + "' was found");
+			Log.d(this.getClass().toString(), "Course code of course '" + courseName + "' was found");
 		}
 		else
 		{
-			log.debug("Course code of course '" + courseName + "' was not found");
+			Log.e(this.getClass().toString(),"Course code of course '" + courseName + "' was not found");
 		}
 
 		return courseCode;
@@ -357,7 +350,6 @@ public class CourseController
 	{
 		List<String> cities = new ArrayList<String>();
 		cities = this.databaseOperations.getCidades(courseCode, state);
-		
 		return cities;
 	}
 
@@ -367,7 +359,6 @@ public class CourseController
 	{
 		List<String> types = new ArrayList<String>();
 		types = this.databaseOperations.getTipoMunicipio(courseCode, city);
-		
 		return types;
 	}
 
@@ -377,7 +368,6 @@ public class CourseController
 	{
 		List<String> types = new ArrayList<String>();
 		types = this.databaseOperations.getTipoEstado(courseCode, state);
-		
 		return types;
 	}
 
@@ -387,7 +377,6 @@ public class CourseController
 	{
 		List<String> states = new ArrayList<String>();
 		states = this.databaseOperations.getUfs(courseCode);
-		
 		return states;
 	}
 
@@ -414,7 +403,7 @@ public class CourseController
 		}
 		catch(Exception e)
 		{
-			log.error("Error when looking for institutions of the course code " + secondCourseCode.toString());
+			Log.e(this.getClass().toString(), "Error when looking for institutions of the course code " + secondCourseCode.toString());
 		}
 	}
 
@@ -443,7 +432,7 @@ public class CourseController
 		}
 		catch(Exception e)
 		{
-			log.error("Error when looking for institutions' grades of the course code " + secondCourseCode.toString());
+			Log.e(this.getClass().toString(), "Error when looking for institutions' grades of the course code " + secondCourseCode.toString());
 		}
 	}
 
@@ -473,7 +462,7 @@ public class CourseController
 		}
 		catch(Exception e)
 		{
-			log.error("Error when looking for institutions of the course code " + secondCourseCode.toString());
+			Log.e(this.getClass().toString(), "Error when looking for institutions of the course code " + secondCourseCode.toString());
 		}
 	}
 
@@ -503,7 +492,7 @@ public class CourseController
 		}
 		catch(Exception e)
 		{
-			log.error("Error when looking for institutions of the course code " + secondCourseCode.toString() + " from the city '" + secondCity + "'.");
+			Log.e(this.getClass().toString(), "Error when looking for institutions of the course code " + secondCourseCode.toString() + " from the city '" + secondCity + "'.");
 		}
 	}
 
@@ -530,7 +519,7 @@ public class CourseController
 		}
 		catch(Exception e)
 		{
-			log.error("Error when looking for institutions of the course code " + secondCourseCode.toString() + " from the city '" + secondCity + "'.");
+			Log.e(this.getClass().toString(), "Error when looking for institutions of the course code " + secondCourseCode.toString() + " from the city '" + secondCity + "'.");
 		}
 	}
 
@@ -559,7 +548,7 @@ public class CourseController
 		}
 		catch(Exception e)
 		{
-			log.error("Error when looking for institutions of the course code " + secondCourseCode.toString() + " from the state '" + state + "'.");
+			Log.e(this.getClass().toString(), "Error when looking for institutions of the course code " + courseCode.toString() + " from the state '" + state + "'.");
 		}
 	}
 
