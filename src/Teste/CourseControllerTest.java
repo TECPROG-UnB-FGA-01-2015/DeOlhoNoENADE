@@ -6,6 +6,7 @@
 package Teste;
 
 import android.test.AndroidTestCase;
+import android.util.Log;
 
 import junit.framework.Assert;
 
@@ -16,6 +17,7 @@ import controller.CourseController;
 import model.Course;
 import model.Institution;
 
+@SuppressWarnings("ALL")
 public class CourseControllerTest extends AndroidTestCase
 {
 	private ArrayList<Course> courses;
@@ -197,7 +199,7 @@ public class CourseControllerTest extends AndroidTestCase
 		}
 		catch (Error e)
 		{
-			e.printStackTrace();
+			Log.e(this.getClass().toString(), "Error on getting out of index institution info: " + e);
 		}
 
 		Assert.assertNull(institutionInfo);
@@ -259,63 +261,73 @@ public class CourseControllerTest extends AndroidTestCase
 		secondCoursesList.add(thirdCourse);
 		secondCoursesList.add(firstCourse);
 
-		courses = controller.searchCourse(1, "AC");
+		this.courses = controller.searchCourse(1, "AC");
 
-        float secondCourseGrade = secondCoursesList.get(0).getCourseGrade();
-        float firstCourseGrade = firstCoursesList.get(0).getCourseGrade();
+        Course baseCourse = secondCoursesList.get(0);
+        Course compareCourse = firstCoursesList.get(0);
+
+        float secondCourseGrade = baseCourse.getCourseGrade();
+        float firstCourseGrade = compareCourse.getCourseGrade();
 		Assert.assertEquals(secondCourseGrade, firstCourseGrade);
 
-        int secondCourseId = secondCoursesList.get(0).getId();
-        int firstCourseId = firstCoursesList.get(0).getId();
+        int secondCourseId = baseCourse.getId();
+        int firstCourseId = compareCourse.getId();
 		Assert.assertEquals(secondCourseId, firstCourseId);
 
-        int secondCourseInstitutionId = secondCoursesList.get(0).getId_institution();
-        int firstCourseInstitutionId = firstCoursesList.get(0).getId_institution();
+        int secondCourseInstitutionId = baseCourse.getId_institution();
+        int firstCourseInstitutionId = compareCourse.getId_institution();
 		Assert.assertEquals(secondCourseInstitutionId, firstCourseInstitutionId);
 
-        int secondCourseStudentsNumber = secondCoursesList.get(0).getStudentsNumber();
-        int firstCourseStudentsNumber = firstCoursesList.get(0).getStudentsNumber();
+        int secondCourseStudentsNumber = baseCourse.getStudentsNumber();
+        int firstCourseStudentsNumber = compareCourse.getStudentsNumber();
 		Assert.assertEquals(secondCourseStudentsNumber, firstCourseStudentsNumber);
 
-        secondCourseGrade = secondCoursesList.get(1).getCourseGrade();
-        firstCourseGrade = firstCoursesList.get(1).getCourseGrade();
+        Course secondBaseCourse = secondCoursesList.get(1);
+        Course secondCompareCourse = firstCoursesList.get(1);
+
+        secondCourseGrade = secondBaseCourse.getCourseGrade();
+        firstCourseGrade = secondCompareCourse.getCourseGrade();
 		Assert.assertEquals(secondCourseGrade, firstCourseGrade);
 
 
-        secondCourseId = secondCoursesList.get(1).getId();
-        firstCourseId = firstCoursesList.get(1).getId();
+        secondCourseId = secondBaseCourse.getId();
+        firstCourseId = secondCompareCourse.getId();
         Assert.assertEquals(secondCourseId, firstCourseId);
 
-        secondCourseInstitutionId = secondCoursesList.get(1).getId_institution();
-        firstCourseInstitutionId = firstCoursesList.get(1).getId_institution();
+        secondCourseInstitutionId = secondBaseCourse.getId_institution();
+        firstCourseInstitutionId = secondCompareCourse.getId_institution();
         Assert.assertEquals(secondCourseInstitutionId, firstCourseInstitutionId);
 
-        secondCourseStudentsNumber = secondCoursesList.get(1).getStudentsNumber();
-        firstCourseStudentsNumber = firstCoursesList.get(1).getStudentsNumber();
+        secondCourseStudentsNumber = secondBaseCourse.getStudentsNumber();
+        firstCourseStudentsNumber = secondCompareCourse.getStudentsNumber();
         Assert.assertEquals(secondCourseStudentsNumber, firstCourseStudentsNumber);
 
-        secondCourseGrade = secondCoursesList.get(2).getCourseGrade();
-        firstCourseGrade = firstCoursesList.get(2).getCourseGrade();
+        Course thirdBaseCourse = secondCoursesList.get(2);
+        Course thirdCompareCourse = firstCoursesList.get(2);
+
+        secondCourseGrade = thirdBaseCourse.getCourseGrade();
+        firstCourseGrade = thirdCompareCourse.getCourseGrade();
         Assert.assertEquals(secondCourseGrade, firstCourseGrade);
 
 
-        secondCourseId = secondCoursesList.get(2).getId();
-        firstCourseId = firstCoursesList.get(2).getId();
+        secondCourseId = thirdBaseCourse.getId();
+        firstCourseId = thirdCompareCourse.getId();
         Assert.assertEquals(secondCourseId, firstCourseId);
 
-        secondCourseInstitutionId = secondCoursesList.get(2).getId_institution();
-        firstCourseInstitutionId = firstCoursesList.get(12).getId_institution();
+        secondCourseInstitutionId = thirdBaseCourse.getId_institution();
+        firstCourseInstitutionId = thirdCompareCourse.getId_institution();
         Assert.assertEquals(secondCourseInstitutionId, firstCourseInstitutionId);
 
-        secondCourseStudentsNumber = secondCoursesList.get(2).getStudentsNumber();
-        firstCourseStudentsNumber = firstCoursesList.get(2).getStudentsNumber();
+        secondCourseStudentsNumber = thirdBaseCourse.getStudentsNumber();
+        firstCourseStudentsNumber = thirdCompareCourse.getStudentsNumber();
         Assert.assertEquals(secondCourseStudentsNumber, firstCourseStudentsNumber);
 	}
 
 	/* Test if one University with one course info
 	 * is registered correctly based on Course's ID, University's Brazilian
 	 * State and University's name on the Database */
-	public void testSearchCourseID() {
+	public void testSearchCourseID()
+    {
         CourseController controller = new CourseController(getContext());
         ArrayList<Course> secondCoursesList = new ArrayList<Course>();
         ArrayList<Course> firstCoursesList = new ArrayList<Course>();
@@ -328,7 +340,7 @@ public class CourseControllerTest extends AndroidTestCase
 
         secondCoursesList.add(firstCourse);
 
-        courses = controller.searchCourse(1, "AC", "CRUZEIRO DO SUL");
+        this.courses = controller.searchCourse(1, "AC", "CRUZEIRO DO SUL");
 
         float secondCourseGrade = secondCoursesList.get(0).getCourseGrade();
         float firstCourseGrade = firstCoursesList.get(0).getCourseGrade();
@@ -364,7 +376,7 @@ public class CourseControllerTest extends AndroidTestCase
 
 		secondCoursesList.add(firstCourse);
 
-		courses = controller.searchCourse(1, "DF", "BRASILIA", "PUBLICA");
+		this.courses = controller.searchCourse(1, "DF", "BRASILIA", "PUBLICA");
 
         float secondCourseGrade = secondCoursesList.get(0).getCourseGrade();
         float firstCourseGrade = firstCoursesList.get(0).getCourseGrade();
@@ -557,7 +569,9 @@ public class CourseControllerTest extends AndroidTestCase
 
 		firstCourseList = controller.searchCoursesNames(1, "TO");
 
-		for (int i = 0; i < 14; i++)
+        final int numberInstitution = 14; // Indicates the number of institutions added to the array
+
+		for (int i = 0; i < numberInstitution; i++)
 		{
             String secondCourse = secondCourseList.get(i);
             String firstCourse = firstCourseList.get(i);
@@ -566,10 +580,8 @@ public class CourseControllerTest extends AndroidTestCase
 		}
 	}
 
-	/* This method is responsible to test if two Universities' names together
-	 * with their respectives ENADE's grades are registered correctly, based on
-	 * the Courses' ID, Universities' Brazilian States, Universities' Cities and
-	 * Universities' Types, on the Database */
+	/* Test if two Universities' names together with their ENADE's grades are registered correctly,
+	 * based on the Courses' ID, State, City and University Type, on the Database */
 	public void testSearchStateCityType() throws Exception
     {
 		CourseController controller = new CourseController(getContext());
@@ -581,7 +593,9 @@ public class CourseControllerTest extends AndroidTestCase
 
 		firstCourseList = controller.searchCoursesNames(1, "TO", "PALMAS", "PUBLICA");
 
-		for (int i = 1; i < 2; i++)
+        final int numberInstitution = 2; // Indicates the number of institutions added to the array
+
+		for (int i = 1; i < numberInstitution; i++)
 		{
             String secondCourse = secondCourseList.get(i);
             String firstCourse = firstCourseList.get(i);
@@ -607,7 +621,10 @@ public class CourseControllerTest extends AndroidTestCase
 		secondCourseList.add("FACULDADE ITOP - 1,202000");
 
 		firstCourseList = controller.searchCoursesNames(1, "TO", "PALMAS");
-		for (int i = 1; i < 7; i++)
+
+        final int numberInstitution = 7; // Indicates the number of institutions added to the array
+
+		for (int i = 1; i < numberInstitution; i++)
 		{
             String secondCourse = secondCourseList.get(i);
             String firstCourse = firstCourseList.get(i);
@@ -631,7 +648,10 @@ public class CourseControllerTest extends AndroidTestCase
 		secondCourseList.add("UNIVERSIDADE DO TOCANTINS - 1,366000");
 
 		firstCourseList = controller.searchCoursesNames(1, "TO", 2);
-		for (int i = 1; i < 5; i++)
+
+        final int numberInstitution = 5; // Indicates the number of institutions added to the array
+
+		for (int i = 1; i < numberInstitution; i++)
 		{
             String secondCourse = secondCourseList.get(i);
             String firstCourse = firstCourseList.get(i);
