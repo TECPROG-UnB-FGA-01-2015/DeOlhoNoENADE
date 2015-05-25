@@ -29,7 +29,8 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import org.apache.log4j.Logger;
+import android.util.Log;
+import java.util.logging.Logger;
 
 public class InitialComparison extends Activity implements
 		ActionBar.OnNavigationListener
@@ -39,8 +40,6 @@ public class InitialComparison extends Activity implements
 			"selected_navigation_item";
 	
 	private String course; // Stores the course's name
-	
-	static Logger log = Logger.getLogger(InitialComparison.class.getName());
 
 	@Override
 	// Method to initialize the activity activity activity_comparacao_inicial
@@ -56,8 +55,8 @@ public class InitialComparison extends Activity implements
 		addListenerOnButtonCity();
 		addListenerOnButtonType();
 		
-		log.debug("activity_comparacao_inicial called!");
-		log.debug("4 Comparison Buttons and its respective methods created.");
+		Log.d(this.getClass().toString(), "activity_comparacao_inicial called!");
+		Log.d(this.getClass().toString(), "4 Comparison Buttons and its respective methods created.");
 
 	}
 	
@@ -81,11 +80,11 @@ public class InitialComparison extends Activity implements
 		    		intent.putExtra("selectedCourse", course);
 		    		startActivity(intent);
 		    		
-		    		log.info("CityComparison called successfully!");
+		    		Log.i(this.getClass().toString(), "CityComparison called successfully!");
 				}
 				catch (Exception e)
 				{
-					log.error("Error when calling CityComparison view. Exception: ");
+					Log.e(this.getClass().toString(), "Error when calling CityComparison view. Exception: ", e);
 				}
 	    	}	
 		});
@@ -113,11 +112,11 @@ public class InitialComparison extends Activity implements
 		    		intent.putExtra("selectedCourse", course);
 		    		startActivity(intent);
 		    		
-		    		log.info("InstitutionComparison called successfully!");
+		    		Log.i(this.getClass().toString(), "InstitutionComparison called successfully!");
 				}
 				catch (Exception e)
 				{
-					log.error("Error when calling InstitutionComparison view. Exception: ");
+					Log.e(this.getClass().toString(), "Error when calling InstitutionComparison view. Exception: ", e);
 				}
 	    	}	
 		});
@@ -143,11 +142,11 @@ public class InitialComparison extends Activity implements
 		    		intent.putExtra("selectedCourse", course);
 		    		startActivity(intent);
 		    		
-		    		log.info("StateComparison called successfully!");
+		    		Log.i(this.getClass().toString(), "StateComparison called successfully!");
 				}
 				catch (Exception e)
 				{
-					log.error("Error when calling StateComparison view. Exception: ");
+					Log.e(this.getClass().toString(), "Error when calling StateComparison view. Exception: ", e);
 				}
 	    	}	
 		});
@@ -175,12 +174,12 @@ public class InitialComparison extends Activity implements
 		    		intent.putExtra("selectedCourse", course);
 		    		startActivity(intent);
 		    		
-		    		log.info("TypeComparison called successfully!");
+		    		Log.i(this.getClass().toString(), "TypeComparison called successfully!");
 	    		
 				}
 				catch (Exception e)
 				{
-					log.error("Error when calling TypeComparison view. Exception: ");
+					Log.e(this.getClass().toString(), "Error when calling TypeComparison view. Exception: ", e);
 				}
 	    	}	
 		});
