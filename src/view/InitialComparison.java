@@ -4,33 +4,21 @@
 ***********************************************************/
 package view;
 
-import br.unb.deolhonoenade.R;
-import br.unb.deolhonoenade.R.id;
-import br.unb.deolhonoenade.R.layout;
-import br.unb.deolhonoenade.R.menu;
-import br.unb.deolhonoenade.R.string;
-import view.RankingInicial;
-import android.app.Activity;
 import android.app.ActionBar;
+import android.app.Activity;
 import android.app.Fragment;
-import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.Gravity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
+import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Spinner;
 import android.widget.TextView;
-
-import android.util.Log;
-import java.util.logging.Logger;
+import br.unb.deolhonoenade.R;
 
 public class InitialComparison extends Activity implements
 		ActionBar.OnNavigationListener
