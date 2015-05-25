@@ -31,7 +31,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.os.Build;
 
-import org.apache.log4j.Logger;
+import android.util.Log;
+import java.util.logging.Logger;
 
 public class TypeComparison extends Activity
 {	
@@ -49,8 +50,6 @@ public class TypeComparison extends Activity
 	
 	// Holds a list of institutions by the course code and the federal unit
 	private List<String> secondTypeList;
-	
-	static Logger log = Logger.getLogger(TypeComparison.class.getName());
 	
 	@Override
 	// Method to initialize the activity activity_comparacao_tipo	
@@ -74,8 +73,8 @@ public class TypeComparison extends Activity
 		addItensOnSpinnerFirstStateType(courseCode);
 		addListenerOnButtonSearch();
 		
-		log.debug("activity_comparacao_tipo called!");
-		log.debug("1 Type Comparison Button and its respective method created.");
+		Log.d(this.getClass().toString(), "activity_comparacao_tipo called!");
+		Log.d(this.getClass().toString(), "1 Type Comparison Button and its respective method created.");
 	}
 
 	@Override
@@ -120,7 +119,7 @@ public class TypeComparison extends Activity
 			@Override
 			public void onNothingSelected(AdapterView<?> parent)
 			{
-				log.info("No Item selected!");	
+				Log.i(this.getClass().toString(), "No Item selected!");	
 			}
 		});	
 	}
@@ -158,7 +157,7 @@ public class TypeComparison extends Activity
 			@Override
 			public void onNothingSelected(AdapterView<?> parent)
 			{
-				log.info("No Item selected!");	
+				Log.i(this.getClass().toString(), "No Item selected!");	
 			}
 		});
 	}
@@ -203,7 +202,7 @@ public class TypeComparison extends Activity
 			@Override
 			public void onNothingSelected(AdapterView<?> parent)
 			{
-				log.info("No Item selected!");	
+				Log.i(this.getClass().toString(), "No Item selected!");	
 			}
 		});	
 	}
@@ -306,16 +305,16 @@ public class TypeComparison extends Activity
 		
 		    		startActivity(result);
 		    		
-		    		log.info("TypeResultComparison called successfully!");
+		    		Log.i(this.getClass().toString(), "TypeResultComparison called successfully!");
 				}
 				catch (Exception e)
 				{
-					log.error("Error when calling TypeResultComparison view. Exception: ");
+					Log.e(this.getClass().toString(), "Error when calling TypeResultComparison view. Exception: ", e);
 				}
 	    	}
 		});
 		
-		log.info("TypeComparison accomplished successfully!");
+		Log.i(this.getClass().toString(), "TypeComparison accomplished successfully!");
 	}
 
 	@Override
