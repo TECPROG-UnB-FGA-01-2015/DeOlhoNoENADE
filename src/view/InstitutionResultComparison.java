@@ -4,6 +4,9 @@
 ***********************************************************/
 package view;
 
+import graphs.holographlibrary.Bar;
+import graphs.holographlibrary.BarGraph;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,21 +14,15 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
-import graphs.holographlibrary.Bar;
-import graphs.holographlibrary.BarGraph;
 import br.unb.deolhonoenade.R;
 import controller.CourseController;
-
-import android.util.Log;
-import java.util.logging.Logger;
 
 public class InstitutionResultComparison extends Activity
 {
