@@ -186,10 +186,10 @@ public class CourseControllerTest extends AndroidTestCase
 		CourseController controller = new CourseController(getContext());
 		Institution firstInstitution = controller.searchInstitution(2);
 		controller.searchCourse(1, "DF");
-		Course course = new Course(1, 2, "UNIVERSIDADE DE BRASILIA", 141, 89, "BRASILIA", (float) 3.735,
-                                   "DF", firstInstitution);
+        new Course(1, 2, "UNIVERSIDADE DE BRASILIA", 141, 89, "BRASILIA", (float) 3.735,
+                "DF", firstInstitution);
 
-		List<String> institutionInfo = null;
+        List<String> institutionInfo = null;
 
 		try
 		{
@@ -391,8 +391,8 @@ public class CourseControllerTest extends AndroidTestCase
 		List<String> secondCitiesList = new ArrayList<String>();
 		List<String> firstCitiesList;
 
-		String firstCity = new String("CRUZEIRO DO SUL");
-		String secondCity = new String("RIO BRANCO");
+		String firstCity = "CRUZEIRO DO SUL";
+		String secondCity = "RIO BRANCO";
 
 		secondCitiesList.add(firstCity);
 		secondCitiesList.add(secondCity);
@@ -408,7 +408,7 @@ public class CourseControllerTest extends AndroidTestCase
 		List<String> secondTypeList = new ArrayList<String>();
 		List<String> firstTypeList;
 
-		String firstType = new String("PRIVADA");
+		String firstType = "PRIVADA";
 
 		secondTypeList.add(firstType);
 
@@ -424,9 +424,9 @@ public class CourseControllerTest extends AndroidTestCase
 		List<String> secondTypeList = new ArrayList<String>();
 		List<String> firstTypeList;
 
-		String firstType = new String("Ambas");
-		String secondType = new String("PRIVADA");
-		String thirdType = new String("PUBLICA");
+		String firstType =  "Ambas";
+		String secondType = "PRIVADA";
+		String thirdType =  "PUBLICA";
 
 		secondTypeList.add(firstType);
 		secondTypeList.add(secondType);
@@ -442,10 +442,10 @@ public class CourseControllerTest extends AndroidTestCase
 	{
 		CourseController controller = new CourseController(getContext());
 		List<String> secondTypeList = new ArrayList<String>();
-		List<String> firstTypeList = new ArrayList<String>();
+		List<String> firstTypeList;
 
-		String secondType = new String("PRIVADA");
-		String thirdType = new String("PUBLICA");
+		String secondType = "PRIVADA";
+		String thirdType = "PUBLICA";
 
 		secondTypeList.add(secondType);
 		secondTypeList.add(thirdType);
@@ -460,9 +460,9 @@ public class CourseControllerTest extends AndroidTestCase
 	{
 		CourseController controller = new CourseController(getContext());
 		List<String> secondTypeList = new ArrayList<String>();
-		List<String> firstTypeList = new ArrayList<String>();
+		List<String> firstTypeList;
 
-		String firstType = new String("PRIVADA");
+		String firstType = "PRIVADA";
 
 		secondTypeList.add(firstType);
 
@@ -476,31 +476,31 @@ public class CourseControllerTest extends AndroidTestCase
 	{
 		CourseController controller = new CourseController(getContext());
 		List<String> secondStateList = new ArrayList<String>();
-		List<String> firstStateList = new ArrayList<String>();
+		List<String> firstStateList;
 
-		String firstState = new String("AL");
-		String secondState = new String("AM");
-		String thirdState = new String("AP");
-		String fourthState = new String("BA");
-		String fifthState = new String("CE");
-		String sixthState = new String("DF");
-		String seventhState = new String("GO");
-		String eighthState = new String("MA");
-		String ninthState = new String("MG");
-		String tenthState = new String("MS");
-		String eleventhState = new String("MT");
-		String twelfthState = new String("PA");
-		String thirteenthState = new String("PB");
-		String fourteenthState = new String("PE");
-		String fifteenthState = new String("PI");
-		String sixteenthState = new String("PR");
-		String seventeenthState = new String("RJ");
-		String eighteenthState = new String("RN");
-		String nineteenthState = new String("RR");
-		String twentiethState = new String("RS");
-		String twentyFirstState = new String("SC");
-		String twentySecondState = new String("SE");
-		String twentyThirdState = new String("SP");
+		String firstState = "AL";
+		String secondState = "AM";
+		String thirdState = "AP";
+		String fourthState = "BA";
+		String fifthState = "CE";
+		String sixthState = "DF";
+		String seventhState = "GO";
+		String eighthState = "MA";
+		String ninthState = "MG";
+		String tenthState = "MS";
+		String eleventhState = "MT";
+		String twelfthState = "PA";
+		String thirteenthState = "PB";
+		String fourteenthState = "PE";
+		String fifteenthState = "PI";
+		String sixteenthState = "PR";
+		String seventeenthState = "RJ";
+		String eighteenthState = "RN";
+		String nineteenthState = "RR";
+		String twentiethState = "RS";
+		String twentyFirstState = "SC";
+		String twentySecondState = "SE";
+		String twentyThirdState = "SP";
 
 		secondStateList.add(firstState);
 		secondStateList.add(secondState);
@@ -538,7 +538,7 @@ public class CourseControllerTest extends AndroidTestCase
     {
 		CourseController controller = new CourseController(getContext());
 		List<String> secondCourseList = new ArrayList<String>();
-		List<String> firstCourseList = new ArrayList<String>();
+		List<String> firstCourseList;
 
 		secondCourseList.add("FUNDACAO UNIVERSIDADE FEDERAL DO TOCANTINS - 2,468000");
 		secondCourseList.add("FACULDADE DE CIENCIAS HUMANAS, ECONOMICAS E DA SAUDE DE ARAGUAINA - 2,460000");
@@ -574,7 +574,7 @@ public class CourseControllerTest extends AndroidTestCase
     {
 		CourseController controller = new CourseController(getContext());
 		List<String> secondCourseList = new ArrayList<String>();
-		List<String> firstCourseList = new ArrayList<String>();
+		List<String> firstCourseList;
 
 		secondCourseList.add("FUNDACAO UNIVERSIDADE FEDERAL DO TOCANTINS - 2,468000");
 		secondCourseList.add("UNIVERSIDADE DO TOCANTINS - 1,366000");
@@ -590,15 +590,13 @@ public class CourseControllerTest extends AndroidTestCase
 		}
 	}
 
-	/* This method is responsible to test if seven Universities' names together
-	 * with their respectives ENADE's grades are registered correctly, based on
-	 * the Courses' ID, Universities' Brazilian States and Universities' Cities,
-	 * on the Database */
+	/* Test if seven Universities' names together with their respectives ENADE's grades
+	 * are registered correctly on the Database based on the Courses' ID, State and City */
 	public void testSearchStateCity() throws Exception
     {
 		CourseController controller = new CourseController(getContext());
 		List<String> secondCourseList = new ArrayList<String>();
-		List<String> firstCourseList = new ArrayList<String>();
+		List<String> firstCourseList;
 
 		secondCourseList.add("FUNDACAO UNIVERSIDADE FEDERAL DO TOCANTINS - 2,468000");
 		secondCourseList.add("CENTRO UNIVERSITARIO LUTERANO DE PALMAS - 2,185000");
@@ -618,15 +616,13 @@ public class CourseControllerTest extends AndroidTestCase
 		}
 	}
 
-	/* This method is responsible to test if five Universities' names together
-	 * with their respectives ENADE's grades are registered correctly, based on
-	 * the Courses' ID, Universities' Brazilian States and Universities' Types,
-	 * on the Database */
+	/* Test if five Universities' names together with their respectives ENADE's grades are
+	 * registered correctly on the Database, based on the Courses' ID, State and type */
 	public void testSearchStateIntegerType() throws Exception
     {
 		CourseController controller = new CourseController(getContext());
 		List<String> secondCourseList = new ArrayList<String>();
-		List<String> firstCourseList = new ArrayList<String>();
+		List<String> firstCourseList;
 
 		secondCourseList.add("FUNDACAO UNIVERSIDADE FEDERAL DO TOCANTINS - 2,468000");
 		secondCourseList.add("CENTRO UNIVERSITARIO UNIRG - 2,290000");
@@ -644,9 +640,7 @@ public class CourseControllerTest extends AndroidTestCase
 		}
 	}
 
-	/* This method is responsible to test if Universities' IDs together with
-	 * their respectives Course's IDs are registered correctly, based on the
-	 * Courses' ID and Universities' Brazilian States, on the Database */
+	// Test if database return the correct course and institution code
 	public void testSearchInstitutionCode()
 	{
 		CourseController controller = new CourseController(getContext());
@@ -657,9 +651,7 @@ public class CourseControllerTest extends AndroidTestCase
 		Assert.assertEquals(2, institutionCode);
 	}
 
-	/* This method is responsible to test if Universities' ENADE grades together
-	 * with their respectives Courses are registered correctly, based on the
-	 * Courses' ID and Universities' Brazilian States, on the Database */
+    // Test if database return the correct course code and grade
 	public void testCoursesCodes()
 	{
 		CourseController controller = new CourseController(getContext());
@@ -670,26 +662,26 @@ public class CourseControllerTest extends AndroidTestCase
 		Assert.assertEquals((float) 4.482, courseGrade);
 	}
 
-	/* This method is responsible to test if two Universities's from two Cities
-	 * (from two Brazilian States) aren't the same. It ensures that they're from
-	 * different Cities and Brazilian States so that you can make comparisons
+	/* Test if two Universities's from two Cities (from two Brazilian States) aren't the same.
+	 * It ensures that they're from different Cities and State so that you can make comparisons
 	 * between them */
 	public void testCompareCity() throws Exception
     {
 		CourseController controller = new CourseController(getContext());
 
-		String firstState = "DF", firstCity = "BRASILIA";
-		String secondState = "AM", secondCity = "MANAUS";
+		String firstState = "DF";
+        String firstCity = "BRASILIA";
+
+		String secondState = "AM";
+        String secondCity = "MANAUS";
 
         List<Float> citiesGrades = controller.compareCity(1, firstState, firstCity, secondState, secondCity);
         float firstCityGrade = citiesGrades.get(0);
 		assertNotSame(firstCityGrade, "1.900000");
 	}
 
-	/* This method is responsible to test the Universities's Types based on
-	 * Course's ID, First University's Brazilian State, First University's Type,
-	 * Second University's Brazilian State and Second University's Type have
-	 * different ENADE's grades average, on the Database */
+	/* Test if the Universities Types based on Course's ID, States and Types,
+	 * have different ENADE's grades average, on the Database */
 	public void testCompareType() throws Exception
     {
 		CourseController controller = new CourseController(getContext());
@@ -702,9 +694,7 @@ public class CourseControllerTest extends AndroidTestCase
 		Assert.assertEquals((float) 2.285000, secondTypeGrade);
 	}
 
-	/* This method is responsible to test the Brazilian State's ENADE grade
-	 * average, based on Universities's Brazilian State, and Course's ID, on the
-	 * Database */
+	// Test the Brazilian State's ENADE grade average, based on State and Course's ID
 	public void testStateAverageGrade() throws Exception
     {
 		CourseController controller = new CourseController(getContext());
