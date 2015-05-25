@@ -28,7 +28,8 @@ import android.widget.Toast;
 import br.unb.deolhonoenade.R;
 import controller.CourseController;
 
-import org.apache.log4j.Logger;
+import android.util.Log;
+import java.util.logging.Logger;
 
 public class StateComparison extends Activity
 {
@@ -37,8 +38,6 @@ public class StateComparison extends Activity
 	private CourseController objectCourseController; // Object from the CourseController Class
 	private Spinner firstStateSpinner, secondStateSpinner; // A dropdown list of states
 	private String firstState, secondState; // Receives the value of the selected state
-
-	static Logger log = Logger.getLogger(StateComparison.class.getName());
 	
 	@Override
 	// Method to initialize the activity activity_comparacao_estado
@@ -46,6 +45,8 @@ public class StateComparison extends Activity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_comparacao_estado);
+		
+		Log.d(this.getClass().toString(), "activity_comparacao_estado called!");
 
 		objectCourseController = new CourseController(this);
 
@@ -71,7 +72,7 @@ public class StateComparison extends Activity
 			// Nothing to do
 		}
 		
-		log.debug("activity_comparacao_estado called!");
+		Log.d(this.getClass().toString(), "Load StateComparison");
 	}
 
 	// Method to list the State 1 options in a spinner
@@ -100,13 +101,13 @@ public class StateComparison extends Activity
 				firstState = parent.getItemAtPosition(position).toString();
 				addItensOnSpinnerEstado2();
 				
-				log.info("Item " + firstState + " added successfully!");
+				Log.i(this.getClass().toString(), "Item " + firstState + " added successfully!");
 			}
 
 			@Override
 			public void onNothingSelected(AdapterView<?> parent)
 			{
-				log.info("No Item selected!");						
+				Log.i(this.getClass().toString(), "No Item selected!");				
 			}
 		});
 	}
@@ -162,17 +163,19 @@ public class StateComparison extends Activity
 					intent.putExtra("secondState", secondState);
 					startActivity(intent);
 					
-					log.info("StateResultComparison called successfully!");
+					Log.d(this.getClass().toString(), "StateResultComparison called successfully!");				
 				}
 				catch (Exception e)
 				{
-					log.error("Error when calling StateResultComparison view. Exception: ", e);
+					Log.e(this.getClass().toString(), "Error when calling StateResultComparison view. Exception: ", e);				
+
+					log.error();
 					throw e;
 				}
 			}
 		});
 		
-		log.info("Comparison accomplished successfully!");
+		Log.i(this.getClass().toString(), "Comparison accomplished successfully!");
 	}
 
 	@Override
