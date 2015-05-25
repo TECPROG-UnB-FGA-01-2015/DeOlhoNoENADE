@@ -7,32 +7,24 @@ package view;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.unb.deolhonoenade.R;
-import br.unb.deolhonoenade.R.id;
-import br.unb.deolhonoenade.R.layout;
-import br.unb.deolhonoenade.R.menu;
-import controller.CourseController;
-import model.Course;
 import android.app.Activity;
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.os.Build;
-
-import android.util.Log;
-import java.util.logging.Logger;
+import br.unb.deolhonoenade.R;
+import controller.CourseController;
 
 public class TypeComparison extends Activity
 {	
