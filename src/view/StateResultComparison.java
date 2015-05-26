@@ -5,42 +5,32 @@
 
 package view;
 
+import graphs.holographlibrary.Bar;
+import graphs.holographlibrary.BarGraph;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import graphs.holographlibrary.Bar;
-import graphs.holographlibrary.BarGraph;
-import br.unb.deolhonoenade.R;
-import br.unb.deolhonoenade.R.id;
-import br.unb.deolhonoenade.R.layout;
-import br.unb.deolhonoenade.R.menu;
-import controller.CourseController;
 import android.app.Activity;
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.os.Build;
-
-import org.apache.log4j.Logger;
+import br.unb.deolhonoenade.R;
+import controller.CourseController;
 
 public class StateResultComparison extends Activity
 {
-
 	private String course; // Receives the name of course
 	private String firstState, secondState; // Receives the value of the selected state
 	private CourseController objectCourseController; // Object from the ControllerCurso Class
 	private int courseCode; // Receives the result of the ControllerCurso's method "searchCourseCode" 
-
-	static Logger log = Logger.getLogger(StateResultComparison.class.getName());
 
 	@Override
 	
@@ -50,7 +40,7 @@ public class StateResultComparison extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_comparacao_result);
 		
-		log.debug("activity_comparacao_result called!");
+		Log.d(this.getClass().toString(), "activity_comparacao_result called!");
 
 		objectCourseController = new CourseController(this);
 
@@ -72,6 +62,10 @@ public class StateResultComparison extends Activity
 		{
 			getFragmentManager().beginTransaction().add(R.id.container,
 					new PlaceholderFragment()).commit();
+		}
+		else
+		{
+			// Nothing to do
 		}
 
 		// Contains the value of the index 0 of the list
@@ -95,11 +89,11 @@ public class StateResultComparison extends Activity
 		
 		points.add(d);
 		
-		log.info("Bar " + d + " added successfully!");
+		Log.d(this.getClass().toString(), "Bar " + d + " added successfully!");
 
 		points.add(d2);
 		
-		log.info("Bar " + d2 + " added successfully!");
+		Log.d(this.getClass().toString(), "Bar " + d2 + " added successfully!");
 
 		BarGraph g = (BarGraph) findViewById(R.id.graph2);
 		g.setBars(points);
@@ -107,6 +101,10 @@ public class StateResultComparison extends Activity
 		g.setContentDescription(firstState + ".   nota: "
 				+ String.format("%.3f", list.get(0)) + ". E " + secondState
 				+ ".   nota: " + String.format("%.3f", list.get(1)));
+		
+		Log.i(this.getClass().toString(), "State's TypesComparison info: First Institution's State " + firstState + ", First Institution's State Grade: " 
+		         + String.format("%.3f", list.get(0)) + ", Second Institution's State: " + secondState + 
+		         ", Second Institution's State Grade: " +  String.format("%.3f", list.get(1)));
 	}
 
 	@Override
@@ -115,6 +113,7 @@ public class StateResultComparison extends Activity
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
 		getMenuInflater().inflate(R.menu.comparacao_result, menu);
+		
 		return true;
 	}
 
@@ -124,6 +123,7 @@ public class StateResultComparison extends Activity
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
 		int id = item.getItemId();
+		
 		if(id == R.id.action_settings)
 		{
 			return true;
@@ -156,6 +156,7 @@ public class StateResultComparison extends Activity
 		{
 			View rootView = inflater.inflate(
 					R.layout.fragment_comparacao_result, container, false);
+			
 			return rootView;
 		}
 	}

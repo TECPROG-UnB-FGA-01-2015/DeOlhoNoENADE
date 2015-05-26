@@ -22,11 +22,11 @@ import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
-import org.apache.log4j.Logger;
+import android.util.Log;
+import java.util.logging.Logger;
 
 public class Map extends Activity
 {
-	static Logger log = Logger.getLogger(Map.class.getName());
 	
 	@Override
 	// Method to initialize the activity activity_mapa	
@@ -63,7 +63,6 @@ public class Map extends Activity
 				stateAverageGrade = String.valueOf( objectCourseController.calculateStateGrade(allStates.get(i),
 						courseCode));
 			}
-        	
         	catch (Exception e)
         	{
 				Log.e(this.getClass().toString(), allStates.get(i)+
@@ -135,11 +134,11 @@ public class Map extends Activity
         
         //webview.loadUrl("file:///android_asset/Map.html"); // Can be used in this
         //way too.
-        
-        log.info("Showing all State's grades");
-        
-        log.debug("activity_mapa called!");
-		log.debug("1 Map Button and its respective method created.");
+                
+        Log.d(this.getClass().toString(), "activity_mapa called!");
+		Log.d(this.getClass().toString(), "1 Map Button and its respective method created.");
+		
+		Log.i(this.getClass().toString(), "Showing all State's grades");
 	}
 
 	@Override

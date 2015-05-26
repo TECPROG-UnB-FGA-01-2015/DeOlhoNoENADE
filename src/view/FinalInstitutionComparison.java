@@ -32,6 +32,8 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.os.Build;
+import android.util.Log;
+import java.util.logging.Logger;
 
 public class FinalInstitutionComparison extends Activity
 {
@@ -62,6 +64,9 @@ public class FinalInstitutionComparison extends Activity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_comparacao_instituicao_final);
+
+		Log.d(this.getClass().toString(), "activity_comparacao_instituicao_final called!");
+
 		this.objectCourseController = new CourseController(this);
 
 		// Receives the selected course. Type = TextView
@@ -79,6 +84,8 @@ public class FinalInstitutionComparison extends Activity
 		addItensOnSpinnerEstado(courseCode, false);
 		addListenerOnButtonBuscar();
 
+		Log.d(this.getClass().toString(), "Load FinalInstitutionComparison");
+
 	}
     
     // Method to list the State options in a spinner
@@ -92,6 +99,7 @@ public class FinalInstitutionComparison extends Activity
 		if (delete)
 		{
 			stateList.remove(firstStateName);
+			Log.i(this.getClass().toString(), "State: " + firstStateName + " deleted from list");
 		}
 
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
@@ -110,12 +118,14 @@ public class FinalInstitutionComparison extends Activity
 				stateName = parent.getItemAtPosition(posicao).toString();
 
 				addItensOnSpinnerMunicipio(stateName, false);
+				Log.d(this.getClass().toString(), "State add on State Spinner.");
 			}
 
 			@Override
 			public void onNothingSelected(AdapterView<?> parent)
 			{
 				// Nothing to do
+				Log.i(this.getClass().toString(), "No Item selected!");
 			}
 		});
 	}
@@ -130,7 +140,7 @@ public class FinalInstitutionComparison extends Activity
 		{
 			if (cityList.remove(firstCityName))
 			{
-				Log.e(this.getClass().toString(), "retirou m");
+				Log.i(this.getClass().toString(), "City: " + firstCityName + " deleted from list");
 			}
 			
 			else
@@ -159,7 +169,9 @@ public class FinalInstitutionComparison extends Activity
 			{
 
 				cityName = parent.getItemAtPosition(posicao).toString();
+
 				addItensOnSpinnerIES(stateName, cityName, false);
+				Log.d(this.getClass().toString(), "City add on Cities Spinner.");
 
 			}
 
@@ -167,6 +179,7 @@ public class FinalInstitutionComparison extends Activity
 			public void onNothingSelected(AdapterView<?> parent)
 			{
 				// Nothing to do
+				Log.i(this.getClass().toString(), "No Item selected!");
 			}
 		});
 
@@ -175,7 +188,16 @@ public class FinalInstitutionComparison extends Activity
     // Method to list the IES options in a spinner
 	private void addItensOnSpinnerIES(String uf, String cidade, boolean delete)
 	{
-		institutionList = objectCourseController.searchCoursesNames(courseCode, uf, cidade);
+		try
+		{
+			institutionList = objectCourseController.searchCoursesNames(courseCode, uf, cidade);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+			Log.e(this.getClass().toString(), "Error on searching courses names. Exception: ", e);
+		}
+
 		this.institutionSpinner = (Spinner) findViewById(R.id.spinnerIES);
 
 		if (delete)
@@ -183,12 +205,12 @@ public class FinalInstitutionComparison extends Activity
 			if (institutionList.remove(firstInstitutionName))
 			{
 				objectCourseController.removeInstitution(institutionPosition);
-				Log.e(this.getClass().toString(), "retirou");
+				Log.i(this.getClass().toString(), "Institution: " + firstInstitutionName + " deleted from list");
 			}
 			
 			else
 			{
-				Log.e(this.getClass().toString(), "nao retirou");
+				//Nothing to do
 			}
 			
 		}
@@ -209,7 +231,17 @@ public class FinalInstitutionComparison extends Activity
 			public void onItemSelected(AdapterView<?> parent, View v, int posicao, long id)
 			{
 				secondInstitutionInfo = new ArrayList<String>();
-				secondInstitutionInfo = objectCourseController.getInstitutionInfo(posicao);
+
+				try
+				{
+					secondInstitutionInfo = objectCourseController.getInstitutionInfo(posicao);
+				}
+				catch (Exception e)
+				{
+					e.printStackTrace();
+					Log.e(this.getClass().toString(), "Error on get institution info. Exception: ", e);
+				}
+
 				secondInstitutionInfo.add(String.format("%.2f", objectCourseController.getCourseGrade(posicao)));
 				secondInstitutionGrade = objectCourseController.getCourseGrade(posicao);
 				secondInstitutionName = new String();
@@ -217,25 +249,25 @@ public class FinalInstitutionComparison extends Activity
 
 				if (secondInstitutionName.equalsIgnoreCase(firstInstitutionName))
 				{
-					Log.e(this.getClass().toString(),
+					Log.i(this.getClass().toString(),
 						  secondInstitutionName + " / " + firstInstitutionName + " secondInstitutionName=firstInstitutionName");
 					
 					if (institutionList.size() == 1)
 					{
 
-						Log.e(this.getClass().toString(), "institutionList 1");
+						Log.i(this.getClass().toString(), "institutionList 1");
 
 						if (cityList.size() == 1)
 						{
 
-							Log.e(this.getClass().toString(), "cityList 1");
+							Log.i(this.getClass().toString(), "cityList 1");
 
 							addItensOnSpinnerEstado(courseCode, true);
 						}
 						
 						else if (cityList.size() > 1)
 						{
-							Log.e(this.getClass().toString(), "cityList > 1");
+							Log.i(this.getClass().toString(), "cityList > 1");
 							addItensOnSpinnerMunicipio(stateName, true);
 						}
 						
@@ -248,7 +280,7 @@ public class FinalInstitutionComparison extends Activity
 					
 					else if (institutionList.size() > 1)
 					{
-						Log.e(this.getClass().toString(), "institutionList > 1");
+						Log.i(this.getClass().toString(), "institutionList > 1");
 						institutionPosition = posicao;
 						addItensOnSpinnerIES(stateName, cityName, true);
 					}
@@ -270,6 +302,7 @@ public class FinalInstitutionComparison extends Activity
 			public void onNothingSelected(AdapterView<?> parent)
 			{
 				// Nothing to do
+				Log.i(this.getClass().toString(), "No Item selected!");
 			}
 		});
 
@@ -294,6 +327,7 @@ public class FinalInstitutionComparison extends Activity
 				result.putExtra("secondInstitutionName", secondInstitutionName);
 
 				startActivity(result);
+				Log.d(this.getClass().toString(), "The button Comparar was clicked.");
 			}
 		});
 
@@ -335,7 +369,9 @@ public class FinalInstitutionComparison extends Activity
 		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
 			View rootView = inflater.inflate(R.layout.fragment_comparacao_instituicao_final, container, false);
+			Log.d(this.getClass().toString(), "The view was loaded.");
 			return rootView;
+
 		}
 	}
 }

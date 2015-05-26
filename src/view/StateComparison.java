@@ -12,34 +12,28 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import br.unb.deolhonoenade.R;
 import controller.CourseController;
 
-import org.apache.log4j.Logger;
-
 public class StateComparison extends Activity
 {
-
 	private String course; // Receives the name of course
 	private int courseCode; // Receives the result of the CourseController's method "SearchCourseCode" 
 	private CourseController objectCourseController; // Object from the CourseController Class
 	private Spinner firstStateSpinner, secondStateSpinner; // A dropdown list of states
 	private String firstState, secondState; // Receives the value of the selected state
-
-	static Logger log = Logger.getLogger(StateComparison.class.getName());
 	
 	@Override
 	// Method to initialize the activity activity_comparacao_estado
@@ -47,6 +41,8 @@ public class StateComparison extends Activity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_comparacao_estado);
+		
+		Log.d(this.getClass().toString(), "activity_comparacao_estado called!");
 
 		objectCourseController = new CourseController(this);
 
@@ -67,14 +63,17 @@ public class StateComparison extends Activity
 			getFragmentManager().beginTransaction().add(R.id.container,
 					new PlaceholderFragment()).commit();
 		}
+		else
+		{
+			// Nothing to do
+		}
 		
-		log.debug("activity_comparacao_estado called!");
+		Log.d(this.getClass().toString(), "Load StateComparison");
 	}
 
 	// Method to list the State 1 options in a spinner
 	private void addItensOnSpinnerEstado1(int courseCode)
 	{
-
 		firstStateSpinner = (Spinner) findViewById(R.id.Estado1);
 		
 		// Holds a list of states by the course code
@@ -90,24 +89,23 @@ public class StateComparison extends Activity
 		firstStateSpinner.setAdapter(dataAdapter);
 
 		firstStateSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
-				{
+		{
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view,
+					int position, long id)
+			{
+				firstState = parent.getItemAtPosition(position).toString();
+				addItensOnSpinnerEstado2();
+				
+				Log.i(this.getClass().toString(), "Item " + firstState + " added successfully!");
+			}
 
-					@Override
-					public void onItemSelected(AdapterView<?> parent, View view,
-							int position, long id)
-					{
-						firstState = parent.getItemAtPosition(position).toString();
-						addItensOnSpinnerEstado2();
-						
-						log.info("Item " + firstState + " added successfully!");
-					}
-
-					@Override
-					public void onNothingSelected(AdapterView<?> parent)
-					{
-						log.info("No Item selected!");						
-					}
-				});
+			@Override
+			public void onNothingSelected(AdapterView<?> parent)
+			{
+				Log.i(this.getClass().toString(), "No Item selected!");				
+			}
+		});
 	}
 
 	// Method to list the State 2 options in a spinner
@@ -126,30 +124,31 @@ public class StateComparison extends Activity
 		secondStateSpinner.setAdapter(dataAdapter);
 
 		secondStateSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
-				{
-					@Override
-					public void onItemSelected(AdapterView<?> parent, View view,
-							int position, long id)
-					{
-						secondState = parent.getItemAtPosition(position).toString();
-					}
-
-					@Override
-					public void onNothingSelected(AdapterView<?> parent)
-					{
-						// Nothing to do
-					}
-				});
+		{
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view,
+					int position, long id)
+			{
+				secondState = parent.getItemAtPosition(position).toString();
+			}
+	
+			@Override
+			public void onNothingSelected(AdapterView<?> parent)
+			{
+				// Nothing to do
+			}
+		});
 	}
 
 	// Method for the confirmation button for the comparison between the two states
 	private void addListenerOnButtonComparar()
 	{
 		Button comapare = (Button) findViewById(R.id.Comparar);
+		
 		comapare.setOnClickListener(new OnClickListener()
 		{
 			@Override
-			public void onClick(View view) throws Exception
+			public void onClick(View view) 
 			{
 				try
 				{
@@ -160,17 +159,16 @@ public class StateComparison extends Activity
 					intent.putExtra("secondState", secondState);
 					startActivity(intent);
 					
-					log.info("StateResultComparison called successfully!");
+					Log.d(this.getClass().toString(), "StateResultComparison called successfully!");				
 				}
 				catch (Exception e)
 				{
-					log.error("Error when calling StateResultComparison view. Exception: ", e);
-					throw e;
+					Log.e(this.getClass().toString(), "Error when calling StateResultComparison view. Exception: ", e);				
 				}
 			}
 		});
 		
-		log.info("Comparison accomplished successfully!");
+		Log.i(this.getClass().toString(), "Comparison accomplished successfully!");
 	}
 
 	@Override

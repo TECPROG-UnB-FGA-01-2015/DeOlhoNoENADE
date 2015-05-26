@@ -117,7 +117,6 @@ public class Course
 	// Method to set a content on variable  enrolledStudentsNumber 
 	public void setEnrolledStudentsNumber (int enrolledStudentsNumber)
 	{
-
 		if(enrolledStudentsNumber < this.studentsNumber)
 		{
 			this.enrolledStudentsNumber = enrolledStudentsNumber ;
@@ -126,7 +125,6 @@ public class Course
 		{
 			System.err.println("N Estudantes inscritos maior que N Estudantes");
 		}
-
 	}
 
 	// Method to return the content of attribute city
@@ -152,5 +150,4 @@ public class Course
 	{
 		this.courseGrade = courseGrade;
 	}
-
 }

@@ -6,15 +6,13 @@
 
 package controller;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-import view.Logger;
-import view.StateResultComparison;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import DAO.ImportarBancoDeDados;
 import DAO.OperacoesBancoDeDados;
 import model.Course;
@@ -22,14 +20,10 @@ import model.Institution;
 
 public class CourseController
 {
-	private Institution institution;
-	private ArrayList<Course> courses = new ArrayList<Course>();
+    private ArrayList<Course> courses = new ArrayList<Course>();
 
 	private SQLiteDatabase database;
-	private OperacoesBancoDeDados databaseOperations;
-	
-	// Variable to log debug, informations, warnings, errors and fatal errors
-	static Logger log = Logger.getLogger(CourseController.class.getName());
+	private final OperacoesBancoDeDados databaseOperations;
 
 	// This method is responsible to import two DAO's classes to make Database's operations
 	public CourseController(Context context)
@@ -57,8 +51,8 @@ public class CourseController
 		try
 		{
 			courses.remove(position);
+            Log.i("Course removed!", CourseController.class.getName());
 			return true;
-			log.info("Course successfully removed!");
 		}
 		catch (IndexOutOfBoundsException e)
 		{
@@ -104,19 +98,20 @@ public class CourseController
 	}
 
 	// This method is responsible to search the Universities' IDs from the Database
-	public Institution searchInstitution(int institutionCode) throws Exception
+	public Institution searchInstitution(int institutionCode)
 	{
 		try
 		{
-			this.institution = this.databaseOperations.getIES(institutionCode);
+            Institution institution = this.databaseOperations.getIES(institutionCode);
 
 			return institution;
 		}
 		catch(Exception e)
 		{
-			log.error("Error on searching institution. Exception: ", e);
+			Log.e(this.getClass().toString(), "Error on searching institution. Exception: ", e);
 		}
-	}
+        return null;
+    }
 
 	/* This method is responsible to get all the Universities' info (University
 	 * Name, Academic Organization, Type - Public/Private Universities,
@@ -154,7 +149,7 @@ public class CourseController
 		}
 		catch(Exception e)
 		{
-			log.error("Error on getting institution information. Exception: ", e);
+			Log.e(this.getClass().toString(),"Error on getting institution information. Exception: ", e);
 		}
 		return institutionInfo;
 
@@ -165,12 +160,12 @@ public class CourseController
 	 * ENADES' grades from one specific course on two different States and
 	 * calculates the ENADE's average grades on these two different chosen
 	 * States */
-	public List<Float> compareState(String firstState, String secondState, int courseCode)
-	{
+	public List<Float> compareState(String firstState, String secondState, int courseCode) throws Exception
+    {
 		float stateGrade = 0;
 		List<Float> compareStateResult = new ArrayList<Float>();
 		List<Course> firstCourseState = new ArrayList<Course>();
-		List<Course> secondCourseState = new ArrayList<Course>();
+		List<Course> secondCourseState;
 
 		firstCourseState = this.searchCourse(courseCode, firstState);
 		secondCourseState = this.searchCourse(courseCode, secondState);
@@ -181,7 +176,7 @@ public class CourseController
 		stateGrade = this.calculateEnadeGrade(secondCourseState);
 		compareStateResult.add(stateGrade);
 		
-		log.info("Comparison between states '" + firstState + "' and '" +  secondState + "' was sucessfully made");
+		Log.i(this.getClass().toString(), "Comparison between states '" + firstState + "' and '" +  secondState + "' was sucessfully made");
 
 		return compareStateResult;
 	}
@@ -191,8 +186,8 @@ public class CourseController
 	 * Course's ID. It gets all the ENADES' grades from one specific course on
 	 * two different Cities and calculates the ENADE's average grades on these
 	 * two different chosen Cities */
-	public List<Float> compareCity(int courseCode, String firstState, String firstCity, String secondState, String secondCity)
-	{
+	public List<Float> compareCity(int courseCode, String firstState, String firstCity, String secondState, String secondCity) throws Exception
+    {
 		float cityGrade = 0;
 		List<Float> compareCityResult = new ArrayList<Float>();
 		List<Course> firstCourseCity = new ArrayList<Course>();
@@ -207,7 +202,7 @@ public class CourseController
 		cityGrade = this.calculateEnadeGrade(secondCourseCity);
 		compareCityResult.add(cityGrade);
 		
-		log.info("Comparison between cities '" + firstCity + "' and '" +  secondCity + "' was sucessfully made");
+		Log.i(this.getClass().toString(), "Comparison between cities '" + firstCity + "' and '" +  secondCity + "' was sucessfully made");
 
 		return compareCityResult;
 	}
@@ -217,8 +212,7 @@ public class CourseController
 	 * two different States with the Course's ID. It gets all the ENADES' grades
 	 * from one specific course on two different States and calculates the
 	 * ENADE's average grades on these two different chosen States */
-	public List<Float> compareType(int courseCode, String firstState, String firstType, String secondState, String secondType)
-	{
+	public List<Float> compareType(int courseCode, String firstState, String firstType, String secondState, String secondType) throws Exception {
 		float typeGrade = 0;
 		List<Float> compareTypeResult = new ArrayList<Float>();
 		List<Course> firstStateType = new ArrayList<Course>();
@@ -259,7 +253,7 @@ public class CourseController
 		typeGrade = this.calculateEnadeGrade(secondStateType);
 		compareTypeResult.add(typeGrade);
 		
-		log.info("Comparison between types '" + firstType + "' and '" +  secondType + "' was sucessfully made");
+		Log.i(this.getClass().toString(), "Comparison between types '" + firstType + "' and '" +  secondType + "' was sucessfully made");
 
 		return compareTypeResult;
 	}
@@ -284,13 +278,13 @@ public class CourseController
 
 				courseGrade = courseGrade / i;
 			}
+            return courseGrade;
 		}
 		catch(Exception e)
 		{
-			log.error("Error when calculating average grade of courses");
+			Log.e(this.getClass().toString(), "Error when calculating average grade of courses");
 		}
-
-		return courseGrade;
+        return -1;
 	}
 
 	// This method is responsible to search the Courses' IDs with the Courses' names from the Database
@@ -300,11 +294,11 @@ public class CourseController
 		
 		if (courseCode > 0)
 		{
-			log.debug("Course code of course '" + courseName + "' was found");
+			Log.d(this.getClass().toString(), "Course code of course '" + courseName + "' was found");
 		}
 		else
 		{
-			log.debug("Course code of course '" + courseName + "' was not found");
+			Log.e(this.getClass().toString(),"Course code of course '" + courseName + "' was not found");
 		}
 
 		return courseCode;
@@ -407,9 +401,10 @@ public class CourseController
 		}
 		catch(Exception e)
 		{
-			log.error("Error when looking for institutions of the course code " + secondCourseCode.toString());
+			Log.e(this.getClass().toString(), "Error when looking for institutions of the course code " + Integer.toString(secondCourseCode));
 		}
-	}
+        return null;
+    }
 
 	/* This method is responsible to search the Universities' names with
 	 * Courses' IDs and Universities' Brazilian States. This method lists all
@@ -436,9 +431,10 @@ public class CourseController
 		}
 		catch(Exception e)
 		{
-			log.error("Error when looking for institutions' grades of the course code " + secondCourseCode.toString());
+			Log.e(this.getClass().toString(), "Error when looking for institutions' grades of the course code " + Integer.toString(secondCourseCode));
 		}
-	}
+        return null;
+    }
 
 	/* This method is responsible to search the Universities' names with
 	 * Courses' IDs, Universities' Brazilian States, Universities' Brazilian
@@ -466,9 +462,10 @@ public class CourseController
 		}
 		catch(Exception e)
 		{
-			log.error("Error when looking for institutions of the course code " + secondCourseCode.toString());
+			Log.e(this.getClass().toString(), "Error when looking for institutions of the course code " + Integer.toString(secondCourseCode));
 		}
-	}
+        return null;
+    }
 
 	/* This method is responsible to search the Universities' names with
 	 * Courses' IDs, Universities' Brazilian States and Universities' Brazilian
@@ -496,9 +493,10 @@ public class CourseController
 		}
 		catch(Exception e)
 		{
-			log.error("Error when looking for institutions of the course code " + secondCourseCode.toString() + " from the city '" + secondCity + "'.");
+			Log.e(this.getClass().toString(), "Error when looking for institutions of the course code " + Integer.toString(secondCourseCode) + " from the city '" + secondCity + "'.");
 		}
-	}
+        return null;
+    }
 
 	/* This method is responsible to search the Universities' names with
 	 * Universities' Brazilian States, Courses' IDs and Universities' Brazilian
@@ -523,9 +521,10 @@ public class CourseController
 		}
 		catch(Exception e)
 		{
-			log.error("Error when looking for institutions of the course code " + secondCourseCode.toString() + " from the city '" + secondCity + "'.");
+			Log.e(this.getClass().toString(), "Error when looking for institutions of the course code " + Integer.toString(secondCourseCode) + " from the city '" + secondCity + "'.");
 		}
-	}
+        return null;
+    }
 
 	/* This method is responsible to search the Universities' names with
 	 * Courses' IDs, Universities' Brazilian States and Universities' Types.
@@ -552,18 +551,21 @@ public class CourseController
 		}
 		catch(Exception e)
 		{
-			log.error("Error when looking for institutions of the course code " + secondCourseCode.toString() + " from the state '" + state + "'.");
+			Log.e(this.getClass().toString(), "Error when looking for institutions of the course code " + Integer.toString(courseCode) + " from the state '" + state + "'.");
 		}
-	}
+        return null;
+    }
 
 	/* This method is responsible to calculate the ENADE's grades average on
 	 * each Brazilian State with the Universities' Brazilian States and Courses'
 	 * IDs */
-	public float calculateStateGrade(String state, int courseCode)
+	public float calculateStateGrade(String state, int courseCode) throws Exception
 	{
 		List<Course> courses = new ArrayList<Course>();
 		courses = searchCourse(courseCode, state);
+
+        float averageGrade = calculateEnadeGrade(courses);
 		
-		return calculateEnadeGrade(courses);
+		return averageGrade;
 	}
 }

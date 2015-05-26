@@ -4,32 +4,21 @@
 ***********************************************************/
 package view;
 
-import br.unb.deolhonoenade.R;
-import br.unb.deolhonoenade.R.id;
-import br.unb.deolhonoenade.R.layout;
-import br.unb.deolhonoenade.R.menu;
-import br.unb.deolhonoenade.R.string;
-import view.RankingInicial;
-import android.app.Activity;
 import android.app.ActionBar;
+import android.app.Activity;
 import android.app.Fragment;
-import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.Gravity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
+import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Spinner;
 import android.widget.TextView;
-
-import org.apache.log4j.Logger;
+import br.unb.deolhonoenade.R;
 
 public class InitialComparison extends Activity implements
 		ActionBar.OnNavigationListener
@@ -39,8 +28,6 @@ public class InitialComparison extends Activity implements
 			"selected_navigation_item";
 	
 	private String course; // Stores the course's name
-	
-	static Logger log = Logger.getLogger(InitialComparison.class.getName());
 
 	@Override
 	// Method to initialize the activity activity activity_comparacao_inicial
@@ -50,12 +37,14 @@ public class InitialComparison extends Activity implements
 		setContentView(R.layout.activity_comparacao_inicial);		
 		Bundle extras = getIntent().getExtras(); // Retrieves and gets a map of extended data from the intent.
 		course = extras.getString("selectedCourse"); // Gets the Course's value of the passed extra
+		
 		addListenerOnButtonState();
 		addListenerOnButtonInstitution();
 		addListenerOnButtonCity();
 		addListenerOnButtonType();
-		log.debug("activity_comparacao_inicial called!");
-		log.debug("4 Comparison Buttons and its respective methods created.");
+		
+		Log.d(this.getClass().toString(), "activity_comparacao_inicial called!");
+		Log.d(this.getClass().toString(), "4 Comparison Buttons and its respective methods created.");
 
 	}
 	
@@ -79,11 +68,11 @@ public class InitialComparison extends Activity implements
 		    		intent.putExtra("selectedCourse", course);
 		    		startActivity(intent);
 		    		
-		    		log.info("CityComparison called successfully!");
+		    		Log.i(this.getClass().toString(), "CityComparison called successfully!");
 				}
 				catch (Exception e)
 				{
-					log.error("Error when calling CityComparison view. Exception: ");
+					Log.e(this.getClass().toString(), "Error when calling CityComparison view. Exception: ", e);
 				}
 	    	}	
 		});
@@ -111,11 +100,11 @@ public class InitialComparison extends Activity implements
 		    		intent.putExtra("selectedCourse", course);
 		    		startActivity(intent);
 		    		
-		    		log.info("InstitutionComparison called successfully!");
+		    		Log.i(this.getClass().toString(), "InstitutionComparison called successfully!");
 				}
 				catch (Exception e)
 				{
-					log.error("Error when calling InstitutionComparison view. Exception: ");
+					Log.e(this.getClass().toString(), "Error when calling InstitutionComparison view. Exception: ", e);
 				}
 	    	}	
 		});
@@ -141,11 +130,11 @@ public class InitialComparison extends Activity implements
 		    		intent.putExtra("selectedCourse", course);
 		    		startActivity(intent);
 		    		
-		    		log.info("StateComparison called successfully!");
+		    		Log.i(this.getClass().toString(), "StateComparison called successfully!");
 				}
 				catch (Exception e)
 				{
-					log.error("Error when calling StateComparison view. Exception: ");
+					Log.e(this.getClass().toString(), "Error when calling StateComparison view. Exception: ", e);
 				}
 	    	}	
 		});
@@ -173,12 +162,12 @@ public class InitialComparison extends Activity implements
 		    		intent.putExtra("selectedCourse", course);
 		    		startActivity(intent);
 		    		
-		    		log.info("TypeComparison called successfully!");
+		    		Log.i(this.getClass().toString(), "TypeComparison called successfully!");
 	    		
 				}
 				catch (Exception e)
 				{
-					log.error("Error when calling TypeComparison view. Exception: ");
+					Log.e(this.getClass().toString(), "Error when calling TypeComparison view. Exception: ", e);
 				}
 	    	}	
 		});
@@ -193,7 +182,6 @@ public class InitialComparison extends Activity implements
 			getActionBar().setSelectedNavigationItem(
 					savedInstanceState.getInt(STATE_SELECTED_NAVIGATION_ITEM));
 		}
-		
 		else
 		{
 			// Nothing to do
@@ -205,6 +193,7 @@ public class InitialComparison extends Activity implements
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
 		getMenuInflater().inflate(R.menu.comparacao_inicial, menu);
+		
 		return true;
 	}
 
@@ -213,11 +202,11 @@ public class InitialComparison extends Activity implements
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
 		int id = item.getItemId();
+		
 		if (id == R.id.action_settings)
 		{
 			return true;
 		}
-		
 		else
 		{
 			// Nothing to do
@@ -231,16 +220,19 @@ public class InitialComparison extends Activity implements
 	public boolean onNavigationItemSelected(int position, long id)
 	{
 		int addOnePosition = 1;
+		
 		getFragmentManager()
 				.beginTransaction()
 				.replace(R.id.container,
 						PlaceholderFragment.newInstance(position + addOnePosition)).commit();
+		
 		return true;
 	}
 
 	public static class PlaceholderFragment extends Fragment
 	{
 		private static final String ARG_SECTION_NUMBER = "section_number";
+		
 		public static PlaceholderFragment newInstance(int sectionNumber)
 		{
 			PlaceholderFragment fragment = new PlaceholderFragment();
@@ -271,6 +263,7 @@ public class InitialComparison extends Activity implements
 					.findViewById(R.id.section_label);
 			textView.setText(Integer.toString(getArguments().getInt(
 					ARG_SECTION_NUMBER)));
+			
 			return rootView;
 		}
 	}

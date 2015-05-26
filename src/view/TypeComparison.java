@@ -7,35 +7,27 @@ package view;
 import java.util.ArrayList;
 import java.util.List;
 
-import br.unb.deolhonoenade.R;
-import br.unb.deolhonoenade.R.id;
-import br.unb.deolhonoenade.R.layout;
-import br.unb.deolhonoenade.R.menu;
-import controller.CourseController;
-import model.Course;
 import android.app.Activity;
-import android.app.ActionBar;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.os.Build;
-
-import org.apache.log4j.Logger;
+import br.unb.deolhonoenade.R;
+import controller.CourseController;
 
 public class TypeComparison extends Activity
-{
-	
+{	
 	private Spinner firstStateSpinner; // Contains a list of states to be chosen to the first institution
 	private Spinner firstTypeSpinner; // First institution type (public or private)
 	private Spinner secondStateSpinner; // Contains a list of states to be chosen to the second institution
@@ -50,8 +42,6 @@ public class TypeComparison extends Activity
 	
 	// Holds a list of institutions by the course code and the federal unit
 	private List<String> secondTypeList;
-	
-	static Logger log = Logger.getLogger(TypeComparison.class.getName());
 	
 	@Override
 	// Method to initialize the activity activity_comparacao_tipo	
@@ -74,8 +64,9 @@ public class TypeComparison extends Activity
 		
 		addItensOnSpinnerFirstStateType(courseCode);
 		addListenerOnButtonSearch();
-		log.debug("activity_comparacao_tipo called!");
-		log.debug("1 Type Comparison Button and its respective method created.");
+		
+		Log.d(this.getClass().toString(), "activity_comparacao_tipo called!");
+		Log.d(this.getClass().toString(), "1 Type Comparison Button and its respective method created.");
 	}
 
 	@Override
@@ -84,6 +75,7 @@ public class TypeComparison extends Activity
 	{
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.comparacao_tipo, menu);
+		
 		return true;
 	}
 	
@@ -119,8 +111,7 @@ public class TypeComparison extends Activity
 			@Override
 			public void onNothingSelected(AdapterView<?> parent)
 			{
-				// Nothing to do
-				log.info("No Item selected!");	
+				Log.i(this.getClass().toString(), "No Item selected!");	
 			}
 		});	
 	}
@@ -158,8 +149,7 @@ public class TypeComparison extends Activity
 			@Override
 			public void onNothingSelected(AdapterView<?> parent)
 			{
-				// Nothing to do
-				log.info("No Item selected!");	
+				Log.i(this.getClass().toString(), "No Item selected!");	
 			}
 		});
 	}
@@ -176,7 +166,6 @@ public class TypeComparison extends Activity
 		{
 			list.remove(firstState);
 		}
-		
 		else
 		{
 			// Nothing to do
@@ -205,8 +194,7 @@ public class TypeComparison extends Activity
 			@Override
 			public void onNothingSelected(AdapterView<?> parent)
 			{
-				// Nothing to do
-				log.info("No Item selected!");	
+				Log.i(this.getClass().toString(), "No Item selected!");	
 			}
 		});	
 	}
@@ -224,7 +212,6 @@ public class TypeComparison extends Activity
 		{
 			secondTypeList.remove(firstType);
 		}
-		
 		else
 		{
 			// Nothing to do
@@ -254,16 +241,14 @@ public class TypeComparison extends Activity
 				
 				if(firstStateEquals && firstTypeEquals)
 				{
-				
-						if(secondTypeList.size() <= secondUniverityType)
-						{
-							addItensOnSpinnerSecondStateType(courseCode, true);
-						}
-						else
-						{
-							addItensOnSpinnerSecondType(secondState, true);
-						}
-										
+					if(secondTypeList.size() <= secondUniverityType)
+					{
+						addItensOnSpinnerSecondStateType(courseCode, true);
+					}
+					else
+					{
+						addItensOnSpinnerSecondType(secondState, true);
+					}
 				}
 				else
 				{
@@ -312,16 +297,16 @@ public class TypeComparison extends Activity
 		
 		    		startActivity(result);
 		    		
-		    		log.info("TypeResultComparison called successfully!");
+		    		Log.i(this.getClass().toString(), "TypeResultComparison called successfully!");
 				}
 				catch (Exception e)
 				{
-					log.error("Error when calling TypeResultComparison view. Exception: ");
+					Log.e(this.getClass().toString(), "Error when calling TypeResultComparison view. Exception: ", e);
 				}
 	    	}
 		});
 		
-		log.info("TypeComparison accomplished successfully!");
+		Log.i(this.getClass().toString(), "TypeComparison accomplished successfully!");
 	}
 
 	@Override
@@ -333,11 +318,11 @@ public class TypeComparison extends Activity
 		 * as you specify a parent activity in AndroidManifest.xml
 		 */
 		int id = item.getItemId();
+		
 		if (id == R.id.action_settings)
 		{
 			return true;
 		}
-		
 		else
 		{
 			// Nothing to do
@@ -367,6 +352,7 @@ public class TypeComparison extends Activity
 			// Hosts all other views on the same place
 			View rootView = inflater.inflate(R.layout.fragment_comparacao_tipo,
 					container, false);
+			
 			return rootView;
 		}
 	}
