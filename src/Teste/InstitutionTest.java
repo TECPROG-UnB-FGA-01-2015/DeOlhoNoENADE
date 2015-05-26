@@ -78,7 +78,7 @@ public class InstitutionTest extends AndroidTestCase
 		assertSame("Adiministracao", course.getName());
 	}
 
-	// Method for testing the return of attribute nome from class Institution
+	// Method for testing the return of attribute name from class Institution
 	public void testGetName()
 	{
 		// Object from the Institution Class that is instantiated to be used in testing
@@ -88,7 +88,7 @@ public class InstitutionTest extends AndroidTestCase
 		assertEquals("Universidade Federal do Amazonas", institution.getName());
 	}
 
-	// Method to test the assignment of nome attribute from Class Institution
+	// Method to test the assignment of name attribute from Class Institution
 	public void testSetName()
 	{
 		// Object from the Institution Class that is instantiated to be used in testing
@@ -101,7 +101,7 @@ public class InstitutionTest extends AndroidTestCase
 		assertSame("Universidade Federal de Uberlandia", institution.getName());
 	}
 
-	// Method for testing the return of attribute organizacaoAcademica from class Institution
+	// Method for testing the return of attribute academicOrganization from class Institution
 	public void testGetAcademicOrganization()
 	{
 		// Object from the Institution Class that is instantiated to be used in testing
@@ -112,7 +112,7 @@ public class InstitutionTest extends AndroidTestCase
 		assertEquals("Universidades", institution.getAcademicOrganization());
 	}
 
-	// Method to test the assignment of organizacaoAcademica attribute from Class Institution
+	// Method to test the assignment of academicOrganization attribute from Class Institution
 	public void testSetAcademicOrganization()
 	{
 		// Object from the Institution Class that is instantiated to be used in testing
@@ -124,7 +124,7 @@ public class InstitutionTest extends AndroidTestCase
 		assertSame("Faculdades", institution.getAcademicOrganization());
 	}
 
-	// Method for testing the return of attribute tipo from class Institution
+	// Method for testing the return of attribute type from class Institution
 	public void testGetType()
 	{
 		// Object from the Institution Class that is instantiated to be used in testing
@@ -134,7 +134,7 @@ public class InstitutionTest extends AndroidTestCase
 		assertEquals("Publica", institution.getType());
 	}
 
-	// Method to test the assignment of tipo attribute from Class Institution
+	// Method to test the assignment of type attribute from Class Institution
 	public void testSetType()
 	{
 		// Object from the Institution Class that is instantiated to be used in testing
@@ -146,7 +146,7 @@ public class InstitutionTest extends AndroidTestCase
 		assertNotSame("Privada", institution.getType());
 	}
 
-	// Method for testing the return of attribute codIES from class Institution
+	// Method for testing the return of attribute institutionCode from class Institution
 	public void testGetInstitutionCode()
 	{
 		// Object from the Institution Class that is instantiated to be used in testing
@@ -156,7 +156,7 @@ public class InstitutionTest extends AndroidTestCase
 		assertEquals(59, institution.getInstitutionCode());
 	}
 
-	// Method to test the assignment of codIES attribute from Class Institution
+	// Method to test the assignment of institutionCode attribute from Class Institution
 	public void testSetInstitutionCode()
 	{
 		// Object from the Institution Class that is instantiated to be used in testing
