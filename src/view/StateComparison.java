@@ -12,24 +12,20 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import br.unb.deolhonoenade.R;
 import controller.CourseController;
-
-import android.util.Log;
-import java.util.logging.Logger;
 
 public class StateComparison extends Activity
 {
@@ -152,7 +148,7 @@ public class StateComparison extends Activity
 		comapare.setOnClickListener(new OnClickListener()
 		{
 			@Override
-			public void onClick(View view) throws Exception
+			public void onClick(View view) 
 			{
 				try
 				{
@@ -168,9 +164,6 @@ public class StateComparison extends Activity
 				catch (Exception e)
 				{
 					Log.e(this.getClass().toString(), "Error when calling StateResultComparison view. Exception: ", e);				
-
-					log.error();
-					throw e;
 				}
 			}
 		});
