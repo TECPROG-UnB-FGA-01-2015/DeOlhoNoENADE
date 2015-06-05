@@ -20,10 +20,10 @@ import model.Institution;
 
 public class CourseController
 {
-    private ArrayList<Course> courses = new ArrayList<Course>();
+    private ArrayList<Course> courses = new ArrayList<Course>(); // Describes a list of courses
 
-	private SQLiteDatabase database;
-	private final OperacoesBancoDeDados databaseOperations;
+	private SQLiteDatabase database; // Describes the database of this class
+	private final OperacoesBancoDeDados databaseOperations; // Describes the operations of the database
 
 	// This method is responsible to import two DAO's classes to make Database's operations
 	public CourseController(Context context)
@@ -37,15 +37,13 @@ public class CourseController
 		this.database = database;
 	}
 
-	// This method is responsible to get the Database's object
+    // Access and returns the property database
 	public SQLiteDatabase getDatabase()
 	{
 		return this.database;
 	}
 
-	/* This method is responsible to block the University's choice twice on the
-	 * Comparison Functionality. This method removes the University's position
-	 * on the Drop List when you're going to compare 2 different Universities */
+    // Removes an institution of the list
 	public boolean removeInstitution(int position)
 	{
 		try
@@ -61,7 +59,7 @@ public class CourseController
 		}
 	}
 
-	// This method is responsible to get each University's ID (position) on the Courses' array
+    // Access and returns the property institutionCode
 	public int getInstitutionCode(int position)
 	{
 		try
@@ -76,13 +74,7 @@ public class CourseController
 		}
 	}
 
-	/* This method is responsible to get the "ENADE"'s Students grades of one
-	 * specific Course. ENADE (Brazilian word which means - National Evaluation
-	 * of Student Performance) is a Government's test which calculates (with
-	 * numbers from 0 - bad - to 5 - great) how good are the Student's grades
-	 * from one of the chosen Courses It's a very important grade because you
-	 * can see the differences between the good Universities from the bad
-	 * Universities	*/
+    // Access and returns the property name
 	public float getCourseGrade(int position)
 	{
 		try
@@ -97,7 +89,7 @@ public class CourseController
 		}
 	}
 
-	// This method is responsible to search the Universities' IDs from the Database
+    // Search for an institution in the database with a given institutionCode
 	public Institution searchInstitution(int institutionCode)
 	{
 		try
@@ -113,10 +105,7 @@ public class CourseController
         return null;
     }
 
-	/* This method is responsible to get all the Universities' info (University
-	 * Name, Academic Organization, Type - Public/Private Universities,
-	 * University City, Registered Students - who participated on the ENADE's
-	 * test - and Course's number of students) */
+    // Access and returns the property institutionInfo
 	public List<String> getInstitutionInfo(int position) throws Exception
 	{
 		List<String> institutionInfo = new ArrayList<String>();
