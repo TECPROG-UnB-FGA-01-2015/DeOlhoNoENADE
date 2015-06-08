@@ -35,17 +35,17 @@ import java.util.logging.Logger;
 
 public class CityComparison extends Activity
 {
-	private String courseName; // Holds the name of the course being compared
-	private int courseCode; // Holds the code of the course being compared
-	private Spinner firstStateSpinner; // Spinner variable of the first State
-	private Spinner secondStateSpinner; // Spinner variable of the second State
-	private Spinner firstCitySpinner;  // Spinner variable of the first City
-	private Spinner secondCitySpinner; // Spinner variable of the second City
-	private String firstStateName; // Holds the name of the first State
-	private String secondStateName; // Holds the name of the second State
-	private String firstCityName; // Holds the name of the first City
-	private String secondCityName; // Holds the name of the second City
-	private CourseController objectCourseController; // Instantiates the controller
+	private String courseName; // Describes the name of the course
+	private int courseCode; // Describes the code of the course
+	private Spinner firstStateSpinner; // Describes the spinner of the first state
+	private Spinner secondStateSpinner; // Describes the spinner of the second state
+	private Spinner firstCitySpinner;  // Describes the spinner of the first city
+	private Spinner secondCitySpinner; // Describes the spinner of the second city
+	private String firstStateName; // Describes the name of the first state
+	private String secondStateName; // Describes the name of the second state
+	private String firstCityName; // Describes the name of the first city
+	private String secondCityName; // Describes the name of the second city
+	private CourseController objectCourseController; // Describes the controller of the course
 
 	
 	// Const to input selected navigation item
@@ -182,7 +182,6 @@ public class CityComparison extends Activity
 			@Override
 			public void onNothingSelected(AdapterView<?> parent)
 			{
-				// Nothing to do
 				Log.i(this.getClass().toString(), "No Item selected!");
 			}
 		});
@@ -193,7 +192,7 @@ public class CityComparison extends Activity
 	{
 		this.secondCitySpinner = (Spinner) findViewById(R.id.spinnerCidade2);
 
-		// Stores all cities of a given course
+		// Describes a list of the city names
 		List<String> cityNameList = new ArrayList<String>();
 		
 		cityNameList = objectCourseController.searchCities(courseCode, uf);
@@ -218,7 +217,6 @@ public class CityComparison extends Activity
 			@Override
 			public void onNothingSelected(AdapterView<?> parent)
 			{
-				// Nothing to do
 				Log.i(this.getClass().toString(), "No Item selected!");
 			}
 		});
