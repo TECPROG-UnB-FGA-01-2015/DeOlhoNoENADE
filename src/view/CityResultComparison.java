@@ -34,10 +34,10 @@ public class CityResultComparison extends Activity
 	private String nameSecondState; // Describes the name of the second state to be compared
 	private String nameFirstCity; // Describes the name of the first city to be compared
 	private String nameSecondCity; // Describes the name of the second city to be compared
-	private int firstAverage; // Stores the average score of the first city
-	private int secondAverage; // Stores the average score of the second city
+	private int firstAverage; // Describes the average of the first course
+	private int secondAverage; // Describes the average of the second course
 	private int courseCode; // Describes the code of the course being compared
-	private CourseController objectCourseController; // Instantiates an object of the controller
+	private CourseController objectCourseController; // Describes the controller of courses
 
 
     @Override
@@ -64,7 +64,7 @@ public class CityResultComparison extends Activity
 		cursoSelecionado.setText(getIntent().getExtras().getString("selectedCourse"));
 		// cursoSelecionado.setText(String.format("%d" , courseCode));
 
-		List<Float> gradeList = null; // Stores the average grade of the course in the two given cities.
+		List<Float> gradeList = null; // Describes a list of course grades
 
 		/* Variable receives the average grade of the course in both cities.
 		 * Position [0] has the average grade of the first city
@@ -84,10 +84,10 @@ public class CityResultComparison extends Activity
 	        e.printStackTrace();
         }
 
-		// Stores the average grade of the course in the first city (example: 6,0)
+		// Describes the average of the first course (only numbers; example: 6,0)
 		float firstAverage = gradeList.get(0); 
 		
-		// Stores the average grade of the course in the second city (example: 5,0)
+		// Describes the average of the second course (only numbers; example: 5,0)
 		float secondAverage = gradeList.get(1); 
 
 		if (savedInstanceState == null)
