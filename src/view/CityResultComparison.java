@@ -64,17 +64,25 @@ public class CityResultComparison extends Activity
 		cursoSelecionado.setText(getIntent().getExtras().getString("selectedCourse"));
 		// cursoSelecionado.setText(String.format("%d" , courseCode));
 
-		List<Float> gradeList; // Stores the average grade of the course in the two given cities.
+		List<Float> gradeList = null; // Stores the average grade of the course in the two given cities.
 
 		/* Variable receives the average grade of the course in both cities.
 		 * Position [0] has the average grade of the first city
 		 * Position [1] has the average grade of the second city
 		 */
-		gradeList = objectCourseController.compareCity(courseCode,
-													   nameFirstState, 
-													   nameFirstCity, 
-													   nameSecondState, 
-													   nameSecondCity);
+		try
+        {
+	        gradeList = objectCourseController.compareCity(courseCode,
+	        											   nameFirstState, 
+	        											   nameFirstCity, 
+	        											   nameSecondState, 
+	        											   nameSecondCity);
+        }
+        catch (Exception e)
+        {
+	        // TODO Auto-generated catch block
+	        e.printStackTrace();
+        }
 
 		// Stores the average grade of the course in the first city (example: 6,0)
 		float firstAverage = gradeList.get(0); 
