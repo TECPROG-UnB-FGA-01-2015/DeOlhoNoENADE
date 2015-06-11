@@ -38,25 +38,25 @@ import java.util.logging.Logger;
 public class FinalInstitutionComparison extends Activity
 {
 
-	private Spinner statesSpinner; // Spinner variable of the States
-	private Spinner institutionSpinner; // Spinner variable of the Institutions
-	private CourseController objectCourseController; // Instantiates an object of the controller
-	private String stateName; // Holds the name of the state
-	private String cityName; // Holds the name of the city
-	private String secondInstitutionName; // Holds the name of the second institution to be compared
-	private String firstStateName; // Holds the name of the first state to be compared
-	private String firstCityName; // Holds the name of the first city to be compared
-	private String firstInstitutionName; // Holds the name of the first institution to be compared
-	private Spinner citiesSpinner; // Spinner variable of the cities
-	private int courseCode; // Describes the code of the course being valued
-	private float firstInstitutionGrade; // Holds the grade of the first institution
-	private float secondInstitutionGrade; // Holds the grade of the second institution
+	private Spinner statesSpinner; // Describes the spinner of states
+	private Spinner institutionSpinner; // Describes the spinner of institution
+	private CourseController objectCourseController; // Describes the controller of courses
+	private String stateName; // Describes the name of the state
+	private String cityName; // Describes the name of the city
+	private String secondInstitutionName; // Describes the name of the second institution being compared
+	private String firstStateName; // Describes the name of the first state
+	private String firstCityName; // Describes the name of the first city
+	private String firstInstitutionName; // Describes the name of the first institution being compared
+	private Spinner citiesSpinner; // Describes the spinner of cities
+	private int courseCode; // Describes the code of the course
+	private float firstInstitutionGrade; // Describes the grade of the first institution
+	private float secondInstitutionGrade; // Describes the grade of the second institution
 	private List<String> firstInstitutionInfo; // Receives information of the first institution to be compared
 	private List<String> secondInstitutionInfo; // Receives information of the second institution to be compared
 	private List<String> institutionList; // Receives a list of institutions
 	private List<String> cityList; // Receives a list of cities
 	private List<String> stateList; // Receives a list of states
-	private int institutionPosition; // Holds the position of the institution on ENADE ranking
+	private int institutionPosition; // Describes the position of the institution on ENADE ranking
 
     @Override
     // Method to initialize the activity activity_comparacao_instituicao_final
@@ -124,7 +124,6 @@ public class FinalInstitutionComparison extends Activity
 			@Override
 			public void onNothingSelected(AdapterView<?> parent)
 			{
-				// Nothing to do
 				Log.i(this.getClass().toString(), "No Item selected!");
 			}
 		});
@@ -178,7 +177,6 @@ public class FinalInstitutionComparison extends Activity
 			@Override
 			public void onNothingSelected(AdapterView<?> parent)
 			{
-				// Nothing to do
 				Log.i(this.getClass().toString(), "No Item selected!");
 			}
 		});
