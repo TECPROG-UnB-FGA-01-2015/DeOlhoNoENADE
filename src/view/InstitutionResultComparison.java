@@ -26,13 +26,13 @@ import controller.CourseController;
 
 public class InstitutionResultComparison extends Activity
 {
-	private CourseController objectCourseController; // CourseController type object
-	private List<String> firstInstitutionInfo; // Contains the first institution data
-	private List<String> secondInstitutionInfo; // Contains the second institution data
-	private float firstGrade; // The grade of the first institution
-	private float secondGrade; // The grade of the second institution
-	private String firstInstitution; // Holds the first institution name
-	private String secondInstitution; // Holds the second institution name
+	private CourseController objectCourseController; // Describes the controller of courses
+	private List<String> firstInstitutionInfo; // Describes data of the first institution being compared
+	private List<String> secondInstitutionInfo; // Describes data of the second institution being compared
+	private float firstGrade; // Describes the grade of the first institution being compared
+	private float secondGrade; // Describes the grade of the second institution being compared
+	private String firstInstitution; // Describes the name of the first institution being compared
+	private String secondInstitution; // Describes the name of the second institution being compared
 	
 	@Override
 	// Method to initialize the activity activity_comparacao_result_ies
