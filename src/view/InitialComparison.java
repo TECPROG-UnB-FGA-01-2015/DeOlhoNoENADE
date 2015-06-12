@@ -27,7 +27,7 @@ public class InitialComparison extends Activity implements
 	private static final String STATE_SELECTED_NAVIGATION_ITEM =
 			"selected_navigation_item";
 	
-	private String course; // Stores the course's name
+	private String course; // Describes the name of the course
 
 	@Override
 	// Method to initialize the activity activity activity_comparacao_inicial
