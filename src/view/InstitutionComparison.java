@@ -40,16 +40,16 @@ import java.util.logging.Logger;
 
 public class InstitutionComparison extends Activity
 {
-	private Spinner institutionSpinner; // Spinner variable of the Institutions
-	private Spinner statesSpinner; // Spinner variable of the States
-	private Spinner citiesSpinner; // Spinner variable of the Cities
-	private CourseController objectCourseController; // Instantiates an object of the controller
-	private String stateName; // Holds the name of the state
-	private String cityName; // Holds the name of the city
-	private String institutionName; // Holds the name of the institution
-	private int courseCode; // Holds the code of the course being compared
-	private List<String> institutionInfo; // Holds data of the institution being compared
-	private float selectedGrade; // Holds the grade of the selected item
+	private Spinner institutionSpinner; // Describes the spinner of institutions
+	private Spinner statesSpinner; // Describes the spinner of states
+	private Spinner citiesSpinner; // Describes the spinner of cities
+	private CourseController objectCourseController; // Describes the controller of courses
+	private String stateName; // Describes the name of the state
+	private String cityName; // Describes the name of the city
+	private String institutionName; // Describes the name of the institution
+	private int courseCode; // Describes the code of the course being compared
+	private List<String> institutionInfo; // Describes data of the institution being compared
+	private float selectedGrade; // Describes the grade of the selected item
 	
 
 
@@ -80,7 +80,7 @@ public class InstitutionComparison extends Activity
 		statesSpinner = (Spinner) findViewById(R.id.estados);
 		List<String> ufNameList = new ArrayList<String>();
 
-		// Store all States of a given course
+		// Describes all States of a given course
 		ufNameList = objectCourseController.searchState(courseCode);
 
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
@@ -106,7 +106,6 @@ public class InstitutionComparison extends Activity
 			@Override
 			public void onNothingSelected(AdapterView<?> parent)
 			{
-				// Nothing to do
 				Log.i(this.getClass().toString(), "No Item selected!");
 			}
 		});
@@ -117,7 +116,7 @@ public class InstitutionComparison extends Activity
 	{
 		this.citiesSpinner = (Spinner) findViewById(R.id.cidades);
 
-		// Store all cities of a given course
+		// Describes all cities of a given course
 		List<String> cityNameList;
 		cityNameList = objectCourseController.searchCities(courseCode, uf);
 
@@ -143,7 +142,6 @@ public class InstitutionComparison extends Activity
 			@Override
 			public void onNothingSelected(AdapterView<?> parent)
 			{
-				// Nothing to do
 				Log.i(this.getClass().toString(), "No Item selected!");
 			}
 		});
@@ -199,7 +197,6 @@ public class InstitutionComparison extends Activity
 			@Override
 			public void onNothingSelected(AdapterView<?> parent)
 			{
-				// Nothing to do
 				Log.i(this.getClass().toString(), "No Item selected!");
 			}
 		});
