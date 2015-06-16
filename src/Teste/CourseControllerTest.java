@@ -340,7 +340,7 @@ public class CourseControllerTest extends AndroidTestCase
 
         secondCoursesList.add(firstCourse);
 
-        this.courses = controller.searchCourse(1, "AC", "CRUZEIRO DO SUL");
+        firstCoursesList = controller.searchCourse(1, "AC", "CRUZEIRO DO SUL");
 
         float secondCourseGrade = secondCoursesList.get(0).getCourseGrade();
         float firstCourseGrade = firstCoursesList.get(0).getCourseGrade();
