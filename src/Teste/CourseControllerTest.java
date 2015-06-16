@@ -261,7 +261,7 @@ public class CourseControllerTest extends AndroidTestCase
 		secondCoursesList.add(thirdCourse);
 		secondCoursesList.add(firstCourse);
 
-		this.courses = controller.searchCourse(1, "AC");
+		firstCoursesList = controller.searchCourse(1, "AC");
 
         Course baseCourse = secondCoursesList.get(0);
         Course compareCourse = firstCoursesList.get(0);
