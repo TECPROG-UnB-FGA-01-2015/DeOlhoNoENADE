@@ -612,13 +612,13 @@ public class CourseControllerTest extends AndroidTestCase
 		List<String> secondCourseList = new ArrayList<String>();
 		List<String> firstCourseList;
 
-		secondCourseList.add("FUNDACAO UNIVERSIDADE FEDERAL DO TOCANTINS - 2,468000");
-		secondCourseList.add("CENTRO UNIVERSITARIO LUTERANO DE PALMAS - 2,185000");
-		secondCourseList.add("INSTITUTO DE ENSINO E PESQUISA OBJETIVO - 2,185000");
-		secondCourseList.add("FACULDADE SERRA DO CARMO - 1,443000");
-		secondCourseList.add("FACULDADE CATOLICA DO TOCANTINS - 1,433000");
-		secondCourseList.add("UNIVERSIDADE DO TOCANTINS - 1,366000");
-		secondCourseList.add("FACULDADE ITOP - 1,202000");
+		secondCourseList.add("FUNDACAO UNIVERSIDADE FEDERAL DO TOCANTINS - 2.468000");
+		secondCourseList.add("CENTRO UNIVERSITARIO LUTERANO DE PALMAS - 2.185000");
+		secondCourseList.add("INSTITUTO DE ENSINO E PESQUISA OBJETIVO - 2.185000");
+		secondCourseList.add("FACULDADE SERRA DO CARMO - 1.443000");
+		secondCourseList.add("FACULDADE CATOLICA DO TOCANTINS - 1.433000");
+		secondCourseList.add("UNIVERSIDADE DO TOCANTINS - 1.366000");
+		secondCourseList.add("FACULDADE ITOP - 1.202000");
 
 		firstCourseList = controller.searchCoursesNames(1, "TO", "PALMAS");
 
