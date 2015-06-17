@@ -35,27 +35,27 @@ public class Map extends Activity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_mapa);
 
-		// Holds the information that will be showed on view
+		// Describes the information that will be showed on view
 		WebView webview = (WebView) findViewById(R.id.webView1);
         
-		// Stores the course's name
+		// Describes the name of the course
 		String course = getIntent().getExtras().getString("selectedCourse");
 		
-		// CourseController type object
+		// Describes the controller of courses
         CourseController objectCourseController = new CourseController(this);
         
-        // Code of the course selected
+        // Describes the code of the course
         int courseCode = objectCourseController.searchCourseCode(course);
         
-        // Holds all federation units that exists on the application
+        // Describes all federation units that exists on the application
         ArrayList<String> allStates = (ArrayList<String>) objectCourseController.searchState(1);
         
-    	// Holds all the average grade of all federal units
+    	// Describes all the average grade of all federal units
         List<String> stateAverageGradeList = new ArrayList<String>();
         
         for(int i = 0; i < allStates.size(); i++) // For parameter; (0 =< i < allStates)
         {	
-        	// Holds the average grade of each federal unit
+        	// Describes the average grade of each federal unit
         	String stateAverageGrade = new String();
         	
         	try
