@@ -29,11 +29,13 @@ import controller.CourseController;
 
 public class StateComparison extends Activity
 {
-	private String course; // Receives the name of course
-	private int courseCode; // Receives the result of the CourseController's method "SearchCourseCode" 
-	private CourseController objectCourseController; // Object from the CourseController Class
-	private Spinner firstStateSpinner, secondStateSpinner; // A dropdown list of states
-	private String firstState, secondState; // Receives the value of the selected state
+	private String course; // Describes the name of course
+	private int courseCode; // Describes the result of the CourseController's method "SearchCourseCode" 
+	private CourseController objectCourseController; // Describes the controller of courses
+	private Spinner firstStateSpinner; // Describes the spinner of first state
+	private Spinner secondStateSpinner; // Describes the spinner of second state
+	private String firstState; // Describes the name of the first state
+	private String secondState; // Describes the name of the second state
 	
 	@Override
 	// Method to initialize the activity activity_comparacao_estado
@@ -46,7 +48,7 @@ public class StateComparison extends Activity
 
 		objectCourseController = new CourseController(this);
 
-		// Receives the info of the selected course from the view (search by ID)
+		// Describes the info of the selected course from the view (search by ID)
 		TextView selectedCourse = (TextView) findViewById(R.id.stringCurso);
 
 		course = getIntent().getExtras().getString("selectedCourse");
@@ -76,7 +78,7 @@ public class StateComparison extends Activity
 	{
 		firstStateSpinner = (Spinner) findViewById(R.id.Estado1);
 		
-		// Holds a list of states by the course code
+		// Describes a list of states by the course code
 		List<String> stateList = new ArrayList<String>();
 
 		stateList = objectCourseController.searchState(courseCode);
