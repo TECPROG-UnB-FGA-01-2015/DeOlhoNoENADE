@@ -261,7 +261,7 @@ public class CourseControllerTest extends AndroidTestCase
 		secondCoursesList.add(thirdCourse);
 		secondCoursesList.add(firstCourse);
 
-		this.courses = controller.searchCourse(1, "AC");
+		firstCoursesList = controller.searchCourse(1, "AC");
 
         Course baseCourse = secondCoursesList.get(0);
         Course compareCourse = firstCoursesList.get(0);
@@ -340,7 +340,7 @@ public class CourseControllerTest extends AndroidTestCase
 
         secondCoursesList.add(firstCourse);
 
-        this.courses = controller.searchCourse(1, "AC", "CRUZEIRO DO SUL");
+        firstCoursesList = controller.searchCourse(1, "AC", "CRUZEIRO DO SUL");
 
         float secondCourseGrade = secondCoursesList.get(0).getCourseGrade();
         float firstCourseGrade = firstCoursesList.get(0).getCourseGrade();
@@ -376,7 +376,7 @@ public class CourseControllerTest extends AndroidTestCase
 
 		secondCoursesList.add(firstCourse);
 
-		this.courses = controller.searchCourse(1, "DF", "BRASILIA", "PUBLICA");
+		firstCoursesList = controller.searchCourse(1, "DF", "BRASILIA", "PUBLICA");
 
         float secondCourseGrade = secondCoursesList.get(0).getCourseGrade();
         float firstCourseGrade = firstCoursesList.get(0).getCourseGrade();
@@ -552,20 +552,20 @@ public class CourseControllerTest extends AndroidTestCase
 		List<String> secondCourseList = new ArrayList<String>();
 		List<String> firstCourseList;
 
-		secondCourseList.add("FUNDACAO UNIVERSIDADE FEDERAL DO TOCANTINS - 2,468000");
-		secondCourseList.add("FACULDADE DE CIENCIAS HUMANAS, ECONOMICAS E DA SAUDE DE ARAGUAINA - 2,460000");
-		secondCourseList.add("FACULDADE DE ADMINISTRACAO DE EMPRESAS DE PARAISO DO TOCANTINS - 2,357000");
-		secondCourseList.add("CENTRO UNIVERSITARIO UNIRG - 2,290000");
-		secondCourseList.add("CENTRO UNIVERSITARIO LUTERANO DE PALMAS - 2,185000");
-		secondCourseList.add("INSTITUTO DE ENSINO E PESQUISA OBJETIVO - 2,185000");
-		secondCourseList.add("FACULDADE INTEGRADA DE ARAGUATINS - 2,103000");
-		secondCourseList.add("FACULDADE GUARAI - 2,014000");
-		secondCourseList.add("FACULDADE CATOLICA DOM ORIONE - 1,502000");
-		secondCourseList.add("FACULDADE SERRA DO CARMO - 1,443000");
-		secondCourseList.add("FACULDADE CATOLICA DO TOCANTINS - 1,433000");
-		secondCourseList.add("UNIVERSIDADE DO TOCANTINS - 1,366000");
-		secondCourseList.add("FACULDADE ITOP - 1,202000");
-		secondCourseList.add("FACULDADE SAO MARCOS - 0,209000");
+		secondCourseList.add("FUNDACAO UNIVERSIDADE FEDERAL DO TOCANTINS - 2.468000");
+		secondCourseList.add("FACULDADE DE CIENCIAS HUMANAS, ECONOMICAS E DA SAUDE DE ARAGUAINA - 2.460000");
+		secondCourseList.add("FACULDADE DE ADMINISTRACAO DE EMPRESAS DE PARAISO DO TOCANTINS - 2.357000");
+		secondCourseList.add("CENTRO UNIVERSITARIO UNIRG - 2.290000");
+		secondCourseList.add("CENTRO UNIVERSITARIO LUTERANO DE PALMAS - 2.185000");
+		secondCourseList.add("INSTITUTO DE ENSINO E PESQUISA OBJETIVO - 2.185000");
+		secondCourseList.add("FACULDADE INTEGRADA DE ARAGUATINS - 2.103000");
+		secondCourseList.add("FACULDADE GUARAI - 2.014000");
+		secondCourseList.add("FACULDADE CATOLICA DOM ORIONE - 1.502000");
+		secondCourseList.add("FACULDADE SERRA DO CARMO - 1.443000");
+		secondCourseList.add("FACULDADE CATOLICA DO TOCANTINS - 1.433000");
+		secondCourseList.add("UNIVERSIDADE DO TOCANTINS - 1.366000");
+		secondCourseList.add("FACULDADE ITOP - 1.202000");
+		secondCourseList.add("FACULDADE SAO MARCOS - 0.209000");
 
 		firstCourseList = controller.searchCoursesNames(1, "TO");
 
@@ -588,8 +588,8 @@ public class CourseControllerTest extends AndroidTestCase
 		List<String> secondCourseList = new ArrayList<String>();
 		List<String> firstCourseList;
 
-		secondCourseList.add("FUNDACAO UNIVERSIDADE FEDERAL DO TOCANTINS - 2,468000");
-		secondCourseList.add("UNIVERSIDADE DO TOCANTINS - 1,366000");
+		secondCourseList.add("FUNDACAO UNIVERSIDADE FEDERAL DO TOCANTINS - 2.468000");
+		secondCourseList.add("UNIVERSIDADE DO TOCANTINS - 1.366000");
 
 		firstCourseList = controller.searchCoursesNames(1, "TO", "PALMAS", "PUBLICA");
 
@@ -612,13 +612,13 @@ public class CourseControllerTest extends AndroidTestCase
 		List<String> secondCourseList = new ArrayList<String>();
 		List<String> firstCourseList;
 
-		secondCourseList.add("FUNDACAO UNIVERSIDADE FEDERAL DO TOCANTINS - 2,468000");
-		secondCourseList.add("CENTRO UNIVERSITARIO LUTERANO DE PALMAS - 2,185000");
-		secondCourseList.add("INSTITUTO DE ENSINO E PESQUISA OBJETIVO - 2,185000");
-		secondCourseList.add("FACULDADE SERRA DO CARMO - 1,443000");
-		secondCourseList.add("FACULDADE CATOLICA DO TOCANTINS - 1,433000");
-		secondCourseList.add("UNIVERSIDADE DO TOCANTINS - 1,366000");
-		secondCourseList.add("FACULDADE ITOP - 1,202000");
+		secondCourseList.add("FUNDACAO UNIVERSIDADE FEDERAL DO TOCANTINS - 2.468000");
+		secondCourseList.add("CENTRO UNIVERSITARIO LUTERANO DE PALMAS - 2.185000");
+		secondCourseList.add("INSTITUTO DE ENSINO E PESQUISA OBJETIVO - 2.185000");
+		secondCourseList.add("FACULDADE SERRA DO CARMO - 1.443000");
+		secondCourseList.add("FACULDADE CATOLICA DO TOCANTINS - 1.433000");
+		secondCourseList.add("UNIVERSIDADE DO TOCANTINS - 1.366000");
+		secondCourseList.add("FACULDADE ITOP - 1.202000");
 
 		firstCourseList = controller.searchCoursesNames(1, "TO", "PALMAS");
 
@@ -641,11 +641,11 @@ public class CourseControllerTest extends AndroidTestCase
 		List<String> secondCourseList = new ArrayList<String>();
 		List<String> firstCourseList;
 
-		secondCourseList.add("FUNDACAO UNIVERSIDADE FEDERAL DO TOCANTINS - 2,468000");
-		secondCourseList.add("CENTRO UNIVERSITARIO UNIRG - 2,290000");
-		secondCourseList.add("FACULDADE INTEGRADA DE ARAGUATINS - 2,103000");
-		secondCourseList.add("FACULDADE GUARAI - 2,014000");
-		secondCourseList.add("UNIVERSIDADE DO TOCANTINS - 1,366000");
+		secondCourseList.add("FUNDACAO UNIVERSIDADE FEDERAL DO TOCANTINS - 2.468000");
+		secondCourseList.add("CENTRO UNIVERSITARIO UNIRG - 2.290000");
+		secondCourseList.add("FACULDADE INTEGRADA DE ARAGUATINS - 2.103000");
+		secondCourseList.add("FACULDADE GUARAI - 2.014000");
+		secondCourseList.add("UNIVERSIDADE DO TOCANTINS - 1.366000");
 
 		firstCourseList = controller.searchCoursesNames(1, "TO", 2);
 

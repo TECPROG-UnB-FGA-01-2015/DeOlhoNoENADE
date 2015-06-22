@@ -54,9 +54,16 @@ public class StateResultComparison extends Activity
 
 		titulo.setText(String.format("Comparacao do curso de\n\t%s", course));
 
-		List<Float> list;
+		List<Float> list = null;
 
-		list = objectCourseController.compareState(firstState, secondState, courseCode);
+		try
+        {
+	        list = objectCourseController.compareState(firstState, secondState, courseCode);
+        }
+        catch (Exception e)
+        {
+        	e.printStackTrace();
+        }
 
 		if(savedInstanceState == null)
 		{
