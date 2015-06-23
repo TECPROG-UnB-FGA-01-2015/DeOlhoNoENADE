@@ -27,10 +27,11 @@ import controller.CourseController;
 
 public class StateResultComparison extends Activity
 {
-	private String course; // Receives the name of course
-	private String firstState, secondState; // Receives the value of the selected state
-	private CourseController objectCourseController; // Object from the ControllerCurso Class
-	private int courseCode; // Receives the result of the ControllerCurso's method "searchCourseCode" 
+	private String course; // Describes the name of course
+	private String firstState; // Describes the name of the first state
+	private String secondState; // Describes the name of the second state
+	private CourseController objectCourseController; // // Describes the controller of courses
+	private int courseCode; // Describes the result of the ControllerCurso's method "searchCourseCode" 
 
 	@Override
 	
@@ -49,7 +50,7 @@ public class StateResultComparison extends Activity
 		secondState = getIntent().getExtras().getString("secondState");
 		courseCode = objectCourseController.searchCourseCode(course);
 
-		// Receives the info of the title from the view (search by ID)
+		// Describes the info of the title from the view (search by ID)
 		TextView titulo = (TextView) findViewById(R.id.stringCurso);
 
 		titulo.setText(String.format("Comparacao do curso de\n\t%s", course));
@@ -75,13 +76,13 @@ public class StateResultComparison extends Activity
 			// Nothing to do
 		}
 
-		// Contains the value of the index 0 of the list
+		// Describes the value of the index 0 of the list
 		String list1String = String.valueOf(list.get(0));
 		
-		// Contains the value of the index 1 of the list
+		// Describes the value of the index 1 of the list
 		String list2String = String.valueOf(list.get(1));
 
-		// Stores the average graphic's information
+		// Describes the average graphic's information
 		ArrayList<Bar> points = new ArrayList<Bar>();
 		
 		Bar d = new Bar();
