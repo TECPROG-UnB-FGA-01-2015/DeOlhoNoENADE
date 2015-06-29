@@ -28,17 +28,17 @@ import controller.CourseController;
 
 public class TypeComparison extends Activity
 {	
-	private Spinner firstStateSpinner; // Contains a list of states to be chosen to the first institution
-	private Spinner firstTypeSpinner; // First institution type (public or private)
-	private Spinner secondStateSpinner; // Contains a list of states to be chosen to the second institution
-	private Spinner secondTypeSpinner; // second institution type (public or private)
-	private CourseController objectCourseController; // CourseController type object
-	private String firstState; // Holds the first institution state (DF, MG, RJ,...)
-	private String firstType; // Holds the state of first institution (AC, AM, SP,...)
-	private String secondState; // Holds the second institution state (public or private)
-	private String secondType; // Holds the second institution type (public or private)
-	private int courseCode; // Code of the course selected
-	private List<Float> comparisonResults; // Holds the average grade of the institution type
+	private Spinner firstStateSpinner; // Describes the spinner of the first state
+	private Spinner firstTypeSpinner; // Describes the first institution type (public or private)
+	private Spinner secondStateSpinner; // Describes the spinner of the second state
+	private Spinner secondTypeSpinner; // Describes the second institution type (public or private)
+	private CourseController objectCourseController; // Describes the controller of courses
+	private String firstState; // Describes the first institution state (DF, MG, RJ,...)
+	private String firstType; // Describes the state of first institution (AC, AM, SP,...)
+	private String secondState; // Describes the second institution state (public or private)
+	private String secondType; // Describes the second institution type (public or private)
+	private int courseCode; // Describes the code of the course selected
+	private List<Float> comparisonResults; // Describes the average grade of the institution
 	
 	// Holds a list of institutions by the course code and the federal unit
 	private List<String> secondTypeList;
@@ -100,9 +100,9 @@ public class TypeComparison extends Activity
 		{
 			@Override
 			public void onItemSelected(AdapterView<?> parent,
-										View v, // Holds which view is called
-										int posicao, // Gets the position of the selected line on database
-										long id) // Holds the id of the container's selected item 
+										View v, // Describes which view is called
+										int posicao, // Describes the position of the selected line on database
+										long id) // Describes the id of the container's selected item 
 			{
 				firstState = parent.getItemAtPosition(posicao).toString();
 				addItensOnSpinnerFirstType(firstState);						
@@ -137,9 +137,9 @@ public class TypeComparison extends Activity
 		{
 			@Override
 			public void onItemSelected(AdapterView<?> parent,
-										View v, // Holds which view is called
-										int posicao, // Gets the position of the selected line on database
-										long id) // Holds the id of the container's selected item
+										View v, // Describes which view is called
+										int posicao, // Describes the position of the selected line on database
+										long id) // Describes the id of the container's selected item
 			{
 				firstType = parent.getItemAtPosition(posicao).toString();
 				
@@ -182,9 +182,9 @@ public class TypeComparison extends Activity
 			@Override
 			
 			public void onItemSelected(AdapterView<?> parent,
-										View v, // Holds which view is called
-										int posicao, // Gets the position of the selected line on database
-										long id) // Holds the id of the container's selected item
+										View v, // Describes which view is called
+										int posicao, // Describes the position of the selected line on database
+										long id) // Describes the id of the container's selected item
 			{
 				secondState = parent.getItemAtPosition(posicao).toString();
 						
@@ -229,9 +229,9 @@ public class TypeComparison extends Activity
 			@Override
 			// Method to select item from the view when newly selected position is different from the previously selected position
 			public void onItemSelected(AdapterView<?> parent,
-										View v, // Holds which view is called
-										int posicao, // Gets the position of the selected line on database
-										long id) // Holds the id of the container's selected item
+										View v, // Describes which view is called
+										int posicao, // Describes the position of the selected line on database
+										long id) // Describes the id of the container's selected item
 			{
 				secondType = parent.getItemAtPosition(posicao).toString();
 				
@@ -349,7 +349,7 @@ public class TypeComparison extends Activity
 		public View onCreateView(LayoutInflater inflater, ViewGroup container,
 				Bundle savedInstanceState)
 		{
-			// Hosts all other views on the same place
+			// Describes all other views on the same place
 			View rootView = inflater.inflate(R.layout.fragment_comparacao_tipo,
 					container, false);
 			
