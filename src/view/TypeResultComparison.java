@@ -27,13 +27,13 @@ import controller.CourseController;
 
 public class TypeResultComparison extends Activity
 {
-	private CourseController objectCourseController; // CourseController type object
-	private float firstResult; // Holds the average grade of the first course type
-	private float secondResult; // Holds the average grade of the second course type
-	private String firstState; // Holds the state of first institution (DF, MG, RJ,...)
-	private String secondState; // Holds the state of second institution (AC, AM, SP,...)
-	private String firstType; // Holds the first institution type (public or private)
-	private String secondType; // Holds the second institution type (public or private)
+	private CourseController objectCourseController; // Describes the controller of courses
+	private float firstResult; // Describes the average grade of the first course
+	private float secondResult; // Describes the average grade of the second course
+	private String firstState; // Describes the state of the first institution (DF, MG, RJ,...)
+	private String secondState; // Describes the state of the second institution (AC, AM, SP,...)
+	private String firstType; // Describes the first institution type (public or private)
+	private String secondType; // Describes the second institution type (public or private)
 	
 	@Override
 	// Method to initialize the activity activity_comparacao_result_tipo
@@ -56,10 +56,10 @@ public class TypeResultComparison extends Activity
 		secondState = extras.getString("secondState");
 		secondType = extras.getString("secondType");
 		
-		// Holds the first state name and the type of the first institution
+		// Describes the first state name and the type of the first institution
 		String firstStateType = (firstState + " " + firstType);
 		
-		// Holds the second state name and the type of the second institution
+		// Describes the second state name and the type of the second institution
 		String secondStateType = (secondState + " " + secondType);
 		
 		// Presents the first institution state on a textView
@@ -70,17 +70,17 @@ public class TypeResultComparison extends Activity
 		TextView stateTypeTwo = (TextView) findViewById(R.id.estadoTipo2);
 		stateTypeTwo.setText(secondStateType);
 		
-		String firstTypeGrade = String.valueOf(firstResult); // Holds the first institution grade
-		String secondTypeGrade = String.valueOf(secondResult); // Holds the second institution grade
+		String firstTypeGrade = String.valueOf(firstResult); // Describes the first institution grade
+		String secondTypeGrade = String.valueOf(secondResult); // Describes the second institution grade
 		
-		ArrayList<Bar> institutionGrades = new ArrayList<Bar>(); // Holds the average grade of institution
+		ArrayList<Bar> institutionGrades = new ArrayList<Bar>(); // Describes the average grade of institution
 		
-		Bar firstInstitutionGraph = new Bar(); // Contains the first institution data
+		Bar firstInstitutionGraph = new Bar(); // Describes the first institution data
 		firstInstitutionGraph.setColor(Color.parseColor("#99CC00"));
 		firstInstitutionGraph.setName("Estado/Tipo 1:");
 		firstInstitutionGraph.setValue(Float.parseFloat(firstTypeGrade.substring(0, 5)));
 		
-		Bar secondInstitutionGraph = new Bar(); // Contains the second institution data
+		Bar secondInstitutionGraph = new Bar(); // Describes the second institution data
 		secondInstitutionGraph.setColor(Color.parseColor("#FFBB33"));
 		secondInstitutionGraph.setName("Estado/Tipo 2:");
 		secondInstitutionGraph.setValue(Float.parseFloat(secondTypeGrade.substring(0, 5)));
@@ -93,7 +93,7 @@ public class TypeResultComparison extends Activity
 		
 		Log.i(this.getClass().toString(), "Second Type Institution Graph created!");
 		
-		// Holds the graphical bar with the first institution and second institution names and grades
+		// Describes the graphical bar with the first institution and second institution names and grades
 		BarGraph g = (BarGraph)findViewById(R.id.graph3);
 		
 		g.setBars(institutionGrades);
@@ -124,7 +124,7 @@ public class TypeResultComparison extends Activity
 	// Method to recognize when an option on menu is selected
 	public boolean onOptionsItemSelected(MenuItem item)
 	{
-		int id = item.getItemId(); // Holds the id of the container's selected item 
+		int id = item.getItemId(); // Describes the id of the container's selected item 
 		
 		if (id == R.id.action_settings)
 		{
